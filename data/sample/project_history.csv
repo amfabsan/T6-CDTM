@@ -1,0 +1,13 @@
+employee_id,project,client_sector,year,role_in_project,what_they_did
+E01,Migración Cloud Seguros,Insurance,2026,Developer,"Lideró la migración de 3 microservicios Java a Azure App Service y automatizó el despliegue con GitHub Actions (no consta en su CV)"
+E02,Banco Levante Core,Banking,2026,Architect,"Diseño de arquitectura de microservicios en AKS"
+E03,Retail Forecast,Retail,2026,Data Scientist,"Modelo de previsión de demanda con Python y LightGBM"
+E05,SAP Finance Rollout,Utilities,2025,Consultant,"Mapeo de procesos financieros y testing de S/4HANA; presentó al comité de dirección"
+E07,Telco Data Lake,Telco,2026,Data Engineer,"Pipelines en Databricks sobre Azure"
+E08,Insurance Portal,Insurance,2026,QA Engineer,"Automatización E2E con Cypress; también construyó un dashboard de calidad en Power BI"
+E10,Hackathon interno GenAI,Internal,2026,Developer,"Prototipo de chatbot RAG con LangChain y Azure OpenAI"
+E11,Public Sector GenAI,Public,2026,Consultant,"Estrategia GenAI y gestión del cambio para un ministerio"
+E13,Utility CRM,Utilities,2025,Business Analyst,"Toma de requisitos con usuarios y documentación funcional en alemán"
+E17,Voluntariado ONG,Non-profit,2025,Volunteer,"Coordinó un equipo de 12 voluntarios y la logística de un evento"
+E18,Public Sector GenAI,Public,2026,ML Engineer,"Evaluación de LLMs y pipeline MLOps en Azure ML"
+E20,Banco Levante Core,Banking,2025,Developer,"APIs Spring Boot; formación certificada AZ-204 en curso"
