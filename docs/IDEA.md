@@ -10,7 +10,9 @@
 | Tema | Dato |
 |---|---|
 | Fecha y lugar | Sábado 21 nov 2026, The Terminal Hub (Valencia), 08:30–19:00 |
-| Formato | 60 participantes, 12 equipos, 2 casos principales. Cada equipo hace uno (nosotros: NTT DATA) |
+| Formato | 60 participantes (de unas 200 solicitudes), 12 equipos y 2 casos principales: **NTT DATA** (6 equipos) y **Sherpas** (6 equipos). **T6 tiene NTT DATA, confirmado por email.** Los datos, las API y el briefing técnico se desbloquean el sábado tras el kick-off. La guía todavía no publica la descripción del caso, así que el título de la captura está sin confirmar |
+| Reto ElevenLabs | Su brief cita expresamente *"a voice agent or speech-to-text feature"* como integración válida dentro del producto. Nuestra nota de voz con STT encaja |
+| Antes del sábado | Leer los dos retos y la Hacker Guide de ElevenLabs (obligatorio). Canjear el cupón de ElevenLabs cuando avisen por WhatsApp. Los créditos de Lovable y Notion se dan el mismo sábado |
 | Entrega | **16:45, cierre estricto**, en Polievalúa: pitch deck, repo de GitHub y vídeo de demo |
 | Pitch | 17:00–18:15, 3 min de pitch y 2 min de preguntas. Premios 18:45 |
 | Jurado anunciado | Juan Fuentes (EBAN/EIT), Iñigo de la Iglesia (Mission, inversión), Alejandro Vignoni (IDEAS UPV / StartUPV), Ana Moya y Julián Fernández (Buho AI). Perfil: inversión, emprendimiento, IA y operaciones |
@@ -77,11 +79,11 @@ La diferencia con PeopleWorks (Múnich 2025, que ya demostró la captura por voz
 
 **Cómo se propone el equipo (determinista y explicable):**
 1. Solo entran personas que cumplen las restricciones individuales.
-2. Se elige primero a quien cubre **más obligatorios todavía sin cubrir**. 🟢 cuenta como cubierto y 🟡 como "cubierto, pendiente de verificar".
-3. Se repite hasta cubrir todos los obligatorios o llegar al tamaño de equipo. Los empates se resuelven por deseables cubiertos.
+2. Se prueban **todas las combinaciones** de 1, 2 y 3 personas, y se queda el **equipo más pequeño que cubre todos los obligatorios**. 🟢 cuenta como cubierto y 🟡 como "cubierto, pendiente de verificar".
+3. Los empates se resuelven por más requisitos verificados y después por más deseables cubiertos. Si ningún equipo cubre todo, se muestra el que más cubre.
 4. El resultado se muestra con la **matriz requisito × persona** y los **huecos** en rojo. El manager puede cambiar a cualquier persona y la cobertura se recalcula al momento.
 
-⚠️ **Elegir siempre a quien más cubre no garantiza el equipo más pequeño posible.** Por eso no decimos "equipo mínimo" salvo que esté comprobado. Con equipos de 2–3 personas y decenas de candidatos, probar todas las combinaciones es instantáneo, así que si da tiempo se hace en la app. Para la demo, [`scripts/verify_demo.js`](../scripts/verify_demo.js) prueba todas las parejas y confirma tres cosas:
+Ya está implementado en [`src/lib/teamBuilder.ts`](../src/lib/teamBuilder.ts) (`proposeTeam`). Con equipos de 2–3 personas y decenas de candidatos es instantáneo, así que **"el equipo más pequeño posible" está garantizado y no es una suposición**. [`scripts/verify_demo.ts`](../scripts/verify_demo.ts) usa esa misma lógica sobre `data/sample/` y confirma tres cosas:
 - antes de la nota de voz, **ninguna pareja** cubre los 3 requisitos;
 - después, **ninguna persona sola** los cubre;
 - **Ana + Sergio es la única pareja** que los cubre.
@@ -102,7 +104,7 @@ La diferencia con PeopleWorks (Múnich 2025, que ya demostró la captura por voz
    | **Top-2 individual** (Ana + Elena) | ✅ | ❌ **vacía** | ✅ |
    | **Equipo propuesto** (Ana + Sergio) | ✅ (Ana, verificada) | ✅ (Sergio) | ✅ (Ana) |
 
-   Se pulsa **«Proponer equipo»** y sale un **borrador editable** con quién cubre cada requisito, sus evidencias y los huecos pendientes. Puede convertirse en la sección de equipo de una RFP o en una solicitud de aprobación. Antes de la nota de voz, ninguna pareja cubría los 3 requisitos (comprobado con `scripts/verify_demo.js`).
+   Se pulsa **«Proponer equipo»** y sale un **borrador editable** con quién cubre cada requisito, sus evidencias y los huecos pendientes. Puede convertirse en la sección de equipo de una RFP o en una solicitud de aprobación. Antes de la nota de voz, ninguna pareja cubría los 3 requisitos (comprobado con `scripts/verify_demo.ts`).
 
 **El momento del pitch:** *«Con las mismas dos plazas, pasamos de cubrir dos requisitos a cubrir los tres. Sergio aporta la competencia que faltaba.»*
 
@@ -165,14 +167,8 @@ Mantenemos la estructura **necesidad → match con evidencia → decisión verif
 
   Cada tarjeta explica la recomendación en una línea: *"Cumple Azure (verificado, proyecto X) y Java (CV). Disponible al 80 %. Cubre 2 de 3 deseables."*
 
-### Prompt inicial para Lovable (pegar al abrir el caso y ajustar a los datos reales)
-> Build "SkillSonar", an enterprise talent-matching web app for a consulting firm's staffing managers. Clean, professional UI (NTT DATA-like blue palette), Spanish language. Supabase tables: employees(id, name, role, seniority, location, availability_pct, current_project), skills(id, name, category), employee_skills(employee_id, skill_id, evidence_quote text, project text, source 'cv'|'project'|'voice', status 'verificada'|'autodeclarada', updated_at). Pages: (1) "Nueva necesidad": textarea where the manager pastes a project need or RFP excerpt; an AI step extracts required skills with priority (must/nice) as editable chips, plus required availability. (2) "Recomendaciones": rule-based ranking, no weighted score: first filter by must-haves (label each candidate "cumple" if all musts are verified, "candidata para revisar" if some must is only self-declared, "falta evidencia de X" otherwise — never hide them), then availability, then sort by number of nice-to-haves covered. Each card shows a one-line explanation, the evidence quote and source per skill, and status badges (green verificada, yellow autodeclarada, grey sin evidencia). (2b) Main feature, a "Proponer equipo" button: deterministic team builder — individual constraints (availability) are checked per person, capability requirements are covered by the team as a whole; filter by required availability, repeatedly pick the person covering the most still-uncovered must-haves (verificada = covered, autodeclarada = covered-pending), tie-break by nice-to-haves, until all musts are covered or the max team size is reached. Show a side-by-side comparison "Top-2 del ranking" vs "Equipo propuesto" with musts covered shown as "X verificados + Y pendientes", let the manager swap members with live recalculation, and generate an editable draft (team, who covers each requisite, evidence, gaps) exportable as an RFP team section. Include a coverage matrix showing which required skills the selected team covers and which are gaps. (3) "Perfil" of an employee showing skills grouped by source, with a big "Grabar nota de voz" button: record ~15 s with MediaRecorder, send the audio to a Supabase edge function that calls ElevenLabs Speech-to-Text (POST https://api.elevenlabs.io/v1/speech-to-text, model_id "scribe_v1", language_code "spa", API key stored as a Supabase secret, never in the client), then use AI to extract [{skill, project, evidence_quote}] with literal quotes. Show a review screen where the employee confirms, edits or discards each proposed skill; confirmed ones are saved with source 'voice' and status 'autodeclarada' and appear in the profile with a highlight animation. Seed with the CSV I will upload.
-
-### Prompt de extracción (transcripción → propuesta)
-> A partir de esta transcripción de una nota de voz de un empleado, extrae solo las experiencias profesionales concretas que la persona dice haber tenido. Devuelve JSON: `[{"skill": nombre normalizado (p. ej. "Azure", "Liderazgo de equipo"), "project": nombre del proyecto o null, "evidence_quote": fragmento LITERAL de la transcripción}]`. No infieras niveles, potencial ni habilidades que no se mencionen explícitamente. Si no hay ninguna, devuelve `[]`.
-
-### Prompt del agente de ElevenLabs (solo para la mejora opcional)
-> Eres SkillSonar, un entrevistador amable de una consultora. Tu objetivo es descubrir, en menos de 3 minutos, qué experiencia nueva ha adquirido la persona en su último proyecto. Haz una pregunta cada vez y como máximo 5 preguntas: qué proyecto fue, qué hizo exactamente, qué herramientas o tecnologías usó, qué le tocó liderar o resolver y qué le gustaría hacer después. Cada vez que la persona describa una experiencia concreta con un ejemplo, llama a `add_skill` con el nombre normalizado de la habilidad, una cita breve y literal de lo que dijo y el nombre del proyecto. No evalúes niveles ni potencial. No inventes habilidades que no haya mencionado. Al acabar, resume en una frase y llama a `finish_interview`.
+### Prompts
+La versión mantenida de los prompts está en [`prompts/lovable.md`](../prompts/lovable.md) (5 pasos en orden, apoyándose en `src/lib/teamBuilder.ts`) y [`prompts/elevenlabs.md`](../prompts/elevenlabs.md) (STT, locución y agente opcional). La extracción con IA está en [`supabase/functions/extract`](../supabase/functions/extract/index.ts).
 
 ---
 
@@ -224,6 +220,8 @@ En el pitch decimos cuántos ejemplos usamos. Una prueba pequeña y honesta es m
 **Preguntas que hay que ensayar:** ¿cómo medisteis el beneficio? ¿Qué pasa si la IA alucina una skill? (Cita literal + "sin verificar" + validación del manager.) ¿Privacidad y sesgo? (Consentimiento, el empleado ve y edita su perfil, sin atributos protegidos en el score.) ¿Por qué lo usarían los empleados? (15 segundos de voz frente a un formulario de 40 campos, y su perfil les consigue mejores proyectos.)
 
 ## 9. Datos y cumplimiento (preguntar el sábado ANTES de subir nada)
+- **Las bases oficiales dicen** que el material del evento puede ser confidencial y solo se puede usar para el evento. Además, las entregas (nombre, descripción, demo y vídeo) pueden publicarse. **No subáis datos de NTT DATA al repo de GitHub** si no os lo autorizan: usad datos ficticios o anonimizados en el repo y en el vídeo.
+- **Las bases no dicen nada sobre llevar código preparado.** Sin embargo, el email insiste en que todos los equipos empiecen en igualdad de condiciones, e Improven puntúa la evolución durante el día. Recomendación: **preguntad a la organización al llegar** si se pueden reutilizar piezas propias (lógica, funciones de backend o prompts), y decidlo en voz alta. En cualquier caso, el producto se construye el sábado siguiendo las 3 vueltas. Lo preparado son piezas reutilizables, no la app terminada.
 - ¿Qué servicios están autorizados para procesar los datos del reto (Lovable, Supabase, ElevenLabs, LLMs)?
 - ¿Qué se puede enseñar en el vídeo y qué se puede incluir en el repo público? Si no está claro, se usan datos anonimizados o ficticios en el repo.
 - En el pitch se presenta como **apoyo a una decisión humana**, con evidencias que se pueden revisar y corregir. **Nunca** como algo que "mide el potencial" de una persona. Además, el staffing es una categoría de alto riesgo según el AI Act.
