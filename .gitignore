@@ -9,4 +9,5 @@ supabase/.temp/
 scripts/*
 !scripts/load_profiles.py
 !scripts/make_sample.py
+!scripts/try_explain.ts
 .venv/
