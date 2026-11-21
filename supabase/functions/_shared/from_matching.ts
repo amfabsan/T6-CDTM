@@ -103,7 +103,7 @@ export function fromMatching(result: MatchingResult): ExplainInput {
     team_id: t.id,
     fit: Math.round(t.fit),
     continuity: t.continuity?.pct ?? null,
-    cost: t.cost?.value ?? null,
+    cost_eur: t.cost?.value ?? null, // euros (supuesto ilustrativo de los pasos 9-10)
     start: { day: null, status: t.start?.status ?? "por confirmar", date: t.start?.date ?? null },
     members: t.members
       .map((m) => ({ role: m.role, employee_id: keyOf.get(`${m.role}|${m.employee_id}`) ?? m.employee_id })),

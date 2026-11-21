@@ -10,5 +10,6 @@ scripts/*
 !scripts/load_profiles.py
 !scripts/make_sample.py
 !scripts/try_explain.ts
+!scripts/build_embeddings.py
 .venv/
 __pycache__/

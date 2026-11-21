@@ -171,6 +171,12 @@ def main() -> None:
         n = con.execute(f"SELECT count(*) FROM pg.public.{table}").fetchone()[0]
         print(f"  {table:<16} {n:>10,} filas  ({time.time() - t0:.1f} s)")
 
+    with psycopg.connect(args.db, autocommit=True) as c:
+        if c.execute("select to_regproc('public.refrescar_busqueda') is not null").fetchone()[0]:
+            t0 = time.time()
+            n = c.execute("select refrescar_busqueda()").fetchone()[0]
+            print(f"  perfil_busqueda  {n:>10,} filas  ({time.time() - t0:.1f} s) → ejecuta scripts/build_embeddings.py")
+
     pg_exec("ANALYZE")
     with psycopg.connect(args.db) as c:
         size = c.execute("select pg_size_pretty(pg_database_size(current_database()))").fetchone()[0]

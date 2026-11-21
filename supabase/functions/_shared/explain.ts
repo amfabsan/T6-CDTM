@@ -34,7 +34,8 @@ export interface TeamInput {
   team_id: string;
   fit: number;
   continuity: number | null;
-  cost: number | null;
+  /** Coste estimado del equipo en euros (supuesto ilustrativo); null = "por estimar". */
+  cost_eur: number | null;
   start: { day: number | null; status: string; date?: string | null };
   members: { role: string; employee_id: string }[];
 }
@@ -88,7 +89,8 @@ Reglas obligatorias:
 5. No repitas los gaps ni los riesgos: la pantalla ya los muestra. Puedes mencionar en el resumen que existen.
 6. Resumen de candidato: 1 frase. Fortalezas: 2 o 3, cada una de menos de 25 palabras.
 7. Para cada equipo explica cómo se complementan sus integrantes (qué aporta cada uno) en 2 o 3 razones, citando la evidencia de los integrantes.
-8. Si un candidato sale de otra área o sector y aun así encaja, dilo: es talento oculto.`;
+8. Si un candidato sale de otra área o sector y aun así encaja, dilo: es talento oculto.
+9. Todo el dinero está en euros. Escríbelo así: «11.800 €». Nunca uses $, USD ni dólares. Si cost_eur es null, di «coste por estimar». El coste es siempre una estimación con supuestos, nunca un dato real: no lo presentes como seguro.`;
 
 export function buildUserPrompt(input: ExplainInput): string {
   return JSON.stringify(input);
@@ -180,8 +182,11 @@ function scopeFor(candidates: CandidateInput[], extra: unknown = null): Scope {
   };
 }
 
+const OTHER_CURRENCY = /\$|\bUSD\b|d[oó]lar/i;
+
 function textOk(text: string, scope: Scope): boolean {
   if (typeof text !== "string" || !text.trim()) return false;
+  if (OTHER_CURRENCY.test(text)) return false; // todo el dinero va en euros
   for (const n of text.match(TEXT_NUM_RE) ?? []) {
     // "11.800" puede ser 11800 (miles) o 11,8 (decimal inglés): vale si cualquiera de las dos está en los datos.
     if (!scope.numbers.has(normTextNum(n)) && !scope.numbers.has(normNum(n))) return false;
@@ -223,6 +228,12 @@ function teamCandidates(team: TeamInput, byId: Map<string, CandidateInput>): Can
 
 // ───────────────────────────── Plantilla determinista ─────────────────────────────
 
+/** 11800 → "11.800 €" (agrupa también los de 4 cifras, a diferencia de Intl es-ES). */
+export function formatEur(n: number): string {
+  const [int, dec] = String(Math.round(n * 100) / 100).split(".");
+  return `${int.replace(/\B(?=(\d{3})+(?!\d))/g, ".")}${dec ? "," + dec : ""} €`;
+}
+
 const TYPE_ORDER: Record<EvidenceType, number> = { project: 0, certification: 1, experience: 2, skill: 3 };
 
 const describe = (e: Evidence) => (e.detail ? `${e.ref} (${e.detail})` : e.ref);
@@ -246,7 +257,8 @@ export function fallbackTeam(t: TeamInput, byId: Map<string, CandidateInput>): T
   });
   return {
     team_id: t.team_id,
-    summary: `Equipo ${t.team_id}: encaje medio del ${t.fit} % con ${t.members.length} personas.`,
+    summary: `Equipo ${t.team_id}: encaje medio del ${t.fit} % con ${t.members.length} personas. ` +
+      (t.cost_eur != null ? `Coste estimado: ${formatEur(t.cost_eur)} (supuesto).` : "Coste por estimar."),
     reasons,
     source: "fallback",
     dropped: 0,

@@ -37,7 +37,7 @@ const input: ExplainInput = {
       team_id: "A",
       fit: 80,
       continuity: 50,
-      cost: null,
+      cost_eur: null,
       start: { day: null, status: "por_confirmar" },
       members: [
         { role: "Cloud Architect", employee_id: "NTT0000001" },
@@ -282,4 +282,22 @@ test("acepta cifras en formato español (11.800 €, 2,5) y rechaza las que no e
   assert.match(t.summary, /11\.800/);
   assert.equal(t.reasons.length, 1);
   assert.equal(t.dropped, 1);
+});
+
+test("euros: rechaza otras monedas y la plantilla escribe el coste en €", async () => {
+  const { fromMatching } = await import("./from_matching.ts");
+  const { formatEur } = await import("./explain.ts");
+  assert.equal(formatEur(11800), "11.800 €");
+  assert.equal(formatEur(4200), "4.200 €");
+  const inp = fromMatching(PASTED);
+  assert.equal(inp.teams[0].cost_eur, 11800);
+  const out = validate({
+    candidates: [],
+    teams: [{ team_id: "A1+NTT0011735", summary: "Cuesta $11800.", reasons: [
+      { text: "Krystyna aporta C# a nivel 4.", evidence_ids: ["NTT0011735:S1"] },
+      { text: "Son 11800 USD.", evidence_ids: ["NTT0011735:S1"] },
+    ] }],
+  }, inp);
+  assert.equal(out.teams[0].reasons.length, 1);
+  assert.match(out.teams[0].summary, /Coste estimado: 11\.800 € \(supuesto\)/); // resumen en $ → plantilla
 });

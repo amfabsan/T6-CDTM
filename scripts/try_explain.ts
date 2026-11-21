@@ -29,7 +29,7 @@ const input: ExplainInput = {
     },
   ],
   teams: [{
-    team_id: "A", fit: 80, continuity: 50, cost: null, start: { day: null, status: "por_confirmar" },
+    team_id: "A", fit: 80, continuity: 50, cost_eur: null, start: { day: null, status: "por_confirmar" },
     members: [{ role: "Cloud Architect", employee_id: "NTT0000001" }, { role: "Security Engineer", employee_id: "NTT0000002" }],
   }],
 };
