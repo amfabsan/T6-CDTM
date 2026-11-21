@@ -115,6 +115,7 @@ RPC disponibles:
 Ubicación: `supabase/functions/<nombre>/index.ts` (Deno). CORS como en `legacy/skillsonar/supabase/extract/index.ts`, que sirve de base para llamar al LLM a través del AI Gateway de Lovable (`LOVABLE_API_KEY`) o de `AI_GATEWAY_URL` + `AI_API_KEY`.
 
 ### `interpret-project` (módulo A, rol 2) · ✅ hecho
+> **Interfaz (21-11):** la web ya no sube PDF; la petición se escribe y se envía como JSON `{ project_text }`. La rama de PDF de la función sigue existiendo, pero la UI no la usa.
 Código: `supabase/functions/interpret-project/index.ts` (HTTP, PDF y vocabulario) + `_shared/interpret.ts` (prompt, esquema, Gemini y validación, sin APIs de Deno).
 - **In:** `multipart/form-data` con `file` (el PDF del plan) o `project_text`, o JSON `{ "project_text": "..." }`.
   - Si el PDF no tiene texto (escaneado), responde **422** con `{ error: "pdf_sin_texto" }` y la UI pide pegarlo a mano.
