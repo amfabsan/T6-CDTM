@@ -61,9 +61,10 @@ Lo que es supuesto o simulado (dicho también en la demo): tarifas €/h y horas
 Perfiles **sintéticos** proporcionados por NTT DATA. Ningún empleado real. Las claves de API solo viven como secretos de Supabase y de Render, nunca en el repo ni en el navegador. Las recomendaciones apoyan una decisión humana: los requisitos tienen que confirmarlos una persona (`confirmar_requisitos`) antes de buscar.
 
 ## Equipo T6
-Contribuciones según el historial del repo (completad los roles si hace falta):
-- **Zhijian Wu Wang:** datos (carga en Supabase, `docs/DATA.md`), paso 2 (`interpret-project`) y sincronización del frontend.
-- **Daniel Torres Bursik:** búsqueda (`003`-`007`) y pasos 7-10 (`matching/`, servicio `/match`).
-- **Samuel García:** paso 11 (`explain-recommendations`), prompts de Lovable, prueba con los 3 briefs, despliegue en Render y cuaderno de Improven.
-- **chechupv:** interfaz en Lovable.
-- **Alejandro Fabiano:** _(rol)_
+| Nombre | Rol |
+|---|---|
+| **Betel Díaz** | CPO · Co-founder |
+| **Alejandro Fabiano** | AI Chief · Co-founder |
+| **Zhijian Wu** | Chief Technology · Co-founder |
+| **Samuel García** | Architecture & Cloud · Co-founder |
+| **Daniel Torres** | Data Analytics · Co-founder |
