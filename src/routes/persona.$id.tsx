@@ -34,7 +34,11 @@ function PersonPage() {
   const { data: p, isLoading } = useQuery({
     queryKey: ["perfil", id, !!match],
     queryFn: async () => {
-      if (isLive) return getProfile(id);
+      if (isLive) {
+        const real = await getProfile(id).catch(() => null);
+        if (real) return real;
+      }
+      // Sample project (mock ids): build the profile from the simulated matching data.
       const c = match ? allCandidates(match.data).find((x) => x.employee_id === id) : undefined;
       return c ? perfilFromMatch(c) : null;
     },
@@ -47,7 +51,7 @@ function PersonPage() {
       ) : (
         <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_2fr]">
           <Panel className="h-fit"><p className="mission-kicker mb-4">Professional profile</p><Crystal className="mx-auto mb-6 w-24" tone={p.disponibilidad === "En banca" ? "green" : "amber"} />
-            <div className="flex flex-wrap items-center gap-2"><h1 className="text-3xl">{p.nombre_completo}</h1>{!isLive && <SimPill />}</div>
+            <div className="flex flex-wrap items-center gap-2"><h1 className="text-3xl">{p.nombre_completo}</h1>{(!isLive || match?.simulated) && <SimPill />}</div>
             <p className="mt-1 text-muted-foreground">{p.puesto_actual} · {p.nivel_seniority}</p>
             <div className="mt-3"><AvailabilityBadge value={p.disponibilidad} /></div>
             <dl className="mt-5 grid grid-cols-2 gap-3 text-sm">
