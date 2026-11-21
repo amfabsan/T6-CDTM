@@ -1,18 +1,47 @@
-# ElevenLabs
+# ElevenLabs · Agente de entrevista contextual (módulo C)
 
-## 1. Speech-to-Text (opción principal, dentro del producto)
-Lo hace `supabase/functions/transcribe`: `POST https://api.elevenlabs.io/v1/speech-to-text` con el campo `file`, `model_id` (`ELEVENLABS_STT_MODEL`, por defecto `scribe_v2`) y `language_code=es`. La extracción de skills la hace `supabase/functions/extract` con `mode: "skills"`, que **descarta cualquier skill cuya cita no aparezca literalmente en la transcripción**.
+> Rol 4. Brief §7. **Alcance del MVP:** un agente, un contexto de proyecto, 3 preguntas y una evaluación. No es una plataforma de entrevistas.
+> El agente **no** pregunta por skills ni por disponibilidad, porque esos datos ya están en el dataset. Su papel es observar razonamiento, aplicación práctica y comunicación ante un reto concreto del proyecto.
 
-**Notas de prueba para grabar el viernes:**
-1. *Ana (la buena):* "En mi último proyecto, la migración cloud de seguros, lideré la migración de tres microservicios a Azure y monté el despliegue automático con GitHub Actions."
-2. *Sin habilidades claras:* "Pues bien, ha sido un proyecto tranquilo, buen equipo, nada especial que destacar."
-3. *Con ruido de fondo:* la de Ana grabada en un sitio con gente (simula la sala del evento).
+## Configuración (ElevenLabs → Agents)
+- **Idioma:** español. **Voz:** una clara y profesional de la librería. **LLM:** el que ofrezca el plan.
+- **Variables dinámicas** que envía la app al iniciar: `{{candidate_name}}` y `{{project_context}}` (un párrafo con el rol, los MUST-HAVE y el sector del `project_requirements`).
+- **Duración:** unos 3-4 min. Termina tras la tercera respuesta.
+- **Transcripción:** al terminar, la app la recupera con el SDK o la API de conversaciones y la envía a `evaluate-interview`. Hay que guardar el `conversation_id` en `candidate_assessments.elevenlabs_conversation_id`.
+- **Clave:** `ELEVENLABS_API_KEY` solo como secreto de Supabase. Si el widget necesita una URL firmada, la genera una edge function, nunca el navegador.
 
-## 2. Locución del vídeo de demo (plan de reserva y extra)
-Text-to-Speech con una voz en español. Guion de unos 90 segundos sacado del pitch (`docs/IDEA.md` §8). Con esto el equipo opta al reto aunque la integración falle.
+## Prompt del sistema
+> Eres ORBIT, un entrevistador técnico amable y profesional de NTT DATA. Vas a hablar con {{candidate_name}} sobre este proyecto:
+> {{project_context}}
+>
+> Tu objetivo es observar cómo la persona aborda un reto real del proyecto, no comprobar su CV. Haz **exactamente 3 preguntas**, de una en una, adaptadas al proyecto:
+> 1. **Enfoque:** cómo estructuraría el trabajo y qué factores determinarían sus decisiones.
+> 2. **Riesgos:** qué riesgos técnicos, de seguridad o de continuidad priorizaría y cómo los mitigaría.
+> 3. **Situación crítica:** cómo organizaría la respuesta y la comunicación con el cliente ante un incidente grave.
+>
+> Reglas:
+> - Después de cada respuesta puedes hacer como máximo **una** repregunta breve para pedir un ejemplo concreto.
+> - No preguntes por skills, años de experiencia, disponibilidad, salario ni datos personales.
+> - No evalúes en voz alta ni des feedback sobre si la respuesta es buena.
+> - No inventes datos del proyecto que no estén en el contexto.
+> - Al terminar la tercera pregunta, agradece y despídete en una frase.
 
-## 3. Agente en directo (mejora opcional, solo si lo anterior ya funciona)
-Prompt del agente:
-> Eres SkillSonar, un entrevistador amable de una consultora. Tu objetivo es descubrir, en menos de 3 minutos, qué experiencia nueva ha adquirido la persona en su último proyecto. Haz una pregunta cada vez y como máximo 5 preguntas: qué proyecto fue, qué hizo exactamente, qué herramientas o tecnologías usó, qué le tocó liderar o resolver y qué le gustaría hacer después. Cada vez que la persona describa una experiencia concreta con un ejemplo, llama a `add_skill` con el nombre normalizado de la habilidad, una cita breve y literal de lo que dijo y el nombre del proyecto. No evalúes niveles ni potencial. No inventes habilidades que no haya mencionado. Al acabar, resume en una frase y llama a `finish_interview`.
+## Ejemplo de preguntas (proyecto: migración de core bancario a cloud)
+1. ¿Cómo estructurarías el enfoque de migración y qué factores determinarían la arquitectura?
+2. ¿Qué riesgos técnicos, de seguridad o continuidad priorizarías y cómo los mitigarías?
+3. Si se produce una interrupción crítica durante la migración, ¿cómo organizarías la respuesta y la comunicación con el cliente?
 
-La *client tool* `add_skill` debe pasar por **la misma pantalla de revisión** que la nota de voz.
+## Rúbrica que aplica `evaluate-interview` (1-5 por dimensión)
+| Dimensión | Qué observar |
+|---|---|
+| Aplicación práctica | Conecta conceptos con decisiones y pasos concretos |
+| Resolución de problemas | Identifica riesgos, alternativas y trade-offs |
+| Comprensión del contexto | Adapta la respuesta al sector, al cliente y a las restricciones |
+| Comunicación | Explica de forma clara, ordenada y comprensible |
+| Evidencia / límites | Distingue experiencia demostrada de hipótesis; registra lo no verificado |
+
+Cada puntuación lleva una **cita literal** del transcript; se descartan las citas que no aparezcan tal cual. Lo que el candidato afirma sin poder verificarse va a `unverified_items`. **Nunca** se modifica `empleado_skills`.
+
+## Plan B y extra
+- **Si el agente falla en directo:** tened grabada una entrevista de ejemplo, con su transcript y su evaluación, y decidlo en la demo ("grabada antes").
+- **Reto ElevenLabs:** el agente dentro del producto es la integración que más puntúa. Además, se puede narrar el vídeo de demo con TTS.

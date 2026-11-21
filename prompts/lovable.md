@@ -1,46 +1,46 @@
-# Prompts para Lovable (en orden)
+# Prompts para Lovable · ORBIT AI (en orden)
 
-> La lección de Republica (3.º en Múnich 2025): **iterar rápido es mejor que escribir prompts largos.** Un prompt por paso, se comprueba el resultado y se pasa al siguiente.
-> El repositorio ya trae la lógica y el backend. **Lovable solo tiene que construir la interfaz y conectarla.**
-
-> ⚠️ **Actualizado al dataset de NTT DATA (190k perfiles).** Los pasos 0 y 1 ya usan el esquema nuevo. Los pasos 2-5 son del diseño anterior: hay que adaptarlos al motor de matching por rol antes de usarlos.
+> **Iterar rápido es mejor que escribir prompts largos.** Un prompt por paso: se comprueba el resultado y se pasa al siguiente.
+> Lovable construye la **interfaz** y la conecta. Las tablas y las reglas ya existen: ver [`AGENTS.md`](../AGENTS.md). Las 4 edge functions las hacen los roles 2, 3 y 4. Hasta que existan, cada pantalla puede trabajar contra la respuesta de ejemplo de su contrato (`AGENTS.md` §5), **marcándolo como simulado**.
 
 ## 0. Preparación (una vez)
-- Proyecto nuevo en Lovable → **Connect GitHub**, que crea el repo. Copiad en él `src/lib/`, `supabase/`, `docs/` y `prompts/`, y haced push. Lovable sincroniza los cambios. **No subáis `data/profiles.parquet`** (30 MB): los datos van directos a la base de datos.
-- **Base de datos:** conectad un proyecto **Supabase propio** (plan gratuito) a Lovable. Hace falta su cadena de conexión para cargar los datos. Si usáis Lovable Cloud, comprobad antes que os da la cadena de conexión de Postgres.
-- **Esquema y datos** desde vuestro ordenador. El script aplica `supabase/migrations/001_schema.sql` y carga **todos los perfiles disponibles** (En banca + Roll-off <3 meses: 34.003 perfiles completos, con los 87 roles y las 614 skills) en ~10 s. Ocupa **114 MB**. Probado en Postgres 17. El porqué está en `docs/DATA.md`.
-  - Cadena de conexión: Supabase → Project Settings → Database → Connection string → URI, *Session pooler* o *Direct* (puerto 5432).
-  ```powershell
-  pip install duckdb "psycopg[binary]"
-  $env:DATABASE_URL = "postgresql://postgres.xxxx:PASSWORD@aws-0-eu-west-1.pooler.supabase.com:5432/postgres"
-  python scripts/load_profiles.py --schema --solo-disponibles
-  ```
-- Añadid el secreto `ELEVENLABS_API_KEY`.
+- Proyecto en Lovable → **Connect GitHub** con este repo. **No subáis `data/profiles.parquet`** desde Lovable: los datos ya están en Supabase.
+- **Base de datos:** Supabase propio conectado a Lovable, ya cargado con los 34.003 perfiles disponibles y las migraciones `001` y `002`. Para recargarlo, ver `AGENTS.md` §7.
+- **Secretos de Supabase:** `ELEVENLABS_API_KEY` y, si no se usa el AI Gateway de Lovable, `AI_GATEWAY_URL` + `AI_API_KEY`. Nunca en el código del navegador.
 
-## 1. Base y datos (solo lectura)
-> Build "SkillSonar", a staffing decision-support web app for NTT DATA staffing managers: it finds the right people for a project inside the company, even when they sit in another department. Spanish UI, clean enterprise look (deep blue palette, shadcn).
+## 1. Base, datos y fichas (solo lectura)
+> Build "ORBIT AI", a staffing intelligence web app for NTT DATA managers. Tagline: "Find the talent. Validate the fit. Make the staffing decision." It finds people inside the company even when their experience is described with different words, explains every recommendation with evidence, and helps decide between internal, external or hybrid staffing. Spanish UI, clean enterprise look (deep blue palette, shadcn). Top navigation with 4 steps: "1 · Necesidad", "2 · Talento", "3 · Evaluación", "4 · Decisión", plus "Personas".
 >
-> The Supabase database is ALREADY created and loaded with synthetic employee profiles (up to 190,000; never assume a fixed count, read it from the data). The schema is in `supabase/migrations/001_schema.sql`. **Do NOT create, alter, migrate or seed any table, and never write to these tables from the browser (they are read-only via RLS).** Tables:
-> - `empleados`: one row per person (`employee_id`, `nombre_completo`, `area`, `rol`, `nivel_seniority`, `puesto_actual`, `anios_experiencia`, `sector_principal`, `disponibilidad` ∈ {"En banca","Roll-off próximo (<3 meses)"} (only available people are loaded), `modalidad_trabajo`, `movilidad_internacional`, `sectores_proyectos` text[] …)
+> The Supabase database is ALREADY created and loaded. **Do NOT create, alter, migrate or seed any table.** Dataset tables are read-only (RLS):
+> - `empleados`: one row per person (`employee_id`, `nombre_completo`, `area`, `rol`, `nivel_seniority`, `puesto_actual`, `anios_experiencia`, `anios_en_ntt`, `sector_principal`, `disponibilidad` ∈ {"En banca","Roll-off próximo (<3 meses)"}, `modalidad_trabajo`, `movilidad_internacional`, `resumen`, `sectores_proyectos` text[] …)
 > - `empleado_skills`: one row per person and skill (`skill`, `nivel` 1-5, `anios`, `demostrada` boolean, `n_proyectos`, `ultimo_anio`)
-> - `proyectos`, `experiencia`, `estudios`, `certificaciones`, `idiomas`
-> - `catalogo_skills`: the 614 canonical skills (`skill`, `perfiles`, `area_principal`)
-> - RPC `perfil(p_employee_id text)` returns a person's full profile as JSON
-> - RPC `buscar_personas(p_disponibilidad text[], p_area, p_rol, p_sector, p_min_anios int, p_skills text[], p_min_nivel int, p_limit int, p_offset int)` returns one page of people; every row carries `total` (the number of matches). With `p_skills` it requires ALL skills.
+> - `proyectos`, `experiencia`, `estudios`, `certificaciones`, `idiomas`; `catalogo_skills` (614 canonical skills)
+> - RPC `perfil(p_employee_id text)` → full profile JSON; RPC `buscar_personas(p_disponibilidad text[], p_area, p_rol, p_sector, p_min_anios int, p_skills text[], p_min_nivel int, p_limit int, p_offset int)` → one page of people, each row carries `total`.
 >
 > Build:
-> 1. **"Personas" page**: a paginated table (50 rows per page) that ONLY uses `supabase.rpc('buscar_personas', …)`. Never query `empleados` directly for the list and never fetch all rows. Filters: disponibilidad ("Todas" / "Disponible ya" = En banca / "Roll-off <3 meses"), área, rol, sector principal, minimum years of experience, one or more skills (autocomplete from `catalogo_skills`) and minimum skill level 1-5. Columns: nombre_completo, puesto_actual, área, años de experiencia, sector principal, and a disponibilidad badge (green "En banca", amber "Roll-off <3 meses"). Show "{total} personas" from the first row's `total`. Clicking a row opens the profile.
-> 2. **Profile page `/persona/:id`** using `supabase.rpc('perfil', { p_employee_id: id })`. Header: name, puesto_actual, área, años de experiencia (total and at NTT), sector principal, disponibilidad badge, modalidad, movilidad internacional. Skills table: skill, level as 5 dots, years of use, and an evidence badge: green "Demostrada en proyecto" when `demostrada` is true (tooltip: last used in `ultimo_anio`, in `n_proyectos` projects), yellow "Solo declarada" when false. Projects as a timeline (name, client sector, year, role, technology chips). Then certifications (show "Sin certificaciones" when empty, never invent any), languages with level, work history (`experiencia`) and education (`estudios`).
-> 3. A small header with 3 live counters: available profiles, people "En banca" (available now) and people in "Roll-off" (available in <3 months).
+> 1. **"Personas" page**: a paginated table (50 per page) that ONLY uses `supabase.rpc('buscar_personas', …)`; never fetch all rows. Filters: disponibilidad ("Todas" / "En banca" / "Roll-off próximo (<3 meses)"), área, rol, sector principal, minimum years of experience, skills (autocomplete from `catalogo_skills`), minimum skill level. Columns: nombre, puesto, área, años de experiencia, sector principal, availability badge showing the status text EXACTLY as stored (green for "En banca", amber for "Roll-off próximo (<3 meses)"). Show "{total} personas".
+> 2. **Profile page `/persona/:id`** via `supabase.rpc('perfil', …)`. Header: name, puesto, área, years (total and at NTT), sector principal, availability badge, modalidad, movilidad. Skills: skill, level as 5 dots, years of use, evidence badge: green "Demostrada en proyecto" if `demostrada` (tooltip: last used `ultimo_anio`, in `n_proyectos` projects), yellow "Solo declarada" otherwise. Projects timeline (name, client sector, year, role, technology chips), work history, education, certifications ("Sin certificaciones" when empty, never invent any) and languages.
 
-## 2. Necesidad → candidatos
-> Add a "Nueva necesidad" page: a textarea for a project need or RFP excerpt; on submit call the Supabase edge function `extract` with `{mode: "requirements", text}` and show the returned `musts`, `nices` and `minAvailabilityPct` as editable chips/inputs (plus max team size, default 3). Then show candidates ranked with `rankIndividuals` from `src/lib/teamBuilder.ts` (do NOT reimplement the logic). Each card shows the person, the line from `explain()`, and per required skill a badge: green "verificada", yellow "autodeclarada", grey "sin evidencia", with the evidence quote on hover. Use `candidateLabel()` for the card label: "cumple" / "candidata para revisar" / "falta evidencia de X".
+## 2. Módulo A · Necesidad (`interpret-project`)
+> Build the "1 · Necesidad" page. A large textarea "Describe la necesidad del proyecto" with an example button that fills: "Migración del core bancario de un cliente a Azure. Necesitamos un arquitecto cloud senior con experiencia en banca, Kubernetes y Terraform; inglés B2. Valorable experiencia en seguridad. Incorporación inmediata." On "Interpretar", call the edge function `interpret-project` with `{ project_description }`. Show the result as an editable form: role, seniority (select), **MUST-HAVE** skill chips with min level (1-5), **NICE-TO-HAVE** skill chips, sector experience, languages with level, certifications, minimum years of experience, acceptable availability (checkboxes "En banca" / "Roll-off próximo (<3 meses)"). Skill chips can only be added from `catalogo_skills` (autocomplete). Show a note: "Los requisitos deseables suman puntos pero nunca excluyen candidatos". On "Confirmar y buscar talento", insert the edited object into `project_requirements` (keep the untouched LLM output in `interpretation_raw`) and go to step 2 with the new `project_id`.
 
-## 3. Proponer equipo (EL NÚCLEO)
-> Add a prominent "Proponer equipo" button. Use `proposeTeam()` and `teamCoverage()` from `src/lib/teamBuilder.ts`. Show two columns side by side: "Top-2 del ranking" (first two of `rankIndividuals`) and "Equipo propuesto", each with a requirement × person coverage matrix where empty cells are red, and a summary "X verificados + Y pendientes + Z sin cubrir". The manager can swap any member (dropdown of eligible people) and everything recalculates live. Add "Generar borrador": an editable text with the team, who covers each requirement, their evidence and any gaps, formatted as the "Equipo propuesto" section of a proposal. Save to `team_proposals`.
+## 3. Módulo B · Talento (`match-candidates`)
+> Build the "2 · Talento" page for a `project_id`. Call the edge function `match-candidates` with `{ project_id }`. Show a ranked list. Each card has:
+> - name, puesto, área, availability badge (exact text), total score (0-100) and a stacked bar with the score breakdown (skills, nivel, años de uso, proyectos/sector, seniority, idiomas/otros);
+> - "Fortalezas" and "Gaps" lists, where each item links to its evidence (skill with level and years, project name and year, certification);
+> - missing MUST-HAVE requirements shown as a red "Bloqueo" badge, never hidden;
+> - a "Riesgos" line (e.g. "nivel 1 con 4 años de uso", "disponible en <3 meses", "solo declarada", "último uso en 2019");
+> - a highlighted label "Talento fuera de su área" when the person comes from another área or sector principal but has relevant project evidence.
+>
+> Checkbox "Comparar" on each card. With 2-4 selected, a "Comparar" drawer shows a side-by-side table: score, availability, MUST-HAVE coverage (✓/✗ per requirement), gaps and risks. Each card has the buttons "Ver perfil" and "Evaluar con entrevista" (goes to step 3), and the page has "Ir a decisión" (step 4).
 
-## 4. Nota de voz (ElevenLabs)
-> On the person profile page add a big "Grabar nota de voz" button: record up to 20 s with MediaRecorder, POST the audio as multipart field `audio` to the edge function `transcribe`, then send the returned text to `extract` with `{mode: "skills", text}`. Show a review screen with each proposed skill, project and literal quote, where the employee can confirm, edit or discard each one. Confirmed ones are inserted into `employee_skills` with status 'autodeclarada' and source 'voice', and appear with a highlight animation. Show the transcript too. Handle errors with a clear message and a "Reintentar" button.
+## 4. Módulo C · Evaluación (ElevenLabs + `evaluate-interview`)
+> Build the "3 · Evaluación" page for a `project_id` + `employee_id`. Left: the candidate summary and the project context (role, MUST-HAVE). Center: the ElevenLabs Conversational AI widget/agent (agent id from config, see `prompts/elevenlabs.md`). When starting, pass dynamic variables `project_context` (one paragraph built from the requirements) and `candidate_name`. When the conversation ends, get the transcript and call the edge function `evaluate-interview` with `{ project_id, employee_id, transcript }`. Show:
+> - the transcript;
+> - a rubric with 5 dimensions scored 1-5 (Aplicación práctica, Resolución de problemas, Comprensión del contexto, Comunicación, Evidencia/límites), each with the literal quote that supports it;
+> - strengths, concerns and a yellow box "No verificado" with `unverified_items`.
+>
+> A fixed note: "Evaluación complementaria: no modifica el perfil ni las skills oficiales; la decisión es humana." Save to `candidate_assessments`.
 
-## 5. Verificación del manager
-> On a candidate or team member with an 'autodeclarada' skill, add "Verificar con histórico": use `findSupportingRecord()` from `src/lib/teamBuilder.ts` with that person's `project_history`. If a record is found, show it next to the quote and let the manager confirm; that inserts a new `employee_skills` row with status 'verificada', source 'project', `evidence_quote` = record text, and `verified_by` = 'manager'. If no record exists, keep it as pending and say so.
+## 5. Módulo D · Decisión (`calculate-staffing-scenarios`)
+> Build the "4 · Decisión" page for a `project_id`. Left panel "Supuestos" (editable number inputs, each tagged "Supuesto ilustrativo"): coste interno €/día, tarifa externa €/día, coste de selección €, días de movilización interna, días de contratación, días de onboarding, duración del proyecto en días; and 5 weight sliders (coste, tiempo, cobertura, disponibilidad, riesgo) that always sum to 100 %. On every change, insert a new row in `scenario_assumptions` (debounced) and call the edge function `calculate-staffing-scenarios` with `{ project_id, assumptions }`. Main area: three columns **Internal / External / Hybrid** with coste total estimado, tiempo hasta incorporación, cobertura de requisitos, disponibilidad, riesgo and the scenario score. Mark the winner and show the returned "por qué gana". Every number has a small tag: "dato" (from the dataset), "supuesto" or "calculado". No monetary value may appear without the "supuesto" tag.

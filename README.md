@@ -1,35 +1,30 @@
-# SkillSonar · T6 · CDTM Valencia Hacks 2026 (caso NTT DATA)
+# ORBIT AI · T6 · CDTM × UPV-UV Hackathon 2026 (caso NTT DATA)
 
-> **Build a project team and see the evidence behind every recommendation.**
+> **Find the talent. Validate the fit. Make the staffing decision.**
+> La persona que necesitas puede estar ya dentro de la compañía. ORBIT encuentra talento más allá de las palabras exactas del CV, valida la adecuación al proyecto con evidencia y ayuda a decidir cómo cubrir la necesidad: con talento interno, contratación externa o un modelo híbrido.
 
 🔗 **Demo:** _(URL de lovable.app)_ · 🎬 **Vídeo:** _(enlace)_ · 📊 **Pitch deck:** _(enlace)_
 
-## Problema
-_(Rellenar el sábado con lo que confirme el briefing de NTT DATA y el mentor.)_ Los responsables de staffing montan equipos buscando perfiles uno a uno en CVs desactualizados, y nadie ve qué requisitos quedan sin cubrir.
-
-## Qué hace
-1. **Necesidad → requisitos.** El manager pega la descripción de un proyecto o una RFP y la IA extrae los requisitos obligatorios, los deseables y la disponibilidad.
-2. **Proponer equipo.** Propone el equipo más pequeño que cubre todos los obligatorios **en conjunto**, comparado con el top-2 de un ranking clásico y con la cobertura de cada requisito.
-3. **Evidencia con estado.** 🟢 verificada · 🟡 autodeclarada · ⚪ sin evidencia. La decisión siempre es humana.
-4. **Nota de voz (ElevenLabs).** Un empleado cuenta en 15 segundos qué hizo en su último proyecto. ElevenLabs lo transcribe, la IA propone las skills con cita literal y el empleado las confirma. El manager puede verificarlas con el histórico de proyectos.
-
-## Resultados
-_(Medición cruzada: 2 probadores × 2 necesidades, con el orden invertido.)_
-| | Manual | SkillSonar |
-|---|---|---|
-| Tiempo hasta la propuesta de equipo | | |
-| Obligatorios cubiertos con evidencia verificable | | |
+## Flujo
+1. **Project Brief.** El manager describe la necesidad. La IA la convierte en requisitos MUST / NICE, editables antes de buscar.
+2. **Talent Discovery.** Ranking de perfiles internos con score desglosado, fortalezas, gaps, riesgos y la evidencia de cada afirmación. Permite comparar candidatos.
+3. **Talent Assessment.** Entrevista de voz contextual con **ElevenLabs** (3 preguntas sobre el reto del proyecto) y evaluación con rúbrica. Es complementaria: nunca cambia el perfil.
+4. **Staffing Decision Center.** Escenarios Internal / External / Hybrid calculados con supuestos editables y etiquetados.
 
 ## Cómo está hecho
-- **Lovable** (React, shadcn, Supabase) para la app, el despliegue y el repo.
-- **ElevenLabs Speech-to-Text** en `supabase/functions/transcribe` y **Text-to-Speech** para la locución del vídeo.
-- **LLM** solo para extraer, en `supabase/functions/extract`. Descarta las citas que no aparecen literalmente en la transcripción.
-- **Lógica de staffing determinista**, sin LLM, en `src/lib/teamBuilder.ts`. Se verifica con `node scripts/verify_demo.ts`.
+- **Lovable** (React + shadcn) para la interfaz. **Supabase** (Postgres + Edge Functions) para los datos y el backend.
+- **Datos:** dataset sintético de NTT DATA (190.000 perfiles). En Supabase están cargados los 34.003 **disponibles** (En banca + Roll-off <3 meses) con todas sus columnas. Ver [`docs/DATA.md`](docs/DATA.md).
+- **IA:** el LLM solo interpreta el brief y redacta explicaciones con evidencia recuperada. Los filtros, el score y los escenarios son **código determinista**.
+- **ElevenLabs Agents** para la entrevista contextual.
 
-Más detalle en [`docs/STACK.md`](docs/STACK.md) y [`docs/IDEA.md`](docs/IDEA.md). Las iteraciones están en [`docs/ITERATIONS.md`](docs/ITERATIONS.md).
+## Para el equipo y sus IAs
+Empezad por **[`AGENTS.md`](AGENTS.md)**: estado del repo, tablas reales, reglas, contratos de las edge functions y reparto. El brief técnico completo está en [`docs/ORBIT_AI_Brief_Tecnico_MVP.docx`](docs/ORBIT_AI_Brief_Tecnico_MVP.docx).
+
+## Resultados
+_(Rellenar con la medición real: tiempo hasta shortlist manual frente a ORBIT, cobertura interna, etc.)_
 
 ## Datos y privacidad
-_(Indicar qué datos se usaron y si el repo contiene datos ficticios o anonimizados.)_ El sistema no evalúa niveles ni potencial de nadie: solo muestra evidencias revisables.
+Perfiles **sintéticos** proporcionados por NTT DATA. Ningún empleado real. Las claves de API solo viven como secretos de Supabase.
 
 ## Equipo T6
 _(Nombres y roles)_

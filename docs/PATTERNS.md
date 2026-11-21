@@ -19,7 +19,7 @@
 | **Pledge** | Most potential to earn real money | Selección con agentes que **entrevistan al candidato** para aclarar huecos del CV | Plantilla de **Lovable**, Beam, OpenAI |
 | **WorkAR** | Biggest creative risk | Instrucciones en realidad aumentada (Meta Quest) generadas a partir de un vídeo de un experto | Unity, Gemini, OWL-V2 |
 
-⚠️ **PeopleWorks se parece mucho a SkillSonar.** Ver el apartado sobre implicaciones.
+⚠️ **PeopleWorks se parece mucho a SkillSonar (nuestro diseño anterior, hoy ORBIT AI).** Ver el apartado sobre implicaciones.
 
 ## Números (33 proyectos de Múnich 2025)
 
@@ -49,7 +49,7 @@
 7. **Una frase y una metáfora que se recuerdan.** "Talk to an AI, not a clipboard" o "tan fácil como un selfie". El pitch se queda con una imagen.
 8. **Un caso de uso concreto y elegido pronto.** En la sección de dificultades, los equipos repiten los mismos errores: maintaino perdió horas pivotando, otro equipo planificó demasiado y trabajó en silos, y Pledge tardó 24 h en encontrar un problema real porque el caso era hipotético.
 
-## Implicaciones para T6 / SkillSonar
+## Implicaciones para T6 (escrito para SkillSonar; ORBIT AI hereda la mayoría)
 
 - ✅ **La idea encaja con 6 de los 8 patrones:** conversación en lugar de formulario, dos caras, evidencia con citas, Lovable con Supabase, ElevenLabs y un caso concreto de RR. HH.
 - 🎯 **El centro del producto es «Proponer equipo»:** montar un equipo para un proyecto concreto y comprobar qué requisitos cubre **en conjunto**. Ahí está la diferencia real con PeopleWorks, que ya demostró la captura de feedback por voz con citas.
@@ -62,6 +62,6 @@
 - ➕ **Añadir una acción final (patrón 4).** Al pulsar "Proponer equipo", la app genera:
   - la **sección de equipo de una propuesta o RFP**, con el CV resumido de cada miembro y una justificación (enlaza con el caso de NTT DATA de 2025);
   - el mensaje de solicitud al manager de cada persona.
-- ➕ **Frase del pitch (patrón 7):** *"Talk to SkillSonar, not to a skills form."* o *"El mejor candidato ya trabaja aquí, pero su CV no lo sabe."*
+- ➕ **Frase del pitch (patrón 7):** *"Talk to ORBIT, not to a skills form."* o *"El mejor candidato ya trabaja aquí, pero su CV no lo sabe."*
 - ➕ **Desplegar en lovable.app** y poner la URL en el README y en la entrega (patrón 5).
 - ➕ **Priorizar la integración sobre el número de funciones (patrón 5).** Si a las 14:15 la voz no escribe en el perfil, se recorta todo lo demás hasta que lo haga.

@@ -5,6 +5,8 @@
 
 Todas las cifras de este documento salen de consultas DuckDB sobre el Parquet completo.
 
+> El brief de ORBIT AI describe el mismo dataset como el workbook `NTT_DATA_Perfiles_T6.xlsx` (hojas Perfiles, Habilidades, Proyectos y Experiencia). Los recuentos coinciden: 190.000 / 390.651 / 450.363. Las tablas que hay realmente en Supabase y su equivalencia con los nombres del brief están en [`AGENTS.md`](../AGENTS.md) §3.
+
 ## Archivos legibles
 
 | Archivo | Qué es |
@@ -20,7 +22,7 @@ Todas las cifras de este documento salen de consultas DuckDB sobre el Parquet co
 - **IA para retail:** 3 con proyectos de retail y 1 sin ellos.
 - **Riesgos:** perfiles con nivel y años que no cuadran (5) y con skills solo declaradas (1).
 
-El script que genera la muestra es `scripts/make_sample.py`. Es local, porque `scripts/` está en `.gitignore`.
+El script que genera la muestra es `scripts/make_sample.py` (`.\.venv\Scripts\python -X utf8 scripts\make_sample.py`).
 
 ## Esquema (28 columnas)
 

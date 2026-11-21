@@ -8,7 +8,7 @@
 ## Kick-off (30 min)
 
 **Frase de valor:**
-Para [responsables de staffing de NTT DATA] que [tienen que montar equipos en días con perfiles desactualizados], SkillSonar es [un apoyo a la decisión] que [propone el equipo que cubre mejor los requisitos en conjunto y muestra la evidencia de cada recomendación]. A diferencia de [buscar perfiles uno a uno en CVs o Excel], [enseña qué requisitos quedan sin cubrir y qué está verificado o pendiente].
+Para [managers y equipos de staffing de NTT DATA] que [tienen que cubrir posiciones y acaban contratando fuera porque no encuentran el talento interno], ORBIT AI es [un asistente de staffing intelligence] que [encuentra talento interno aunque esté descrito con otra jerga, lo valida con evidencia y una entrevista contextual, y compara cubrir dentro, fuera o en híbrido]. A diferencia de [buscar por palabras clave en CVs o Excel], [explica cada recomendación con su evidencia y deja la decisión al manager].
 *(Ajustar al briefing real.)*
 
 **La apuesta con más riesgo** (probarla en la vuelta 1):

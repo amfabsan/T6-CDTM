@@ -5,5 +5,8 @@ dist/
 .env.*.local
 supabase/.temp/
 .DS_Store
-scripts/
+# scripts/: solo se versionan los scripts de datos (verify_demo.ts es del diseño antiguo)
+scripts/*
+!scripts/load_profiles.py
+!scripts/make_sample.py
 .venv/
