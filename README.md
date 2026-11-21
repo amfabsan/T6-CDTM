@@ -3,7 +3,7 @@
 > **Find the talent. Validate the fit. Make the staffing decision.**
 > La persona que necesitas puede estar ya dentro de la compañía. ORBIT encuentra talento más allá de las palabras exactas del CV, valida la adecuación al proyecto con evidencia y ayuda a decidir cómo cubrir la necesidad: con talento interno, contratación externa o un modelo híbrido.
 
-🔗 **Demo:** _(URL de lovable.app)_ · 🎬 **Vídeo:** _(enlace)_ · 📊 **Pitch deck:** _(enlace)_
+🔗 **Demo:** https://project-people-orbit.lovable.app/ · 🎬 **Vídeo:** _(enlace)_ · 📊 **Pitch deck:** _(enlace)_
 
 ## Flujo
 1. **Project Brief.** El manager describe la necesidad. La IA la convierte en requisitos MUST / NICE, editables antes de buscar.
