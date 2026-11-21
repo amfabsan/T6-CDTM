@@ -58,6 +58,7 @@ El manager puede manejar por voz los rankings y los equipos con un asistente de 
 | `prompts/lovable.md` | ✅ | Prompts para construir las pantallas en Lovable, con el tema visual de NTT DATA (sin asistente de voz) |
 | `prompts/elevenlabs.md` | ✅ | Configuración del asistente de voz: prompt, client tools y guion de demo |
 | `supabase/functions/*` (resto) | ⏳ **por hacer** | `match-candidates` (score y equipos sobre `candidatos_proyecto`), `calculate-staffing-scenarios`, `elevenlabs-signed-url` |
+| `frontend/` | 🔁 copia de Lovable, **no editar aquí** | App React de Lovable, sincronizada con `git subtree` desde [`chechupv/orbit-talent-intelligence`](https://github.com/chechupv/orbit-talent-intelligence). Los cambios se hacen en Lovable y se traen con `git subtree pull --prefix=frontend https://github.com/chechupv/orbit-talent-intelligence.git main --squash` |
 | `legacy/skillsonar/` | ⛔ **no usar** | Diseño anterior (SkillSonar). Solo como referencia: ver `legacy/README.md` |
 
 ## 3. Datos: qué hay en Supabase

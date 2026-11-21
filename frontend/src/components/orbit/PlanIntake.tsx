@@ -1,0 +1,79 @@
+import { useRef, useState } from "react";
+import { ArrowUp, Paperclip, ScanText } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { MOCK_SOURCE_TEXT } from "@/lib/mock-data";
+
+const PROMPTS = [
+  { label: "Pagos instantáneos para un banco", text: MOCK_SOURCE_TEXT },
+  { label: "App móvil para una aseguradora", text: "Necesito un equipo para una app móvil de una aseguradora en Barcelona, modalidad remota: dos desarrolladores React Native con 4 años de experiencia y un QA con automatización. Se valora experiencia en seguros. Inglés B2." },
+  { label: "Migración SAP en sector público", text: "Proyecto de migración a SAP S/4HANA para un organismo público en Madrid, presencial: un arquitecto SAP senior (10 años) y dos consultores FI/CO. Se exige residencia en España." },
+];
+
+/** Conversational hero: talk to ORBIT or drop the PDF plan. */
+export function PlanIntake({ onFile, onText, scannedError }: { onFile: (f: File) => void; onText: (t: string) => void; scannedError?: boolean }) {
+  const [drag, setDrag] = useState(false);
+  const [text, setText] = useState("");
+  const input = useRef<HTMLInputElement>(null);
+  const send = () => text.trim() && onText(text);
+  return (
+    <div className="mx-auto max-w-3xl py-6">
+      <p className="text-center font-display text-4xl font-bold leading-tight md:text-5xl">
+        El mejor candidato ya trabaja aquí.<br /><span className="text-ai">ORBIT lo encuentra.</span>
+      </p>
+      {scannedError && (
+        <div role="alert" className="mt-8 flex items-start gap-3 rounded-xl border border-rolloff/40 bg-rolloff/10 p-4 text-sm">
+          <ScanText className="mt-0.5 size-5 text-rolloff" aria-hidden />
+          <p><b className="text-rolloff">Este PDF parece escaneado.</b> Pega el texto del plan y seguimos.</p>
+        </div>
+      )}
+      <div
+        onDragOver={(e) => { e.preventDefault(); setDrag(true); }}
+        onDragLeave={() => setDrag(false)}
+        onDrop={(e) => { e.preventDefault(); setDrag(false); const f = e.dataTransfer.files[0]; if (f) onFile(f); }}
+        className={cn("relative mt-10 rounded-2xl border bg-surface p-3 transition-all duration-200 focus-within:glow-ai", drag ? "border-ai bg-ai/10" : "border-line")}
+      >
+        <label htmlFor="plan-text" className="sr-only">Cuéntale a ORBIT qué proyecto tienes</label>
+        <textarea id="plan-text" value={text} onChange={(e) => setText(e.target.value)} rows={4}
+          onKeyDown={(e) => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) send(); }}
+          placeholder="Cuéntale a ORBIT qué proyecto tienes o suelta el plan en PDF"
+          className="w-full resize-none bg-transparent p-3 text-lg outline-none placeholder:text-muted-foreground" />
+        <div className="flex items-center justify-between">
+          <button type="button" onClick={() => input.current?.click()} className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm text-muted-foreground hover:bg-surface-2 hover:text-foreground">
+            <Paperclip className="size-4" aria-hidden />Adjuntar PDF
+          </button>
+          <button type="button" onClick={send} disabled={!text.trim()} aria-label="Enviar a ORBIT"
+            className="grid size-11 place-items-center rounded-full bg-ai text-on-accent transition-all hover:glow-ai disabled:opacity-40">
+            <ArrowUp className="size-5" />
+          </button>
+        </div>
+        {drag && <div className="pointer-events-none absolute inset-0 grid place-items-center rounded-2xl text-lg font-semibold text-ai">Suelta el plan aquí</div>}
+        <input ref={input} type="file" accept="application/pdf" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) onFile(f); }} />
+      </div>
+      <div className="mt-4 flex flex-wrap justify-center gap-2">
+        {PROMPTS.map((p) => (
+          <button key={p.label} onClick={() => setText(p.text)} className="rounded-full border border-line bg-surface/60 px-4 py-2 text-sm text-muted-foreground transition-colors hover:border-ai/60 hover:text-foreground">
+            {p.label}
+          </button>
+        ))}
+      </div>
+      <p className="mt-6 text-center text-xs text-muted-foreground">También puedes usar «Pregunta a ORBIT» para hablarle.</p>
+    </div>
+  );
+}
+
+export function ScanningDoc() {
+  return (
+    <div className="mx-auto flex max-w-md flex-col items-center py-12" role="status" aria-live="polite">
+      <div className="relative h-80 w-64 overflow-hidden rounded-xl border border-line bg-surface p-6">
+        {Array.from({ length: 14 }, (_, i) => (
+          <div key={i} className="mb-3 h-2 rounded-full bg-surface-2" style={{ width: `${55 + ((i * 37) % 45)}%` }} />
+        ))}
+        <div className="absolute inset-x-0 h-14 -translate-y-1/2 animate-scan bg-gradient-to-b from-transparent via-ai/30 to-transparent">
+          <div className="absolute inset-x-0 top-1/2 h-px bg-ai" />
+        </div>
+      </div>
+      <p className="mt-6 font-display text-xl font-semibold text-ai">Leyendo el plan…</p>
+      <p className="mt-1 text-sm text-muted-foreground">Detectando roles, plazas y requisitos</p>
+    </div>
+  );
+}

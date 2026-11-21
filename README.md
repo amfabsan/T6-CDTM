@@ -15,6 +15,13 @@
 - **Datos:** dataset sintético de NTT DATA (190.000 perfiles). En Supabase están cargados los 34.003 **disponibles** (En banca + Roll-off <3 meses) con todas sus columnas. Ver [`docs/DATA.md`](docs/DATA.md).
 - **IA:** el LLM solo interpreta el brief y redacta explicaciones con evidencia recuperada. Los filtros, el score y los escenarios son **código determinista**.
 
+## Frontend (`frontend/`)
+La interfaz se construye en **Lovable** y vive en su propio repo, [`chechupv/orbit-talent-intelligence`](https://github.com/chechupv/orbit-talent-intelligence). Lovable no puede conectarse a un repo existente: crea uno nuevo y lo sincroniza.
+En este repo, `frontend/` es una **copia sincronizada con `git subtree`** para que la entrega tenga todo junto. **No se edita aquí:** los cambios se hacen en Lovable o en su repo, y se traen con:
+```powershell
+git subtree pull --prefix=frontend https://github.com/chechupv/orbit-talent-intelligence.git main --squash
+```
+
 ## Para el equipo y sus IAs
 Empezad por **[`AGENTS.md`](AGENTS.md)**: estado del repo, tablas reales, reglas, contratos de las edge functions y reparto. El brief técnico completo está en [`docs/IDEA.md`](docs/IDEA.md) (original en `docs/ORBIT_AI_Brief_Tecnico_MVP.docx`).
 
