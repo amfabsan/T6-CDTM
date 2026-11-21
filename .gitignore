@@ -11,3 +11,4 @@ scripts/*
 !scripts/make_sample.py
 !scripts/try_explain.ts
 .venv/
+__pycache__/
