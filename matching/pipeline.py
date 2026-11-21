@@ -43,6 +43,9 @@ def run_matching(plan: dict, candidates_by_role: dict[str, list[dict]], *, weigh
     slots = [{"role": r.role, "count": r.count, "hours": r.planned_hours} for r in roles]
     combos = build_teams(slots, eligible, pool_size=pool_size, beam=beam, max_exhaustive=max_exhaustive)
     teams = score_teams(combos, slots, eligible, project, hours_per_person, rate_per_hour, rolloff_days)
+    shown = top_teams(teams, sort_by=sort_by, top=top_n_teams, **(team_filters or {}))
+    by_key = {(c["role"], c["employee_id"]): c for cs in eligible.values() for c in cs}
+    shown_keys = dict.fromkeys((m["role"], m["employee_id"]) for t in shown["items"] for m in t["members"])
     return {
         "weights": weights,
         "assumptions": {"rate_per_hour": rate_per_hour, "hours_per_person": hours_per_person, "rolloff_days": rolloff_days,
@@ -50,6 +53,9 @@ def run_matching(plan: dict, candidates_by_role: dict[str, list[dict]], *, weigh
         "ranking": {r.role: rank_role(eligible[r.role], top=top, min_score=min_score) for r in roles},
         "excluded": excluded,
         "teams_total": len(teams),
-        "top_teams": top_teams(teams, sort_by=sort_by, top=top_n_teams, **(team_filters or {})),
+        "top_teams": shown,
+        # Paso 11: ficha puntuada (evidence, skills, gaps, risks) de cada integrante de los equipos mostrados,
+        # aunque no esté en el Top N del ranking de su rol. Una entrada por (rol, persona).
+        "members_detail": [by_key[k] for k in shown_keys if k in by_key],
         "teams": teams,  # todos los válidos: la UI reordena/filtra con top_teams()
     }
