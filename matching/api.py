@@ -3,6 +3,7 @@ de Supabase solo ejecutan Deno.
 
     pip install -r matching/requirements.txt
     $env:SUPABASE_URL = "https://<ref>.supabase.co"; $env:SUPABASE_KEY = "<anon o service_role>"   # nunca en el repo
+    # o, sin clave REST: $env:DATABASE_URL = "postgresql://…pooler.supabase.com:5432/postgres" (lee directo de Postgres)
     uvicorn matching.api:app --port 8000
 
 POST /match         {"project_id": "<uuid>", "options": {...}}   lee project_requirements + candidatos_proyecto + perfiles
@@ -33,6 +34,9 @@ OPTIONS = {"weights", "ref_year", "strict", "min_eligible_score", "top", "min_sc
 def supabase_fetch(path: str, body: dict | None = None) -> Any:
     """GET (body None) o POST a la API REST de Supabase. Credenciales solo desde el entorno."""
     url, key = os.environ.get("SUPABASE_URL"), os.environ.get("SUPABASE_KEY")
+    if (not url or not key) and os.environ.get("DATABASE_URL"):
+        from .db_fetch import db_fetch  # acceso directo a Postgres (solo lectura), sin clave de la API REST
+        return db_fetch(path, body)
     if not url or not key:
         raise HTTPException(500, "Faltan SUPABASE_URL / SUPABASE_KEY en el entorno")
     req = urllib.request.Request(f"{url.rstrip('/')}/rest/v1/{path}", method="POST" if body is not None else "GET",

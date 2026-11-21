@@ -72,6 +72,12 @@ def score_teams(combos: list[list[dict]], slots: list[dict], eligible_by_role: d
         (r, ra), (h, ha) = rate(m), hours[m["role"]]
         return (r * h, ra or ha) if r is not None and h is not None else (None, False)
 
+    # Sustitutos por rol ordenados UNA vez (fecha de disponibilidad, luego score). Antes se reordenaban para cada
+    # integrante de cada equipo: con 4.500 equipos y 2.000 elegibles por rol eran ~22 M comparaciones (160 s).
+    sub_order = {role: sorted(((c, _available_on(c, prj, rolloff_days)[0]) for c in cands),
+                              key=lambda cd: (cd[1] or "9999", *_by_score(cd[0])))
+                 for role, cands in eligible_by_role.items()}
+
     out = []
     for members in combos:
         total = len(members)
@@ -86,13 +92,13 @@ def score_teams(combos: list[list[dict]], slots: list[dict], eligible_by_role: d
         # equipo, disponible como tarde en la fecha de inicio original del equipo. Se muestra el peor caso.
         worst, covered = None, total
         for m in members:
-            subs = sorted(((c, _available_on(c, prj, rolloff_days)[0]) for c in eligible_by_role.get(m["role"], []) if c["employee_id"] not in ids),
-                          key=lambda cd: (cd[1] or "9999", *_by_score(cd[0])))
-            in_time = next((c for c, d in subs if start is None or (d is not None and d <= start)), None)
+            # El primero fuera del equipo es el más temprano: si llega a tiempo es el sustituto; si no, nadie llega.
+            first = next(((c, d) for c, d in sub_order.get(m["role"], []) if c["employee_id"] not in ids), None)
+            in_time = first[0] if first and (start is None or (first[1] is not None and first[1] <= start)) else None
             cov = total if in_time else total - 1
             if worst is None or cov < covered:
                 covered = cov
-                late = None if in_time or not subs else {"employee_id": subs[0][0]["employee_id"], "available_on": subs[0][1]}
+                late = None if in_time or not first else {"employee_id": first[0]["employee_id"], "available_on": first[1]}
                 worst = {"employee_id": m["employee_id"], "role": m["role"],
                          "substitute": in_time["employee_id"] if in_time else None, "late_substitute": late}
         cost_known = all(c is not None for c in costs)
