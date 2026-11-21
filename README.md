@@ -31,6 +31,24 @@ _(Rellenar con la medición real: tiempo hasta shortlist manual frente a ORBIT, 
 ## Datos y privacidad
 Perfiles **sintéticos** proporcionados por NTT DATA. Ningún empleado real. Las claves de API solo viven como secretos de Supabase.
 
+## Metodología ágil (reto Improven)
+
+Trabajamos en **ciclos cortos**: en cada vuelta formulamos una hipótesis, construimos lo mínimo para comprobarla, la probamos y decidimos qué **mantener, cambiar o descartar**. El detalle de cada vuelta está en [`docs/ITERATIONS.md`](docs/ITERATIONS.md).
+
+| Vuelta | Qué queríamos saber | Qué aprendimos | Qué decidimos |
+|---|---|---|---|
+| **0 · Entender el reto** | ¿Hay que *reunir* datos de las personas? | NTT DATA ya da 190.000 perfiles; el problema es **encontrar** a la persona aunque esté descrita con otra jerga | ❌ Fuera el scraper (datos disponibles y privacidad) |
+| **1 · El concepto** | ¿Qué producto resuelve el caso? | El nivel de cada skill ya está en los datos; entrevistar por voz no aportaba a la decisión | 🔄 De SkillSonar a **ORBIT AI**: encontrar, validar y decidir. ❌ Fuera la voz |
+| **2 · El MVP** | ¿Funciona el flujo completo con datos reales? | La primera prueba real del paso 11 descartaba todos los resúmenes de equipo | 🔄 Filtros mínimos (nadie desaparece sin motivo), coste en €/h y confirmación humana de los requisitos. 🐛 Fallo corregido (de 5 frases descartadas a 0) |
+| **3 · Validar con los 3 briefs de NTT** | ¿Cumple las reglas que NTT va a evaluar? | Core banking ✅ y retail ✅; en ciberseguridad los filtros duros no se aplicaban | 📌 Pendiente: disponibilidad inmediata y años mínimos como filtro duro ([prueba](docs/PRUEBA_BRIEFS_NTT.md)) |
+| **4 · Simplificar la entrada** | ¿Hace falta subir el plan en PDF? | Escribir la petición es más directo y quita un punto de fallo en la demo | ❌ Fuera la subida de PDF: la petición se escribe |
+
+**Principios que seguimos**
+- **MVP primero:** lo mínimo que resuelve el caso de punta a punta antes que funciones extra.
+- **Decidir con evidencia:** cada cambio sale de una prueba (datos reales, briefs de NTT, tests), no de intuición.
+- **Descartar sin miedo:** scraper, entrevista de voz, ElevenLabs y PDF quedaron fuera porque no aportaban a la decisión de staffing.
+- **Honestidad:** lo simulado o pendiente se dice (por ejemplo, el fallo de ciberseguridad).
+
 ## Equipo T6
 | Nombre | Rol |
 |---|---|
