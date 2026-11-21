@@ -1,8 +1,8 @@
 // Edge function del paso 11: explica candidatos y equipos con Gemini.
 // In:  ExplainInput (ver _shared/explain.ts): project_summary + candidatos con evidence[] + equipos.
 // Out: ExplainOutput. Cada explicación trae source "llm" o "fallback" y cuántas frases se descartaron.
-// Secretos de Supabase: GEMINI_API_KEY (obligatorio) y GEMINI_MODEL (opcional).
-import { explainWithGemini, fallbackAll, type ExplainInput } from "../_shared/explain.ts";
+// Secretos de Supabase: GEMINI_API_KEY (obligatorio); GEMINI_MODEL y GEMINI_FALLBACK_MODELS (opcionales, separados por comas).
+import { DEFAULT_FALLBACKS, DEFAULT_MODEL, explainWithGemini, fallbackAll, type ExplainInput } from "../_shared/explain.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -30,7 +30,11 @@ Deno.serve(async (req) => {
 
   const apiKey = Deno.env.get("GEMINI_API_KEY");
   if (!apiKey) return json(fallbackAll(input, "Falta el secreto GEMINI_API_KEY"));
-  const model = Deno.env.get("GEMINI_MODEL") ?? "gemini-2.5-flash";
+  // Modelos comprobados el 21-11-2026 con una clave nueva: los gemini-2.5-* ya no están disponibles
+  // para cuentas nuevas (404), y 3.7/3.8-flash tardaban más de 40 s. Se prueban en este orden.
+  const model = Deno.env.get("GEMINI_MODEL") || DEFAULT_MODEL;
+  const fallbackModels = (Deno.env.get("GEMINI_FALLBACK_MODELS") || DEFAULT_FALLBACKS.join(","))
+    .split(",").map((m) => m.trim()).filter(Boolean);
 
-  return json(await explainWithGemini(input, { apiKey, model }));
+  return json(await explainWithGemini(input, { apiKey, model, fallbackModels, timeoutMs: 15_000 }));
 });

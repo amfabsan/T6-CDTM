@@ -156,8 +156,8 @@ Pipeline completo en [`docs/WORKFLOW_MATCHING.md`](docs/WORKFLOW_MATCHING.md):
 - **In:** `{ project_summary, candidates[], teams[] }`. Cada candidato trae lo que ya calculó el score: `employee_id, nombre, role, fit, disponibilidad, breakdown, gaps[], risks[]` y **`evidence[{id, type: project|skill|certification|experience, ref, detail?}]`**, con `id` único dentro del candidato (`P1`, `S2`…). **El score (`match-candidates`) tiene que devolver ese `evidence[]`.** Máximo 40 candidatos por llamada.
 - **Out:** `candidates[{employee_id, summary, strengths[{text, evidence_ids}], source, dropped}]` y `teams[{team_id, summary, reasons[{text, evidence_ids}], source, dropped}]`. En los equipos, los ids van prefijados: `NTT…:P1`. `source` es `"llm"` o `"fallback"`, y `error` aparece si Gemini falló.
 - **Los gaps y riesgos no los escribe el LLM:** la UI los muestra tal cual salen del score.
-- **Validación (código):** se descarta toda frase que cite un id inexistente o de otra persona, que nombre entre «» un proyecto que no está en la evidencia, o que use un número que no aparece en los datos. Si no queda nada, o Gemini falla o tarda más de 20 s, se usa una plantilla determinista: la pantalla nunca se queda vacía.
-- **Secretos:** `GEMINI_API_KEY` y, opcional, `GEMINI_MODEL`.
+- **Validación (código):** se descarta toda frase que cite un id inexistente o de otra persona, que nombre entre «» un proyecto que no está en la evidencia, o que use un número que no aparece en los datos. Si no queda nada, o todos los modelos fallan o tardan más de 15 s, se usa una plantilla determinista: la pantalla nunca se queda vacía.
+- **Secretos:** `GEMINI_API_KEY`; opcionales `GEMINI_MODEL` y `GEMINI_FALLBACK_MODELS`. Por defecto prueba `gemini-3.5-flash-lite` → `gemini-flash-lite-latest` → `gemini-3.6-flash` (15 s por intento). Los `gemini-2.5-*` dan 404 a cuentas nuevas.
 - **Cuándo llamarla:** después de `match-candidates`, con el Top 5 de equipos y sus integrantes (pocas personas). Una llamada por pantalla, no una por candidato.
 
 ### `calculate-staffing-scenarios` (módulo D, rol 3)

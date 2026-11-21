@@ -304,12 +304,22 @@ export function validate(raw: unknown, input: ExplainInput): ExplainOutput {
 
 // ───────────────────────────── Llamada a Gemini ─────────────────────────────
 
+/** Comprobados el 21-11-2026: responden en ~1 s; 3.6-flash responde pero tarda ~9 s. */
+export const DEFAULT_MODEL = "gemini-3.5-flash-lite";
+export const DEFAULT_FALLBACKS = ["gemini-flash-lite-latest", "gemini-3.6-flash"];
+
 export interface GeminiOptions {
   apiKey: string;
   model: string;
+  /** Se prueban en orden si el anterior da 404 (retirado), 429 (cuota), 5xx (saturado) o tarda demasiado. */
+  fallbackModels?: string[];
+  /** Tiempo máximo por intento. */
   timeoutMs?: number;
   fetchFn?: typeof fetch; // inyectable para los tests
 }
+
+/** Errores en los que tiene sentido probar el siguiente modelo. Un 400 o un 403 (petición o clave mal) no. */
+const RETRYABLE = (status: number) => status === 404 || status === 429 || status >= 500;
 
 /** Prepara la entrada para el LLM: en los equipos, los ids de evidencia van prefijados con el employee_id. */
 function promptInput(input: ExplainInput) {
@@ -321,30 +331,43 @@ function promptInput(input: ExplainInput) {
   };
 }
 
-export async function explainWithGemini(input: ExplainInput, opts: GeminiOptions): Promise<ExplainOutput> {
+export async function explainWithGemini(
+  input: ExplainInput,
+  opts: GeminiOptions,
+): Promise<ExplainOutput & { model?: string }> {
   const fetchFn = opts.fetchFn ?? fetch;
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${opts.model}:generateContent`;
-  const body = {
+  const body = JSON.stringify({
     systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
     contents: [{ role: "user", parts: [{ text: JSON.stringify(promptInput(input)) }] }],
     generationConfig: { temperature: 0.2, responseMimeType: "application/json", responseSchema: RESPONSE_SCHEMA },
-  };
-  const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), opts.timeoutMs ?? 20_000);
-  try {
-    const res = await fetchFn(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "x-goog-api-key": opts.apiKey },
-      body: JSON.stringify(body),
-      signal: ctrl.signal,
-    });
-    if (!res.ok) return fallbackAll(input, `Gemini ${res.status}: ${(await res.text()).slice(0, 200)}`);
-    const data = await res.json();
-    const text = data?.candidates?.[0]?.content?.parts?.map((p: { text?: string }) => p.text ?? "").join("") ?? "";
-    return validate(JSON.parse(text), input);
-  } catch (e) {
-    return fallbackAll(input, `Gemini: ${e instanceof Error ? e.message : String(e)}`);
-  } finally {
-    clearTimeout(timer);
+  });
+  const errors: string[] = [];
+
+  for (const model of [opts.model, ...(opts.fallbackModels ?? [])]) {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), opts.timeoutMs ?? 20_000);
+    try {
+      const res = await fetchFn(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "x-goog-api-key": opts.apiKey },
+        body,
+        signal: ctrl.signal,
+      });
+      if (!res.ok) {
+        const detail = (await res.text()).replace(/\s+/g, " ").slice(0, 200);
+        errors.push(`${model} ${res.status}: ${detail}`);
+        if (RETRYABLE(res.status)) continue;
+        break;
+      }
+      const data = await res.json();
+      const text = data?.candidates?.[0]?.content?.parts?.map((p: { text?: string }) => p.text ?? "").join("") ?? "";
+      return { ...validate(JSON.parse(text), input), model };
+    } catch (e) {
+      // Timeout (AbortError) o JSON roto: se prueba el siguiente modelo.
+      errors.push(`${model}: ${e instanceof Error ? e.message : String(e)}`);
+    } finally {
+      clearTimeout(timer);
+    }
   }
+  return fallbackAll(input, `Gemini: ${errors.join(" | ")}`);
 }

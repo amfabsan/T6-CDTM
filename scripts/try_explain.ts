@@ -2,7 +2,7 @@
 // Con la clave en .env (GEMINI_API_KEY=...): node --env-file=.env --experimental-strip-types scripts/try_explain.ts
 // Linux/macOS: GEMINI_API_KEY=... node --experimental-strip-types scripts/try_explain.ts
 // PowerShell:  $env:GEMINI_API_KEY="..."; node --experimental-strip-types scripts/try_explain.ts
-import { explainWithGemini, type ExplainInput } from "../supabase/functions/_shared/explain.ts";
+import { DEFAULT_FALLBACKS, DEFAULT_MODEL, explainWithGemini, type ExplainInput } from "../supabase/functions/_shared/explain.ts";
 
 const input: ExplainInput = {
   project_summary:
@@ -36,5 +36,12 @@ const input: ExplainInput = {
 
 const apiKey = process.env.GEMINI_API_KEY;
 if (!apiKey) { console.error("Falta GEMINI_API_KEY"); process.exit(1); }
-const out = await explainWithGemini(input, { apiKey, model: process.env.GEMINI_MODEL ?? "gemini-2.5-flash" });
+const t0 = Date.now();
+const out = await explainWithGemini(input, {
+  apiKey,
+  model: process.env.GEMINI_MODEL || DEFAULT_MODEL,
+  fallbackModels: (process.env.GEMINI_FALLBACK_MODELS || DEFAULT_FALLBACKS.join(",")).split(",").map((m) => m.trim()).filter(Boolean),
+  timeoutMs: 15_000,
+});
+console.error(`Tiempo: ${((Date.now() - t0) / 1000).toFixed(1)} s`);
 console.log(JSON.stringify(out, null, 2));

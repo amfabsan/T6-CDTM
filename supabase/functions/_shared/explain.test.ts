@@ -164,3 +164,30 @@ test("lee la respuesta de Gemini y la valida", async () => {
   assert.equal(out.candidates[0].source, "llm");
   assert.equal(out.candidates[1].source, "fallback");
 });
+
+test("si un modelo está retirado (404) o saturado (503), prueba el siguiente", async () => {
+  const llm = { candidates: [], teams: [] };
+  const tried: string[] = [];
+  const fetchFn = (async (url: string) => {
+    const model = url.split("/models/")[1].split(":")[0];
+    tried.push(model);
+    if (model === "viejo") return new Response("no longer available", { status: 404 });
+    if (model === "lleno") return new Response("high demand", { status: 503 });
+    return Response.json({ candidates: [{ content: { parts: [{ text: JSON.stringify(llm) }] } }] });
+  }) as unknown as typeof fetch;
+  const out = await explainWithGemini(input, { apiKey: "x", model: "viejo", fallbackModels: ["lleno", "bueno"], fetchFn });
+  assert.deepEqual(tried, ["viejo", "lleno", "bueno"]);
+  assert.equal(out.model, "bueno");
+  assert.equal(out.error, undefined);
+});
+
+test("un 400 (petición mal formada) no prueba más modelos", async () => {
+  const tried: string[] = [];
+  const fetchFn = (async (url: string) => {
+    tried.push(url);
+    return new Response("bad schema", { status: 400 });
+  }) as unknown as typeof fetch;
+  const out = await explainWithGemini(input, { apiKey: "x", model: "a", fallbackModels: ["b"], fetchFn });
+  assert.equal(tried.length, 1);
+  assert.match(out.error ?? "", /400/);
+});
