@@ -7,7 +7,8 @@ Sin LLM ni base de datos: puro y testeable.
 from __future__ import annotations
 
 from .contract import from_llm_plan, normalize_profile
-from .scoring import DEFAULT_STRICT, WEIGHTS, eligibility_reasons, hard_filter_reasons, rank_role, score_candidate
+from .scoring import (DEFAULT_STRICT, WEIGHTS, coverage, eligibility_reasons, hard_filter_reasons, rank_role,
+                      requirement_items, score_candidate)
 from .teams import build_teams, score_teams, top_teams
 
 # Supuestos ILUSTRATIVOS por defecto (el dataset no trae tarifas, horas ni fechas de roll-off). Editables desde la UI;
@@ -26,10 +27,13 @@ def run_matching(plan: dict, candidates_by_role: dict[str, list[dict]], *, weigh
                  rate_per_hour: float | dict | None = DEFAULT_ASSUMPTIONS["rate_per_hour"],
                  rolloff_days: int | None = DEFAULT_ASSUMPTIONS["rolloff_days"],
                  sort_by: str = "fit", team_filters: dict | None = None, top_n_teams: int = 5,
-                 affinities: dict[str, list[tuple[str, float]]] | None = None) -> dict:
+                 affinities: dict[str, list[tuple[str, float]]] | None = None, synergy_weight: float = 15) -> dict:
     """Elegible = pasa los filtros de `strict` (por defecto solo «no Asignado») y score > min_eligible_score con
     al menos una skill pedida. Los excluidos quedan anotados con su motivo y su score, nunca desaparecen."""
     project, roles = from_llm_plan(plan)
+    # Obligatorias de TODAS las plazas: para la sinergia, cada candidato se mide también contra las de las otras plazas.
+    slot_items = {r.role: [k for k, _, _ in requirement_items(r)] for r in roles}
+    all_items = {k: (o, lv) for r in roles for k, o, lv in requirement_items(r)}
     eligible, excluded = {}, {}
     for r in roles:
         eligible[r.role], excluded[r.role] = [], []
@@ -40,10 +44,14 @@ def run_matching(plan: dict, candidates_by_role: dict[str, list[dict]], *, weigh
             if reasons:
                 excluded[r.role].append({"employee_id": p["employee_id"], "score": s["score"], "reasons": reasons})
             else:
+                cov = {k: coverage(p, o, lv) for k, (o, lv) in all_items.items()}
+                s["coverage"] = {k: round(v, 3) for k, (v, _) in cov.items() if v > 0}
+                s["coverage_ok"] = sorted(k for k, (_, ok) in cov.items() if ok)  # llega al nivel mínimo: puede cubrir a otro
                 eligible[r.role].append(s)
     slots = [{"role": r.role, "count": r.count, "hours": r.planned_hours} for r in roles]
     combos = build_teams(slots, eligible, pool_size=pool_size, beam=beam, max_exhaustive=max_exhaustive)
-    teams = score_teams(combos, slots, eligible, project, hours_per_person, rate_per_hour, rolloff_days)
+    teams = score_teams(combos, slots, eligible, project, hours_per_person, rate_per_hour, rolloff_days,
+                        slot_items=slot_items, synergy_weight=synergy_weight)
     shown = top_teams(teams, sort_by=sort_by, top=top_n_teams, **(team_filters or {}))
     by_key = {(c["role"], c["employee_id"]): c for cs in eligible.values() for c in cs}
     shown_keys = dict.fromkeys((m["role"], m["employee_id"]) for t in shown["items"] for m in t["members"])

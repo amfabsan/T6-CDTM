@@ -55,7 +55,8 @@ def _available_on(m: dict, prj: Project, rolloff_days: int | None = None) -> tup
 
 def score_teams(combos: list[list[dict]], slots: list[dict], eligible_by_role: dict[str, list[dict]], prj: Project,
                 hours_per_person: float | None = None, rate_per_hour: float | dict | None = None,
-                rolloff_days: int | None = None) -> list[dict]:
+                rolloff_days: int | None = None, slot_items: dict[str, list[str]] | None = None,
+                synergy_weight: float = 15) -> list[dict]:
     """Paso 10 · eligible_by_role = todos los elegibles por rol (posibles sustitutos).
     Supuestos editables: horas (si el rol no trae planned_hours), tarifa (si el candidato no trae cost_per_hour, única
     o por seniority) y días hasta que un Roll-off sin fecha puede empezar. Si se usa alguno, el estado es «supuesto»."""
@@ -95,12 +96,16 @@ def score_teams(combos: list[list[dict]], slots: list[dict], eligible_by_role: d
                 worst = {"employee_id": m["employee_id"], "role": m["role"],
                          "substitute": in_time["employee_id"] if in_time else None, "late_substitute": late}
         cost_known = all(c is not None for c in costs)
+        syn = synergy(members, slot_items or {})
+        base = sum(m["score"] for m in members) / total
         out.append({
             "id": "+".join(m["employee_id"] for m in members),     # en el orden de los roles del plan
             "members": [{"role": m["role"], "employee_id": m["employee_id"], "nombre_completo": m.get("nombre_completo"),
                          "score": m["score"], "disponibilidad": m.get("disponibilidad"), "available_on": d, "cost": c}
                         for m, d, c in zip(members, dates, costs)],
-            "fit": sum(m["score"] for m in members) / total,       # sin redondear: la UI redondea
+            "fit": min(100.0, base + synergy_weight * syn["value"]),  # encaje = media + bonus de sinergia; sin redondear
+            "fit_base": base,                                         # media de los scores individuales
+            "synergy": {**syn, "bonus": round(synergy_weight * syn["value"], 1), "weight": synergy_weight},
             "tiebreak": round(sum(m.get("tiebreak", 0) for m in members) / total, 3),  # solo desempata equipos con el mismo encaje
             "cost": {"value": sum(costs) if cost_known else None, "is_illustrative": True,
                      "status": ("supuesto" if any(a for _, a in costed) else "estimado") if cost_known else "por estimar"},
@@ -110,6 +115,30 @@ def score_teams(combos: list[list[dict]], slots: list[dict], eligible_by_role: d
             "gaps": sum(len(m.get("gaps", [])) for m in members),
         })
     return out
+
+
+def synergy(members: list[dict], slot_items: dict[str, list[str]]) -> dict:
+    """Complementariedad: en cada plaza, cobertura del equipo (mejor miembro por skill obligatoria) − cobertura individual
+    de quien ocupa la plaza. Un compañero solo cubre si llega al nivel mínimo. Media de todas las plazas, 0-1.
+    No borra el gap individual: solo premia al equipo que lo tapa, y lo explica."""
+    gains, details = [], []
+    for m in members:
+        keys = slot_items.get(m["role"], [])
+        if not keys:
+            continue
+        own = m.get("coverage", {})
+        team = []
+        for k in keys:
+            best, who = own.get(k, 0.0), None
+            for o in members:
+                if o is not m and k in o.get("coverage_ok", []) and o.get("coverage", {}).get(k, 0.0) > best:
+                    best, who = o["coverage"][k], o
+            team.append(best)
+            if who:
+                details.append(f"{who.get('nombre_completo') or who['employee_id']} ({who['role']}) cubre {k} "
+                               f"de la plaza {m['role']} ({m.get('nombre_completo') or m['employee_id']})")
+        gains.append(sum(team) / len(keys) - sum(own.get(k, 0.0) for k in keys) / len(keys))
+    return {"value": round(sum(gains) / len(gains), 3) if gains else 0.0, "details": details}
 
 
 def sort_teams(teams: list[dict], by: str = "fit") -> list[dict]:
