@@ -1,0 +1,25 @@
+import { Sparkles } from "lucide-react";
+import type { ExplainPoint } from "@/lib/types";
+
+export function ExplainSkeleton() {
+  return (
+    <div className="mt-4 border-t border-line pt-3" role="status" aria-live="polite">
+      <p className="text-xs text-muted-foreground">Analizando por qué encaja…</p>
+      <div className="mt-2 h-2 w-3/4 animate-pulse bg-surface-2" /><div className="mt-1.5 h-2 w-1/2 animate-pulse bg-surface-2" />
+    </div>
+  );
+}
+
+/** "Por qué…" block from explain-recommendations. */
+export function ExplainBlock({ title, summary, points, source }: { title: string; summary: string; points: ExplainPoint[]; source: string }) {
+  return (
+    <div className="mt-4 border-t border-line pt-3">
+      <p className="flex flex-wrap items-center gap-2 text-sm font-semibold text-navy">
+        <Sparkles className="size-4 text-blue" aria-hidden />{title}
+        {source === "fallback" && <span className="border border-line bg-surface-2 px-1.5 py-px text-[10px] font-medium text-muted-foreground">resumen automático (sin IA)</span>}
+      </p>
+      <p className="mt-1 text-sm">{summary}</p>
+      {points.length > 0 && <ul className="mt-1 list-disc pl-5 text-sm">{points.map((p, i) => <li key={i}>{p.text}</li>)}</ul>}
+    </div>
+  );
+}

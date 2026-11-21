@@ -13,7 +13,9 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as DecisionRouteImport } from './routes/decision'
 import { Route as DesignRouteImport } from './routes/design'
 import { Route as EquiposRouteImport } from './routes/equipos'
+import { Route as PersonasRouteImport } from './routes/personas'
 import { Route as TalentoRouteImport } from './routes/talento'
+import { Route as PersonaIdRouteImport } from './routes/persona.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -35,9 +37,19 @@ const EquiposRoute = EquiposRouteImport.update({
   path: '/equipos',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PersonasRoute = PersonasRouteImport.update({
+  id: '/personas',
+  path: '/personas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TalentoRoute = TalentoRouteImport.update({
   id: '/talento',
   path: '/talento',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PersonaIdRoute = PersonaIdRouteImport.update({
+  id: '/persona/$id',
+  path: '/persona/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -46,14 +58,18 @@ export interface FileRoutesByFullPath {
   '/decision': typeof DecisionRoute
   '/design': typeof DesignRoute
   '/equipos': typeof EquiposRoute
+  '/personas': typeof PersonasRoute
   '/talento': typeof TalentoRoute
+  '/persona/$id': typeof PersonaIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/decision': typeof DecisionRoute
   '/design': typeof DesignRoute
   '/equipos': typeof EquiposRoute
+  '/personas': typeof PersonasRoute
   '/talento': typeof TalentoRoute
+  '/persona/$id': typeof PersonaIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -61,14 +77,38 @@ export interface FileRoutesById {
   '/decision': typeof DecisionRoute
   '/design': typeof DesignRoute
   '/equipos': typeof EquiposRoute
+  '/personas': typeof PersonasRoute
   '/talento': typeof TalentoRoute
+  '/persona/$id': typeof PersonaIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/decision' | '/design' | '/equipos' | '/talento'
+  fullPaths:
+    | '/'
+    | '/decision'
+    | '/design'
+    | '/equipos'
+    | '/personas'
+    | '/talento'
+    | '/persona/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/decision' | '/design' | '/equipos' | '/talento'
-  id: '__root__' | '/' | '/decision' | '/design' | '/equipos' | '/talento'
+  to:
+    | '/'
+    | '/decision'
+    | '/design'
+    | '/equipos'
+    | '/personas'
+    | '/talento'
+    | '/persona/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/decision'
+    | '/design'
+    | '/equipos'
+    | '/personas'
+    | '/talento'
+    | '/persona/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -76,7 +116,9 @@ export interface RootRouteChildren {
   DecisionRoute: typeof DecisionRoute
   DesignRoute: typeof DesignRoute
   EquiposRoute: typeof EquiposRoute
+  PersonasRoute: typeof PersonasRoute
   TalentoRoute: typeof TalentoRoute
+  PersonaIdRoute: typeof PersonaIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -109,11 +151,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EquiposRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/personas': {
+      id: '/personas'
+      path: '/personas'
+      fullPath: '/personas'
+      preLoaderRoute: typeof PersonasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/talento': {
       id: '/talento'
       path: '/talento'
       fullPath: '/talento'
       preLoaderRoute: typeof TalentoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/persona/$id': {
+      id: '/persona/$id'
+      path: '/persona/$id'
+      fullPath: '/persona/$id'
+      preLoaderRoute: typeof PersonaIdRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -124,7 +180,9 @@ const rootRouteChildren: RootRouteChildren = {
   DecisionRoute: DecisionRoute,
   DesignRoute: DesignRoute,
   EquiposRoute: EquiposRoute,
+  PersonasRoute: PersonasRoute,
   TalentoRoute: TalentoRoute,
+  PersonaIdRoute: PersonaIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

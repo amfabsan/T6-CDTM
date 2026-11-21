@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUp, Paperclip, ScanText } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { MOCK_SOURCE_TEXT } from "@/lib/mock-data";
@@ -14,26 +14,28 @@ export function PlanIntake({ onFile, onText, scannedError }: { onFile: (f: File)
   const [drag, setDrag] = useState(false);
   const [text, setText] = useState("");
   const input = useRef<HTMLInputElement>(null);
+  const textRef = useRef<HTMLTextAreaElement>(null);
+  useEffect(() => { if (scannedError) textRef.current?.focus(); }, [scannedError]);
   const send = () => text.trim() && onText(text);
   return (
     <div className="mx-auto max-w-3xl py-6">
-      <p className="text-center font-display text-4xl font-bold leading-tight md:text-5xl">
-        El mejor candidato ya trabaja aquí.<br /><span className="text-ai">ORBIT lo encuentra.</span>
-      </p>
+      <h2 className="text-center text-4xl font-bold leading-tight md:text-5xl">
+        El mejor candidato ya trabaja aquí.<br /><span className="text-blue">ORBIT lo encuentra.</span>
+      </h2>
       {scannedError && (
-        <div role="alert" className="mt-8 flex items-start gap-3 rounded-xl border border-rolloff/40 bg-rolloff/10 p-4 text-sm">
-          <ScanText className="mt-0.5 size-5 text-rolloff" aria-hidden />
-          <p><b className="text-rolloff">Este PDF parece escaneado.</b> Pega el texto del plan y seguimos.</p>
+        <div role="alert" className="mt-8 flex items-start gap-3 border border-gold bg-warn-soft p-4 text-sm">
+          <ScanText className="mt-0.5 size-5 text-warn-ink" aria-hidden />
+          <p className="text-warn-ink"><b>Este PDF no tiene texto (parece escaneado).</b> Pega el contenido en el cuadro de texto.</p>
         </div>
       )}
       <div
         onDragOver={(e) => { e.preventDefault(); setDrag(true); }}
         onDragLeave={() => setDrag(false)}
         onDrop={(e) => { e.preventDefault(); setDrag(false); const f = e.dataTransfer.files[0]; if (f) onFile(f); }}
-        className={cn("relative mt-10 rounded-2xl border bg-surface p-3 transition-all duration-200 focus-within:glow-ai", drag ? "border-ai bg-ai/10" : "border-line")}
+        className={cn("card relative mt-10 p-3 transition-all duration-200 focus-within:glow-ai", drag ? "border-blue bg-blue/5" : "")}
       >
         <label htmlFor="plan-text" className="sr-only">Cuéntale a ORBIT qué proyecto tienes</label>
-        <textarea id="plan-text" value={text} onChange={(e) => setText(e.target.value)} rows={4}
+        <textarea ref={textRef} id="plan-text" value={text} onChange={(e) => setText(e.target.value)} rows={4}
           onKeyDown={(e) => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) send(); }}
           placeholder="Cuéntale a ORBIT qué proyecto tienes o suelta el plan en PDF"
           className="w-full resize-none bg-transparent p-3 text-lg outline-none placeholder:text-muted-foreground" />
@@ -51,20 +53,19 @@ export function PlanIntake({ onFile, onText, scannedError }: { onFile: (f: File)
       </div>
       <div className="mt-4 flex flex-wrap justify-center gap-2">
         {PROMPTS.map((p) => (
-          <button key={p.label} onClick={() => setText(p.text)} className="rounded-full border border-line bg-surface/60 px-4 py-2 text-sm text-muted-foreground transition-colors hover:border-ai/60 hover:text-foreground">
+          <button key={p.label} onClick={() => setText(p.text)} className="rounded-full border border-line bg-surface px-4 py-2 text-sm text-muted-foreground transition-colors hover:border-blue hover:text-blue">
             {p.label}
           </button>
         ))}
       </div>
-      <p className="mt-6 text-center text-xs text-muted-foreground">También puedes usar «Pregunta a ORBIT» para hablarle.</p>
-    </div>
+          </div>
   );
 }
 
 export function ScanningDoc() {
   return (
     <div className="mx-auto flex max-w-md flex-col items-center py-12" role="status" aria-live="polite">
-      <div className="relative h-80 w-64 overflow-hidden rounded-xl border border-line bg-surface p-6">
+      <div className="card relative h-80 w-64 overflow-hidden p-6">
         {Array.from({ length: 14 }, (_, i) => (
           <div key={i} className="mb-3 h-2 rounded-full bg-surface-2" style={{ width: `${55 + ((i * 37) % 45)}%` }} />
         ))}
@@ -72,7 +73,7 @@ export function ScanningDoc() {
           <div className="absolute inset-x-0 top-1/2 h-px bg-ai" />
         </div>
       </div>
-      <p className="mt-6 font-display text-xl font-semibold text-ai">Leyendo el plan…</p>
+      <p className="mt-6 text-xl font-semibold text-blue">Leyendo el plan…</p>
       <p className="mt-1 text-sm text-muted-foreground">Detectando roles, plazas y requisitos</p>
     </div>
   );

@@ -29,4 +29,4 @@ use the editor.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
 
-- Data access goes only through src/lib/api.ts (external backend via VITE_SUPABASE_* env, mock fallback when unset); candidate facts come from rpc perfil, only fit/teams/scenarios/voice are simulated. Never add Lovable Cloud: the backend lives in an external project.
+- Data access: Supabase calls (interpret-project, project_requirements insert, catalogo_skills, rpc perfil) only via src/lib/api.ts; matching only via src/lib/matching.ts (one POST /match per project, cached in React Query, fallback src/mocks/matching.json); teams are never recomputed in the browser, step 4 re-runs /match with new options and replaces the cache. Never add Lovable Cloud: the backend lives in an external project.
