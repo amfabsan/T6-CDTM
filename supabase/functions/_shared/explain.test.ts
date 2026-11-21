@@ -208,3 +208,78 @@ test("adapta la salida real de los pasos 7-10 (run_matching sobre data/sample)",
   const out = validate({}, inp);
   assert.ok(out.teams.every((t) => t.source === "fallback" && t.reasons.length > 0));
 });
+
+// Formato tal como lo documenta el equipo (salida de run_matching sin members_detail ni plan).
+const PASTED = {
+  weights: { mandatory: 35, evidence: 20, sectorRole: 15, seniority: 10, desirable: 10, langCert: 5, recency: 5 },
+  ranking: {
+    Backend: {
+      cumplen: 268, total: 268,
+      items: [{
+        employee_id: "NTT0011735", nombre_completo: "Krystyna Kurcz", puesto_actual: "Backend Developer .NET",
+        role: "Backend", nivel_seniority: "Mid", disponibilidad: "En banca", pais: "España", modalidad_trabajo: "Híbrido",
+        available_on: null, cost_per_hour: null, score: 87.5,
+        breakdown: { mandatory: { value: 1.0, weight: 35, points: 35.0 } },
+        gaps: ["2 años < 3"], risks: ["Roll-off próximo (<3 meses)", "Prefiere presencial (proyecto remoto)"],
+        evidence: [{ proyecto: "Migración a la nube de core bancario", anio: 2025, sector: "Banca y Finanzas", skills: ["C#", ".NET", "SQL Server"] }],
+        skills: [{ name: "C#", tipo: "obligatoria", nivel: 4, anios: 5, demostrada: true, confianza: 1.0 }],
+      }],
+    },
+  },
+  excluded: { Backend: [{ employee_id: "X1", score: 92.0, reasons: ["Asignado (no disponible)"] }] },
+  teams_total: 27,
+  top_teams: {
+    cumplen: 27,
+    items: [{
+      id: "A1+NTT0011735",
+      members: [
+        { role: "ARQ", employee_id: "A1", nombre_completo: "Alicia", score: 99, disponibilidad: "En banca", available_on: "2026-11-23", cost: 4200 },
+        { role: "Backend", employee_id: "NTT0011735", nombre_completo: "Krystyna Kurcz", score: 87.5, disponibilidad: "En banca", available_on: null, cost: 7600 },
+      ],
+      fit: 93.25,
+      cost: { value: 11800, status: "estimado", is_illustrative: true },
+      start: { date: "2026-11-24", status: "estimado" },
+      continuity: { covered: 2, total: 3, pct: 67, worst: { employee_id: "A1", role: "ARQ", substitute: null, late_substitute: null } },
+      gaps: 1,
+    }],
+    pending: [],
+  },
+  teams: [],
+};
+
+test("acepta el formato documentado sin members_detail ni plan", async () => {
+  const { fromMatching, isMatchingResult } = await import("./from_matching.ts");
+  assert.ok(isMatchingResult(PASTED));
+  const inp = fromMatching(PASTED);
+  assert.equal(inp.project_summary, "Roles: Backend.");
+  assert.deepEqual(inp.candidates.map((c) => c.employee_id), ["A1", "NTT0011735"]);
+  const k = inp.candidates.find((c) => c.employee_id === "NTT0011735")!;
+  assert.deepEqual(k.evidence.map((e) => e.id), ["P1", "S1"]);
+  assert.equal(k.fit, 88);
+  assert.equal(inp.candidates[0].evidence.length, 0); // Alicia no está en el ranking: sin evidencia
+  assert.equal(inp.teams[0].fit, 93);
+  assert.equal(inp.teams[0].start.date, "2026-11-24");
+  const out = validate({}, inp);
+  assert.equal(out.teams[0].reasons.length, 1); // solo Krystyna tiene evidencia que citar
+});
+
+test("acepta cifras en formato español (11.800 €, 2,5) y rechaza las que no están", async () => {
+  const { fromMatching } = await import("./from_matching.ts");
+  const inp = fromMatching(PASTED);
+  const out = validate({
+    candidates: [],
+    teams: [{
+      team_id: "A1+NTT0011735",
+      summary: "Coste estimado de 11.800 € con inicio el 24 de noviembre.",
+      reasons: [
+        { text: "Krystyna aporta C# a nivel 4 tras 5 años en «Migración a la nube de core bancario».", evidence_ids: ["NTT0011735:P1", "NTT0011735:S1"] },
+        { text: "El equipo cuesta 11.900 €.", evidence_ids: ["NTT0011735:P1"] },
+      ],
+    }],
+  }, inp);
+  const t = out.teams[0];
+  assert.equal(t.source, "llm");
+  assert.match(t.summary, /11\.800/);
+  assert.equal(t.reasons.length, 1);
+  assert.equal(t.dropped, 1);
+});

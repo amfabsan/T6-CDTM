@@ -10,12 +10,13 @@ interface PyCandidate {
   breakdown?: Record<string, { points: number }>; gaps?: string[]; risks?: string[];
   evidence?: PyEvidence[]; skills?: PySkill[];
 }
+interface PyMember { role: string; employee_id: string; nombre_completo?: string; score?: number; disponibilidad?: string }
 interface PyTeam {
   id: string; fit: number;
   cost?: { value: number | null; status?: string };
-  start?: { date: string | null; status: string };
+  start?: { date?: string | null; status: string };
   continuity?: { pct: number | null };
-  members: { role: string; employee_id: string }[];
+  members: PyMember[];
 }
 interface PyPlan {
   project?: { name?: string; client_sector?: string; country?: string; work_mode?: string };
@@ -24,12 +25,15 @@ interface PyPlan {
 export interface MatchingResult {
   plan?: PyPlan;
   project_summary?: string;
+  ranking?: Record<string, { items: PyCandidate[] }>;
   top_teams: { items: PyTeam[] };
-  members_detail: PyCandidate[];
+  /** Lo añade run_matching desde el PR #6. Si no viene, se usan ranking[].items. */
+  members_detail?: PyCandidate[];
 }
 
+/** Basta con top_teams: members_detail, ranking y plan son opcionales. */
 export function isMatchingResult(body: unknown): body is MatchingResult {
-  return !!body && typeof body === "object" && "top_teams" in body && "members_detail" in body;
+  return !!body && typeof body === "object" && "top_teams" in body;
 }
 
 export function summarizePlan(plan?: PyPlan): string {
@@ -53,12 +57,33 @@ function toEvidence(c: PyCandidate): Evidence[] {
   return [...projects, ...skills];
 }
 
+/** Fichas puntuadas de los integrantes: members_detail si viene; si no, el ranking; y, en último caso,
+ *  los datos mínimos del propio equipo (sin evidencia: la explicación de esa persona sale de la plantilla). */
+function memberProfiles(result: MatchingResult): PyCandidate[] {
+  const byKey = new Map<string, PyCandidate>();
+  const add = (c: PyCandidate) => { const k = `${c.role}|${c.employee_id}`; if (!byKey.has(k)) byKey.set(k, c); };
+  (result.members_detail ?? []).forEach(add);
+  Object.values(result.ranking ?? {}).forEach((r) => (r.items ?? []).forEach(add));
+  const out: PyCandidate[] = [];
+  const seen = new Set<string>();
+  for (const t of result.top_teams?.items ?? []) {
+    for (const m of t.members) {
+      const k = `${m.role}|${m.employee_id}`;
+      if (seen.has(k)) continue;
+      seen.add(k);
+      out.push(byKey.get(k) ?? { employee_id: m.employee_id, nombre_completo: m.nombre_completo, role: m.role,
+        score: m.score ?? 0, disponibilidad: m.disponibilidad });
+    }
+  }
+  return out;
+}
+
 export function fromMatching(result: MatchingResult): ExplainInput {
   // Clave por persona; si la misma persona sale en dos roles, la segunda lleva "@rol".
   const keyOf = new Map<string, string>();
   const used = new Set<string>();
   const candidates: CandidateInput[] = [];
-  for (const c of result.members_detail ?? []) {
+  for (const c of memberProfiles(result)) {
     const key = used.has(c.employee_id) ? `${c.employee_id}@${c.role}` : c.employee_id;
     used.add(key);
     keyOf.set(`${c.role}|${c.employee_id}`, key);
@@ -79,9 +104,11 @@ export function fromMatching(result: MatchingResult): ExplainInput {
     fit: Math.round(t.fit),
     continuity: t.continuity?.pct ?? null,
     cost: t.cost?.value ?? null,
-    start: { day: null, status: t.start?.status ?? "por confirmar" },
+    start: { day: null, status: t.start?.status ?? "por confirmar", date: t.start?.date ?? null },
     members: t.members
       .map((m) => ({ role: m.role, employee_id: keyOf.get(`${m.role}|${m.employee_id}`) ?? m.employee_id })),
   }));
-  return { project_summary: result.project_summary ?? summarizePlan(result.plan), candidates, teams };
+  const summary = result.project_summary || summarizePlan(result.plan) ||
+    `Roles: ${Object.keys(result.ranking ?? {}).join(", ") || [...new Set(teams.flatMap((t) => t.members.map((m) => m.role)))].join(", ")}.`;
+  return { project_summary: summary, candidates, teams };
 }

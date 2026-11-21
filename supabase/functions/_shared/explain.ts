@@ -35,7 +35,7 @@ export interface TeamInput {
   fit: number;
   continuity: number | null;
   cost: number | null;
-  start: { day: number | null; status: string };
+  start: { day: number | null; status: string; date?: string | null };
   members: { role: string; employee_id: string }[];
 }
 
@@ -148,7 +148,12 @@ export const RESPONSE_SCHEMA = {
 
 // ───────────────────────────── Validación ─────────────────────────────
 
-const NUM_RE = /\d+(?:[.,]\d+)?/g;
+const NUM_RE = /\d+(?:[.,]\d+)?/g; // números en los datos (JSON: punto decimal)
+// Números en el texto del LLM: admite miles a la española ("11.800", "11 800") y coma decimal ("2,5").
+const TEXT_NUM_RE = /\d{1,3}(?:[.\u00a0 ]\d{3})+(?:,\d+)?|\d+(?:[.,]\d+)?/g;
+const THOUSANDS = /^\d{1,3}(?:[.\u00a0 ]\d{3})+(?:,\d+)?$/;
+const normTextNum = (s: string) =>
+  THOUSANDS.test(s) ? String(Number(s.replace(/[.\u00a0 ]/g, "").replace(",", "."))) : String(Number(s.replace(",", ".")));
 const QUOTE_RE = /[«"“]([^»"”]+)[»"”]/g;
 
 const normNum = (s: string) => String(Number(s.replace(",", ".")));
@@ -177,7 +182,10 @@ function scopeFor(candidates: CandidateInput[], extra: unknown = null): Scope {
 
 function textOk(text: string, scope: Scope): boolean {
   if (typeof text !== "string" || !text.trim()) return false;
-  for (const n of text.match(NUM_RE) ?? []) if (!scope.numbers.has(normNum(n))) return false;
+  for (const n of text.match(TEXT_NUM_RE) ?? []) {
+    // "11.800" puede ser 11800 (miles) o 11,8 (decimal inglés): vale si cualquiera de las dos está en los datos.
+    if (!scope.numbers.has(normTextNum(n)) && !scope.numbers.has(normNum(n))) return false;
+  }
   for (const m of text.matchAll(QUOTE_RE)) {
     const quoted = norm(m[1]);
     if (!scope.refs.some((r) => r.includes(quoted))) return false;
