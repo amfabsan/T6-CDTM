@@ -7,7 +7,7 @@
              start_deadline_day (días desde start_date hasta la fecha límite)
     roles[]: title, count, matching_roles[], seniority_min, min_years_experience, mandatory_skills[{name,min_level}],
              desirable_skills[{name}], languages[{name,level|null}], certifications[], certification_options[],
-             sector_experience[], sector_required, planned_hours
+             sector_experience[], sector_required, planned_hours, mandatory_any_of[{options[], min_level}]
   Si un rol no trae sector_experience, se usa el client_sector del proyecto como deseable.
 
 - Candidatos: la salida de la RPC `candidatos_proyecto` (pasos 5-6) + los perfiles de `perfil()`/`perfiles()`;
@@ -41,6 +41,7 @@ class RoleRequirements:
     seniority: str | None = None
     min_years: int | None = None
     mandatory: list[tuple[str, int]] = field(default_factory=list)  # (skill, nivel mínimo)
+    mandatory_any_of: list[tuple[list[str], int]] = field(default_factory=list)  # ([opciones], nivel mínimo): basta una
     desirable: list[str] = field(default_factory=list)
     languages: list[tuple[str, str | None]] = field(default_factory=list)  # (idioma, nivel mínimo o None = cualquiera)
     certifications: list[str] = field(default_factory=list)     # todas
@@ -76,6 +77,8 @@ def from_llm_plan(plan: dict) -> tuple[Project, list[RoleRequirements]]:
             role=title, count=max(1, int(r.get("count") or 1)), roles=r.get("matching_roles") or [],
             seniority=r.get("seniority_min"), min_years=r.get("min_years_experience"),
             mandatory=[(s["name"], s.get("min_level") or DEFAULT_MIN_LEVEL) for s in r.get("mandatory_skills") or []],
+            mandatory_any_of=[(list(g["options"]), g.get("min_level") or DEFAULT_MIN_LEVEL)
+                              for g in r.get("mandatory_any_of") or [] if g.get("options")],
             desirable=[s["name"] for s in r.get("desirable_skills") or []],
             languages=[(x["name"], x.get("level")) for x in r.get("languages") or []],
             certifications=r.get("certifications") or [], certification_options=r.get("certification_options") or [],

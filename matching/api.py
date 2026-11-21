@@ -51,7 +51,12 @@ def match_project(project_id: str, options: dict, fetch: Callable[[str, dict | N
     rpc = fetch("rpc/candidatos_proyecto", {"p_project_id": project_id})
     ids = sorted({c["employee_id"] for r in rpc for c in r["candidates"]})
     profiles = fetch("rpc/perfiles", {"p_ids": ids}) if ids else []
-    out = run_matching(rows[0], candidates_from_rpc(rpc, profiles), **_opts(options))
+    pedidas = sorted({s["name"] for r in rows[0].get("roles") or [] for s in r.get("mandatory_skills") or []}
+                     | {o for r in rows[0].get("roles") or [] for g in r.get("mandatory_any_of") or [] for o in g.get("options") or []})
+    afines: dict[str, list[tuple[str, float]]] = {}
+    for a in (fetch("rpc/skills_afines", {"p_skills": pedidas}) if pedidas else []):  # co-ocurrencia, migración 006
+        afines.setdefault(a["skill"], []).append((a["afin"], a["sim"]))
+    out = run_matching(rows[0], candidates_from_rpc(rpc, profiles), **_opts(options), affinities=afines)
     out["n_filtrados"] = {r["title"]: r.get("n_filtrados") for r in rpc}
     return out
 

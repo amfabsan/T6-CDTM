@@ -106,6 +106,30 @@ class Pasos7a9(unittest.TestCase):
         s2 = score_candidate({**p, "certificaciones": [], "idiomas": []}, r, prj)
         self.assertTrue({"Sin Inglés", "Falta una de: CISSP / CEH"} <= set(s2["gaps"]))
 
+    def test_obligatorias_alternativas_y_afinidad(self):
+        # Caso del QC: «gestión de identidades y accesos» = una de [Gestión de identidades, Entra ID, IAM].
+        req = from_llm_plan({"project": {}, "roles": [{"title": "Seg", "count": 1, "mandatory_skills": [{"name": "Azure"}],
+                             "mandatory_any_of": [{"options": ["Gestión de identidades", "Entra ID", "IAM"], "min_level": None}]}]})[1][0]
+        sk = lambda n, nv=4: {"skill": n, "nivel": nv, "anios": 5, "demostrada": True, "n_proyectos": 2, "ultimo_anio": 2025}
+        iam_specialist = {**BASE, "skills": [sk("Azure"), sk("Entra ID")]}
+        s = score_candidate(iam_specialist, req, PROJECT)
+        self.assertEqual(s["breakdown"]["mandatory"]["value"], 1)          # Entra ID cubre el grupo
+        self.assertFalse(any("Falta" in g for g in s["gaps"]))
+        self.assertEqual([x["name"] for x in s["skills"]], ["Azure", "Entra ID"])
+        # Sin ninguna opción pero con una skill afín (co-ocurrencia): crédito parcial, riesgo visible y el gap se mantiene.
+        afin = {**BASE, "skills": [sk("Azure"), sk("SSO")]}
+        aff = {"Gestión de identidades": [("SSO", 0.88), ("MFA", 0.87)]}
+        s2 = score_candidate(afin, req, PROJECT, affinities=aff)
+        self.assertIn("Falta una de: Gestión de identidades / Entra ID / IAM", s2["gaps"])
+        self.assertTrue(any("cubierta por afinidad (SSO, 0.88)" in r for r in s2["risks"]))
+        self.assertAlmostEqual(s2["breakdown"]["mandatory"]["value"], round((1 + 0.88 * 0.5) / 2, 2), places=2)
+        self.assertLess(s2["score"], s["score"])                            # afín nunca supera a exacta
+        s3 = score_candidate(afin, req, PROJECT)                            # sin afinidades: solo Azure
+        self.assertLess(s3["breakdown"]["mandatory"]["value"], s2["breakdown"]["mandatory"]["value"])
+        # Un perfil cuya única relación es una skill afín sigue siendo elegible (aporta algo al puesto).
+        only_afin = score_candidate({**BASE, "skills": [sk("SSO")]}, req, PROJECT, affinities=aff)
+        self.assertEqual(eligibility_reasons(only_afin), [])
+
     def test_candidatos_desde_rpc(self):
         rpc = [{"role_index": 1, "title": "Backend", "count": 2, "n_filtrados": 3,
                 "candidates": [{"employee_id": "NTT1", "rrf": 0.0952, "pos_texto": 1, "pos_vector": 1},

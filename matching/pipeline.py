@@ -25,7 +25,8 @@ def run_matching(plan: dict, candidates_by_role: dict[str, list[dict]], *, weigh
                  hours_per_person: float | None = DEFAULT_ASSUMPTIONS["hours_per_person"],
                  rate_per_hour: float | dict | None = DEFAULT_ASSUMPTIONS["rate_per_hour"],
                  rolloff_days: int | None = DEFAULT_ASSUMPTIONS["rolloff_days"],
-                 sort_by: str = "fit", team_filters: dict | None = None, top_n_teams: int = 5) -> dict:
+                 sort_by: str = "fit", team_filters: dict | None = None, top_n_teams: int = 5,
+                 affinities: dict[str, list[tuple[str, float]]] | None = None) -> dict:
     """Elegible = pasa los filtros de `strict` (por defecto solo «no Asignado») y score > min_eligible_score con
     al menos una skill pedida. Los excluidos quedan anotados con su motivo y su score, nunca desaparecen."""
     project, roles = from_llm_plan(plan)
@@ -34,7 +35,7 @@ def run_matching(plan: dict, candidates_by_role: dict[str, list[dict]], *, weigh
         eligible[r.role], excluded[r.role] = [], []
         for raw in candidates_by_role.get(r.role, []):
             p = normalize_profile(raw)
-            s = score_candidate(p, r, project, ref_year, weights)
+            s = score_candidate(p, r, project, ref_year, weights, affinities)
             reasons = hard_filter_reasons(p, r, project, strict) + eligibility_reasons(s, min_eligible_score)
             if reasons:
                 excluded[r.role].append({"employee_id": p["employee_id"], "score": s["score"], "reasons": reasons})

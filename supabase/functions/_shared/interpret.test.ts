@@ -106,6 +106,24 @@ test("sector por rol, horas y ventana de inicio (caso demo: banca obligatoria en
   assert.ok(review.some((x) => x.value === "Sector Inventado") && review.some((x) => x.value === 99999));
 });
 
+test("obligatorias alternativas (mandatory_any_of): se validan; 1 opción → obligatoria normal; 0 → revisar", () => {
+  const { requirements, review } = validateInterpretation({
+    project: {},
+    roles: [{ title: "Seguridad", count: 1, matching_roles: ["Security Architect"], mandatory_skills: [{ name: "Azure" }],
+      mandatory_any_of: [{ options: ["Ciberseguridad", "Kubernetes", "Inventada"], min_level: 3 }, { options: ["Terraform", "Otra"] }, { options: ["Nada"] }],
+      desirable_skills: [], languages: [], certifications: [] }],
+  }, vocab);
+  const r = requirements.roles[0];
+  assert.deepEqual(r.mandatory_any_of, [{ options: ["Ciberseguridad", "Kubernetes"], min_level: 3 }]);
+  assert.deepEqual(r.mandatory_skills, [{ name: "Azure", min_level: null }, { name: "Terraform", min_level: null }]);
+  assert.ok(review.some((x) => x.path === "roles[0].mandatory_any_of[2]" && x.action === "revisar"));
+});
+
+test("el prompt muestra el área de cada skill si el vocabulario la trae", () => {
+  const p = buildSystemPrompt({ ...vocab, skills_area: { Kubernetes: "Cloud & Infraestructura" } });
+  assert.ok(p.includes("Kubernetes [Cloud & Infraestructura]"));
+});
+
 test("el prompt incluye el vocabulario y el esquema fuerza los enumerados cortos", () => {
   const p = buildSystemPrompt(vocab);
   assert.ok(p.includes("Kubernetes") && p.includes("Cloud Architect") && p.includes("Banca y Finanzas"));

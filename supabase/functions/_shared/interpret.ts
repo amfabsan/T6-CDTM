@@ -13,6 +13,7 @@ export interface Vocabulario {
   niveles_idioma: string[];   // A1 … C2, Nativo
   seniorities: string[];      // Trainee … Principal
   modalidades: string[];      // remoto, hibrido, presencial
+  skills_area?: Record<string, string>;  // área principal de cada skill (006): ayuda a elegir la acepción correcta
 }
 
 export interface SkillReq { name: string; min_level: number | null }
@@ -29,6 +30,7 @@ export interface RoleReq {
   languages: LangReq[];
   certifications: string[];            // obligatorias: hacen falta TODAS
   certification_options: string[];     // alternativas ("CISSP o CEH"): basta con UNA
+  mandatory_any_of: { options: string[]; min_level: number | null }[];  // obligatorias alternativas: basta UNA de cada grupo
   sector_experience: string[];         // sectores en los que el plan pide experiencia PARA ESTE ROL
   sector_required: boolean;            // true = obligatoria (gap si falta); false = se valora
   planned_hours: number | null;        // horas por persona del bloque, si el plan las da
@@ -64,6 +66,11 @@ REGLAS
   (p. ej. "orquestación de contenedores" → "Kubernetes"; "nube de Microsoft" → "Azure"). Si algo no tiene equivalente, no lo pongas.
 - NO inventes nada que el plan no diga: si no indica seniority, años, nivel de skill, idioma, certificación, ciudad o fecha, usa null o una lista vacía.
 - Una skill es obligatoria solo si el plan la exige; si dice "valorable", "deseable", "se valorará", "nice to have" o "no imprescindible", va en desirable_skills.
+- Cada skill lleva entre corchetes su área principal en el dataset. Úsala para elegir la acepción correcta: p. ej. "IAM [Cloud & Infraestructura]"
+  es la de AWS; la gestión de identidades y accesos corporativa es "Gestión de identidades" o "Entra ID" [Ciberseguridad].
+- Si una capacidad obligatoria del plan se puede cumplir con varias skills del vocabulario (p. ej. "gestión de identidades y accesos"
+  → Gestión de identidades, Entra ID, IAM), ponla en mandatory_any_of como un grupo { options: [...], min_level } (basta con una).
+  Usa mandatory_skills solo cuando la skill concreta es imprescindible.
 - Un rol del plan puede encajar con varios roles del dataset: ponlos todos en matching_roles (los más probables primero, máximo 4).
 - count = número de personas para ese rol (1 si el plan no lo dice).
 - modality: "remoto", "hibrido" o "presencial" según el plan; null si no lo dice.
@@ -79,7 +86,7 @@ REGLAS
 
 VOCABULARIOS
 roles (87): ${JSON.stringify(v.roles)}
-skills (${v.skills.length}): ${JSON.stringify(v.skills)}
+skills (${v.skills.length}): ${JSON.stringify(v.skills_area ? v.skills.map((s) => `${s} [${v.skills_area![s] ?? "?"}]`) : v.skills)}
 sectores: ${JSON.stringify(v.sectores)}
 idiomas: ${JSON.stringify(v.idiomas)}
 niveles_idioma: ${JSON.stringify(v.niveles_idioma)}
@@ -122,6 +129,10 @@ export function buildResponseSchema(v: Vocabulario) {
             mandatory_skills: {
               type: "ARRAY",
               items: { type: "OBJECT", properties: { name: str, min_level: { type: "INTEGER", nullable: true } }, required: ["name"] },
+            },
+            mandatory_any_of: {
+              type: "ARRAY",
+              items: { type: "OBJECT", properties: { options: { type: "ARRAY", items: str }, min_level: { type: "INTEGER", nullable: true } }, required: ["options"] },
             },
             desirable_skills: { type: "ARRAY", items: { type: "OBJECT", properties: { name: str }, required: ["name"] } },
             languages: {
@@ -330,6 +341,22 @@ export function validateInterpretation(raw: unknown, v: Vocabulario): { requirem
       mandatory.push({ name, min_level: lvl });
     }
 
+    // Grupos "una de": se validan sus opciones; con una sola opción válida pasa a obligatoria normal; sin ninguna, a revisar.
+    const mandatory_any_of: { options: string[]; min_level: number | null }[] = [];
+    (Array.isArray(ro?.mandatory_any_of) ? ro.mandatory_any_of : []).forEach((g: any, gi: number) => {
+      const options = uniq((Array.isArray(g?.options) ? g.options : [])
+        .map((x: unknown) => fix(`${base}.mandatory_any_of[${gi}]`, x, skillOf(x), "skill")).filter(Boolean) as string[]);
+      let lvl = asInt(g?.min_level);
+      if (lvl !== null && (lvl < 1 || lvl > 5)) lvl = null;
+      if (options.length === 0) {
+        review.push({ path: `${base}.mandatory_any_of[${gi}]`, value: g?.options ?? null, reason: "ninguna opción existe en el dataset: se quita el grupo", action: "revisar" });
+      } else if (options.length === 1) {
+        if (!mandatory.some((m) => m.name === options[0])) mandatory.push({ name: options[0], min_level: lvl });
+      } else {
+        mandatory_any_of.push({ options, min_level: lvl });
+      }
+    });
+
     const desirable: { name: string }[] = [];
     for (const s of Array.isArray(ro?.desirable_skills) ? ro.desirable_skills : []) {
       const name = fix(`${base}.desirable_skills`, s?.name, skillOf(s?.name), "skill");
@@ -361,7 +388,7 @@ export function validateInterpretation(raw: unknown, v: Vocabulario): { requirem
     const planned_hours = rangeInt(ro?.planned_hours, 1, 5000, `${base}.planned_hours`, "horas fuera de rango", review);
 
     return { title, count, matching_roles, seniority_min, min_years_experience: min_years,
-             mandatory_skills: mandatory, desirable_skills: desirable, languages, certifications, certification_options,
+             mandatory_skills: mandatory, mandatory_any_of, desirable_skills: desirable, languages, certifications, certification_options,
              sector_experience, sector_required, planned_hours };
   });
 

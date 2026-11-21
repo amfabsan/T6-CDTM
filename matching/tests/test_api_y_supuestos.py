@@ -56,13 +56,17 @@ class Api(unittest.TestCase):
                          "candidates": [{"employee_id": e, "rrf": 0.1, "pos_texto": 1, "pos_vector": 1} for e in ids]} for i in (0, 1)]
             if path == "rpc/perfiles":
                 return [p for p in SAMPLE if p["employee_id"] in body["p_ids"]]
+            if path == "rpc/skills_afines":
+                self.assertEqual(body["p_skills"], [".NET", "C#", "Java"])
+                return [{"skill": "C#", "afin": ".NET", "sim": 0.82}]
             raise AssertionError(path)
         return fake
 
     def test_match_project_confirmado(self):
         calls = []
         out = match_project("p1", {"top": 3}, fetch=self.fake_supabase("confirmado", calls))
-        self.assertEqual(calls, ["project_requirements?id=eq.p1&select=*", "rpc/candidatos_proyecto", "rpc/perfiles"])
+        self.assertEqual(calls, ["project_requirements?id=eq.p1&select=*", "rpc/candidatos_proyecto", "rpc/perfiles",
+                                 "rpc/skills_afines"])
         self.assertEqual(set(out["ranking"]), {"Backend", "Backend (2)"})
         self.assertEqual(out["n_filtrados"], {"Backend": 20})
         json.dumps(out)
