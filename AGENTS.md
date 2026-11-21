@@ -1,7 +1,7 @@
 # AGENTS.md · ORBIT AI (T6 · CDTM × UPV-UV Hackathon · caso NTT DATA)
 
 > Guía para cualquier asistente de IA (Claude Code, Cursor, Codex, Lovable…) que trabaje en este repo. **Léela entera antes de tocar nada.**
-> Fuente de verdad del producto: [`docs/ORBIT_AI_Brief_Tecnico_MVP.docx`](docs/ORBIT_AI_Brief_Tecnico_MVP.docx). Reglas del caso: [`case/caso.pdf`](case/caso.pdf). Datos: [`docs/DATA.md`](docs/DATA.md).
+> Fuente de verdad del producto: [`docs/IDEA.md`](docs/IDEA.md) (original en `docs/ORBIT_AI_Brief_Tecnico_MVP.docx`). Reglas del caso: [`case/caso.pdf`](case/caso.pdf). Datos: [`docs/DATA.md`](docs/DATA.md).
 > **Si este archivo y el brief chocan en nombres de tablas o columnas, manda este archivo:** describe lo que está realmente creado y cargado en Supabase.
 
 ## 1. Qué es ORBIT AI
