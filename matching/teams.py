@@ -6,6 +6,7 @@
 """
 from __future__ import annotations
 
+from datetime import date, timedelta
 from math import comb, inf
 
 from .contract import Project
@@ -40,35 +41,51 @@ def build_teams(slots: list[dict], scored_by_role: dict[str, list[dict]],
     return [m for m, _, _ in states]
 
 
-def _available_on(m: dict, prj: Project) -> str | None:
-    """Fecha confirmada; si está En banca sin fecha, la mínima del proyecto. Roll-off sin fecha = desconocida (nunca se inventa)."""
-    return m.get("available_on") or (prj.earliest_start if m.get("disponibilidad") == "En banca" else None)
+def _available_on(m: dict, prj: Project, rolloff_days: int | None = None) -> tuple[str | None, bool]:
+    """(fecha, es_supuesto). Fecha confirmada; En banca sin fecha -> la mínima del proyecto.
+    Roll-off sin fecha -> solo con el supuesto editable `rolloff_days` (inicio + N días), marcado como supuesto."""
+    if m.get("available_on"):
+        return m["available_on"], False
+    if m.get("disponibilidad") == "En banca":
+        return prj.earliest_start, False
+    if rolloff_days is not None and prj.earliest_start:
+        return (date.fromisoformat(prj.earliest_start) + timedelta(days=rolloff_days)).isoformat(), True
+    return None, False
 
 
 def score_teams(combos: list[list[dict]], slots: list[dict], eligible_by_role: dict[str, list[dict]], prj: Project,
-                hours_per_person: float | None = None, rate_per_hour: float | dict | None = None) -> list[dict]:
+                hours_per_person: float | None = None, rate_per_hour: float | dict | None = None,
+                rolloff_days: int | None = None) -> list[dict]:
     """Paso 10 · eligible_by_role = todos los elegibles por rol (posibles sustitutos).
-    Supuestos editables: horas (si el rol no trae planned_hours) y tarifa (si el candidato no trae cost_per_hour)."""
-    hours = {s["role"]: s.get("hours") or hours_per_person for s in slots}
+    Supuestos editables: horas (si el rol no trae planned_hours), tarifa (si el candidato no trae cost_per_hour, única
+    o por seniority) y días hasta que un Roll-off sin fecha puede empezar. Si se usa alguno, el estado es «supuesto»."""
+    hours = {s["role"]: (s["hours"], False) if s.get("hours") else (hours_per_person, hours_per_person is not None) for s in slots}
 
     def rate(m):
         if m.get("cost_per_hour") is not None:
-            return m["cost_per_hour"]
-        return rate_per_hour.get(m["nivel_seniority"]) if isinstance(rate_per_hour, dict) else rate_per_hour
+            return m["cost_per_hour"], False
+        r = rate_per_hour.get(m["nivel_seniority"]) if isinstance(rate_per_hour, dict) else rate_per_hour
+        return r, r is not None
+
+    def cost(m):
+        (r, ra), (h, ha) = rate(m), hours[m["role"]]
+        return (r * h, ra or ha) if r is not None and h is not None else (None, False)
 
     out = []
     for members in combos:
         total = len(members)
         ids = {m["employee_id"] for m in members}
-        dates = [_available_on(m, prj) for m in members]
+        dated = [_available_on(m, prj, rolloff_days) for m in members]
+        dates = [d for d, _ in dated]
         start = max(dates + ([prj.earliest_start] if prj.earliest_start else [])) if all(dates) else None
-        costs = [rate(m) * hours[m["role"]] if rate(m) is not None and hours[m["role"]] is not None else None for m in members]
+        costed = [cost(m) for m in members]
+        costs = [c for c, _ in costed]
 
         # Continuidad: se retira a cada integrante; su plaza se cubre con alguien elegible del mismo rol, fuera del
         # equipo, disponible como tarde en la fecha de inicio original del equipo. Se muestra el peor caso.
         worst, covered = None, total
         for m in members:
-            subs = sorted(((c, _available_on(c, prj)) for c in eligible_by_role.get(m["role"], []) if c["employee_id"] not in ids),
+            subs = sorted(((c, _available_on(c, prj, rolloff_days)[0]) for c in eligible_by_role.get(m["role"], []) if c["employee_id"] not in ids),
                           key=lambda cd: (cd[1] or "9999", *_by_score(cd[0])))
             in_time = next((c for c, d in subs if start is None or (d is not None and d <= start)), None)
             cov = total if in_time else total - 1
@@ -84,9 +101,10 @@ def score_teams(combos: list[list[dict]], slots: list[dict], eligible_by_role: d
                          "score": m["score"], "disponibilidad": m.get("disponibilidad"), "available_on": d, "cost": c}
                         for m, d, c in zip(members, dates, costs)],
             "fit": sum(m["score"] for m in members) / total,       # sin redondear: la UI redondea
-            "cost": {"value": sum(costs) if cost_known else None, "status": "estimado" if cost_known else "por estimar",
-                     "is_illustrative": True},
-            "start": {"date": start, "status": "estimado" if start else "por confirmar"},
+            "cost": {"value": sum(costs) if cost_known else None, "is_illustrative": True,
+                     "status": ("supuesto" if any(a for _, a in costed) else "estimado") if cost_known else "por estimar"},
+            "start": {"date": start,
+                      "status": ("supuesto" if any(a for _, a in dated) else "estimado") if start else "por confirmar"},
             "continuity": {"covered": covered, "total": total, "pct": round(100 * covered / total) if total else 0, "worst": worst},
             "gaps": sum(len(m.get("gaps", [])) for m in members),
         })

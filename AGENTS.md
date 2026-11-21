@@ -38,6 +38,8 @@ El manager puede manejar por voz los rankings y los equipos con un asistente de 
 | `supabase/migrations/001_schema.sql` | ✅ hecho, cargado | Tablas del **dataset** (solo lectura) + RPC `perfil` y `buscar_personas` |
 | `supabase/migrations/002_orbit_app.sql` | ✅ hecho, probado en local | Tablas de la **app**: `project_requirements`, `scenario_assumptions` |
 | `supabase/migrations/003_busqueda.sql` | ✅ hecho, probado en local (pgvector) | Pasos 5-6: pgvector, `perfil_busqueda`, embeddings de skills/roles, filtros duros, búsqueda híbrida con RRF y `vocabulario_orbit` |
+| `supabase/migrations/004_filtros_minimos.sql` | ✅ probado en local, **pendiente de aplicar en Supabase** | `filtrar_candidatos` solo excluye `Asignado` y el país si es exigido (el resto lo puntúa `matching/`); RPC `perfiles(ids)` |
+| `matching/` (+ `matching/api.py`) | ✅ hecho, 24 tests | Pasos 7-10 en Python y servicio HTTP `match-candidates` (FastAPI): `POST /match {project_id}` |
 | `scripts/build_embeddings.py` | ✅ hecho | Embeddings locales (MiniLM multilingüe, 384 dim) de skills, roles y perfiles. Se ejecuta tras cada carga |
 | `supabase/functions/interpret-project/` + `_shared/interpret.ts` | ✅ hecho, probado con Gemini (sin desplegar) | Pasos 1-3: PDF o texto → Gemini con vocabulario cerrado → validación. Tests: `_shared/interpret.test.ts` |
 | `scripts/load_profiles.py` | ✅ hecho | Carga Parquet → Postgres y aplica todas las migraciones |
@@ -77,7 +79,7 @@ RPC disponibles:
 - `perfil(p_employee_id)` devuelve el perfil completo en JSON.
 - `buscar_personas(p_disponibilidad[], p_area, p_rol, p_sector, p_min_anios, p_skills[], p_min_nivel, p_limit, p_offset)` es un buscador paginado. Exige **todas** las `p_skills` y cada fila trae `total`.
 - `vocabulario_orbit()` (003) devuelve el vocabulario cerrado: skills, roles, sectores, certificaciones, idiomas, países, ciudades, niveles, seniorities y modalidades.
-- `filtrar_candidatos(...)` (003) es el **paso 5**: filtros duros por rol. Disponibilidad, años, seniority mínimo, idiomas con nivel mínimo, certificaciones obligatorias (todas) y alternativas (`p_certificaciones_alguna`, basta una), y ubicación según la modalidad: presencial → misma ciudad, mismo país o movilidad internacional; híbrido → mismo país; remoto → el país solo si es exigido. **Las skills no filtran.** Verificado contra DuckDB en 13 casos.
+- `filtrar_candidatos(...)` es el **paso 5**. **Desde 004 solo excluye `Asignado` y, si `p_pais_exigido`, el país**; los demás parámetros se aceptan pero se ignoran (años, seniority, idiomas, certificaciones y ubicación pasan a gaps/riesgos en `matching/`). Versión de 003, ya sustituida: filtros duros por rol. Disponibilidad, años, seniority mínimo, idiomas con nivel mínimo, certificaciones obligatorias (todas) y alternativas (`p_certificaciones_alguna`, basta una), y ubicación según la modalidad: presencial → misma ciudad, mismo país o movilidad internacional; híbrido → mismo país; remoto → el país solo si es exigido. **Las skills no filtran.** Verificado contra DuckDB en 13 casos.
 - `buscar_candidatos(...)` (003) es el **paso 6**: entre los filtrados, full-text (`perfil_busqueda.tsv`, `ts_rank_cd`) + coseno con el vector medio de las skills y roles pedidos (obligatorias ×2), fusionados con RRF (k=20). Devuelve hasta 200 con `rrf`, `pos_texto`, `pos_vector` y `n_filtrados`.
 - `candidatos_proyecto(p_project_id, p_limit)` (003) aplica los pasos 5+6 a cada rol de `project_requirements.roles` y devuelve `[{role_index, title, count, n_filtrados, candidates}]`. Es la entrada de `match-candidates`.
 
@@ -200,6 +202,11 @@ $env:DATABASE_URL = "postgresql://postgres.<ref>:<PASSWORD>@aws-1-eu-west-1.pool
 # Edge function interpret-project (Supabase CLI): secreto y despliegue
 supabase secrets set GEMINI_API_KEY=<clave>     # opcional: GEMINI_MODEL=gemini-flash-latest
 supabase functions deploy interpret-project
+# Servicio match-candidates (pasos 7-10, Python). Claves solo en el entorno, nunca en el repo:
+.\.venv\Scripts\pip install -r matching\requirements.txt
+$env:SUPABASE_URL = "https://<ref>.supabase.co"; $env:SUPABASE_KEY = "<clave>"
+.\.venv\Scripts\uvicorn matching.api:app --port 8000
+.\.venv\Scripts\python -m unittest discover -s matching/tests -t .
 # Tests de la validación del LLM (Node 22+):
 node --test --experimental-strip-types supabase/functions/_shared/interpret.test.ts
 # Postgres local con pgvector para pruebas:

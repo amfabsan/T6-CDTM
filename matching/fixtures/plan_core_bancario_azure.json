@@ -7,7 +7,8 @@
    "city": null,
    "modality": null,
    "country_required": false,
-   "start_date": "2026-11-23"
+   "start_date": "2026-11-23",
+   "start_deadline_day": 4
   },
   "roles": [
    {
@@ -94,7 +95,6 @@
     "certification_options": [],
     "planned_hours": 40
    }
-  ],
-  "start_deadline_day": 4
+  ]
  }
 }
