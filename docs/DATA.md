@@ -152,33 +152,36 @@ Las dos últimas filas son aproximaciones con filtros de ejemplo. Las cifras rea
 
 Funciones RPC: `perfil(id)` devuelve el perfil completo en JSON y `buscar_personas(...)` es el buscador paginado con filtros duros y skills; tarda menos de 200 ms sobre los 190k perfiles.
 
-### Tamaño y muestra estratificada
-Cada perfil completo ocupa ~3 KB en Postgres (tablas e índices).
+### Qué cargamos: solo perfiles disponibles
+Cargamos **todos los perfiles disponibles**, es decir, `En banca` (disponible ya) y `Roll-off próximo (<3 meses)`. No es una muestra aleatoria: es el **100 % de las personas que se pueden asignar a un proyecto**. Los `Asignado` (82 %) no se cargan porque nunca podrían proponerse.
+
+```powershell
+.\.venv\Scripts\python -X utf8 scripts\load_profiles.py --schema --solo-disponibles
+```
 
 | Carga | Perfiles | Tamaño medido |
 |---|---|---|
 | Completa | 190.000 | 584 MB: no cabe en el plan gratuito de Supabase (500 MB) |
-| `--muestra 100000` | 100.167 | 306 MB |
-| **`--muestra 50000` (la que usamos)** | **50.169** | **167 MB**: cabe con margen de sobra, también para embeddings más adelante |
+| **`--solo-disponibles` (la que usamos)** | **34.003** | **114 MB**: cabe de sobra, también para embeddings más adelante |
 
-`--muestra N` es **estratificada y reproducible**. En cada estrato área × disponibilidad × sector principal (360 estratos) toma la misma proporción, ordenando por hash del id. Siempre salen los mismos perfiles y con la misma distribución que el dataset completo. Al cargar, el script comprueba la cobertura frente al Parquet completo.
+Cobertura medida frente al dataset completo:
 
-### Por qué 50k es significativa (medido)
-
-| | Completo | Muestra 50k |
+| | Completo | Solo disponibles |
 |---|---|---|
-| Roles | 87 | **87** (el más raro tiene 148 personas) |
-| Skills | 614 | **614** (la más rara aparece en 105 perfiles) |
-| Certificaciones, países, ciudades, sectores, seniorities | 100 / 15 / 63 / 10 / 6 | **todos** |
-| Disponibilidad Asignado / En banca / Roll-off | 82,1 / 8,0 / 9,9 % | 81,9 / 8,1 / 9,9 % |
-| Mínimo de personas En banca por rol | 46 | 12 |
-| Brief ciberseguridad (En banca, ≥3 años) | 766 | **202** |
-| Talento oculto en banca (disponible, sector principal ≠ banca) | 3.620 | **989** |
-| Perfiles de IA/ML disponibles (brief retail) | 1.715 | **425** |
+| Roles / skills / certificaciones / países / sectores | 87 / 614 / 100 / 15 / 10 | **todos** |
+| Personas del rol menos representado | 593 | 99 |
+| Mínimo de personas En banca por rol | 46 | 46 (todas) |
+| En banca / Roll-off | 15.267 / 18.736 | **15.267 / 18.736** (todos) |
+| Brief ciberseguridad: En banca, ≥3 años (pasan) | 766 | **766** |
+| Brief ciberseguridad: Roll-off, ≥3 años (deben quedar fuera por no estar disponibles ya) | 942 | **942** |
+| Talento oculto en banca (sector principal ≠ banca) | 3.620 | **3.620** |
+| Perfiles de IA/ML (brief retail) | 1.715 | **1.715** |
 
-Con 30k ya salían todos los roles y skills, pero algunas combinaciones rol × disponibilidad se quedaban en 5 personas. 50k es el punto en que cada brief de prueba tiene cientos de candidatos y nada queda vacío. El ejemplo de talento oculto (*Krystyna Kurcz*) está en la muestra.
+Como todos los candidatos posibles están cargados, las cifras de los briefs son las **reales del dataset completo**, no una estimación. *Krystyna Kurcz*, el ejemplo de talento oculto, está incluida.
 
-Las cifras del dataset completo, si hacen falta para el pitch, se calculan offline con DuckDB sobre el Parquet. El caso lo permite: *"Working on the sample is enough. Explaining how your solution would scale … is a plus."* Para escalar a los 190k basta con `python scripts/load_profiles.py` sin `--muestra` en un Postgres mayor: el esquema y el SQL son los mismos.
+**Ojo en la demo:** el filtro de disponibilidad sigue en código, pero en la base ya no hay `Asignado`. El brief de ciberseguridad sigue demostrando el filtro duro, porque descarta a los 942 en Roll-off, que no están disponibles *inmediatamente*. Para el pitch: *"precargamos solo personas asignables; el filtro de disponibilidad se aplica igualmente en código"*.
+
+Otras opciones del script: `--muestra N` (muestra estratificada por área × disponibilidad × sector) y la carga completa sin opciones, para un Postgres de más de 500 MB. El esquema y el SQL son los mismos.
 
 ## Leer el Parquet
 
