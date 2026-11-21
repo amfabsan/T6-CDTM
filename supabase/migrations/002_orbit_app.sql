@@ -23,25 +23,11 @@ create table if not exists project_requirements (
   created_at               timestamptz not null default now()
 );
 
--- Módulo C · Talent Assessment: evaluación complementaria de la entrevista de voz (evaluate-interview).
--- NUNCA modifica empleado_skills ni ninguna tabla del dataset.
-create table if not exists candidate_assessments (
-  id                         uuid primary key default gen_random_uuid(),
-  project_id                 uuid not null references project_requirements(id) on delete cascade,
-  employee_id                text not null references empleados(employee_id) on delete cascade,
-  elevenlabs_conversation_id text,
-  interview_transcript       text not null,
-  rubric_scores              jsonb not null default '{}', -- {"aplicacion_practica":4,"resolucion_problemas":3,...}
-  observed_evidence          jsonb not null default '[]', -- [{"dimension":"...","quote":"cita literal del transcript"}]
-  strengths                  jsonb not null default '[]',
-  concerns                   jsonb not null default '[]',
-  unverified_items           jsonb not null default '[]', -- lo que el candidato afirma y no se ha podido verificar
-  summary                    text,
-  created_at                 timestamptz not null default now()
-);
-create index if not exists candidate_assessments_project_idx on candidate_assessments (project_id, employee_id);
+-- El módulo de entrevista de voz se ha descartado: el nivel de cada skill ya está en empleado_skills.
+-- Si una versión anterior de esta migración llegó a crear su tabla, se elimina.
+drop table if exists candidate_assessments;
 
--- Módulo D · Staffing Decision Center: supuestos editables (NO vienen del dataset; siempre etiquetados como supuestos).
+-- Módulo C · Staffing Decision Center: supuestos editables (NO vienen del dataset; siempre etiquetados como supuestos).
 create table if not exists scenario_assumptions (
   id                          uuid primary key default gen_random_uuid(),
   project_id                  uuid not null references project_requirements(id) on delete cascade,
@@ -62,7 +48,7 @@ create index if not exists scenario_assumptions_project_idx on scenario_assumpti
 do $$
 declare t text;
 begin
-  foreach t in array array['project_requirements','candidate_assessments','scenario_assumptions'] loop
+  foreach t in array array['project_requirements','scenario_assumptions'] loop
     execute format('alter table %I enable row level security', t);
     execute format('drop policy if exists demo_lectura on %I', t);
     execute format('drop policy if exists demo_insercion on %I', t);

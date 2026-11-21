@@ -10,9 +10,10 @@
 Un manager de NTT DATA describe una necesidad de proyecto en lenguaje natural. ORBIT:
 1. la convierte en requisitos estructurados y editables;
 2. encuentra talento interno aunque su experiencia esté descrita con otro vocabulario;
-3. explica el ranking con evidencia;
-4. lanza una entrevista de voz contextual (ElevenLabs);
-5. compara escenarios Internal / External / Hybrid.
+3. explica el ranking con evidencia (nivel, años de uso, proyectos y certificaciones que ya están en la base de datos);
+4. compara escenarios Internal / External / Hybrid.
+
+> **Decisión del equipo:** el módulo de entrevista de voz del brief (Talent Assessment con ElevenLabs) **está descartado**. El nivel de experiencia de cada persona ya está en la base de datos (`empleado_skills.nivel`, `anios`, `demostrada`, `ultimo_anio`), y la validación del encaje se hace con esa evidencia. No añadáis ElevenLabs, entrevistas ni transcripciones.
 
 **Principio:** la IA interpreta y explica; las reglas deterministas filtran, puntúan y calculan. La decisión final siempre es humana.
 
@@ -20,15 +21,14 @@ Un manager de NTT DATA describe una necesidad de proyecto en lenguaje natural. O
 |---|---|---|
 | A. Project Brief | Textarea + requisitos editables (MUST / NICE) | `interpret-project` |
 | B. Talent Discovery | Ranking con score desglosado, evidencia, gaps y comparación de ≥3 candidatos | `match-candidates` |
-| C. Talent Assessment | Perfil + agente ElevenLabs (3 preguntas) + transcripción + rúbrica | `evaluate-interview` |
-| D. Staffing Decision Center | Internal / External / Hybrid con supuestos editables | `calculate-staffing-scenarios` |
+| C. Staffing Decision Center | Internal / External / Hybrid con supuestos editables | `calculate-staffing-scenarios` |
 
 ## 2. Estado del repo
 
 | Ruta | Estado | Qué es |
 |---|---|---|
 | `supabase/migrations/001_schema.sql` | ✅ hecho, cargado | Tablas del **dataset** (solo lectura) + RPC `perfil` y `buscar_personas` |
-| `supabase/migrations/002_orbit_app.sql` | ✅ hecho, probado en local | Tablas de la **app**: `project_requirements`, `candidate_assessments`, `scenario_assumptions` |
+| `supabase/migrations/002_orbit_app.sql` | ✅ hecho, probado en local | Tablas de la **app**: `project_requirements`, `scenario_assumptions` |
 | `scripts/load_profiles.py` | ✅ hecho | Carga Parquet → Postgres y aplica todas las migraciones |
 | `scripts/make_sample.py` | ✅ hecho | Regenera `data/sample/` (muestra JSON/CSV y vocabulario) desde el Parquet |
 | `data/profiles.parquet` | ✅ | Dataset original: 190.000 perfiles sintéticos |
@@ -37,8 +37,7 @@ Un manager de NTT DATA describe una necesidad de proyecto en lenguaje natural. O
 | `docs/DATA.md` | ✅ | Estructura del dataset, hallazgos y cifras |
 | `docs/ITERATIONS.md`, `docs/PATTERNS.md` | ✅ | Cuaderno de Improven e investigación de ediciones anteriores |
 | `prompts/lovable.md` | ✅ | Prompts para construir las pantallas en Lovable |
-| `prompts/elevenlabs.md` | ✅ | Configuración del agente de entrevista |
-| `supabase/functions/*` | ⏳ **por hacer** | Las 4 edge functions de la §5 |
+| `supabase/functions/*` | ⏳ **por hacer** | Las 3 edge functions de la §5 |
 | `legacy/skillsonar/` | ⛔ **no usar** | Diseño anterior (SkillSonar). Solo como referencia: ver `legacy/README.md` |
 
 ## 3. Datos: qué hay en Supabase
@@ -64,7 +63,6 @@ RPC disponibles:
 
 ### Tablas de la app (002, se leen y se insertan desde la app)
 - `project_requirements`: salida de `interpret-project` revisada por el manager. Guarda también `interpretation_raw`, la salida del LLM sin editar.
-- `candidate_assessments`: salida de `evaluate-interview`, por `project_id` + `employee_id`.
 - `scenario_assumptions`: supuestos económicos y pesos, con `is_illustrative`. Se versionan **insertando** una fila nueva.
 
 ### Cosas del dato que hay que respetar
@@ -82,10 +80,9 @@ RPC disponibles:
 4. **Trazabilidad:** cada fortaleza o gap apunta a su origen (skill con nivel y años, proyecto concreto, puesto, certificación). Si el LLM cita un proyecto, se **valida** que existe en el perfil antes de mostrarlo.
 5. **Los obligatorios incumplidos** se muestran como bloqueo o gap, no se esconden en una media.
 6. **Escenarios:** el dataset **no** trae salarios, tarifas ni plazos. Todo valor económico es un **supuesto editable**, etiquetado como "supuesto ilustrativo". La UI separa *dato observado*, *supuesto* y *resultado calculado*.
-7. **La entrevista de voz es complementaria:** nunca modifica `empleado_skills` ni el perfil y señala lo no verificado.
-8. **Secretos** (claves de ElevenLabs y del LLM, `DATABASE_URL`) solo en secretos de Supabase o en el entorno local. **Nunca** en el código del navegador ni en el repo. Las tablas del dataset no se escriben desde el navegador (RLS solo lectura).
-9. **Honestidad:** si algo de la demo está simulado o hardcodeado, se dice.
-10. **No tocar `legacy/`** ni construir sobre `teamBuilder.ts` (su búsqueda exhaustiva de combinaciones no escala).
+7. **Secretos** (clave del LLM, `DATABASE_URL`) solo en secretos de Supabase o en el entorno local. **Nunca** en el código del navegador ni en el repo. Las tablas del dataset no se escriben desde el navegador (RLS solo lectura).
+8. **Honestidad:** si algo de la demo está simulado o hardcodeado, se dice.
+9. **No tocar `legacy/`** ni construir sobre `teamBuilder.ts` (su búsqueda exhaustiva de combinaciones no escala).
 
 ## 5. Contratos de las edge functions (por hacer)
 Ubicación: `supabase/functions/<nombre>/index.ts` (Deno). CORS como en `legacy/skillsonar/supabase/extract/index.ts`, que sirve de base para llamar al LLM a través del AI Gateway de Lovable (`LOVABLE_API_KEY`) o de `AI_GATEWAY_URL` + `AI_API_KEY`.
@@ -110,24 +107,18 @@ Ubicación: `supabase/functions/<nombre>/index.ts` (Deno). CORS como en `legacy/
 - **Riesgos por candidato** (lo pide NTT DATA): nivel y años que no cuadran, Roll-off, skill solo declarada, último uso antiguo (`ultimo_anio`), sector distinto, idioma, modalidad o movilidad.
 - **Extra de NTT DATA:** una lista por rol sin repetir persona entre roles y respetando la disponibilidad.
 
-### `evaluate-interview` (módulo C, rol 4)
-- **In:** `project_requirements` + `employee_id` + `transcript`.
-- **Out:** `rubric_scores`, `observed_evidence` (citas **literales** del transcript), `strengths`, `concerns`, `unverified_items`, `summary`.
-- Rúbrica: aplicación práctica · resolución de problemas · comprensión del contexto · comunicación · evidencia/límites. Se descartan las citas que no aparezcan literalmente en el transcript. Guardar en `candidate_assessments`.
-
-### `calculate-staffing-scenarios` (módulo D, rol 3)
+### `calculate-staffing-scenarios` (módulo C, rol 3)
 - **In:** requisitos + shortlist (con cobertura y disponibilidad) + `scenario_assumptions`.
 - **Out:** por escenario, coste, tiempo hasta incorporación, cobertura, disponibilidad, riesgo y score. También el ganador y **por qué**.
 - **Fórmula:** `Score = w1·Cost + w2·Time + w3·Coverage + w4·Availability − w5·Risk`, normalizada. **Código determinista y testeable, sin LLM.** Pesos visibles en la UI.
 
-## 6. Reparto (brief §10)
+## 6. Reparto (brief §10, sin el rol de ElevenLabs)
 | Rol | Responsabilidad | Punto de partida en el repo |
 |---|---|---|
 | 1. Data Engineering | Datos en Supabase y validación | ✅ Hecho: `001`, `002`, `load_profiles.py`, `docs/DATA.md` |
 | 2. AI Matching / Backend | `interpret-project`, `match-candidates` | §3 y §5 de este archivo, `buscar_personas` como referencia de SQL |
 | 3. Scenario Intelligence | `calculate-staffing-scenarios` | `scenario_assumptions` (002), §5 |
-| 4. ElevenLabs | Agente + `evaluate-interview` | `prompts/elevenlabs.md`, `candidate_assessments` (002) |
-| 5. Lovable / Integración | Las 4 pantallas | `prompts/lovable.md` |
+| 4. Lovable / Integración | Las 3 pantallas + fichas de persona | `prompts/lovable.md` |
 
 ## 7. Cómo ejecutar
 ```powershell
@@ -139,7 +130,7 @@ $env:DATABASE_URL = "postgresql://postgres.<ref>:<PASSWORD>@aws-1-eu-west-1.pool
 # Postgres local para pruebas:
 docker run -d --name skillsonar-pg -e POSTGRES_PASSWORD=localtest -p 55432:5432 postgres:17
 ```
-Volver a cargar vacía las tablas del dataset, y por el `ON DELETE CASCADE` también borra las `candidate_assessments`.
+Volver a cargar vacía las tablas del dataset. `project_requirements` y `scenario_assumptions` no se tocan.
 
 ## 8. Convenciones
 - UI y textos en **español**. El código y los nombres de las tablas de la app, en inglés. Las tablas del dataset mantienen los nombres en español del Parquet.

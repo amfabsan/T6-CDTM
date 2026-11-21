@@ -15,7 +15,7 @@ Uso:
 
 Todas las columnas y bloques del Parquet se cargan tal cual; --solo-disponibles, --muestra y --limit solo reducen el número de perfiles.
 
-Es idempotente: vacía las tablas del dataset antes de cargar (por el ON DELETE CASCADE también se borran las candidate_assessments). DuckDB aplana el Parquet y lo inserta con su extensión postgres (COPY binario);
+Es idempotente: vacía las tablas del dataset antes de cargar. DuckDB aplana el Parquet y lo inserta con su extensión postgres (COPY binario);
 psycopg ejecuta el SQL del esquema (varias sentencias, funciones, bloques DO).
 """
 import argparse

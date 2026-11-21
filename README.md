@@ -7,15 +7,13 @@
 
 ## Flujo
 1. **Project Brief.** El manager describe la necesidad. La IA la convierte en requisitos MUST / NICE, editables antes de buscar.
-2. **Talent Discovery.** Ranking de perfiles internos con score desglosado, fortalezas, gaps, riesgos y la evidencia de cada afirmación. Permite comparar candidatos.
-3. **Talent Assessment.** Entrevista de voz contextual con **ElevenLabs** (3 preguntas sobre el reto del proyecto) y evaluación con rúbrica. Es complementaria: nunca cambia el perfil.
-4. **Staffing Decision Center.** Escenarios Internal / External / Hybrid calculados con supuestos editables y etiquetados.
+2. **Talent Discovery.** Ranking de perfiles internos con score desglosado, fortalezas, gaps, riesgos y la evidencia de cada afirmación (nivel, años de uso, proyectos y certificaciones del dataset). Permite comparar candidatos.
+3. **Staffing Decision Center.** Escenarios Internal / External / Hybrid calculados con supuestos editables y etiquetados.
 
 ## Cómo está hecho
 - **Lovable** (React + shadcn) para la interfaz. **Supabase** (Postgres + Edge Functions) para los datos y el backend.
 - **Datos:** dataset sintético de NTT DATA (190.000 perfiles). En Supabase están cargados los 34.003 **disponibles** (En banca + Roll-off <3 meses) con todas sus columnas. Ver [`docs/DATA.md`](docs/DATA.md).
 - **IA:** el LLM solo interpreta el brief y redacta explicaciones con evidencia recuperada. Los filtros, el score y los escenarios son **código determinista**.
-- **ElevenLabs Agents** para la entrevista contextual.
 
 ## Para el equipo y sus IAs
 Empezad por **[`AGENTS.md`](AGENTS.md)**: estado del repo, tablas reales, reglas, contratos de las edge functions y reparto. El brief técnico completo está en [`docs/ORBIT_AI_Brief_Tecnico_MVP.docx`](docs/ORBIT_AI_Brief_Tecnico_MVP.docx).

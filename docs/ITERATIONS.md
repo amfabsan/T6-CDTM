@@ -8,7 +8,7 @@
 ## Kick-off (30 min)
 
 **Frase de valor:**
-Para [managers y equipos de staffing de NTT DATA] que [tienen que cubrir posiciones y acaban contratando fuera porque no encuentran el talento interno], ORBIT AI es [un asistente de staffing intelligence] que [encuentra talento interno aunque esté descrito con otra jerga, lo valida con evidencia y una entrevista contextual, y compara cubrir dentro, fuera o en híbrido]. A diferencia de [buscar por palabras clave en CVs o Excel], [explica cada recomendación con su evidencia y deja la decisión al manager].
+Para [managers y equipos de staffing de NTT DATA] que [tienen que cubrir posiciones y acaban contratando fuera porque no encuentran el talento interno], ORBIT AI es [un asistente de staffing intelligence] que [encuentra talento interno aunque esté descrito con otra jerga, lo valida con la evidencia de su perfil (nivel, años, proyectos) y compara cubrir dentro, fuera o en híbrido]. A diferencia de [buscar por palabras clave en CVs o Excel], [explica cada recomendación con su evidencia y deja la decisión al manager].
 *(Ajustar al briefing real.)*
 
 **La apuesta con más riesgo** (probarla en la vuelta 1):
@@ -19,8 +19,8 @@ Creemos que [el responsable de staffing no ve qué requisitos quedan sin cubrir 
 
 | Ahora | Después (roadmap del pitch) |
 |---|---|
-| Necesidad → requisitos · candidatos con evidencia · Proponer equipo · huecos | Coste, seniority, ubicación · integración con HRIS · agente de voz en directo |
-| Nota de voz → autodeclarada · verificación con el histórico | Feedback entre compañeros · auditoría de sesgos |
+| Necesidad → requisitos MUST/NICE editables · talento con score, evidencia, gaps y riesgos · comparar candidatos | Integración con HRIS/ATS · embeddings a escala · optimización multi-proyecto |
+| Escenarios Internal / External / Hybrid con supuestos editables | Panel de impacto · auditoría de sesgos y gobernanza |
 
 ## Ciclo de cada vuelta
 1. **Pensar** (10 min): una frase con lo que queremos conseguir o aprender.
