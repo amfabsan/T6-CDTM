@@ -32,4 +32,10 @@ _(Rellenar con la medición real: tiempo hasta shortlist manual frente a ORBIT, 
 Perfiles **sintéticos** proporcionados por NTT DATA. Ningún empleado real. Las claves de API solo viven como secretos de Supabase.
 
 ## Equipo T6
-_(Nombres y roles)_
+| Nombre | Rol |
+|---|---|
+| **Betel Díaz** | CPO · Co-founder |
+| **Alejandro Fabiano** | AI Chief · Co-founder |
+| **Zhijian Wu** | Chief Technology · Co-founder |
+| **Samuel García** | Architecture & Cloud · Co-founder |
+| **Daniel Torres** | Data Analytics · Co-founder |
