@@ -1,39 +1,127 @@
 {
+ "requirements": {
   "project": {
-    "name": "App de pagos para banco español",
-    "client_sector": "Banca y Finanzas",
-    "country": "España",
-    "city": null,
-    "country_required": false,
-    "work_mode": "Remoto",
-    "earliest_start": null,
-    "latest_start": null
+   "project_name": "App de pagos para banco español",
+   "client_sector": "Banca y Finanzas",
+   "country": "España",
+   "city": null,
+   "modality": "remoto",
+   "country_required": false,
+   "start_date": null
   },
   "roles": [
-    {
-      "title": "Arquitecto cloud",
-      "count": 1,
-      "dataset_roles": ["Cloud Architect"],
-      "seniority_min": "Senior",
-      "mandatory_skills": [{ "name": "Arquitectura cloud", "min_level": 4 }, { "name": "Seguridad cloud", "min_level": 3 }],
-      "desirable_skills": [{ "name": "Kubernetes" }, { "name": "Terraform" }, { "name": "Pagos" }],
-      "languages": [{ "name": "Inglés", "level": "B2" }]
-    },
-    {
-      "title": "Backend",
-      "count": 2,
-      "dataset_roles": ["Backend Developer Java", "Backend Developer .NET"],
-      "mandatory_skills": [{ "name": "REST APIs", "min_level": 3 }, { "name": "Microservicios", "min_level": 3 }],
-      "desirable_skills": [{ "name": "Kubernetes" }, { "name": "Pagos" }, { "name": "Kafka" }],
-      "languages": [{ "name": "Inglés", "level": "B2" }]
-    },
-    {
-      "title": "Seguridad",
-      "count": 1,
-      "dataset_roles": ["Security Architect", "DevSecOps Engineer"],
-      "mandatory_skills": [{ "name": "Seguridad de aplicaciones", "min_level": 3 }],
-      "desirable_skills": [{ "name": "Kubernetes" }, { "name": "PCI-DSS" }, { "name": "SAML/OAuth2" }],
-      "languages": [{ "name": "Inglés", "level": "B2" }]
-    }
+   {
+    "title": "Arquitecto cloud",
+    "count": 1,
+    "matching_roles": [
+     "Cloud Architect"
+    ],
+    "seniority_min": "Senior",
+    "min_years_experience": null,
+    "mandatory_skills": [
+     {
+      "name": "Arquitectura cloud",
+      "min_level": 4
+     },
+     {
+      "name": "Seguridad cloud",
+      "min_level": 3
+     }
+    ],
+    "desirable_skills": [
+     {
+      "name": "Kubernetes"
+     },
+     {
+      "name": "Terraform"
+     },
+     {
+      "name": "Pagos"
+     }
+    ],
+    "languages": [
+     {
+      "name": "Inglés",
+      "level": "B2"
+     }
+    ],
+    "certifications": [],
+    "certification_options": []
+   },
+   {
+    "title": "Backend",
+    "count": 2,
+    "matching_roles": [
+     "Backend Developer Java",
+     "Backend Developer .NET"
+    ],
+    "seniority_min": null,
+    "min_years_experience": null,
+    "mandatory_skills": [
+     {
+      "name": "REST APIs",
+      "min_level": 3
+     },
+     {
+      "name": "Microservicios",
+      "min_level": 3
+     }
+    ],
+    "desirable_skills": [
+     {
+      "name": "Kubernetes"
+     },
+     {
+      "name": "Pagos"
+     },
+     {
+      "name": "Kafka"
+     }
+    ],
+    "languages": [
+     {
+      "name": "Inglés",
+      "level": "B2"
+     }
+    ],
+    "certifications": [],
+    "certification_options": []
+   },
+   {
+    "title": "Seguridad",
+    "count": 1,
+    "matching_roles": [
+     "Security Architect",
+     "DevSecOps Engineer"
+    ],
+    "seniority_min": null,
+    "min_years_experience": null,
+    "mandatory_skills": [
+     {
+      "name": "Seguridad de aplicaciones",
+      "min_level": 3
+     }
+    ],
+    "desirable_skills": [
+     {
+      "name": "Kubernetes"
+     },
+     {
+      "name": "PCI-DSS"
+     },
+     {
+      "name": "SAML/OAuth2"
+     }
+    ],
+    "languages": [
+     {
+      "name": "Inglés",
+      "level": "B2"
+     }
+    ],
+    "certifications": [],
+    "certification_options": []
+   }
   ]
+ }
 }
