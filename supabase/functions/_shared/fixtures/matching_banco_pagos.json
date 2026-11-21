@@ -1,0 +1,1320 @@
+{
+ "plan": {
+  "project": {
+   "name": "App de pagos para banco español",
+   "client_sector": "Banca y Finanzas",
+   "country": "España",
+   "city": null,
+   "country_required": false,
+   "work_mode": "Remoto",
+   "earliest_start": null,
+   "latest_start": null
+  },
+  "roles": [
+   {
+    "title": "Arquitecto cloud",
+    "count": 1,
+    "dataset_roles": [
+     "Cloud Architect"
+    ],
+    "seniority_min": "Senior",
+    "mandatory_skills": [
+     {
+      "name": "Arquitectura cloud",
+      "min_level": 4
+     },
+     {
+      "name": "Seguridad cloud",
+      "min_level": 3
+     }
+    ],
+    "desirable_skills": [
+     {
+      "name": "Kubernetes"
+     },
+     {
+      "name": "Terraform"
+     },
+     {
+      "name": "Pagos"
+     }
+    ],
+    "languages": [
+     {
+      "name": "Inglés",
+      "level": "B2"
+     }
+    ]
+   },
+   {
+    "title": "Backend",
+    "count": 2,
+    "dataset_roles": [
+     "Backend Developer Java",
+     "Backend Developer .NET"
+    ],
+    "mandatory_skills": [
+     {
+      "name": "REST APIs",
+      "min_level": 3
+     },
+     {
+      "name": "Microservicios",
+      "min_level": 3
+     }
+    ],
+    "desirable_skills": [
+     {
+      "name": "Kubernetes"
+     },
+     {
+      "name": "Pagos"
+     },
+     {
+      "name": "Kafka"
+     }
+    ],
+    "languages": [
+     {
+      "name": "Inglés",
+      "level": "B2"
+     }
+    ]
+   },
+   {
+    "title": "Seguridad",
+    "count": 1,
+    "dataset_roles": [
+     "Security Architect",
+     "DevSecOps Engineer"
+    ],
+    "mandatory_skills": [
+     {
+      "name": "Seguridad de aplicaciones",
+      "min_level": 3
+     }
+    ],
+    "desirable_skills": [
+     {
+      "name": "Kubernetes"
+     },
+     {
+      "name": "PCI-DSS"
+     },
+     {
+      "name": "SAML/OAuth2"
+     }
+    ],
+    "languages": [
+     {
+      "name": "Inglés",
+      "level": "B2"
+     }
+    ]
+   }
+  ]
+ },
+ "top_teams": {
+  "cumplen": 3323,
+  "items": [
+   {
+    "id": "NTT0057774+NTT0057857+NTT0012115+NTT0067691",
+    "members": [
+     {
+      "role": "Arquitecto cloud",
+      "employee_id": "NTT0057774",
+      "nombre_completo": "Gervasio Bermejo Adán",
+      "score": 44.9,
+      "disponibilidad": "Roll-off próximo (<3 meses)",
+      "available_on": null,
+      "cost": null
+     },
+     {
+      "role": "Backend",
+      "employee_id": "NTT0057857",
+      "nombre_completo": "Emma Suarez Romero",
+      "score": 60.5,
+      "disponibilidad": "En banca",
+      "available_on": null,
+      "cost": null
+     },
+     {
+      "role": "Backend",
+      "employee_id": "NTT0012115",
+      "nombre_completo": "Pedro Lucas Melo",
+      "score": 29.8,
+      "disponibilidad": "En banca",
+      "available_on": null,
+      "cost": null
+     },
+     {
+      "role": "Seguridad",
+      "employee_id": "NTT0067691",
+      "nombre_completo": "Leonardo Llamas Leiva",
+      "score": 38.3,
+      "disponibilidad": "En banca",
+      "available_on": null,
+      "cost": null
+     }
+    ],
+    "fit": 43.375,
+    "cost": {
+     "value": null,
+     "status": "por estimar",
+     "is_illustrative": true
+    },
+    "start": {
+     "date": null,
+     "status": "por confirmar"
+    },
+    "continuity": {
+     "covered": 4,
+     "total": 4,
+     "pct": 100,
+     "worst": {
+      "employee_id": "NTT0057774",
+      "role": "Arquitecto cloud",
+      "substitute": "NTT0110591",
+      "late_substitute": null
+     }
+    },
+    "gaps": 5
+   },
+   {
+    "id": "NTT0057774+NTT0057857+NTT0178741+NTT0067691",
+    "members": [
+     {
+      "role": "Arquitecto cloud",
+      "employee_id": "NTT0057774",
+      "nombre_completo": "Gervasio Bermejo Adán",
+      "score": 44.9,
+      "disponibilidad": "Roll-off próximo (<3 meses)",
+      "available_on": null,
+      "cost": null
+     },
+     {
+      "role": "Backend",
+      "employee_id": "NTT0057857",
+      "nombre_completo": "Emma Suarez Romero",
+      "score": 60.5,
+      "disponibilidad": "En banca",
+      "available_on": null,
+      "cost": null
+     },
+     {
+      "role": "Backend",
+      "employee_id": "NTT0178741",
+      "nombre_completo": "Lázaro Isern Borrás",
+      "score": 28.3,
+      "disponibilidad": "Roll-off próximo (<3 meses)",
+      "available_on": null,
+      "cost": null
+     },
+     {
+      "role": "Seguridad",
+      "employee_id": "NTT0067691",
+      "nombre_completo": "Leonardo Llamas Leiva",
+      "score": 38.3,
+      "disponibilidad": "En banca",
+      "available_on": null,
+      "cost": null
+     }
+    ],
+    "fit": 43.0,
+    "cost": {
+     "value": null,
+     "status": "por estimar",
+     "is_illustrative": true
+    },
+    "start": {
+     "date": null,
+     "status": "por confirmar"
+    },
+    "continuity": {
+     "covered": 4,
+     "total": 4,
+     "pct": 100,
+     "worst": {
+      "employee_id": "NTT0057774",
+      "role": "Arquitecto cloud",
+      "substitute": "NTT0110591",
+      "late_substitute": null
+     }
+    },
+    "gaps": 5
+   },
+   {
+    "id": "NTT0057774+NTT0057857+NTT0113498+NTT0067691",
+    "members": [
+     {
+      "role": "Arquitecto cloud",
+      "employee_id": "NTT0057774",
+      "nombre_completo": "Gervasio Bermejo Adán",
+      "score": 44.9,
+      "disponibilidad": "Roll-off próximo (<3 meses)",
+      "available_on": null,
+      "cost": null
+     },
+     {
+      "role": "Backend",
+      "employee_id": "NTT0057857",
+      "nombre_completo": "Emma Suarez Romero",
+      "score": 60.5,
+      "disponibilidad": "En banca",
+      "available_on": null,
+      "cost": null
+     },
+     {
+      "role": "Backend",
+      "employee_id": "NTT0113498",
+      "nombre_completo": "Catalina Zapata Cedillo",
+      "score": 26.8,
+      "disponibilidad": "Roll-off próximo (<3 meses)",
+      "available_on": null,
+      "cost": null
+     },
+     {
+      "role": "Seguridad",
+      "employee_id": "NTT0067691",
+      "nombre_completo": "Leonardo Llamas Leiva",
+      "score": 38.3,
+      "disponibilidad": "En banca",
+      "available_on": null,
+      "cost": null
+     }
+    ],
+    "fit": 42.625,
+    "cost": {
+     "value": null,
+     "status": "por estimar",
+     "is_illustrative": true
+    },
+    "start": {
+     "date": null,
+     "status": "por confirmar"
+    },
+    "continuity": {
+     "covered": 4,
+     "total": 4,
+     "pct": 100,
+     "worst": {
+      "employee_id": "NTT0057774",
+      "role": "Arquitecto cloud",
+      "substitute": "NTT0110591",
+      "late_substitute": null
+     }
+    },
+    "gaps": 5
+   },
+   {
+    "id": "NTT0057774+NTT0057857+NTT0110591+NTT0067691",
+    "members": [
+     {
+      "role": "Arquitecto cloud",
+      "employee_id": "NTT0057774",
+      "nombre_completo": "Gervasio Bermejo Adán",
+      "score": 44.9,
+      "disponibilidad": "Roll-off próximo (<3 meses)",
+      "available_on": null,
+      "cost": null
+     },
+     {
+      "role": "Backend",
+      "employee_id": "NTT0057857",
+      "nombre_completo": "Emma Suarez Romero",
+      "score": 60.5,
+      "disponibilidad": "En banca",
+      "available_on": null,
+      "cost": null
+     },
+     {
+      "role": "Backend",
+      "employee_id": "NTT0110591",
+      "nombre_completo": "Luigi Fernandes",
+      "score": 25.3,
+      "disponibilidad": "Roll-off próximo (<3 meses)",
+      "available_on": null,
+      "cost": null
+     },
+     {
+      "role": "Seguridad",
+      "employee_id": "NTT0067691",
+      "nombre_completo": "Leonardo Llamas Leiva",
+      "score": 38.3,
+      "disponibilidad": "En banca",
+      "available_on": null,
+      "cost": null
+     }
+    ],
+    "fit": 42.25,
+    "cost": {
+     "value": null,
+     "status": "por estimar",
+     "is_illustrative": true
+    },
+    "start": {
+     "date": null,
+     "status": "por confirmar"
+    },
+    "continuity": {
+     "covered": 4,
+     "total": 4,
+     "pct": 100,
+     "worst": {
+      "employee_id": "NTT0057774",
+      "role": "Arquitecto cloud",
+      "substitute": "NTT0113498",
+      "late_substitute": null
+     }
+    },
+    "gaps": 5
+   },
+   {
+    "id": "NTT0057774+NTT0057857+NTT0180786+NTT0067691",
+    "members": [
+     {
+      "role": "Arquitecto cloud",
+      "employee_id": "NTT0057774",
+      "nombre_completo": "Gervasio Bermejo Adán",
+      "score": 44.9,
+      "disponibilidad": "Roll-off próximo (<3 meses)",
+      "available_on": null,
+      "cost": null
+     },
+     {
+      "role": "Backend",
+      "employee_id": "NTT0057857",
+      "nombre_completo": "Emma Suarez Romero",
+      "score": 60.5,
+      "disponibilidad": "En banca",
+      "available_on": null,
+      "cost": null
+     },
+     {
+      "role": "Backend",
+      "employee_id": "NTT0180786",
+      "nombre_completo": "Begoña Acevedo Gimenez",
+      "score": 25.3,
+      "disponibilidad": "En banca",
+      "available_on": null,
+      "cost": null
+     },
+     {
+      "role": "Seguridad",
+      "employee_id": "NTT0067691",
+      "nombre_completo": "Leonardo Llamas Leiva",
+      "score": 38.3,
+      "disponibilidad": "En banca",
+      "available_on": null,
+      "cost": null
+     }
+    ],
+    "fit": 42.25,
+    "cost": {
+     "value": null,
+     "status": "por estimar",
+     "is_illustrative": true
+    },
+    "start": {
+     "date": null,
+     "status": "por confirmar"
+    },
+    "continuity": {
+     "covered": 4,
+     "total": 4,
+     "pct": 100,
+     "worst": {
+      "employee_id": "NTT0057774",
+      "role": "Arquitecto cloud",
+      "substitute": "NTT0110591",
+      "late_substitute": null
+     }
+    },
+    "gaps": 5
+   }
+  ],
+  "pending": []
+ },
+ "members_detail": [
+  {
+   "employee_id": "NTT0057774",
+   "nombre_completo": "Gervasio Bermejo Adán",
+   "puesto_actual": "Senior Security Architect",
+   "role": "Arquitecto cloud",
+   "nivel_seniority": "Senior",
+   "disponibilidad": "Roll-off próximo (<3 meses)",
+   "pais": "España",
+   "modalidad_trabajo": "Presencial",
+   "available_on": null,
+   "cost_per_hour": null,
+   "score": 44.9,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.42,
+     "weight": 35,
+     "points": 14.9
+    },
+    "evidence": {
+     "value": 0.38,
+     "weight": 20,
+     "points": 7.5
+    },
+    "sectorRole": {
+     "value": 0.5,
+     "weight": 15,
+     "points": 7.5
+    },
+    "seniority": {
+     "value": 1.0,
+     "weight": 10,
+     "points": 10.0
+    },
+    "desirable": {
+     "value": 0.0,
+     "weight": 10,
+     "points": 0.0
+    },
+    "langCert": {
+     "value": 1.0,
+     "weight": 5,
+     "points": 5.0
+    },
+    "recency": {
+     "value": 0.0,
+     "weight": 5,
+     "points": 0.0
+    }
+   },
+   "gaps": [
+    "Falta obligatoria: Arquitectura cloud"
+   ],
+   "risks": [
+    "Último uso de las skills pedidas en 2021",
+    "Roll-off próximo (<3 meses)",
+    "Prefiere presencial (proyecto remoto)"
+   ],
+   "evidence": [
+    {
+     "proyecto": "Implantación de onboarding digital de clientes",
+     "anio": 2021,
+     "sector": "Banca y Finanzas",
+     "skills": [
+      "Seguridad cloud"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "Arquitectura cloud",
+     "tipo": "obligatoria",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "Seguridad cloud",
+     "tipo": "obligatoria",
+     "nivel": 3,
+     "anios": 2.0,
+     "demostrada": true,
+     "confianza": 0.85
+    },
+    {
+     "name": "Kubernetes",
+     "tipo": "deseable",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "Terraform",
+     "tipo": "deseable",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "Pagos",
+     "tipo": "deseable",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    }
+   ]
+  },
+  {
+   "employee_id": "NTT0057857",
+   "nombre_completo": "Emma Suarez Romero",
+   "puesto_actual": "Backend Developer .NET",
+   "role": "Backend",
+   "nivel_seniority": "Mid",
+   "disponibilidad": "En banca",
+   "pais": "Argentina",
+   "modalidad_trabajo": "Presencial",
+   "available_on": null,
+   "cost_per_hour": null,
+   "score": 60.5,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.5,
+     "weight": 35,
+     "points": 17.5
+    },
+    "evidence": {
+     "value": 0.5,
+     "weight": 20,
+     "points": 10.0
+    },
+    "sectorRole": {
+     "value": 1.0,
+     "weight": 15,
+     "points": 15.0
+    },
+    "seniority": {
+     "value": 1.0,
+     "weight": 10,
+     "points": 10.0
+    },
+    "desirable": {
+     "value": 0.0,
+     "weight": 10,
+     "points": 0.0
+    },
+    "langCert": {
+     "value": 1.0,
+     "weight": 5,
+     "points": 5.0
+    },
+    "recency": {
+     "value": 0.6,
+     "weight": 5,
+     "points": 3.0
+    }
+   },
+   "gaps": [
+    "Falta obligatoria: Microservicios"
+   ],
+   "risks": [
+    "Prefiere presencial (proyecto remoto)",
+    "Reside en Argentina (proyecto en España)"
+   ],
+   "evidence": [
+    {
+     "proyecto": "Automatización de banca móvil",
+     "anio": 2024,
+     "sector": "Banca y Finanzas",
+     "skills": [
+      "REST APIs"
+     ]
+    },
+    {
+     "proyecto": "Migración a la nube de gestión de almacenes",
+     "anio": 2024,
+     "sector": "Transporte y Logística",
+     "skills": [
+      "REST APIs"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "REST APIs",
+     "tipo": "obligatoria",
+     "nivel": 3,
+     "anios": 2.0,
+     "demostrada": true,
+     "confianza": 1.0
+    },
+    {
+     "name": "Microservicios",
+     "tipo": "obligatoria",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "Kubernetes",
+     "tipo": "deseable",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "Pagos",
+     "tipo": "deseable",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "Kafka",
+     "tipo": "deseable",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    }
+   ]
+  },
+  {
+   "employee_id": "NTT0012115",
+   "nombre_completo": "Pedro Lucas Melo",
+   "puesto_actual": "DevOps Engineer",
+   "role": "Backend",
+   "nivel_seniority": "Mid",
+   "disponibilidad": "En banca",
+   "pais": "Brasil",
+   "modalidad_trabajo": "Híbrido",
+   "available_on": null,
+   "cost_per_hour": null,
+   "score": 29.8,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.0,
+     "weight": 35,
+     "points": 0.0
+    },
+    "evidence": {
+     "value": 0.0,
+     "weight": 20,
+     "points": 0.0
+    },
+    "sectorRole": {
+     "value": 0.5,
+     "weight": 15,
+     "points": 7.5
+    },
+    "seniority": {
+     "value": 1.0,
+     "weight": 10,
+     "points": 10.0
+    },
+    "desirable": {
+     "value": 0.33,
+     "weight": 10,
+     "points": 3.3
+    },
+    "langCert": {
+     "value": 1.0,
+     "weight": 5,
+     "points": 5.0
+    },
+    "recency": {
+     "value": 0.8,
+     "weight": 5,
+     "points": 4.0
+    }
+   },
+   "gaps": [
+    "Falta obligatoria: REST APIs",
+    "Falta obligatoria: Microservicios"
+   ],
+   "risks": [
+    "Reside en Brasil (proyecto en España)"
+   ],
+   "evidence": [
+    {
+     "proyecto": "Evolución y mantenimiento de portal de mediadores",
+     "anio": 2025,
+     "sector": "Seguros",
+     "skills": [
+      "Kubernetes"
+     ]
+    },
+    {
+     "proyecto": "Rediseño de la experiencia de gestión de red 5G",
+     "anio": 2022,
+     "sector": "Telecomunicaciones y Media",
+     "skills": [
+      "Kubernetes"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "REST APIs",
+     "tipo": "obligatoria",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "Microservicios",
+     "tipo": "obligatoria",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "Kubernetes",
+     "tipo": "deseable",
+     "nivel": 3,
+     "anios": 1.5,
+     "demostrada": true,
+     "confianza": 1.0
+    },
+    {
+     "name": "Pagos",
+     "tipo": "deseable",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "Kafka",
+     "tipo": "deseable",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    }
+   ]
+  },
+  {
+   "employee_id": "NTT0067691",
+   "nombre_completo": "Leonardo Llamas Leiva",
+   "puesto_actual": "DevSecOps Engineer",
+   "role": "Seguridad",
+   "nivel_seniority": "Mid",
+   "disponibilidad": "En banca",
+   "pais": "España",
+   "modalidad_trabajo": "Híbrido",
+   "available_on": null,
+   "cost_per_hour": null,
+   "score": 38.3,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.0,
+     "weight": 35,
+     "points": 0.0
+    },
+    "evidence": {
+     "value": 0.0,
+     "weight": 20,
+     "points": 0.0
+    },
+    "sectorRole": {
+     "value": 1.0,
+     "weight": 15,
+     "points": 15.0
+    },
+    "seniority": {
+     "value": 1.0,
+     "weight": 10,
+     "points": 10.0
+    },
+    "desirable": {
+     "value": 0.33,
+     "weight": 10,
+     "points": 3.3
+    },
+    "langCert": {
+     "value": 1.0,
+     "weight": 5,
+     "points": 5.0
+    },
+    "recency": {
+     "value": 1.0,
+     "weight": 5,
+     "points": 5.0
+    }
+   },
+   "gaps": [
+    "Falta obligatoria: Seguridad de aplicaciones"
+   ],
+   "risks": [],
+   "evidence": [
+    {
+     "proyecto": "Analítica avanzada para mantenimiento predictivo",
+     "anio": 2026,
+     "sector": "Industria y Automoción",
+     "skills": [
+      "Kubernetes"
+     ]
+    },
+    {
+     "proyecto": "Automatización de onboarding digital de clientes",
+     "anio": 2022,
+     "sector": "Banca y Finanzas",
+     "skills": [
+      "Kubernetes"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "Seguridad de aplicaciones",
+     "tipo": "obligatoria",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "Kubernetes",
+     "tipo": "deseable",
+     "nivel": 3,
+     "anios": 2.0,
+     "demostrada": true,
+     "confianza": 1.0
+    },
+    {
+     "name": "PCI-DSS",
+     "tipo": "deseable",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "SAML/OAuth2",
+     "tipo": "deseable",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    }
+   ]
+  },
+  {
+   "employee_id": "NTT0178741",
+   "nombre_completo": "Lázaro Isern Borrás",
+   "puesto_actual": "DevOps Engineer",
+   "role": "Backend",
+   "nivel_seniority": "Mid",
+   "disponibilidad": "Roll-off próximo (<3 meses)",
+   "pais": "España",
+   "modalidad_trabajo": "Híbrido",
+   "available_on": null,
+   "cost_per_hour": null,
+   "score": 28.3,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.0,
+     "weight": 35,
+     "points": 0.0
+    },
+    "evidence": {
+     "value": 0.0,
+     "weight": 20,
+     "points": 0.0
+    },
+    "sectorRole": {
+     "value": 0.5,
+     "weight": 15,
+     "points": 7.5
+    },
+    "seniority": {
+     "value": 1.0,
+     "weight": 10,
+     "points": 10.0
+    },
+    "desirable": {
+     "value": 0.28,
+     "weight": 10,
+     "points": 2.8
+    },
+    "langCert": {
+     "value": 1.0,
+     "weight": 5,
+     "points": 5.0
+    },
+    "recency": {
+     "value": 0.6,
+     "weight": 5,
+     "points": 3.0
+    }
+   },
+   "gaps": [
+    "Falta obligatoria: REST APIs",
+    "Falta obligatoria: Microservicios"
+   ],
+   "risks": [
+    "Roll-off próximo (<3 meses)"
+   ],
+   "evidence": [
+    {
+     "proyecto": "Rediseño de la experiencia de core bancario",
+     "anio": 2024,
+     "sector": "Banca y Finanzas",
+     "skills": [
+      "Kubernetes"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "REST APIs",
+     "tipo": "obligatoria",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "Microservicios",
+     "tipo": "obligatoria",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "Kubernetes",
+     "tipo": "deseable",
+     "nivel": 5,
+     "anios": 2.0,
+     "demostrada": true,
+     "confianza": 0.85
+    },
+    {
+     "name": "Pagos",
+     "tipo": "deseable",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "Kafka",
+     "tipo": "deseable",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    }
+   ]
+  },
+  {
+   "employee_id": "NTT0113498",
+   "nombre_completo": "Catalina Zapata Cedillo",
+   "puesto_actual": "Principal Functional Consultant (Banca)",
+   "role": "Backend",
+   "nivel_seniority": "Principal",
+   "disponibilidad": "Roll-off próximo (<3 meses)",
+   "pais": "México",
+   "modalidad_trabajo": "Híbrido",
+   "available_on": null,
+   "cost_per_hour": null,
+   "score": 26.8,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.0,
+     "weight": 35,
+     "points": 0.0
+    },
+    "evidence": {
+     "value": 0.0,
+     "weight": 20,
+     "points": 0.0
+    },
+    "sectorRole": {
+     "value": 0.5,
+     "weight": 15,
+     "points": 7.5
+    },
+    "seniority": {
+     "value": 1.0,
+     "weight": 10,
+     "points": 10.0
+    },
+    "desirable": {
+     "value": 0.33,
+     "weight": 10,
+     "points": 3.3
+    },
+    "langCert": {
+     "value": 1.0,
+     "weight": 5,
+     "points": 5.0
+    },
+    "recency": {
+     "value": 0.2,
+     "weight": 5,
+     "points": 1.0
+    }
+   },
+   "gaps": [
+    "Falta obligatoria: REST APIs",
+    "Falta obligatoria: Microservicios"
+   ],
+   "risks": [
+    "Último uso de las skills pedidas en 2022",
+    "Roll-off próximo (<3 meses)",
+    "Reside en México (proyecto en España)"
+   ],
+   "evidence": [
+    {
+     "proyecto": "Desarrollo de la plataforma de prevención de fraude",
+     "anio": 2022,
+     "sector": "Banca y Finanzas",
+     "skills": [
+      "Pagos"
+     ]
+    },
+    {
+     "proyecto": "Evolución y mantenimiento de core bancario",
+     "anio": 2018,
+     "sector": "Banca y Finanzas",
+     "skills": [
+      "Pagos"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "REST APIs",
+     "tipo": "obligatoria",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "Microservicios",
+     "tipo": "obligatoria",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "Kubernetes",
+     "tipo": "deseable",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "Pagos",
+     "tipo": "deseable",
+     "nivel": 3,
+     "anios": 11.0,
+     "demostrada": true,
+     "confianza": 1.0
+    },
+    {
+     "name": "Kafka",
+     "tipo": "deseable",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    }
+   ]
+  },
+  {
+   "employee_id": "NTT0110591",
+   "nombre_completo": "Luigi Fernandes",
+   "puesto_actual": "Lead Platform Engineer",
+   "role": "Backend",
+   "nivel_seniority": "Lead",
+   "disponibilidad": "Roll-off próximo (<3 meses)",
+   "pais": "Brasil",
+   "modalidad_trabajo": "Presencial",
+   "available_on": null,
+   "cost_per_hour": null,
+   "score": 25.3,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.0,
+     "weight": 35,
+     "points": 0.0
+    },
+    "evidence": {
+     "value": 0.0,
+     "weight": 20,
+     "points": 0.0
+    },
+    "sectorRole": {
+     "value": 0.5,
+     "weight": 15,
+     "points": 7.5
+    },
+    "seniority": {
+     "value": 1.0,
+     "weight": 10,
+     "points": 10.0
+    },
+    "desirable": {
+     "value": 0.28,
+     "weight": 10,
+     "points": 2.8
+    },
+    "langCert": {
+     "value": 1.0,
+     "weight": 5,
+     "points": 5.0
+    },
+    "recency": {
+     "value": 0.0,
+     "weight": 5,
+     "points": 0.0
+    }
+   },
+   "gaps": [
+    "Falta obligatoria: REST APIs",
+    "Falta obligatoria: Microservicios"
+   ],
+   "risks": [
+    "Roll-off próximo (<3 meses)",
+    "Prefiere presencial (proyecto remoto)",
+    "Reside en Brasil (proyecto en España)"
+   ],
+   "evidence": [],
+   "skills": [
+    {
+     "name": "REST APIs",
+     "tipo": "obligatoria",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "Microservicios",
+     "tipo": "obligatoria",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "Kubernetes",
+     "tipo": "deseable",
+     "nivel": 5,
+     "anios": 11.0,
+     "demostrada": true,
+     "confianza": 0.85
+    },
+    {
+     "name": "Pagos",
+     "tipo": "deseable",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "Kafka",
+     "tipo": "deseable",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    }
+   ]
+  },
+  {
+   "employee_id": "NTT0180786",
+   "nombre_completo": "Begoña Acevedo Gimenez",
+   "puesto_actual": "Functional Consultant (Banca)",
+   "role": "Backend",
+   "nivel_seniority": "Mid",
+   "disponibilidad": "En banca",
+   "pais": "España",
+   "modalidad_trabajo": "Presencial",
+   "available_on": null,
+   "cost_per_hour": null,
+   "score": 25.3,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.0,
+     "weight": 35,
+     "points": 0.0
+    },
+    "evidence": {
+     "value": 0.0,
+     "weight": 20,
+     "points": 0.0
+    },
+    "sectorRole": {
+     "value": 0.5,
+     "weight": 15,
+     "points": 7.5
+    },
+    "seniority": {
+     "value": 1.0,
+     "weight": 10,
+     "points": 10.0
+    },
+    "desirable": {
+     "value": 0.28,
+     "weight": 10,
+     "points": 2.8
+    },
+    "langCert": {
+     "value": 1.0,
+     "weight": 5,
+     "points": 5.0
+    },
+    "recency": {
+     "value": 0.0,
+     "weight": 5,
+     "points": 0.0
+    }
+   },
+   "gaps": [
+    "Falta obligatoria: REST APIs",
+    "Falta obligatoria: Microservicios"
+   ],
+   "risks": [
+    "Prefiere presencial (proyecto remoto)"
+   ],
+   "evidence": [],
+   "skills": [
+    {
+     "name": "REST APIs",
+     "tipo": "obligatoria",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "Microservicios",
+     "tipo": "obligatoria",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "Kubernetes",
+     "tipo": "deseable",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    },
+    {
+     "name": "Pagos",
+     "tipo": "deseable",
+     "nivel": 3,
+     "anios": 1.5,
+     "demostrada": true,
+     "confianza": 0.85
+    },
+    {
+     "name": "Kafka",
+     "tipo": "deseable",
+     "nivel": null,
+     "anios": null,
+     "demostrada": false,
+     "confianza": 0.0
+    }
+   ]
+  }
+ ]
+}

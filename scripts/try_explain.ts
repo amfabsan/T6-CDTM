@@ -1,5 +1,5 @@
 // Prueba real del paso 11 contra Gemini, sin Supabase.
-// Con la clave en .env (GEMINI_API_KEY=...): node --env-file=.env --experimental-strip-types scripts/try_explain.ts
+// Con la clave en .env (GEMINI_API_KEY_EXPLAIN=...): node --env-file=.env --experimental-strip-types scripts/try_explain.ts
 // Linux/macOS: GEMINI_API_KEY=... node --experimental-strip-types scripts/try_explain.ts
 // PowerShell:  $env:GEMINI_API_KEY="..."; node --experimental-strip-types scripts/try_explain.ts
 import { DEFAULT_FALLBACKS, DEFAULT_MODEL, explainWithGemini, type ExplainInput } from "../supabase/functions/_shared/explain.ts";
@@ -34,10 +34,17 @@ const input: ExplainInput = {
   }],
 };
 
-const apiKey = process.env.GEMINI_API_KEY;
-if (!apiKey) { console.error("Falta GEMINI_API_KEY"); process.exit(1); }
+// Con argumento, usa la salida real de los pasos 7-10:
+//   node --env-file=.env --experimental-strip-types scripts/try_explain.ts supabase/functions/_shared/fixtures/matching_banco_pagos.json
+import { readFileSync } from "node:fs";
+import { fromMatching } from "../supabase/functions/_shared/from_matching.ts";
+const file = process.argv[2];
+const realInput: ExplainInput = file ? fromMatching(JSON.parse(readFileSync(file, "utf8"))) : input;
+
+const apiKey = process.env.GEMINI_API_KEY_EXPLAIN || process.env.GEMINI_API_KEY;
+if (!apiKey) { console.error("Falta GEMINI_API_KEY_EXPLAIN en .env"); process.exit(1); }
 const t0 = Date.now();
-const out = await explainWithGemini(input, {
+const out = await explainWithGemini(realInput, {
   apiKey,
   model: process.env.GEMINI_MODEL || DEFAULT_MODEL,
   fallbackModels: (process.env.GEMINI_FALLBACK_MODELS || DEFAULT_FALLBACKS.join(",")).split(",").map((m) => m.trim()).filter(Boolean),

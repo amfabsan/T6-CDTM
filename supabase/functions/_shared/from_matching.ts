@@ -1,0 +1,87 @@
+// Convierte la salida de los pasos 7-10 (matching/pipeline.py → run_matching) en la entrada del paso 11.
+// Así el front solo tiene que reenviar a explain-recommendations lo que devolvió el matching.
+// Asigna ids de evidencia por persona: P1, P2… (proyectos) y S1, S2… (skills con nivel en el perfil).
+import type { CandidateInput, Evidence, ExplainInput, TeamInput } from "./explain.ts";
+
+interface PyEvidence { proyecto: string; anio: number; sector: string; skills: string[] }
+interface PySkill { name: string; tipo: string; nivel: number | null; anios: number | null; demostrada: boolean }
+interface PyCandidate {
+  employee_id: string; nombre_completo?: string; role: string; score: number; disponibilidad?: string;
+  breakdown?: Record<string, { points: number }>; gaps?: string[]; risks?: string[];
+  evidence?: PyEvidence[]; skills?: PySkill[];
+}
+interface PyTeam {
+  id: string; fit: number;
+  cost?: { value: number | null; status?: string };
+  start?: { date: string | null; status: string };
+  continuity?: { pct: number | null };
+  members: { role: string; employee_id: string }[];
+}
+interface PyPlan {
+  project?: { name?: string; client_sector?: string; country?: string; work_mode?: string };
+  roles?: { title: string; count?: number; mandatory_skills?: { name: string }[] }[];
+}
+export interface MatchingResult {
+  plan?: PyPlan;
+  project_summary?: string;
+  top_teams: { items: PyTeam[] };
+  members_detail: PyCandidate[];
+}
+
+export function isMatchingResult(body: unknown): body is MatchingResult {
+  return !!body && typeof body === "object" && "top_teams" in body && "members_detail" in body;
+}
+
+export function summarizePlan(plan?: PyPlan): string {
+  if (!plan) return "";
+  const p = plan.project ?? {};
+  const head = [p.name, p.client_sector && `sector ${p.client_sector}`, p.country, p.work_mode].filter(Boolean).join(" · ");
+  const roles = (plan.roles ?? []).map((r) =>
+    `${r.count ?? 1} × ${r.title}${r.mandatory_skills?.length ? ` (obligatorias: ${r.mandatory_skills.map((s) => s.name).join(", ")})` : ""}`);
+  return `${head}. Roles: ${roles.join("; ")}.`;
+}
+
+function toEvidence(c: PyCandidate): Evidence[] {
+  const projects = (c.evidence ?? []).map((e, i): Evidence => ({
+    id: `P${i + 1}`, type: "project", ref: `${e.proyecto} (${e.anio})`,
+    detail: [e.sector, e.skills?.length ? e.skills.join(", ") : ""].filter(Boolean).join(" · "),
+  }));
+  const skills = (c.skills ?? []).filter((s) => s.nivel != null).map((s, i): Evidence => ({
+    id: `S${i + 1}`, type: "skill", ref: s.name,
+    detail: `${s.tipo}, nivel ${s.nivel}, ${s.anios} años, ${s.demostrada ? "demostrada en proyectos" : "solo declarada"}`,
+  }));
+  return [...projects, ...skills];
+}
+
+export function fromMatching(result: MatchingResult): ExplainInput {
+  // Clave por persona; si la misma persona sale en dos roles, la segunda lleva "@rol".
+  const keyOf = new Map<string, string>();
+  const used = new Set<string>();
+  const candidates: CandidateInput[] = [];
+  for (const c of result.members_detail ?? []) {
+    const key = used.has(c.employee_id) ? `${c.employee_id}@${c.role}` : c.employee_id;
+    used.add(key);
+    keyOf.set(`${c.role}|${c.employee_id}`, key);
+    candidates.push({
+      employee_id: key,
+      nombre: c.nombre_completo ?? c.employee_id,
+      role: c.role,
+      fit: Math.round(c.score), // entero: el LLM escribirá "45 %" y la validación de cifras lo acepta
+      disponibilidad: c.disponibilidad ?? "",
+      breakdown: Object.fromEntries(Object.entries(c.breakdown ?? {}).map(([k, v]) => [k, v.points])),
+      gaps: c.gaps ?? [],
+      risks: c.risks ?? [],
+      evidence: toEvidence(c),
+    });
+  }
+  const teams: TeamInput[] = (result.top_teams?.items ?? []).map((t) => ({
+    team_id: t.id,
+    fit: Math.round(t.fit),
+    continuity: t.continuity?.pct ?? null,
+    cost: t.cost?.value ?? null,
+    start: { day: null, status: t.start?.status ?? "por confirmar" },
+    members: t.members
+      .map((m) => ({ role: m.role, employee_id: keyOf.get(`${m.role}|${m.employee_id}`) ?? m.employee_id })),
+  }));
+  return { project_summary: result.project_summary ?? summarizePlan(result.plan), candidates, teams };
+}

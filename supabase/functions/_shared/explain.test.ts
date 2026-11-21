@@ -191,3 +191,20 @@ test("un 400 (petición mal formada) no prueba más modelos", async () => {
   assert.equal(tried.length, 1);
   assert.match(out.error ?? "", /400/);
 });
+
+test("adapta la salida real de los pasos 7-10 (run_matching sobre data/sample)", async () => {
+  const { readFileSync } = await import("node:fs");
+  const { fromMatching, isMatchingResult } = await import("./from_matching.ts");
+  const raw = JSON.parse(readFileSync(new URL("./fixtures/matching_banco_pagos.json", import.meta.url), "utf8"));
+  assert.ok(isMatchingResult(raw));
+  const inp = fromMatching(raw);
+  assert.equal(inp.teams.length, 5);
+  assert.match(inp.project_summary, /Arquitecto cloud/);
+  const ids = new Set(inp.candidates.map((c) => c.employee_id));
+  for (const t of inp.teams) for (const m of t.members) assert.ok(ids.has(m.employee_id), `falta ${m.employee_id}`);
+  assert.ok(inp.candidates.every((c) => Number.isInteger(c.fit)));
+  assert.ok(inp.candidates.some((c) => c.evidence.some((e) => e.type === "project")));
+  // Sin LLM, la plantilla explica todos los equipos con evidencia real.
+  const out = validate({}, inp);
+  assert.ok(out.teams.every((t) => t.source === "fallback" && t.reasons.length > 0));
+});
