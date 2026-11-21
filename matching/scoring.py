@@ -36,19 +36,38 @@ def _has_lang(p: dict, name: str, level: str) -> bool:
     return any(i["idioma"] == name and _idx(LANG, i["nivel"]) >= max(0, _idx(LANG, level)) for i in p["idiomas"])
 
 
-def hard_filter_reasons(p: dict, req: RoleRequirements, prj: Project) -> list[str]:
-    """Filtros duros (espejo en código del paso 5 en SQL). [] = elegible. Las skills nunca excluyen."""
+HARD_FILTERS = ("disponibilidad", "min_years", "seniority", "languages", "certifications", "country")
+# Por defecto solo excluye lo inequívoco: estar Asignado. El resto (años, seniority, idioma, certificación, país)
+# no excluye: sale como gap y resta en el score. Un caso concreto puede endurecerlo pasando `strict`.
+DEFAULT_STRICT = ("disponibilidad",)
+
+
+def hard_filter_reasons(p: dict, req: RoleRequirements, prj: Project, strict=DEFAULT_STRICT) -> list[str]:
+    """Motivos de exclusión según los filtros activos en `strict`. [] = pasa. Las skills nunca excluyen."""
     out = []
-    if p.get("disponibilidad") == "Asignado":
+    if "disponibilidad" in strict and p.get("disponibilidad") == "Asignado":
         out.append("Asignado (no disponible)")
-    if req.min_years is not None and p["anios_experiencia"] < req.min_years:
+    if "min_years" in strict and req.min_years is not None and p["anios_experiencia"] < req.min_years:
         out.append(f"{p['anios_experiencia']} años < {req.min_years}")
-    if req.seniority and _idx(SENIORITY, p["nivel_seniority"]) < _idx(SENIORITY, req.seniority):
+    if "seniority" in strict and req.seniority and _idx(SENIORITY, p["nivel_seniority"]) < _idx(SENIORITY, req.seniority):
         out.append(f"Seniority {p['nivel_seniority']} < {req.seniority}")
-    out += [f"{n} < {lv}" for n, lv in req.languages if not _has_lang(p, n, lv)]
-    out += [f"Sin certificación {c}" for c in req.certifications if not any(x["nombre"] == c for x in p["certificaciones"])]
-    if prj.country_required and prj.country and p.get("pais") != prj.country:
+    if "languages" in strict:
+        out += [f"{n} < {lv}" for n, lv in req.languages if not _has_lang(p, n, lv)]
+    if "certifications" in strict:
+        out += [f"Sin certificación {c}" for c in req.certifications if not any(x["nombre"] == c for x in p["certificaciones"])]
+    if "country" in strict and prj.country_required and prj.country and p.get("pais") != prj.country:
         out.append(f"Fuera de {prj.country}")
+    return out
+
+
+def eligibility_reasons(scored: dict, min_score: float = 0) -> list[str]:
+    """Elegible = score > min_score y al menos una skill pedida (obligatoria o deseable). Si el rol no pide skills, basta el score.
+    Sin ninguna skill pedida el perfil no aporta nada al rol aunque sume puntos por idioma o seniority."""
+    out = []
+    if scored["skills"] and not any(s["nivel"] is not None for s in scored["skills"]):
+        out.append("Ninguna skill pedida")
+    if scored["score"] <= min_score:
+        out.append(f"Score {scored['score']} ≤ {min_score}")
     return out
 
 

@@ -5,7 +5,7 @@ import unittest
 
 from matching.contract import from_llm_plan, normalize_profile
 from matching.pipeline import run_matching
-from matching.scoring import confidence, hard_filter_reasons, rank_role, score_candidate
+from matching.scoring import confidence, eligibility_reasons, hard_filter_reasons, rank_role, score_candidate
 from matching.teams import build_teams, score_teams, top_teams
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
@@ -70,6 +70,21 @@ class Pasos7a9(unittest.TestCase):
         self.assertEqual(confidence(BASE["skills"][0]), 1)
         self.assertAlmostEqual(confidence(BASE["skills"][2]), 0.42)
 
+    def test_elegibilidad_por_score_y_filtros_por_defecto(self):
+        p = {**BASE, "anios_experiencia": 1, "nivel_seniority": "Junior", "idiomas": []}
+        req = from_llm_plan({"project": {}, "roles": [{"title": "B", "count": 1, "min_years": 5, "seniority_min": "Senior",
+                             "languages": [{"name": "Inglés", "level": "B2"}], "mandatory_skills": [{"name": "REST APIs"}]}]})[1][0]
+        self.assertEqual(hard_filter_reasons(p, req, PROJECT), [])  # años, seniority e idioma no excluyen por defecto
+        s = score_candidate(p, req, PROJECT)
+        self.assertTrue({"1 años < 5", "Seniority Junior < Senior", "Inglés por debajo de B2"} <= set(s["gaps"]))
+        self.assertEqual(eligibility_reasons(s), [])
+        self.assertEqual(hard_filter_reasons({**p, "disponibilidad": "Asignado"}, req, PROJECT), ["Asignado (no disponible)"])
+        nada = score_candidate({**BASE, "skills": []}, req, PROJECT)
+        self.assertIn("Ninguna skill pedida", eligibility_reasons(nada))
+        out = run_matching(PLAN, {"Backend": [{**BASE, "skills": []}, BASE]})
+        self.assertEqual([x["employee_id"] for x in out["ranking"]["Backend"]["items"]], ["NTT1"])
+        self.assertEqual(out["excluded"]["Backend"][0]["reasons"], ["Ninguna skill pedida"])
+
     def test_ranking(self):
         r = rank_role([mk(i, "x", sc) for i, sc in [("a", 70), ("b", 90), ("c", 85), ("d", 79)]], top=2, min_score=80)
         self.assertEqual(r["cumplen"], 2)
@@ -108,7 +123,11 @@ DPROJ, DROLES = from_llm_plan(load(FIX / "plan_core_bancario_azure.json"))
 DSLOTS = [{"role": r.role, "count": r.count, "hours": r.planned_hours} for r in DROLES]
 
 
-def demo(overrides=None):
+# El caso pide que los años mínimos excluyan (X2): se activa ese filtro solo aquí. Por defecto solo excluye «Asignado».
+CASO_STRICT = ("disponibilidad", "min_years")
+
+
+def demo(overrides=None, strict=CASO_STRICT):
     overrides = overrides or {}
     eligible, excluded = {}, []
     for r in DROLES:
@@ -117,7 +136,7 @@ def demo(overrides=None):
             prof = {"employee_id": x["id"], "nivel_seniority": "Senior", "anios_experiencia": x["total_years"],
                     "disponibilidad": "Asignado" if x["availability"] == "asignado" else "En banca",
                     "pais": "España", "idiomas": [], "certificaciones": []}
-            if hard_filter_reasons(prof, r, DPROJ):
+            if hard_filter_reasons(prof, r, DPROJ, strict):
                 excluded.append(x["id"])
                 continue
             eligible[r.role].append({"employee_id": x["id"], "nombre_completo": x["name"], "role": r.role, "score": x["fixture_match"],
@@ -135,6 +154,12 @@ class CasoDemo(unittest.TestCase):
         self.assertEqual(sorted(excluded), ["X1", "X2"])
         self.assertEqual(sum(map(len, eligible.values())), 9)
         self.assertEqual(len(teams), 27)
+
+    def test_por_defecto_X2_es_elegible_con_gap_y_solo_X1_excluido(self):
+        eligible, excluded, teams = demo(strict=("disponibilidad",))
+        self.assertEqual(excluded, ["X1"])
+        self.assertIn("X2", [c["employee_id"] for c in eligible["BACK"]])
+        self.assertEqual(len(teams), 36)
 
     def test_ranking_backend_top3_min90(self):
         r = rank_role(demo()[0]["BACK"], top=3, min_score=90)

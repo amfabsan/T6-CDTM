@@ -19,14 +19,18 @@ brief del manager
 - Salida por rol del equipo: `roles` (de los 87 del dataset), `seniority`, `mandatory_skills[{name,min_level}]`, `desirable_skills`, `sector_experience`, `languages[{name,level}]`, `certifications`, `min_years_experience`, `count` (cuántas personas).
 - Skills **solo** de las 614 de `catalogo_skills`. Así la «otra jerga» del brief se traduce aquí; por ejemplo, «orquestación de contenedores» pasa a Kubernetes.
 
-## 2. Filtros duros (SQL)
-Solo campos estructurados. **Las skills nunca filtran**: un candidato sin una obligatoria sale con un gap visible, no desaparece.
+## 2. Filtros duros y elegibilidad
+**Solo excluye lo inequívoco: estar `Asignado`.** Todo lo ambiguo (que falte una skill, años, seniority, idioma, certificación, país) **no excluye**: sale como gap y resta en el score.
 
-| Filtro | Columna |
+- **Elegible** = no Asignado **y** score > mínimo (0 por defecto) **y** al menos una skill pedida. Después se recalculan el ranking y los equipos con los elegibles.
+- Cada excluido queda anotado con su motivo y su score (`excluded[rol]`); nadie desaparece sin explicación.
+- Un caso concreto puede endurecer filtros (`strict` en `matching/scoring.py`: `min_years`, `seniority`, `languages`, `certifications`, `country`), por ejemplo el caso demo, que pide excluir por años.
+
+| Puede excluir (si se activa) | Columna |
 |---|---|
-| Disponibilidad (`En banca` / `Roll-off próximo (<3 meses)`; categórica) | `empleados.disponibilidad` |
+| Disponibilidad: `Asignado` (activo por defecto) | `empleados.disponibilidad` |
 | Años mínimos | `empleados.anios_experiencia` |
-| País | `empleados.pais` |
+| País exigido | `empleados.pais` |
 | Idiomas con nivel mínimo | `idiomas` (A1 < … < C2 < Nativo) |
 | Seniority | `empleados.nivel_seniority` |
 | Certificación **obligatoria** | `certificaciones` |
