@@ -23,6 +23,7 @@ export function confidence(s: SkillRow): number {
 export interface ScoredCandidate {
   employee_id: string; nombre_completo: string; puesto_actual?: string; role: string;
   nivel_seniority: string; disponibilidad: string; pais: string; modalidad_trabajo: string;
+  available_on: string | null; cost_per_hour: number | null;
   score: number;                                       // 0-100 = «encaje (%)»
   breakdown: Record<keyof Weights, { value: number; weight: number; points: number }>;
   gaps: string[]; risks: string[];
@@ -64,7 +65,7 @@ export function scoreCandidate(p: Profile, req: RoleRequirements, prj: Project, 
   }));
 
   const sectorOk = req.sectors.some((x) => x === p.sector_principal || p.sectores_proyectos.includes(x));
-  if (req.sectors.length && !sectorOk) risks.push(`Sin experiencia en ${req.sectors.join(" / ")}`);
+  if (req.sectors.length && !sectorOk) (req.sectorRequired ? gaps : risks).push(`Sin experiencia en ${req.sectors.join(" / ")}`);
   const sectorRole = mean([
     ...(req.sectors.length ? [sectorOk ? 1 : 0] : []),
     ...(req.roles.length ? [req.roles.includes(p.rol) ? 1 : 0] : []),
@@ -105,8 +106,9 @@ export function scoreCandidate(p: Profile, req: RoleRequirements, prj: Project, 
   const wanted = new Set(asked);
 
   return {
-    employee_id: p.employee_id, nombre_completo: p.nombre_completo, puesto_actual: (p as { puesto_actual?: string }).puesto_actual,
+    employee_id: p.employee_id, nombre_completo: p.nombre_completo, puesto_actual: p.puesto_actual,
     role: req.role, nivel_seniority: p.nivel_seniority, disponibilidad: p.disponibilidad, pais: p.pais, modalidad_trabajo: p.modalidad_trabajo,
+    available_on: p.available_on ?? null, cost_per_hour: p.cost_per_hour ?? null,
     score: round1(total), breakdown, gaps, risks,
     evidence: p.proyectos
       .map((x) => ({ proyecto: x.nombre, anio: x.anio, sector: x.cliente_sector, skills: x.tecnologias.filter((t) => wanted.has(t)) }))
@@ -117,6 +119,22 @@ export function scoreCandidate(p: Profile, req: RoleRequirements, prj: Project, 
                demostrada: !!s?.demostrada, confianza: s ? round1(confidence(s) * 100) / 100 : 0 };
     }),
   };
+}
+
+/**
+ * Filtros duros (espejo en código del paso 5 en SQL, para pruebas y datos que no vienen de la BD).
+ * Devuelve los motivos de exclusión; [] = elegible. Las skills nunca excluyen.
+ */
+export function hardFilterReasons(p: Profile, req: RoleRequirements, prj: Project): string[] {
+  const out: string[] = [];
+  if (p.disponibilidad === "Asignado") out.push("Asignado (no disponible)");
+  if (req.minYears != null && p.anios_experiencia < req.minYears) out.push(`${p.anios_experiencia} años < ${req.minYears}`);
+  if (req.seniority && SENIORITY.indexOf(p.nivel_seniority) < SENIORITY.indexOf(req.seniority)) out.push(`Seniority ${p.nivel_seniority} < ${req.seniority}`);
+  for (const { name, level } of req.languages)
+    if (!p.idiomas.some((i) => i.idioma === name && LANG.indexOf(i.nivel) >= Math.max(0, LANG.indexOf(level)))) out.push(`${name} < ${level}`);
+  for (const c of req.certifications) if (!p.certificaciones.some((x) => x.nombre === c)) out.push(`Sin certificación ${c}`);
+  if (prj.countryRequired && prj.country && p.pais !== prj.country) out.push(`Fuera de ${prj.country}`);
+  return out;
 }
 
 /** Paso 8 · Ranking por rol: orden por score (empate → ID), encaje mínimo y Top N. `cumplen` = cuántos pasan el mínimo. */

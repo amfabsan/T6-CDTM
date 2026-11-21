@@ -6,7 +6,8 @@
     "city": null,
     "country_required": false,
     "work_mode": "Remoto",
-    "start_date": null
+    "earliest_start": null,
+    "latest_start": null
   },
   "roles": [
     {

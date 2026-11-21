@@ -12,7 +12,8 @@ export interface LlmPlan {
     city?: string | null;
     country_required?: boolean;               // true = el país es exigido (contrato, normativa), no solo preferido
     work_mode?: "Remoto" | "Híbrido" | "Presencial" | null;
-    start_date?: string | null;               // ISO YYYY-MM-DD, solo si el plan la dice
+    earliest_start?: string | null;           // ISO YYYY-MM-DD: fecha mínima de inicio, solo si el plan la dice
+    latest_start?: string | null;             // ISO YYYY-MM-DD: fecha límite de inicio
   };
   roles: {
     title: string;                            // etiqueta libre del puesto: "Arquitecto cloud senior"
@@ -25,16 +26,22 @@ export interface LlmPlan {
     languages?: { name: string; level: string }[];
     certifications_required?: string[];
     sector_experience?: string[];             // si falta, se usa project.client_sector
+    sector_required?: boolean;                // true = obligatoria (gap si falta); false = deseable (riesgo)
+    planned_hours?: number | null;            // horas por persona del bloque (para el coste)
   }[];
 }
 
 // ───────────── Modelo interno (estable) ─────────────
 export type WorkMode = "Remoto" | "Híbrido" | "Presencial";
-export interface Project { sector: string | null; country: string | null; city: string | null; countryRequired: boolean; workMode: WorkMode | null }
+export interface Project {
+  sector: string | null; country: string | null; city: string | null; countryRequired: boolean; workMode: WorkMode | null;
+  earliestStart: string | null; latestStart: string | null;
+}
 export interface RoleRequirements {
   role: string; count: number; roles: string[]; seniority: string | null; minYears: number | null;
   mandatory: { name: string; minLevel: number }[]; desirable: string[];
-  languages: { name: string; level: string }[]; certifications: string[]; sectors: string[];
+  languages: { name: string; level: string }[]; certifications: string[]; sectors: string[]; sectorRequired: boolean;
+  plannedHours: number | null;
 }
 
 export const DEFAULT_MIN_LEVEL = 3;
@@ -44,6 +51,7 @@ export function fromLlmPlan(plan: LlmPlan): { project: Project; roles: RoleRequi
   const project: Project = {
     sector: p.client_sector ?? null, country: p.country ?? null, city: p.city ?? null,
     countryRequired: !!p.country_required, workMode: p.work_mode ?? null,
+    earliestStart: p.earliest_start ?? null, latestStart: p.latest_start ?? null,
   };
   const roles = plan.roles.map((r): RoleRequirements => ({
     role: r.title, count: Math.max(1, r.count | 0), roles: r.dataset_roles ?? [],
@@ -52,6 +60,7 @@ export function fromLlmPlan(plan: LlmPlan): { project: Project; roles: RoleRequi
     desirable: (r.desirable_skills ?? []).map((s) => s.name),
     languages: r.languages ?? [], certifications: r.certifications_required ?? [],
     sectors: r.sector_experience?.length ? r.sector_experience : project.sector ? [project.sector] : [],
+    sectorRequired: !!r.sector_required, plannedHours: r.planned_hours ?? null,
   }));
   return { project, roles };
 }
@@ -65,6 +74,10 @@ export interface Profile {
   sector_principal: string; disponibilidad: string; pais: string; ciudad: string; modalidad_trabajo: string;
   movilidad_internacional: boolean; sectores_proyectos: string[]; skills: SkillRow[]; proyectos: ProfileProject[];
   certificaciones: { nombre: string; anio: number | null }[]; idiomas: { idioma: string; nivel: string }[];
+  puesto_actual?: string;
+  // No vienen en el dataset: fecha de disponibilidad confirmada y tarifa interna (supuestos o datos de staffing).
+  available_on?: string | null;    // ISO YYYY-MM-DD
+  cost_per_hour?: number | null;   // €/h
 }
 
 /** Completa los campos derivados que calcula load_profiles.py si el perfil viene del Parquet. */

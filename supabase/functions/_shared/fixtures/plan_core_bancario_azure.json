@@ -1,0 +1,80 @@
+{
+ "project": {
+  "name": "Migración de core bancario a Azure",
+  "client_sector": "Banca y Finanzas",
+  "country": null,
+  "city": null,
+  "country_required": false,
+  "work_mode": null,
+  "earliest_start": "2026-11-23",
+  "latest_start": "2026-11-27"
+ },
+ "roles": [
+  {
+   "title": "ARQ",
+   "count": 1,
+   "dataset_roles": [
+    "Cloud Architect"
+   ],
+   "min_years": 4,
+   "mandatory_skills": [
+    {
+     "name": "Azure"
+    }
+   ],
+   "desirable_skills": [
+    {
+     "name": "Kubernetes"
+    }
+   ],
+   "sector_experience": [
+    "Banca y Finanzas"
+   ],
+   "sector_required": true,
+   "planned_hours": 40
+  },
+  {
+   "title": "BACK",
+   "count": 1,
+   "dataset_roles": [
+    "Backend Developer .NET"
+   ],
+   "min_years": 3,
+   "mandatory_skills": [
+    {
+     "name": "C#"
+    },
+    {
+     "name": ".NET"
+    },
+    {
+     "name": "SQL Server"
+    }
+   ],
+   "desirable_skills": [],
+   "sector_experience": [
+    "Banca y Finanzas"
+   ],
+   "sector_required": false,
+   "planned_hours": 40
+  },
+  {
+   "title": "SEG",
+   "count": 1,
+   "dataset_roles": [
+    "Security Architect"
+   ],
+   "min_years": 4,
+   "mandatory_skills": [
+    {
+     "name": "Azure"
+    },
+    {
+     "name": "IAM"
+    }
+   ],
+   "desirable_skills": [],
+   "planned_hours": 40
+  }
+ ]
+}

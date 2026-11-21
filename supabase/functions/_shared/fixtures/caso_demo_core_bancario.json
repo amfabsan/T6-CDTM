@@ -1,0 +1,331 @@
+{
+ "metadata": {
+  "scenario": "ORBIT AI — Migración de core bancario",
+  "data_kind": "fictional_demo",
+  "currency": "EUR",
+  "scope": "primer bloque de trabajo",
+  "date_policy": "fechas de disponibilidad simuladas",
+  "score_policy": "puntuaciones de referencia inyectadas únicamente en prueba determinista"
+ },
+ "project": {
+  "name": "Migración de core bancario a Azure",
+  "earliest_start": "2026-11-23",
+  "latest_start": "2026-11-27",
+  "roles": [
+   {
+    "id": "ARQ",
+    "label": "Arquitectura cloud",
+    "min_total_years": 4,
+    "required_skills": [
+     "Azure"
+    ],
+    "required_project_sector": "Banca y Finanzas",
+    "preferred_skills": [
+     "Kubernetes"
+    ],
+    "planned_hours": 40
+   },
+   {
+    "id": "BACK",
+    "label": "Backend .NET",
+    "min_total_years": 3,
+    "required_skills": [
+     "C#",
+     ".NET",
+     "SQL Server"
+    ],
+    "preferred_project_sector": "Banca y Finanzas",
+    "planned_hours": 40
+   },
+   {
+    "id": "SEG",
+    "label": "Seguridad cloud",
+    "min_total_years": 4,
+    "required_skills": [
+     "Azure",
+     "IAM"
+    ],
+    "planned_hours": 40
+   }
+  ]
+ },
+ "profiles": [
+  {
+   "id": "A1",
+   "name": "Alicia",
+   "candidate_role": "ARQ",
+   "primary_sector": "Banca y Finanzas",
+   "area": "Cloud",
+   "total_years": 8,
+   "skills": [
+    "Azure",
+    "Kubernetes"
+   ],
+   "available_on": "2026-11-23",
+   "availability": "confirmada",
+   "cost_per_hour": 105,
+   "fixture_match": 99,
+   "project_evidence": {
+    "name": "Migración de pagos",
+    "sector": "Banca y Finanzas",
+    "skills": [
+     "Azure",
+     "Kubernetes"
+    ]
+   }
+  },
+  {
+   "id": "A2",
+   "name": "Marcos",
+   "candidate_role": "ARQ",
+   "primary_sector": "Banca y Finanzas",
+   "area": "Cloud",
+   "total_years": 7,
+   "skills": [
+    "Azure",
+    "Kubernetes"
+   ],
+   "available_on": "2026-11-25",
+   "availability": "confirmada",
+   "cost_per_hour": 85,
+   "fixture_match": 94,
+   "project_evidence": {
+    "name": "Plataforma bancaria en Azure",
+    "sector": "Banca y Finanzas",
+    "skills": [
+     "Azure",
+     "Kubernetes"
+    ]
+   }
+  },
+  {
+   "id": "A3",
+   "name": "Eva",
+   "candidate_role": "ARQ",
+   "primary_sector": "Banca y Finanzas",
+   "area": "Cloud",
+   "total_years": 5,
+   "skills": [
+    "Azure"
+   ],
+   "available_on": "2026-11-26",
+   "availability": "confirmada",
+   "cost_per_hour": 60,
+   "fixture_match": 87,
+   "project_evidence": {
+    "name": "Modernización de servicios bancarios",
+    "sector": "Banca y Finanzas",
+    "skills": [
+     "Azure"
+    ]
+   }
+  },
+  {
+   "id": "B1",
+   "name": "Inés",
+   "candidate_role": "BACK",
+   "primary_sector": "Seguros",
+   "area": "Software Engineering",
+   "total_years": 5,
+   "skills": [
+    "C#",
+    ".NET",
+    "SQL Server"
+   ],
+   "available_on": "2026-11-23",
+   "availability": "confirmada",
+   "cost_per_hour": 80,
+   "fixture_match": 96,
+   "project_evidence": {
+    "name": "Migración a la nube de core bancario",
+    "sector": "Banca y Finanzas",
+    "skills": [
+     "C#",
+     ".NET",
+     "SQL Server"
+    ]
+   }
+  },
+  {
+   "id": "B2",
+   "name": "Pablo",
+   "candidate_role": "BACK",
+   "primary_sector": "Sector Público",
+   "area": "Software Engineering",
+   "total_years": 5,
+   "skills": [
+    "C#",
+    ".NET",
+    "SQL Server"
+   ],
+   "available_on": "2026-11-24",
+   "availability": "confirmada",
+   "cost_per_hour": 70,
+   "fixture_match": 91,
+   "project_evidence": {
+    "name": "Portal de servicios públicos",
+    "sector": "Sector Público",
+    "skills": [
+     "C#",
+     ".NET",
+     "SQL Server"
+    ]
+   }
+  },
+  {
+   "id": "B3",
+   "name": "Lucía",
+   "candidate_role": "BACK",
+   "primary_sector": "Seguros",
+   "area": "Software Engineering",
+   "total_years": 4,
+   "skills": [
+    "C#",
+    ".NET",
+    "SQL Server"
+   ],
+   "available_on": "2026-11-23",
+   "availability": "confirmada",
+   "cost_per_hour": 65,
+   "fixture_match": 84,
+   "project_evidence": {
+    "name": "Plataforma de siniestros",
+    "sector": "Seguros",
+    "skills": [
+     "C#",
+     ".NET",
+     "SQL Server"
+    ]
+   }
+  },
+  {
+   "id": "S1",
+   "name": "Sara",
+   "candidate_role": "SEG",
+   "primary_sector": "Banca y Finanzas",
+   "area": "Ciberseguridad",
+   "total_years": 8,
+   "skills": [
+    "Azure",
+    "IAM"
+   ],
+   "available_on": "2026-11-24",
+   "availability": "confirmada",
+   "cost_per_hour": 110,
+   "fixture_match": 100,
+   "project_evidence": {
+    "name": "Control de acceso a pagos",
+    "sector": "Banca y Finanzas",
+    "skills": [
+     "Azure",
+     "IAM"
+    ]
+   }
+  },
+  {
+   "id": "S2",
+   "name": "Diego",
+   "candidate_role": "SEG",
+   "primary_sector": "Seguros",
+   "area": "Ciberseguridad",
+   "total_years": 6,
+   "skills": [
+    "Azure",
+    "IAM"
+   ],
+   "available_on": "2026-11-23",
+   "availability": "confirmada",
+   "cost_per_hour": 85,
+   "fixture_match": 91,
+   "project_evidence": {
+    "name": "Identidades en Azure",
+    "sector": "Seguros",
+    "skills": [
+     "Azure",
+     "IAM"
+    ]
+   }
+  },
+  {
+   "id": "S3",
+   "name": "Nora",
+   "candidate_role": "SEG",
+   "primary_sector": "Retail",
+   "area": "Ciberseguridad",
+   "total_years": 5,
+   "skills": [
+    "Azure",
+    "IAM"
+   ],
+   "available_on": "2026-11-26",
+   "availability": "confirmada",
+   "cost_per_hour": 70,
+   "fixture_match": 87,
+   "project_evidence": {
+    "name": "Accesos de plataforma retail",
+    "sector": "Retail",
+    "skills": [
+     "Azure",
+     "IAM"
+    ]
+   }
+  },
+  {
+   "id": "X1",
+   "name": "Carlos",
+   "candidate_role": "ARQ",
+   "primary_sector": "Banca y Finanzas",
+   "area": "Cloud",
+   "total_years": 10,
+   "skills": [
+    "Azure",
+    "Kubernetes"
+   ],
+   "available_on": null,
+   "availability": "asignado",
+   "cost_per_hour": 90,
+   "fixture_match": 100,
+   "project_evidence": {
+    "name": "Infraestructura core bancario",
+    "sector": "Banca y Finanzas",
+    "skills": [
+     "Azure",
+     "Kubernetes"
+    ]
+   }
+  },
+  {
+   "id": "X2",
+   "name": "Julia",
+   "candidate_role": "BACK",
+   "primary_sector": "Banca y Finanzas",
+   "area": "Software Engineering",
+   "total_years": 2,
+   "skills": [
+    "C#",
+    ".NET",
+    "SQL Server"
+   ],
+   "available_on": "2026-11-23",
+   "availability": "confirmada",
+   "cost_per_hour": 55,
+   "fixture_match": 99,
+   "project_evidence": {
+    "name": "Servicios de banca digital",
+    "sector": "Banca y Finanzas",
+    "skills": [
+     "C#",
+     ".NET",
+     "SQL Server"
+    ]
+   }
+  }
+ ],
+ "external_assumption": {
+  "role": "ARQ",
+  "available_on": "2026-11-24",
+  "cost_per_hour": 150,
+  "planned_hours": 40,
+  "confirmed": false
+ }
+}

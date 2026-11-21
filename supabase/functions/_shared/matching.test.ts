@@ -3,8 +3,8 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { fromLlmPlan, type LlmPlan, normalizeProfile, type Profile } from "./contract.ts";
-import { confidence, rankRole, type ScoredCandidate, scoreCandidate } from "./scoring.ts";
-import { buildTeams, scoreTeams } from "./teams.ts";
+import { confidence, hardFilterReasons, rankRole, type ScoredCandidate, scoreCandidate } from "./scoring.ts";
+import { buildTeams, scoreTeams, type Team, topTeams } from "./teams.ts";
 import { runMatching } from "./pipeline.ts";
 
 const plan: LlmPlan = JSON.parse(readFileSync(new URL("./fixtures/plan_banco_pagos.json", import.meta.url), "utf8"));
@@ -67,34 +67,104 @@ test("paso 8: ranking con encaje mínimo y Top N", () => {
   assert.deepEqual(r.items.map((x) => x.employee_id), ["b", "c"]);
 });
 
-test("pasos 9-10: beam search sin repetir persona en un equipo, sin permutaciones; continuidad", () => {
+test("paso 9: sin persona repetida en un equipo, sin permutaciones; beam si no cabe el exhaustivo", () => {
   const mk = (id: string, role: string, score: number) =>
     ({ employee_id: id, role, score, gaps: [], disponibilidad: "En banca", nivel_seniority: "Senior" } as unknown as ScoredCandidate);
   const pools = { Arq: [mk("x", "Arq", 90), mk("y", "Arq", 80)], Back: [mk("x", "Back", 95), mk("b1", "Back", 70), mk("b2", "Back", 60), mk("b3", "Back", 50)] };
   const slots = [{ role: "Arq", count: 1 }, { role: "Back", count: 2 }];
-  const combos = buildTeams(slots, pools);
-  for (const t of combos) assert.equal(new Set(t.map((m) => m.employee_id)).size, 3);
-  const keys = combos.map((t) => t.map((m) => m.employee_id).sort().join());
+  const all = buildTeams(slots, pools);
+  assert.equal(all.length, 9);                                 // 2×C(4,2)=12 menos 3 con «x» en dos plazas
+  for (const t of all) assert.equal(new Set(t.map((m) => m.employee_id)).size, 3);
+  const keys = all.map((t) => t.map((m) => m.employee_id).sort().join());
   assert.equal(new Set(keys).size, keys.length);
-  const teams = scoreTeams(combos, slots, pools, { ratePerHour: 50, hoursPerPerson: 160, startDaysEnBanca: 5 });
-  assert.deepEqual(teams[0].members.map((m) => m.employee_id), ["y", "x", "b1"]);
-  assert.equal(teams[0].fit, 81.7);
-  assert.equal(teams[0].continuity.pct, 50);                  // si se va «y», no queda arquitecto: 1 de 2 roles
-  assert.equal(teams[0].continuity.worst?.role, "Arq");
-  assert.deepEqual([teams[0].cost.value, teams[0].start.day], [24000, 5]);
-  assert.equal(scoreTeams(combos, slots, pools)[0].cost.status, "por estimar");
+  const beam = buildTeams(slots, pools, { maxExhaustive: 1, beam: 2 });
+  assert.deepEqual(beam[0].map((m) => m.employee_id), ["y", "x", "b1"]);
+  assert.equal(beam.length, 2);
 });
 
-test("e2e con los 42 perfiles reales de data/sample (sin SQL: filtro de disponibilidad hecho aquí)", () => {
+test("e2e con los 42 perfiles reales de data/sample", () => {
   const sample = JSON.parse(readFileSync(new URL("../../../data/sample/profiles_sample.json", import.meta.url), "utf8"));
-  const disponibles = sample.filter((p: { disponibilidad: string }) => p.disponibilidad !== "Asignado");
-  const out = runMatching(plan, Object.fromEntries(roles.map((r) => [r.role, disponibles])));
-  assert.equal(Object.keys(out.ranking).length, 3);
-  assert.ok(out.teams.length > 0 && out.teams.length <= 15);
-  for (const t of out.teams) {
-    assert.equal(t.members.length, 4);
-    assert.equal(new Set(t.members.map((m) => m.employee_id)).size, 4);
+  const out = runMatching(plan, Object.fromEntries(roles.map((r) => [r.role, sample])));
+  assert.ok(Object.values(out.excluded).every((xs) => xs.some((x) => x.reasons.includes("Asignado (no disponible)"))));
+  assert.ok(out.teams.length > 0);
+  for (const t of out.teams) assert.equal(new Set(t.members.map((m) => m.employee_id)).size, 4);
+  assert.ok(out.top_teams.items.length <= 5);
+  assert.ok(normalizeProfile(sample[0]).skills.every((s) => typeof s.demostrada === "boolean"));
+});
+
+// ───────────── Caso de demo del pitch (docs/ORBIT_AI_Caso_Demo_Pitch.md §5) ─────────────
+// fixture_match sustituye al score del paso 7, como pide el caso, para obtener salidas reproducibles.
+const caso = JSON.parse(readFileSync(new URL("./fixtures/caso_demo_core_bancario.json", import.meta.url), "utf8"));
+const planDemo = fromLlmPlan(JSON.parse(readFileSync(new URL("./fixtures/plan_core_bancario_azure.json", import.meta.url), "utf8")));
+function demo(overrides: Record<string, string> = {}) {
+  const eligible: Record<string, ScoredCandidate[]> = {}, excluded: string[] = [];
+  for (const r of planDemo.roles) {
+    eligible[r.role] = [];
+    for (const x of caso.profiles.filter((p: { candidate_role: string }) => p.candidate_role === r.role)) {
+      const prof = { employee_id: x.id, nombre_completo: x.name, rol: "", nivel_seniority: "Senior", anios_experiencia: x.total_years,
+        disponibilidad: x.availability === "asignado" ? "Asignado" : "En banca", pais: "España", idiomas: [], certificaciones: [] } as unknown as Profile;
+      if (hardFilterReasons(prof, r, planDemo.project).length) { excluded.push(x.id); continue; }
+      eligible[r.role].push({ employee_id: x.id, nombre_completo: x.name, role: r.role, score: x.fixture_match, gaps: [],
+        disponibilidad: prof.disponibilidad, nivel_seniority: "Senior", available_on: overrides[x.id] ?? x.available_on,
+        cost_per_hour: x.cost_per_hour } as unknown as ScoredCandidate);
+    }
   }
-  assert.ok(out.teams.every((t, i) => i === 0 || out.teams[i - 1].fit >= t.fit));
-  assert.ok(normalizeProfile(disponibles[0]).skills.every((s) => typeof s.demostrada === "boolean"));
+  const slots = planDemo.roles.map((r) => ({ role: r.role, count: r.count, hours: r.plannedHours }));
+  const teams = scoreTeams(buildTeams(slots, eligible), slots, eligible, planDemo.project);
+  return { eligible, excluded, teams };
+}
+const ids = (r: { items: Team[] }) => r.items.map((t) => t.id);
+
+test("demo: X1 (asignado) y X2 (2 años) excluidos; 9 elegibles y 27 equipos", () => {
+  const d = demo();
+  assert.deepEqual(d.excluded.sort(), ["X1", "X2"]);
+  assert.equal(Object.values(d.eligible).flat().length, 9);
+  assert.equal(d.teams.length, 27);
+});
+
+test("demo: ranking Backend Top 3 con mínimo 90 % → B1 (96) y B2 (91), sin rellenar la tercera", () => {
+  const r = rankRole(demo().eligible.BACK, { top: 3, minScore: 90 });
+  assert.deepEqual(r.items.map((x) => [x.employee_id, x.score]), [["B1", 96], ["B2", 91]]);
+});
+
+test("demo: Top 5 exacto por cada uno de los cuatro órdenes", () => {
+  const { teams } = demo();
+  assert.deepEqual(ids(topTeams(teams, { sortBy: "fit" })), ["A1+B1+S1", "A1+B2+S1", "A2+B1+S1", "A1+B1+S2", "A2+B2+S1"]);
+  assert.deepEqual(ids(topTeams(teams, { sortBy: "cost" })), ["A3+B3+S3", "A3+B2+S3", "A3+B1+S3", "A3+B3+S2", "A3+B2+S2"]);
+  assert.deepEqual(ids(topTeams(teams, { sortBy: "start" })), ["A1+B1+S2", "A1+B3+S2", "A1+B1+S1", "A1+B2+S1", "A1+B3+S1"]);
+  assert.deepEqual(ids(topTeams(teams, { sortBy: "risk" })), ["A2+B1+S1", "A2+B2+S1", "A3+B1+S1", "A1+B1+S3", "A2+B1+S2"]);
+});
+
+test("demo: métricas de la tabla (encaje, coste, inicio, peor cobertura)", () => {
+  const t = Object.fromEntries(demo().teams.map((x) => [x.id, x]));
+  const row = (id: string) => [t[id].fit.toFixed(2), t[id].cost.value, t[id].start.date, `${t[id].continuity.covered}/${t[id].continuity.total}`];
+  assert.deepEqual(row("A1+B1+S1"), ["98.33", 11800, "2026-11-24", "2/3"]);
+  assert.deepEqual(row("A3+B3+S3"), ["86.00", 7800, "2026-11-26", "3/3"]);
+  assert.deepEqual(row("A1+B1+S2"), ["95.33", 10800, "2026-11-23", "2/3"]);
+  assert.deepEqual(row("A2+B1+S1"), ["96.67", 11000, "2026-11-25", "3/3"]);
+});
+
+test("demo: filtro encaje ≥ 96 y coste ≤ 11.000 (inclusivos) → solo A2+B1+S1", () => {
+  assert.deepEqual(ids(topTeams(demo().teams, { filters: { minFit: 96, maxCost: 11000 } })), ["A2+B1+S1"]);
+});
+
+test("demo: baja de A1 en el equipo de mayor encaje → falta Arquitectura el 24/11, A2 sustituto tardío el 25/11", () => {
+  const w = demo().teams.find((x) => x.id === "A1+B1+S1")!.continuity.worst!;
+  assert.deepEqual([w.employee_id, w.role, w.substitute, w.late_substitute], ["A1", "ARQ", null, { employee_id: "A2", available_on: "2026-11-25" }]);
+});
+
+test("demo: adelantar A2 al 24/11 → A1+B1+S1 pasa a 3/3 y queda primero por menor riesgo", () => {
+  const { teams } = demo({ A2: "2026-11-24" });
+  assert.equal(teams.find((x) => x.id === "A1+B1+S1")!.continuity.covered, 3);
+  assert.equal(topTeams(teams, { sortBy: "risk" }).items[0].id, "A1+B1+S1");
+});
+
+test("demo: la misma persona ofrecida para dos roles nunca ocupa dos plazas", () => {
+  const d = demo();
+  const dup = { ...d.eligible.ARQ[0], role: "SEG" } as ScoredCandidate;    // A1 también como candidata de Seguridad
+  const eligible = { ...d.eligible, SEG: [...d.eligible.SEG, dup] };
+  const slots = planDemo.roles.map((r) => ({ role: r.role, count: r.count, hours: r.plannedHours }));
+  const teams = scoreTeams(buildTeams(slots, eligible), slots, eligible, planDemo.project);
+  for (const t of teams) assert.equal(new Set(t.members.map((m) => m.employee_id)).size, 3);
+  for (const t of teams) { const s = t.continuity.worst?.substitute; if (s) assert.ok(!t.members.some((m) => m.employee_id === s)); }
 });
