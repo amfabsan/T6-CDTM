@@ -18,8 +18,8 @@ export function ExplainBlock({ title, summary, points, source }: { title: string
         <Sparkles className="size-4 text-blue" aria-hidden />{title}
         {source === "fallback" && <span className="border border-line bg-surface-2 px-1.5 py-px text-[10px] font-medium text-muted-foreground">resumen automático (sin IA)</span>}
       </p>
-      <p className="mt-1 text-sm">{summary}</p>
-      {points.length > 0 && <ul className="mt-1 list-disc pl-5 text-sm">{points.map((p, i) => <li key={i}>{p.text}</li>)}</ul>}
+      <details className="mt-2 text-xs text-blue-200"><summary className="cursor-pointer">Ver detalle</summary><p className="mt-2">{summary}</p>{points.length > 3 && <ul className="mt-2 list-disc pl-4">{points.slice(3).map((p,i) => <li key={i}>{p.text}</li>)}</ul>}</details>
+      {points.length > 0 && <ul className="mt-1 list-disc pl-5 text-sm">{points.slice(0, 3).map((p, i) => <li key={i} title={p.text}>{p.text.split(/\s+/).length > 12 ? `${p.text.split(/\s+/).slice(0, 12).join(" ")}…` : p.text}</li>)}</ul>}
     </div>
   );
 }

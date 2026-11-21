@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { getSkillCatalog } from "@/lib/api";
-import { AlertTriangle, ArrowRight, CheckCircle2, ClipboardCheck, Plus, Sparkles, Trash2, Wand2 } from "lucide-react";
+import { AlertTriangle, ArrowRight, CheckCircle2, ClipboardCheck, Plus, Sparkles, Trash2, UsersRound, Wand2 } from "lucide-react";
 import { jargonMappings } from "@/lib/mock-data";
 import type { InterpretResult, Modality, Requirements, ReviewItem, RoleReq } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -37,23 +37,9 @@ const showValue = (v: unknown) => (v == null ? "—" : typeof v === "object" ? O
 
 export function ReviewPanel({ items }: { items: ReviewItem[] }) {
   return (
-    <section className="border border-gold/60 bg-warn-soft p-6">
-      <div className="flex items-center gap-2"><ClipboardCheck className="size-5 text-warn-ink" aria-hidden /><h3 className="text-lg">Revisado por el sistema</h3>
-        <span className="ml-auto text-sm text-warn-ink">Qué cambió ORBIT y por qué</span></div>
-      <ul className="mt-4 space-y-2">
-        {items.map((r, i) => {
-          const m = reviewMeta[r.action];
-          return (
-            <li key={i} className="flex gap-3 bg-surface p-3">
-              <m.icon className={cn("mt-1 size-4 shrink-0", m.tone)} aria-hidden />
-              <div className="text-sm">
-                <p><b className={m.tone}>{m.label}</b> · {showValue(r.value)} <span className="text-xs text-muted-foreground">({r.path})</span></p>
-                <p className="text-text">{r.reason}</p>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+    <section className="rounded-2xl border border-amber/30 bg-warn-soft p-4">
+      <div className="flex items-center gap-2"><ClipboardCheck className="size-4 text-amber" aria-hidden /><h3 className="text-sm">Revisado por el sistema</h3></div>
+      <ul className="mt-3 flex flex-wrap gap-2">{items.map((r, i) => { const m = reviewMeta[r.action]; return <li key={i}><Chip tone="rolloff" title={`${showValue(r.value)} · ${r.path} · ${r.reason}`} icon={<m.icon className="size-3.5" />}>{m.label} · {showValue(r.value)}</Chip></li>; })}</ul>
     </section>
   );
 }
@@ -63,16 +49,11 @@ export function OrbitSummary({ result, req }: { result: InterpretResult; req: Re
   const tr = jargonMappings(req.roles, result.review, result.source_text).find((m) => m.translated);
   const nRev = result.review.filter((r) => r.action === "revisar").length;
   return (
-    <div className="flex max-w-2xl items-start gap-3">
-      <span className="grid size-10 shrink-0 place-items-center rounded-full bg-blue text-on-accent"><Sparkles className="size-5" aria-hidden /></span>
-      <div className="card px-5 py-4">
-        <p className="text-xs font-semibold text-blue">ORBIT</p>
-        <p className="mt-1 text-lg leading-snug text-navy">
-          He entendido <b>{req.roles.length} roles</b> y <b>{seats} plazas</b>.
-          {tr && <> He traducido «{tr.phrase}» a <b className="text-blue">{tr.skill}</b>.</>}
-          {nRev > 0 && <> Revisa <b>{nRev} {nRev === 1 ? "punto" : "puntos"}</b>.</>}
-        </p>
-      </div>
+    <div className="flex flex-wrap items-center gap-4">
+      <span className="grid size-12 place-items-center rounded-full border border-blue-400/40 bg-blue-400/10"><Sparkles className="size-5 text-blue-200" aria-hidden /></span>
+      <h1 className="text-2xl">Requisitos identificados: {req.roles.length} roles · {seats} posiciones</h1>
+      {tr && <Chip title={`Requisito identificado: «${tr.phrase}» a ${tr.skill}`}>{tr.skill}</Chip>}
+      {nRev > 0 && <Chip tone="rolloff" icon={<AlertTriangle className="size-3" />}>{nRev} por revisar</Chip>}
     </div>
   );
 }
@@ -129,24 +110,24 @@ export function InterpretationView({ result, onConfirm, busy }: { result: Interp
             <input type="date" aria-label="Fecha de inicio" className={cn(inputCls)} value={req.project.start_date ?? ""} onChange={(e) => setProj({ start_date: e.target.value || null })} />
             {!req.project.start_date && <span>Por confirmar</span>}
           </Chip>
-          <button onClick={() => setProj({ country_required: !req.project.country_required })} aria-pressed={req.project.country_required}>
+          <OrbitButton variant="ghost" className="border-0 p-0" onClick={() => setProj({ country_required: !req.project.country_required })} aria-pressed={req.project.country_required}>
             <Chip tone={req.project.country_required ? "ai" : "neutral"} icon={req.project.country_required ? <CheckCircle2 className="size-3.5" /> : undefined}>
               País exigido: {req.project.country_required ? "sí" : "no"}
             </Chip>
-          </button>
+          </OrbitButton>
         </div>
       </div>
 
       <div ref={box} className="relative grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]">
         <svg className="pointer-events-none absolute inset-0 z-10 hidden h-full w-full overflow-visible lg:block" aria-hidden>
-          {line && <><path d={line} fill="none" stroke="var(--blue)" strokeWidth="1" /><circle r="2.5" fill="var(--blue)"><animateMotion dur="1.2s" repeatCount="indefinite" path={line} /></circle></>}
+          {line && <><path d={line} fill="none" stroke="var(--blue)" strokeWidth="2" /><circle r="2.5" fill="var(--blue)"><animateMotion dur="1.2s" repeatCount="indefinite" path={line} /></circle></>}
         </svg>
         <Panel className="h-fit lg:sticky lg:top-32">
           <SectionLabel>Plan del proyecto</SectionLabel>
-          <p className="mt-1 text-xs text-muted-foreground">Pasa el ratón por una frase resaltada para ver en qué requisito se convirtió.</p>
+          
           <div className="mt-4 whitespace-pre-wrap text-sm leading-7">
             {segments.map((s, i) => s.key ? (
-              <mark key={i} data-ph={s.key} tabIndex={0} onMouseEnter={() => setActive(s.key!)} onFocus={() => setActive(s.key!)} onMouseLeave={() => setActive(null)}
+              <mark key={i} data-ph={s.key} tabIndex={0} onMouseEnter={() => setActive(s.key ?? null)} onFocus={() => setActive(s.key ?? null)} onMouseLeave={() => setActive(null)}
                 className={cn("px-0.5 text-navy transition-colors", active === s.key ? "bg-blue/20 ring-1 ring-blue" : "bg-blue/8")}>{s.text}</mark>
             ) : <span key={i}>{s.text}</span>)}
           </div>
@@ -154,8 +135,8 @@ export function InterpretationView({ result, onConfirm, busy }: { result: Interp
 
         <div className="space-y-4">
           {req.roles.map((r, i) => (
-            <Panel key={i}>
-              <div className="flex flex-wrap items-baseline gap-2">
+            <Panel key={i} className="mission-badge p-5">
+              <div className="flex flex-wrap items-baseline gap-2"><UsersRound className="size-5 text-blue-200" aria-hidden />
                 <input aria-label="Título del rol" className={cn(inputCls, "min-w-0 flex-1 text-xl font-bold text-navy")} value={r.title} onChange={(e) => updRole(i, { title: e.target.value })} />
                 <span className="text-xl font-bold text-blue tnum">×<input aria-label="Plazas" type="number" min={1} className={cn(inputCls, "w-10")} value={r.count} onChange={(e) => updRole(i, { count: Math.max(1, +e.target.value) })} /></span>
                 <span className="text-sm text-muted-foreground">plazas</span>
@@ -180,9 +161,9 @@ export function InterpretationView({ result, onConfirm, busy }: { result: Interp
                 onChange={(s) => updRole(i, { desirable_skills: s.map((x) => ({ name: x.name })) })} />
             </Panel>
           ))}
-          <p className="border-l-4 border-blue bg-surface p-4 text-sm">
+          <details className="text-xs text-muted-foreground"><summary className="cursor-pointer">Ver detalle · Criterios</summary><p className="mt-2">
             Solo se excluye a quien está «Asignado» y, si el país es exigido, a quien está fuera. Todo lo demás (skills, años, seniority, idiomas, certificaciones) no excluye: puntúa y aparece como gap o riesgo.
-          </p>
+          </p></details>
         </div>
       </div>
 
@@ -190,7 +171,7 @@ export function InterpretationView({ result, onConfirm, busy }: { result: Interp
 
       <div className="flex justify-end">
         <OrbitButton disabled={busy} onClick={() => onConfirm(req)} className="px-8 py-3 text-base">
-          Confirmar y buscar talento <ArrowRight className="size-4" />
+          Buscar candidatos
         </OrbitButton>
       </div>
     </div>
@@ -207,7 +188,7 @@ function SkillGroup({ title, note, tone, role, skills, onChange, active, setActi
   const [adding, setAdding] = useState("");
   return (
     <div className="mt-5">
-      <p className="mb-2 text-xs font-semibold tracking-[0.1em] text-navy">{title} <span className="font-normal tracking-normal text-muted-foreground">· {note}</span></p>
+      <p className="mb-2 text-xs font-semibold tracking-[0.1em] text-navy"><span title={note}>{title}</span></p>
       <div className="flex flex-wrap items-center gap-2">
         {skills.map((s) => {
           const key = `${role}:${s.name}`;
