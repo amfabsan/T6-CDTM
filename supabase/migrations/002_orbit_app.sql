@@ -23,6 +23,16 @@ create table if not exists project_requirements (
   created_at               timestamptz not null default now()
 );
 
+-- Requisitos POR ROL (docs/WORKFLOW_MATCHING.md §1). `roles` es la fuente de verdad; las columnas de un solo rol
+-- de arriba (role, seniority, required_skills…) quedan como resumen opcional.
+-- roles = [{"role":"Cloud Architect","count":1,"seniority":"Senior","mandatory_skills":[{"name":"Kubernetes","min_level":3}],
+--           "desirable_skills":[{"name":"Terraform"}],"sector_experience":["Banca y Finanzas"],
+--           "languages":[{"name":"Inglés","level":"B2"}],"certifications":[],"min_years_experience":5}]
+alter table project_requirements add column if not exists roles              jsonb not null default '[]';
+alter table project_requirements add column if not exists country            text;   -- filtro duro (empleados.pais)
+alter table project_requirements add column if not exists project_start_date date;   -- fecha mínima del proyecto (opcional)
+alter table project_requirements add column if not exists start_deadline_day int;    -- fecha límite de inicio en días (opcional)
+
 -- El módulo de entrevista de voz se ha descartado: el nivel de cada skill ya está en empleado_skills.
 -- Si una versión anterior de esta migración llegó a crear su tabla, se elimina.
 drop table if exists candidate_assessments;

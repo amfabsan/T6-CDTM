@@ -1,7 +1,7 @@
 # AGENTS.md · ORBIT AI (T6 · CDTM × UPV-UV Hackathon · caso NTT DATA)
 
 > Guía para cualquier asistente de IA (Claude Code, Cursor, Codex, Lovable…) que trabaje en este repo. **Léela entera antes de tocar nada.**
-> Fuente de verdad del producto: [`docs/IDEA.md`](docs/IDEA.md) (original en `docs/ORBIT_AI_Brief_Tecnico_MVP.docx`). Reglas del caso: [`case/caso.pdf`](case/caso.pdf). Datos: [`docs/DATA.md`](docs/DATA.md).
+> Fuente de verdad del producto: [`docs/IDEA.md`](docs/IDEA.md) (original en `docs/ORBIT_AI_Brief_Tecnico_MVP.docx`), con los cambios de la §1. Matching y equipos: [`docs/WORKFLOW_MATCHING.md`](docs/WORKFLOW_MATCHING.md) y [`docs/ORBIT_AI_Rankings_y_Filtros.pdf`](docs/ORBIT_AI_Rankings_y_Filtros.pdf). Reglas del caso: [`case/caso.pdf`](case/caso.pdf). Datos: [`docs/DATA.md`](docs/DATA.md).
 > **Si este archivo y el brief chocan en nombres de tablas o columnas, manda este archivo:** describe lo que está realmente creado y cargado en Supabase.
 
 ## 1. Qué es ORBIT AI
@@ -10,18 +10,26 @@
 Un manager de NTT DATA describe una necesidad de proyecto en lenguaje natural. ORBIT:
 1. la convierte en requisitos estructurados y editables;
 2. encuentra talento interno aunque su experiencia esté descrita con otro vocabulario;
-3. explica el ranking con evidencia (nivel, años de uso, proyectos y certificaciones que ya están en la base de datos);
-4. compara escenarios Internal / External / Hybrid.
+3. explica el ranking por rol con evidencia (nivel, años de uso, proyectos y certificaciones que ya están en la base de datos);
+4. propone el Top 5 de equipos (encaje, coste, inicio y continuidad ante una baja);
+5. compara escenarios Internal / External / Hybrid.
 
-> **Decisión del equipo:** el módulo de entrevista de voz del brief (Talent Assessment con ElevenLabs) **está descartado**. El nivel de experiencia de cada persona ya está en la base de datos (`empleado_skills.nivel`, `anios`, `demostrada`, `ultimo_anio`), y la validación del encaje se hace con esa evidencia. No añadáis ElevenLabs, entrevistas ni transcripciones.
+El manager puede manejar por voz los rankings y los equipos con un asistente de **ElevenLabs**.
+
+> **Cambios respecto al brief (`docs/IDEA.md`):**
+> - **La entrevista de voz a candidatos (Talent Assessment) está descartada.** El nivel de experiencia ya está en la base de datos (`empleado_skills.nivel`, `anios`, `demostrada`, `ultimo_anio`). No añadáis entrevistas, transcripciones ni rúbricas.
+> - **ElevenLabs se usa para otra cosa:** un **asistente de voz** con el que el manager filtra el ranking de perfiles y ordena y explica el Top 5 de equipos, como especifica el PDF de rankings. Mueve los controles de la UI con *client tools* y solo repite datos que ya calculó el backend. Ver [`prompts/elevenlabs.md`](prompts/elevenlabs.md).
+> - **Se adopta [`docs/WORKFLOW_MATCHING.md`](docs/WORKFLOW_MATCHING.md):** requisitos por rol, búsqueda híbrida, score 35/20/15/10/10/5/5 y equipos.
 
 **Principio:** la IA interpreta y explica; las reglas deterministas filtran, puntúan y calculan. La decisión final siempre es humana.
 
 | Módulo | Pantalla | Backend |
 |---|---|---|
-| A. Project Brief | Textarea + requisitos editables (MUST / NICE) | `interpret-project` |
-| B. Talent Discovery | Ranking con score desglosado, evidencia, gaps y comparación de ≥3 candidatos | `match-candidates` |
-| C. Staffing Decision Center | Internal / External / Hybrid con supuestos editables | `calculate-staffing-scenarios` |
+| A. Necesidad | Textarea + requisitos **por rol** editables (MUST / NICE, nº de plazas) | `interpret-project` |
+| B. Talento | Ranking por rol con encaje %, desglose, evidencia, huecos y riesgos; controles Top 3/5/10 y encaje mínimo; comparar candidatos | `match-candidates` (`roles[]`) |
+| C. Equipos | Top 5 de equipos ordenable y filtrable por encaje, coste, inicio y continuidad tras una baja | `match-candidates` (`teams[]`) |
+| D. Decisión | Internal / External / Hybrid con supuestos editables | `calculate-staffing-scenarios` |
+| Voz (B y C) | Asistente ElevenLabs que maneja los controles de B y C y explica equipos | `elevenlabs-signed-url` + *client tools* en la UI |
 
 ## 2. Estado del repo
 
@@ -35,10 +43,12 @@ Un manager de NTT DATA describe una necesidad de proyecto en lenguaje natural. O
 | `data/sample/profiles_sample.json` / `.csv` | ✅ | 42 perfiles elegidos a propósito, para leer y para pruebas |
 | `data/sample/vocabulario.json` | ✅ | 614 skills, roles por área, sectores, certificaciones: **vocabulario para el LLM** |
 | `docs/DATA.md` | ✅ | Estructura del dataset, hallazgos y cifras |
-| `docs/WORKFLOW_MATCHING.md` | 📝 propuesta | Workflow de matching: filtros duros, búsqueda híbrida (pgvector + RRF), score y equipos |
+| `docs/WORKFLOW_MATCHING.md` | ✅ adoptado (código pendiente de PR) | Workflow de matching: filtros duros, búsqueda híbrida (pgvector + RRF), score y equipos |
+| `docs/ORBIT_AI_Rankings_y_Filtros.pdf` | ✅ | Especificación de los controles de ranking, el Top 5 de equipos y la continuidad |
 | `docs/ITERATIONS.md`, `docs/PATTERNS.md` | ✅ | Cuaderno de Improven e investigación de ediciones anteriores |
-| `prompts/lovable.md` | ✅ | Prompts para construir las pantallas en Lovable |
-| `supabase/functions/*` | ⏳ **por hacer** | Las 3 edge functions de la §5 |
+| `prompts/lovable.md` | ✅ | Prompts para construir las pantallas en Lovable (incluido el asistente de voz) |
+| `prompts/elevenlabs.md` | ✅ | Configuración del asistente de voz: prompt, client tools y guion de demo |
+| `supabase/functions/*` | ⏳ **por hacer** | Las 4 edge functions de la §5 |
 | `legacy/skillsonar/` | ⛔ **no usar** | Diseño anterior (SkillSonar). Solo como referencia: ver `legacy/README.md` |
 
 ## 3. Datos: qué hay en Supabase
@@ -63,7 +73,7 @@ RPC disponibles:
 - `buscar_personas(p_disponibilidad[], p_area, p_rol, p_sector, p_min_anios, p_skills[], p_min_nivel, p_limit, p_offset)` es un buscador paginado. Exige **todas** las `p_skills` y cada fila trae `total`.
 
 ### Tablas de la app (002, se leen y se insertan desde la app)
-- `project_requirements`: salida de `interpret-project` revisada por el manager. Guarda también `interpretation_raw`, la salida del LLM sin editar.
+- `project_requirements`: salida de `interpret-project` revisada por el manager. Los requisitos **por rol** van en `roles` (jsonb), junto con `country`, `project_start_date` y `start_deadline_day`. Guarda también `interpretation_raw`, la salida del LLM sin editar. Las columnas de un solo rol (`role`, `required_skills`…) son opcionales.
 - `scenario_assumptions`: supuestos económicos y pesos, con `is_illustrative`. Se versionan **insertando** una fila nueva.
 
 ### Cosas del dato que hay que respetar
@@ -81,7 +91,7 @@ RPC disponibles:
 4. **Trazabilidad:** cada fortaleza o gap apunta a su origen (skill con nivel y años, proyecto concreto, puesto, certificación). Si el LLM cita un proyecto, se **valida** que existe en el perfil antes de mostrarlo.
 5. **Los obligatorios incumplidos** se muestran como bloqueo o gap, no se esconden en una media.
 6. **Escenarios:** el dataset **no** trae salarios, tarifas ni plazos. Todo valor económico es un **supuesto editable**, etiquetado como "supuesto ilustrativo". La UI separa *dato observado*, *supuesto* y *resultado calculado*.
-7. **Secretos** (clave del LLM, `DATABASE_URL`) solo en secretos de Supabase o en el entorno local. **Nunca** en el código del navegador ni en el repo. Las tablas del dataset no se escriben desde el navegador (RLS solo lectura).
+7. **Secretos** (clave del LLM, `ELEVENLABS_API_KEY`, `ELEVENLABS_AGENT_ID`, `DATABASE_URL`) solo en secretos de Supabase o en el entorno local. **Nunca** en el código del navegador ni en el repo. Las tablas del dataset no se escriben desde el navegador (RLS solo lectura).
 8. **Honestidad:** si algo de la demo está simulado o hardcodeado, se dice.
 9. **No tocar `legacy/`** ni construir sobre `teamBuilder.ts` (su búsqueda exhaustiva de combinaciones no escala).
 
@@ -90,36 +100,75 @@ Ubicación: `supabase/functions/<nombre>/index.ts` (Deno). CORS como en `legacy/
 
 ### `interpret-project` (módulo A, rol 2)
 - **In:** `{ project_description, project_start_date?, constraints? }`
-- **Out:** JSON con la forma de §6.1 del brief:
-  - `role`, `seniority`, `mandatory_skills[{name,min_level}]`, `desirable_skills[{name}]`, `sector_experience[]`, `languages[{name,level}]`, `certifications[]`;
-  - `availability.acceptable[]`, `min_years_experience`, `client_facing`.
-- **Nombres:** skills **solo** del `catalogo_skills`; sectores **solo** de los 10 del dataset; idiomas con los nombres del dataset (`Inglés`, `B2`…). Se descarta lo que no exista. No inferir fechas, niveles ni certificaciones que no estén en el brief.
-- **Guardar** en `project_requirements` tras la edición humana, con `interpretation_raw`.
+- **Out:** requisitos **por rol** (WORKFLOW §1):
+  - `roles[]`, uno por rol del equipo, cada uno con: `role` (de los 87 del dataset), `count` (plazas), `seniority`, `mandatory_skills[{name,min_level}]`, `desirable_skills[{name}]`, `sector_experience[]`, `languages[{name,level}]`, `certifications[]` (obligatorias) y `min_years_experience`;
+  - a nivel de proyecto: `country`, `availability.acceptable[]`, `project_start_date?`, `start_deadline_day?`, `client_facing`.
+- **Nombres:** skills **solo** del `catalogo_skills`; roles **solo** de los 87; sectores **solo** de los 10 del dataset; idiomas con los nombres del dataset (`Inglés`, `B2`…). Se descarta lo que no exista. No inferir fechas, niveles ni certificaciones que no estén en el brief. "Remoto" no es un filtro: `modalidad_trabajo` es la preferencia del empleado.
+- **Guardar** en `project_requirements` tras la edición humana: `roles`, `country`, `project_start_date` y `start_deadline_day`, más `interpretation_raw`.
 
-### `match-candidates` (módulo B, rol 2)
-- **Pipeline:**
-  1. filtros duros en SQL;
-  2. candidatos por `empleado_skills.skill = any(...)`;
-  3. enriquecer con proyectos y experiencia;
-  4. score determinista;
-  5. el LLM redacta fortalezas, gaps y explicación **solo** con la evidencia recuperada;
-  6. top-N con desglose.
-- **Pesos iniciales** (configurables, no oficiales): skills 40 · nivel 20 · años de uso 10 · proyectos/sector 15 · seniority 5 · idiomas/otros 10. Usa `demostrada` para distinguir evidencia en proyecto de skill solo declarada.
-- **Riesgos por candidato** (lo pide NTT DATA): nivel y años que no cuadran, Roll-off, skill solo declarada, último uso antiguo (`ultimo_anio`), sector distinto, idioma, modalidad o movilidad.
-- **Extra de NTT DATA:** una lista por rol sin repetir persona entre roles y respetando la disponibilidad.
+### `match-candidates` (módulos B y C, rol 2)
+Pipeline completo en [`docs/WORKFLOW_MATCHING.md`](docs/WORKFLOW_MATCHING.md):
+1. filtros duros en SQL (disponibilidad, años, país, idioma mínimo, seniority, certificación obligatoria; **las skills nunca filtran**);
+2. búsqueda híbrida, full-text + pgvector con RRF, top 200 por rol (migración `003` y RPC `buscar_candidatos`, en PR aparte);
+3. score determinista en TS (`supabase/functions/_shared/scoring.ts`);
+4. equipos con beam search (`_shared/teams.ts`): pool de 8-10 por rol, top 15 equipos, nadie repetido dentro de un equipo;
+5. el LLM redacta fortalezas y huecos **solo** con `evidence`, `gaps` y `risks`.
 
-### `calculate-staffing-scenarios` (módulo C, rol 3)
-- **In:** requisitos + shortlist (con cobertura y disponibilidad) + `scenario_assumptions`.
+**Score:**
+- **Pesos:** skills obligatorias 35 · evidencia demostrada 20 · sector y rol 15 · seniority y años 10 · deseables 10 · idiomas y certificaciones 5 · recencia 5.
+- **Confianza por skill:** demostrada en ≥2 proyectos 1; demostrada 0,85; solo declarada 0,6.
+- **Penalización:** ×0,7 si nivel y años no cuadran.
+
+**Out**, la usan la pantalla y el asistente de voz:
+```jsonc
+{
+  "project_id": "uuid",
+  "roles": [{
+    "role": "Cloud Architect", "count": 1,
+    "candidates": [{
+      "employee_id": "NTT…", "nombre": "…", "disponibilidad": "En banca", "fit": 87,
+      "breakdown": { "obligatorias": 30, "evidencia": 18, "sector_rol": 12, "seniority": 9, "deseables": 7, "idiomas_cert": 5, "recencia": 4 },
+      "strengths": [{ "text": "…", "evidence": { "type": "project", "ref": "Migración a la nube de core bancario (2024)" } }],
+      "gaps": ["Terraform (obligatoria)"],
+      "risks": ["Roll-off: inicio por confirmar"],
+      "outside_area": true
+    }]
+  }],
+  "teams": [{
+    "team_id": "A", "members": [{ "role": "…", "employee_id": "…", "nombre": "…", "fit": 90 }],
+    "fit": 92,
+    "cost": 4200,                                   // null = "Por estimar" (faltan supuestos de tarifa)
+    "start": { "day": 4, "status": "confirmado" },  // status "por_confirmar" si hay alguien en Roll-off
+    "continuity": 67,                               // peor caso: roles cubiertos / roles obligatorios × 100
+    "worst_dropout": { "employee_id": "…", "role": "…", "covered_roles": 2, "total_roles": 3, "substitute": null },
+    "dropouts": [ /* un elemento por integrante, con la misma forma que worst_dropout */ ]
+  }]
+}
+```
+**Reglas de los equipos** (PDF de rankings):
+- **Coste** = supuesto €/día (`scenario_assumptions`) × días planificados por persona.
+- **Inicio:** "En banca" = día 0; "Roll-off" = `por_confirmar`, una ventana sin fecha.
+- **Continuidad:** se retira a cada integrante por turno y se busca sustituto en el pool del mismo rol.
+- **En la UI:** filtrar y ordenar los 15 equipos y mostrar hasta 5.
+
+### `calculate-staffing-scenarios` (módulo D, rol 3)
+- **In:** `{ project_id, team_id, assumptions }`: requisitos + equipo elegido (con cobertura y disponibilidad) + `scenario_assumptions`.
 - **Out:** por escenario, coste, tiempo hasta incorporación, cobertura, disponibilidad, riesgo y score. También el ganador y **por qué**.
 - **Fórmula:** `Score = w1·Cost + w2·Time + w3·Coverage + w4·Availability − w5·Risk`, normalizada. **Código determinista y testeable, sin LLM.** Pesos visibles en la UI.
 
-## 6. Reparto (brief §10, sin el rol de ElevenLabs)
+### `elevenlabs-signed-url` (asistente de voz, rol 5)
+- **In:** nada; lo llama la app al pulsar el micrófono.
+- **Out:** `{ signed_url }`. Hace `GET https://api.elevenlabs.io/v1/convai/conversation/get-signed-url?agent_id=<ELEVENLABS_AGENT_ID>` con la cabecera `xi-api-key: <ELEVENLABS_API_KEY>`.
+- La clave nunca llega al navegador. Las *client tools* se definen en la UI (`prompts/lovable.md` paso 6) y en el panel del agente, con los mismos nombres (`prompts/elevenlabs.md`).
+
+## 6. Reparto (brief §10, adaptado)
 | Rol | Responsabilidad | Punto de partida en el repo |
 |---|---|---|
 | 1. Data Engineering | Datos en Supabase y validación | ✅ Hecho: `001`, `002`, `load_profiles.py`, `docs/DATA.md` |
-| 2. AI Matching / Backend | `interpret-project`, `match-candidates` | §3 y §5 de este archivo, `buscar_personas` como referencia de SQL |
+| 2. AI Matching / Backend | `interpret-project`, `match-candidates` (ranking por rol + equipos) | §3 y §5, `docs/WORKFLOW_MATCHING.md`, PDF de rankings |
 | 3. Scenario Intelligence | `calculate-staffing-scenarios` | `scenario_assumptions` (002), §5 |
-| 4. Lovable / Integración | Las 3 pantallas + fichas de persona | `prompts/lovable.md` |
+| 4. Lovable / Integración | Las 4 pantallas + fichas de persona | `prompts/lovable.md` |
+| 5. ElevenLabs | Asistente de voz de rankings y equipos + `elevenlabs-signed-url` | `prompts/elevenlabs.md`, `prompts/lovable.md` paso 6 |
 
 ## 7. Cómo ejecutar
 ```powershell

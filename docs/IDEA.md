@@ -1,5 +1,11 @@
 # ORBIT AI
 
+> ⚠️ **Cambios aprobados respecto a este brief** (detalle en [`AGENTS.md`](../AGENTS.md) §1):
+> - La entrevista de voz a candidatos (módulo C, §6.4 y §7) **está descartada**.
+> - ElevenLabs pasa a ser un **asistente de voz** para los rankings y equipos de [`ORBIT_AI_Rankings_y_Filtros.pdf`](ORBIT_AI_Rankings_y_Filtros.pdf).
+> - El matching sigue [`WORKFLOW_MATCHING.md`](WORKFLOW_MATCHING.md).
+> - Las tablas reales son las de `AGENTS.md` §3.
+
 **From Talent Discovery to Talent Assessment to Staffing Decision**
 
 **Brief técnico · MVP de hackathon**
