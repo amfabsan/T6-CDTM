@@ -3,6 +3,7 @@ import { AlertTriangle, Briefcase, Check } from "lucide-react";
 import type { MatchCandidate } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { AvailabilityBadge, Chip, SectionLabel } from "./primitives";
+import { FitGauge, SkillDots } from "./MissionVisuals";
 import { ScoreBar } from "./ScoreBar";
 import { ExplainBlock } from "./Explain";
 import type { ExplainResponse } from "@/lib/types";
@@ -15,14 +16,11 @@ export function CandidateCard({
       <header className="flex items-start gap-3">
         {rank != null && <span className="mt-1 text-sm font-semibold text-muted-foreground tnum">#{rank}</span>}
         <div className="min-w-0 flex-1">
-          <h3 className="truncate text-lg">{c.nombre_completo}</h3>
+          <h3 className="text-lg">{c.nombre_completo}</h3>
           <p className="text-sm text-muted-foreground">{c.puesto_actual} · {c.nivel_seniority} · {c.pais}</p>
           <div className="mt-2"><AvailabilityBadge value={c.disponibilidad} /></div>
         </div>
-        <div className="text-right">
-          <span className="text-4xl font-bold leading-none text-navy tnum">{Math.round(c.score)}<span className="text-xl text-muted-foreground">%</span></span>
-          <p className="text-[11px] text-muted-foreground">encaje</p>
-        </div>
+        <FitGauge value={c.score} />
       </header>
 
       <div className="mt-4"><ScoreBar breakdown={c.breakdown} /></div>
@@ -42,6 +40,7 @@ export function CandidateCard({
 
       {why && <ExplainBlock title="Por qué encaja" summary={why.summary} points={why.strengths} source={why.source} />}
 
+      <div className="mt-4"><SectionLabel>Evidencia</SectionLabel><div className="project-timeline">{c.evidence.map(e => <Link to="/persona/$id" params={{ id: c.employee_id }} key={e.proyecto + e.anio} className="project-tile text-xs"><Briefcase className="mb-2 size-4 text-blue-200" /><b className="block text-sm">{e.proyecto}</b><span className="mt-1 block text-blue-200">{e.anio} · {e.sector}</span><span className="mt-2 flex flex-wrap gap-1">{e.skills.map(n => <Chip key={n} tone="ai">{n}</Chip>)}</span></Link>)}{c.evidence.length === 0 && <p className="text-xs text-blue-200">Sin proyectos registrados</p>}</div></div>
       <details className="mt-4 group">
         <summary className="cursor-pointer text-sm font-medium text-blue">Skills y evidencia</summary>
         <table className="mt-3 w-full text-sm">
@@ -51,7 +50,7 @@ export function CandidateCard({
               <tr key={s.name} className="border-t border-line">
                 <td className="py-1.5 text-navy">{s.name}</td>
                 <td className="text-xs">{s.tipo}</td>
-                <td className="tnum">{s.nivel}</td>
+                <td className="tnum"><SkillDots level={s.nivel} /></td>
                 <td className="tnum">{s.anios}</td>
                 <td>{s.demostrada ? <span className="inline-flex items-center gap-1 text-success-ink"><Check className="size-3.5" aria-hidden />demostrada</span> : <span className="text-warn-ink">solo declarada</span>}</td>
               </tr>

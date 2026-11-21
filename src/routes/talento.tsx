@@ -5,7 +5,8 @@ import { AppShell } from "@/components/orbit/AppShell";
 import { CandidateCard } from "@/components/orbit/CandidateCard";
 import { Funnel } from "@/components/orbit/Funnel";
 import { OrbitLegend, OrbitMap } from "@/components/orbit/OrbitMap";
-import { AvailabilityBadge, Chip, formatEs, OrbitButton, Panel, primaryLinkCls, SectionLabel, SimPill } from "@/components/orbit/primitives";
+import { AvailabilityBadge, Chip, OrbitButton, Panel, primaryLinkCls, SectionLabel, SimPill } from "@/components/orbit/primitives";
+import { Crystal, FitGauge } from "@/components/orbit/MissionVisuals";
 import { MOCK_INTERPRET } from "@/lib/mock-data";
 import { selectTop, TOTAL_AVAILABLE, useExplanations, useMatching } from "@/lib/matching";
 import { useProject } from "@/lib/project-store";
@@ -35,10 +36,11 @@ function StepTalent() {
   const [tab, setTab] = useState(0);
   const [top, setTop] = useState(5);
   const [minFit, setMinFit] = useState(0);
-  const [showMap, setShowMap] = useState(false);
+  const [showMap, setShowMap] = useState(true);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [compare, setCompare] = useState<string[]>([]);
   const [showCompare, setShowCompare] = useState(false);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const title = roleTitles[tab] ?? "";
   const roleReq = req.roles.find((r) => r.title === title);
@@ -52,8 +54,8 @@ function StepTalent() {
     <AppShell>
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-sm text-muted-foreground">Paso 2 · Talento</p>
-          <div className="mt-1 flex items-center gap-3"><h1 className="text-4xl">¿Quién encaja en este proyecto?</h1>{match?.simulated && <SimPill />}</div>
+          <p className="mission-kicker">02 / Candidatos</p>
+          <div className="mt-1 flex items-center gap-3"><h1 className="mission-title">Candidatos por rol</h1>{match?.simulated && <SimPill />}</div>
         </div>
         {!requirements && <Link to="/" className="text-sm text-blue hover:underline">Viendo el proyecto de ejemplo · Cargar un plan →</Link>}
       </div>
@@ -66,22 +68,19 @@ function StepTalent() {
             {roleTitles.map((t, i) => {
               const plazas = req.roles.find((r) => r.title === t)?.count ?? 1;
               return (
-                <button key={t} role="tab" aria-selected={tab === i} onClick={() => { setTab(i); setCompare([]); }}
+                <OrbitButton variant="ghost" key={t} role="tab" aria-selected={tab === i} onClick={() => { setTab(i); setCompare([]); }}
                   className={cn("rounded-[40px] border px-4 py-2 text-sm font-medium transition-colors", tab === i ? "border-blue bg-blue text-on-accent" : "border-line bg-surface text-text hover:border-blue")}>
                   {t} · {plazas} {plazas === 1 ? "plaza" : "plazas"}
-                </button>
+                </OrbitButton>
               );
             })}
           </div>
 
-          <p className="mt-6 text-lg">
-            De <b className="text-navy tnum">{formatEs(TOTAL_AVAILABLE)}</b> personas disponibles, <b className="text-navy tnum">{formatEs(nFiltered)}</b> pasan el filtro; <b className="text-blue">estas {shown.length} encajan mejor.</b>
-          </p>
           <section className="mt-4" aria-label="Embudo">
             <Funnel key={title} stages={[
-              { value: TOTAL_AVAILABLE, label: "disponibles" },
-              { value: nFiltered, label: "pasan el filtro", rules: ["no «Asignado»", ...(req.project.country_required ? [`en ${req.project.country}`] : [])] },
-              { value: rk?.total ?? 0, label: "puntuados", rules: ["skills", "años", "seniority", "idiomas", "certificaciones"] },
+              { value: TOTAL_AVAILABLE, label: "Disponibles" },
+              { value: nFiltered, label: "Cumplen requisitos obligatorios", rules: ["no «Asignado»", ...(req.project.country_required ? [`en ${req.project.country}`] : [])] },
+              { value: rk?.total ?? 0, label: "Preseleccionados", rules: ["skills", "años", "seniority", "idiomas", "certificaciones"] },
               { value: shown.length, label: `Top ${top}`, rules: [`encaje ≥ ${minFit}%`] },
             ]} />
           </section>
@@ -90,7 +89,7 @@ function StepTalent() {
             <div className="card flex items-center gap-1 rounded-full p-1" role="group" aria-label="Mostrar">
               <span className="px-2 text-xs text-muted-foreground">Mostrar:</span>
               {[3, 5, 10].map((n) => (
-                <button key={n} aria-pressed={top === n} onClick={() => setTop(n)} className={cn("rounded-full px-3 py-1 text-xs font-medium", top === n ? "bg-blue text-on-accent" : "text-muted-foreground hover:text-navy")}>Top {n}</button>
+                <OrbitButton variant="ghost" key={n} aria-pressed={top === n} onClick={() => setTop(n)} className={cn("rounded-full px-3 py-1 text-xs font-medium", top === n ? "bg-blue text-on-accent" : "text-muted-foreground hover:text-navy")}>Top {n}</OrbitButton>
               ))}
             </div>
             <label className="flex items-center gap-2 text-xs text-muted-foreground">
@@ -98,29 +97,24 @@ function StepTalent() {
               <input type="range" min={0} max={95} step={5} value={minFit} onChange={(e) => setMinFit(+e.target.value)} className="accent-[var(--blue)]" />
               <b className="w-8 text-navy tnum">{minFit}</b>
             </label>
-            <button onClick={() => setShowMap((v) => !v)} aria-pressed={showMap}
-              className={cn("rounded-[40px] border px-4 py-1.5 text-xs font-medium", showMap ? "border-blue bg-blue/8 text-blue" : "border-navy text-navy")}>Vista mapa</button>
+            <OrbitButton variant="ghost" onClick={() => setShowMap((v) => !v)} aria-pressed={showMap}
+              className={cn("rounded-[40px] border px-4 py-1.5 text-xs font-medium", showMap ? "border-blue bg-blue/8 text-blue" : "border-navy text-navy")}>Vista mapa</OrbitButton>
           </div>
           {shown.length < top && <p className="mt-3 text-sm font-medium text-warn-ink">Cumplen {shown.length} de los {top} pedidos.</p>}
 
-          <section className={cn("mt-6 grid gap-6", showMap && "lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]")}>
-            {showMap && (
-              <Panel className="h-fit lg:sticky lg:top-32">
-                <SectionLabel>Vista mapa · {title}</SectionLabel>
-                <OrbitMap center={title} candidates={shown} activeId={activeId} onActive={setActiveId} />
-                <OrbitLegend />
-              </Panel>
-            )}
-            <ol className={cn("grid gap-4", !showMap && "xl:grid-cols-2")}>
-              {shown.map((c, i) => (
-                <li key={c.employee_id}>
-                  <CandidateCard c={c} rank={i + 1} why={explain?.candidates.find((x) => x.employee_id === c.employee_id)} active={activeId === c.employee_id} onHover={(h) => setActiveId(h ? c.employee_id : null)}
-                    compared={compare.includes(c.employee_id)} compareDisabled={compare.length >= 4}
-                    onCompare={() => setCompare((s) => (s.includes(c.employee_id) ? s.filter((x) => x !== c.employee_id) : [...s, c.employee_id]))} />
-                </li>
-              ))}
-            </ol>
+          <section className={cn("mt-6 grid gap-8", showMap && "lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]")}>
+            {showMap && <div className="radar-surface"><h2 className="text-sm font-semibold text-blue-200">Mapa de encaje</h2><OrbitMap center={title} candidates={shown} activeId={activeId} onActive={setActiveId} onSelect={setSelectedId} /><OrbitLegend /></div>}
+            <ol className="radar-list">{shown.map((c, i) => <li key={c.employee_id} className="candidate-rank" onMouseEnter={() => setActiveId(c.employee_id)} onMouseLeave={() => setActiveId(null)}>
+              <span className="w-4 text-xs text-blue-200 tnum">{i + 1}</span>
+              <OrbitButton variant="ghost" className="rank-select min-w-0 flex-1 justify-start border-0 px-0 py-0" onClick={() => setSelectedId(c.employee_id)}>
+                <div className="avatar-crystal"><Crystal tone={c.disponibilidad === "En banca" ? "green" : "amber"} /><span>{c.nombre_completo.split(' ').slice(0, 2).map(n => n[0]).join('')}</span></div>
+                <div className="min-w-0 text-left"><b className="block text-sm">{c.nombre_completo}</b><span className="mt-1 block text-xs text-blue-200">{c.puesto_actual}</span><span className="mt-2 block"><AvailabilityBadge value={c.disponibilidad} /></span></div>
+              </OrbitButton>
+              <FitGauge value={c.score} size={54} />
+              <label className="text-[10px] text-blue-200"><input type="checkbox" aria-label={`Comparar ${c.nombre_completo}`} checked={compare.includes(c.employee_id)} disabled={!compare.includes(c.employee_id) && compare.length >= 4} onChange={() => setCompare(s => s.includes(c.employee_id) ? s.filter(x => x !== c.employee_id) : [...s, c.employee_id])} /><span className="mt-1 block">Comparar</span></label>
+            </li>)}</ol>
           </section>
+          {selectedId && (() => { const c = shown.find(x => x.employee_id === selectedId); return c ? <div onKeyDown={e => e.key === 'Escape' && setSelectedId(null)}><OrbitButton className="mission-backdrop rounded-none" variant="ghost" aria-label="Cerrar candidato" onClick={() => setSelectedId(null)} /><aside className="mission-drawer" role="dialog" aria-modal aria-label="Ficha del candidato"><OrbitButton variant="ghost" autoFocus aria-label="Cerrar candidato" onClick={() => setSelectedId(null)} className="mb-4 ml-auto flex size-9 p-0"><X className="size-4" /></OrbitButton><CandidateCard c={c} why={explain?.candidates.find(x => x.employee_id === c.employee_id)} compared={compare.includes(c.employee_id)} compareDisabled={compare.length >= 4} onCompare={() => setCompare(s => s.includes(c.employee_id) ? s.filter(x => x !== c.employee_id) : [...s, c.employee_id])} /></aside></div> : null; })()}
 
           <details className="card mt-8 p-5">
             <summary className="flex cursor-pointer items-center gap-2 font-semibold text-navy"><ChevronDown className="size-4" aria-hidden />Excluidos ({excluded.length})</summary>
@@ -140,7 +134,7 @@ function StepTalent() {
           </details>
 
           <div className="mt-8 flex justify-end">
-            <Link to="/equipos" className={primaryLinkCls}>Ver equipos <ArrowRight className="size-4" /></Link>
+            <Link to="/equipos" className={primaryLinkCls}>Ver propuestas de equipo <ArrowRight className="size-4" /></Link>
           </div>
         </>
       )}
@@ -161,9 +155,9 @@ function CompareDrawer({ list, role, onClose }: { list: MatchCandidate[]; role?:
   const has = (c: MatchCandidate, n: string) => c.skills.some((s) => s.name.toLowerCase() === n.toLowerCase());
   return (
     <div className="fixed inset-0 z-50" role="dialog" aria-modal aria-label="Comparar candidatos" onKeyDown={(e) => e.key === "Escape" && onClose()}>
-      <button className="absolute inset-0 bg-navy/40" aria-label="Cerrar" onClick={onClose} />
-      <aside className="absolute right-0 top-0 h-full w-full max-w-4xl overflow-auto border-l border-line bg-surface p-6 shadow-2xl">
-        <div className="flex items-center justify-between"><h2 className="text-2xl">Comparar</h2><button onClick={onClose} autoFocus aria-label="Cerrar" className="rounded-full p-2 hover:bg-surface-2"><X className="size-5" /></button></div>
+      <OrbitButton variant="ghost" className="absolute inset-0 rounded-none border-0 bg-ink-900/70" aria-label="Cerrar" onClick={onClose} />
+      <aside className="absolute right-0 top-0 h-full w-full max-w-4xl overflow-auto border-l border-line bg-ink-900 p-6 shadow-2xl">
+        <div className="flex items-center justify-between"><h2 className="text-2xl">Comparar</h2><OrbitButton variant="ghost" onClick={onClose} autoFocus aria-label="Cerrar" className="rounded-full p-2 hover:bg-surface-2"><X className="size-5" /></OrbitButton></div>
         <table className="mt-6 w-full text-sm">
           <thead><tr><th className="w-40" />{list.map((c) => <th key={c.employee_id} className="p-2 text-left text-navy">{c.nombre_completo}</th>)}</tr></thead>
           <tbody>
