@@ -56,8 +56,24 @@ def match_project(project_id: str, options: dict, fetch: Callable[[str, dict | N
     afines: dict[str, list[tuple[str, float]]] = {}
     for a in (fetch("rpc/skills_afines", {"p_skills": pedidas}) if pedidas else []):  # co-ocurrencia, migración 007
         afines.setdefault(a["skill"], []).append((a["afin"], a["sim"]))
-    out = run_matching(rows[0], candidates_from_rpc(rpc, profiles), **_opts(options), affinities=afines)
+    opts = {**assumptions_from_db(fetch, project_id), **_opts(options)}  # lo que pase la UI en `options` manda
+    out = run_matching(rows[0], candidates_from_rpc(rpc, profiles), **opts, affinities=afines)
     out["n_filtrados"] = {r["title"]: r.get("n_filtrados") for r in rpc}
+    return out
+
+
+def assumptions_from_db(fetch: Callable[[str, dict | None], Any], project_id: str) -> dict:
+    """Últimos supuestos editables del proyecto (scenario_assumptions, migración 005, en €/h). Lo que falte usa los de pipeline.py."""
+    rows = fetch(f"scenario_assumptions?project_id=eq.{urllib.parse.quote(project_id)}&select=*&order=created_at.desc&limit=1", None)
+    if not rows:
+        return {}
+    a, out = rows[0], {}
+    rate = a.get("rates_by_seniority") or a.get("internal_rate_per_hour")
+    if rate is not None:
+        out["rate_per_hour"] = rate
+    for k in ("hours_per_person", "rolloff_days"):
+        if a.get(k) is not None:
+            out[k] = a[k]
     return out
 
 

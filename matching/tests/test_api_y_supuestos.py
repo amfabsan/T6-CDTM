@@ -56,6 +56,9 @@ class Api(unittest.TestCase):
                          "candidates": [{"employee_id": e, "rrf": 0.1, "pos_texto": 1, "pos_vector": 1} for e in ids]} for i in (0, 1)]
             if path == "rpc/perfiles":
                 return [p for p in SAMPLE if p["employee_id"] in body["p_ids"]]
+            if path.startswith("scenario_assumptions"):
+                return [{"rates_by_seniority": {"Junior": 1, "Mid": 1, "Senior": 1, "Lead": 1, "Principal": 1, "Trainee": 1},
+                         "hours_per_person": 10, "rolloff_days": None}]
             if path == "rpc/skills_afines":
                 self.assertEqual(body["p_skills"], [".NET", "C#", "Java"])
                 return [{"skill": "C#", "afin": ".NET", "sim": 0.82}]
@@ -66,8 +69,13 @@ class Api(unittest.TestCase):
         calls = []
         out = match_project("p1", {"top": 3}, fetch=self.fake_supabase("confirmado", calls))
         self.assertEqual(calls, ["project_requirements?id=eq.p1&select=*", "rpc/candidatos_proyecto", "rpc/perfiles",
-                                 "rpc/skills_afines"])
+                                 "rpc/skills_afines", "scenario_assumptions?project_id=eq.p1&select=*&order=created_at.desc&limit=1"])
         self.assertEqual(set(out["ranking"]), {"Backend", "Backend (2)"})
+        # Supuestos de scenario_assumptions (005): 1 €/h × 10 h por persona; rolloff_days nulo → el de por defecto.
+        self.assertEqual((out["assumptions"]["hours_per_person"], out["assumptions"]["rolloff_days"]), (10, 45))
+        self.assertEqual(out["assumptions"]["rate_per_hour"]["Senior"], 1)
+        for t in out["teams"]:
+            self.assertEqual(t["cost"]["value"], 10 * len(t["members"]))
         self.assertEqual(out["n_filtrados"], {"Backend": 20})
         json.dumps(out)
 
