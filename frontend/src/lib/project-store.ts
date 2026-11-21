@@ -7,8 +7,9 @@ interface State {
   projectId: string | null;
   demo: boolean;
   teamId: string | null;
+  teamArrival: boolean;
 }
-export const EMPTY: State = { interpretation: null, requirements: null, projectId: null, demo: false, teamId: null };
+export const EMPTY: State = { interpretation: null, requirements: null, projectId: null, demo: false, teamId: null, teamArrival: false };
 let state: State = EMPTY;
 const subs = new Set<() => void>();
 

@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { ArrowRight, Check, ChevronDown, X } from "lucide-react";
 import { AppShell } from "@/components/orbit/AppShell";
 import { CandidateCard } from "@/components/orbit/CandidateCard";
+import { MatchingStatus } from "@/components/orbit/MatchingStatus";
 import { Funnel } from "@/components/orbit/Funnel";
 import { OrbitLegend, OrbitMap } from "@/components/orbit/OrbitMap";
 import { AvailabilityBadge, Chip, OrbitButton, Panel, primaryLinkCls, SectionLabel, SimPill } from "@/components/orbit/primitives";
@@ -30,7 +31,7 @@ export const Route = createFileRoute("/talento")({
 function StepTalent() {
   const { requirements } = useProject();
   const req = requirements ?? MOCK_INTERPRET.requirements;
-  const { data: match, isLoading, isError } = useMatching();
+  const { data: match, isLoading, error } = useMatching();
   const roleTitles = match ? Object.keys(match.data.ranking) : [];
   const { data: explain } = useExplanations(false);
   const [tab, setTab] = useState(0);
@@ -57,11 +58,11 @@ function StepTalent() {
           <p className="mission-kicker">02 / Candidatos</p>
           <div className="mt-1 flex items-center gap-3"><h1 className="mission-title">Candidatos por rol</h1>{match?.simulated && <SimPill />}</div>
         </div>
-        {!requirements && <Link to="/" className="text-sm text-blue hover:underline">Viendo el proyecto de ejemplo · Cargar un plan →</Link>}
+        {!requirements && <Link to="/" className="text-sm text-blue hover:underline">Viendo el proyecto de ejemplo · Escribir una petición →</Link>}
       </div>
 
       {isLoading || !match ? (
-        <p className="mt-16 text-center text-muted-foreground" role="status">{isError ? "No se ha podido calcular el encaje." : "Calculando encaje…"}</p>
+        <MatchingStatus error={error} />
       ) : (
         <>
           <div role="tablist" aria-label="Roles" className="mt-6 flex flex-wrap gap-2">

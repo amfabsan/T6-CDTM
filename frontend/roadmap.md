@@ -1,3 +1,7 @@
 - [x] Replace purple and lime with the executive blue palette and subdued geometric outlines.
 - [x] Update professional Spanish copy across all screens, tooltips and the design showcase.
 - [x] Verify layouts and the demo workflow; preserve all data contracts and logic.
+- [x] Prioritize the main team and four ranked team tabs with clickable member profiles.
+- [x] Show team and member alternatives on team and individual views.
+- [x] Animate the prompt-to-team journey and verify navigation and ordering.
+- [x] Confirm requirements through the existing review action before opening the recommended team.

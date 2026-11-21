@@ -58,8 +58,9 @@ export function OrbitSummary({ result, req }: { result: InterpretResult; req: Re
   );
 }
 
-export function InterpretationView({ result, onConfirm, busy }: { result: InterpretResult; onConfirm: (r: Requirements) => void; busy?: boolean }) {
+export function InterpretationView({ result, onConfirm, busy, error }: { result: InterpretResult; onConfirm: (r: Requirements, reviewedBy: string) => void; busy?: boolean; error?: string | null }) {
   const [req, setReq] = useState<Requirements>(() => structuredClone(result.requirements));
+  const [reviewer, setReviewer] = useState("");
   const [active, setActive] = useState<string | null>(null);
   const [line, setLine] = useState<string | null>(null);
   const box = useRef<HTMLDivElement>(null);
@@ -169,10 +170,17 @@ export function InterpretationView({ result, onConfirm, busy }: { result: Interp
 
       <ReviewPanel items={result.review} />
 
-      <div className="flex justify-end">
-        <OrbitButton disabled={busy} onClick={() => onConfirm(req)} className="px-8 py-3 text-base">
-          Buscar candidatos
-        </OrbitButton>
+      <div className="flex flex-col items-end gap-2">
+        <div className="flex flex-wrap items-end justify-end gap-3">
+          <label className="text-xs text-muted-foreground">Revisado por <span aria-hidden className="text-gap">*</span>
+            <input required aria-required value={reviewer} onChange={(e) => setReviewer(e.target.value)} placeholder="Nombre o email"
+              className="mt-1 block w-60 border border-line bg-surface px-3 py-2 text-sm text-text outline-none focus:border-blue" />
+          </label>
+          <OrbitButton disabled={busy || !reviewer.trim()} onClick={() => onConfirm(req, reviewer.trim())} className="px-8 py-3 text-base">
+            {busy ? "Confirmando…" : "Confirmar requisitos"}
+          </OrbitButton>
+        </div>
+        {error && <p role="alert" className="text-sm text-gap">No se han podido confirmar los requisitos: {error}</p>}
       </div>
     </div>
   );

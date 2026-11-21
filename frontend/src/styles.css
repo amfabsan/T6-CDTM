@@ -262,3 +262,21 @@
 .launch-pad-winner { border-color: var(--blue-400); }
 .mission-secondary[aria-selected="true"], .mission-secondary[aria-pressed="true"] { background: var(--ink-500); border-color: var(--blue-400); color: var(--white); }
 .funnel-number.text-blue-400 { color: var(--blue-400); }
+.team-main { display: grid; gap: 32px; }
+.team-main .crew-orbit { max-width: 440px; margin-inline: auto; height: 180px; }
+.team-main .team-summary { display: flex; flex-direction: column; justify-content: center; }
+.team-main .team-summary > dl { margin-top: 0; }
+.crew-crystal:hover { filter: drop-shadow(0 0 8px var(--blue-400)); }
+.rocket-journey, .rocket-arrival { position: relative; height: 110px; overflow: hidden; pointer-events: none; }
+.rocket-path { position: absolute; top: 55%; left: 8%; right: 12%; height: 1px; background: var(--border); }
+.rocket-icon { position: absolute; width: 36px; height: 36px; color: var(--blue-200); top: 38%; left: 8%; transform: rotate(45deg); animation: rocket-transit 1.8s ease-in-out infinite; }
+.rocket-target { position: absolute; right: 10%; top: 34%; width: 44px; height: 44px; border: 1px solid var(--green); border-radius: 50%; box-shadow: var(--shadow-glow); }
+.rocket-arrival { position: absolute; inset: -72px 0 auto; z-index: 2; }
+.rocket-arrival .rocket-icon { animation: rocket-dock 1.8s ease-out forwards; }
+.rocket-arrival .rocket-target { animation: target-dock 1.8s ease-out forwards; }
+.rocket-arrival .rocket-path { animation: target-dock 1.8s ease-out forwards; }
+@keyframes rocket-transit { 0% { left: 8%; opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { left: 85%; opacity: 0; } }
+@keyframes rocket-dock { 0% { left: 8%; opacity: 0; } 20% { opacity: 1; } 80% { left: 85%; top: 38%; opacity: 1; } 100% { left: 85%; top: 85%; opacity: 0; transform: rotate(90deg) scale(.3); } }
+@keyframes target-dock { 0%, 75% { opacity: 1; } 100% { opacity: 0; } }
+@media (min-width: 900px) { .team-main { grid-template-columns: 1.1fr 1fr; padding: 32px; } }
+@media (prefers-reduced-motion: reduce) { .rocket-journey .rocket-icon { animation: none; left: 48%; } .rocket-arrival { display: none; } }

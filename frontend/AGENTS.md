@@ -31,3 +31,4 @@ use the editor.
 
 - Data access: Supabase calls (interpret-project, project_requirements insert, catalogo_skills, rpc perfil) only via src/lib/api.ts; matching only via src/lib/matching.ts (one POST /match per project, cached in React Query, fallback src/mocks/matching.json); teams are never recomputed in the browser, step 4 re-runs /match with new options and replaces the cache. Never add Lovable Cloud: the backend lives in an external project.
 - Keep mission illustrations and visual gauges in shared browser-safe SVG components; presentation must consume existing matching results without altering calculations or contracts.
+- Team presentation uses service-provided fit and rankings for top-four tabs and shared alternatives; profile navigation retains the selected team, never computes synergy or replacement teams locally.

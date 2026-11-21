@@ -8,6 +8,8 @@ import { allCandidates, useMatching } from "@/lib/matching";
 import { perfilFromMatch } from "@/lib/mock-data";
 import { Crystal, SkillDots } from "@/components/orbit/MissionVisuals";
 import { cn } from "@/lib/utils";
+import { TeamAlternatives } from "@/components/orbit/TeamAlternatives";
+import { useProject } from "@/lib/project-store";
 
 export const Route = createFileRoute("/persona/$id")({
   head: () => ({
@@ -26,6 +28,8 @@ export const Route = createFileRoute("/persona/$id")({
 function PersonPage() {
   const { id } = Route.useParams();
   const { data: match } = useMatching();
+  const { teamId } = useProject();
+  const team = match?.data.teams.find(t => t.id === teamId) ?? match?.data.teams.find(t => t.members.some(m => m.employee_id === id)) ?? match?.data.teams[0];
   const { data: p, isLoading } = useQuery({
     queryKey: ["perfil", id, !!match],
     queryFn: async () => {
@@ -36,7 +40,7 @@ function PersonPage() {
   });
   return (
     <AppShell>
-      <Link to="/talento" className="text-sm text-blue hover:underline">← Volver a Talento</Link>
+      <div className="flex flex-wrap gap-4"><Link to="/equipos" className="text-sm text-blue hover:underline">← Volver a equipos</Link><Link to="/talento" className="text-sm text-blue hover:underline">Ver candidatos</Link></div>
       {isLoading ? <p className="mt-10 text-muted-foreground">Cargando ficha…</p> : !p ? (
         <p className="mt-10">No hemos encontrado la ficha de <b>{id}</b>.</p>
       ) : (
@@ -84,6 +88,7 @@ function PersonPage() {
           </div>
         </div>
       )}
+      {match && team && <TeamAlternatives match={match.data} team={team} {...(team.members.some(m => m.employee_id === id) ? { employeeId: id } : {})} />}
     </AppShell>
   );
 }

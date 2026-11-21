@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import { Paperclip, ScanText } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { useLayoutEffect, useRef, useState } from "react";
 import { MissionWorld } from "./MissionVisuals";
 import { OrbitButton } from "./primitives";
+import { useElapsed } from "@/hooks/use-elapsed";
 import { MOCK_SOURCE_TEXT } from "@/lib/mock-data";
 
 const PROMPTS = [
@@ -11,14 +10,49 @@ const PROMPTS = [
   { label: "Migración SAP en sector público", text: "Proyecto de migración a SAP S/4HANA para un organismo público en Madrid, presencial: un arquitecto SAP senior (10 años) y dos consultores FI/CO. Se exige residencia en España." },
 ];
 
-/** Conversational hero: talk to ORBIT or drop the PDF plan. */
-export function PlanIntake({ onFile, onText, scannedError }: { onFile: (f: File) => void; onText: (t: string) => void; scannedError?: boolean }) {
-  const [drag, setDrag] = useState(false);
-  const [text, setText] = useState("");
-  const input = useRef<HTMLInputElement>(null);
+/** Helper chips: each inserts a hint at the cursor so the manager remembers what ORBIT needs. */
+const HINTS = [
+  { label: "+ Roles y plazas", text: "Roles y plazas: " },
+  { label: "+ Obligatorio / deseable", text: "Obligatorio: … Deseable: " },
+  { label: "+ Años mínimos", text: "Años mínimos de experiencia: " },
+  { label: "+ Idiomas", text: "Idiomas: " },
+  { label: "+ Ubicación", text: "Ubicación o modalidad: " },
+  { label: "+ Fecha de inicio", text: "Fecha de inicio: " },
+];
+
+const MIN_ROWS = 4;
+const MAX_ROWS = 8;
+
+/** Chat-like prompt box: the request is always typed (no PDF). */
+export function PlanIntake({ onText, initialText = "" }: { onText: (t: string) => void; initialText?: string }) {
+  const [text, setText] = useState(initialText);
   const textRef = useRef<HTMLTextAreaElement>(null);
-  useEffect(() => { if (scannedError) textRef.current?.focus(); }, [scannedError]);
-  const send = () => text.trim() && onText(text);
+  const send = () => { if (text.trim()) onText(text.trim()); };
+
+  // Auto-grow between MIN_ROWS and MAX_ROWS.
+  useLayoutEffect(() => {
+    const el = textRef.current;
+    if (!el) return;
+    const cs = getComputedStyle(el);
+    const line = parseFloat(cs.lineHeight) || 28;
+    const pad = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
+    const max = line * MAX_ROWS + pad;
+    el.style.height = "auto";
+    el.style.height = `${Math.min(Math.max(el.scrollHeight, line * MIN_ROWS + pad), max)}px`;
+    el.style.overflowY = el.scrollHeight > max ? "auto" : "hidden";
+  }, [text]);
+
+  function insertHint(hint: string) {
+    const el = textRef.current;
+    const start = el?.selectionStart ?? text.length;
+    const end = el?.selectionEnd ?? text.length;
+    const before = text.slice(0, start);
+    const prefix = before && !before.endsWith("\n") ? "\n" : "";
+    const cursor = before.length + prefix.length + hint.length;
+    setText(before + prefix + hint + text.slice(end));
+    requestAnimationFrame(() => { el?.focus(); el?.setSelectionRange(cursor, cursor); });
+  }
+
   return (
     <div className="pb-4">
       <section className="mission-hero">
@@ -26,34 +60,27 @@ export function PlanIntake({ onFile, onText, scannedError }: { onFile: (f: File)
         <p className="mission-kicker relative z-10 mb-6">01 / Requisitos</p>
         <h1>El talento que necesitas<br /><em>ya está en la organización.</em></h1>
       </section>
-      {scannedError && (
-        <div role="alert" className="mt-8 flex items-start gap-3 border border-gold bg-warn-soft p-4 text-sm">
-          <ScanText className="mt-0.5 size-5 text-warn-ink" aria-hidden />
-          <p className="text-warn-ink"><b>Este PDF no tiene texto (parece escaneado).</b> Pega el contenido en el cuadro de texto.</p>
-        </div>
-      )}
-      <div
-        onDragOver={(e) => { e.preventDefault(); setDrag(true); }}
-        onDragLeave={() => setDrag(false)}
-        onDrop={(e) => { e.preventDefault(); setDrag(false); const f = e.dataTransfer.files[0]; if (f) onFile(f); }}
-        className={cn("card mission-input mx-auto mt-2 transition-all duration-200 focus-within:glow-ai", drag ? "border-blue bg-blue/5" : "")}
-      >
-        <label htmlFor="plan-text" className="sr-only">Describe la necesidad del proyecto</label>
-        <textarea ref={textRef} id="plan-text" value={text} onChange={(e) => setText(e.target.value)} rows={3}
-          onKeyDown={(e) => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) send(); }}
-          placeholder="Describe la necesidad del proyecto o adjunta el plan (PDF)"
+      <h2 className="mx-auto mb-3 max-w-[820px] text-center text-2xl font-semibold">¿Qué equipo necesitas?</h2>
+      <div className="card mission-input mx-auto mt-2 transition-all duration-200 focus-within:glow-ai">
+        <label htmlFor="plan-text" className="sr-only">¿Qué equipo necesitas?</label>
+        <textarea ref={textRef} id="plan-text" value={text} onChange={(e) => setText(e.target.value)} rows={MIN_ROWS}
+          onKeyDown={(e) => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) { e.preventDefault(); send(); } }}
+          placeholder="Describe el proyecto o la vacante: qué roles y cuántas personas, skills obligatorias y deseables, años de experiencia, idiomas, ubicación o modalidad y cuándo empieza"
           className="w-full resize-none bg-transparent p-3 text-lg outline-none placeholder:text-muted-foreground" />
-        <div className="flex items-center justify-between">
-          <OrbitButton variant="ghost" type="button" onClick={() => input.current?.click()} className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm text-muted-foreground hover:bg-surface-2 hover:text-foreground">
-            <Paperclip className="size-4" aria-hidden />Adjuntar PDF
-          </OrbitButton>
-          <OrbitButton type="button" onClick={send} disabled={!text.trim()} aria-label="Interpretar requisitos"
-            className="px-4 py-2 text-xs">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex flex-wrap gap-1.5" aria-label="Añadir pistas">
+            {HINTS.map((h) => (
+              <button key={h.label} type="button" onClick={() => insertHint(h.text)}
+                className="rounded-full border border-line px-2.5 py-1 text-xs text-muted-foreground transition-colors hover:border-blue hover:text-blue">
+                {h.label}
+              </button>
+            ))}
+          </div>
+          <OrbitButton type="button" onClick={send} disabled={!text.trim()} aria-label="Interpretar requisitos" title="Enviar (Ctrl/Cmd + Enter)"
+            className="shrink-0 px-4 py-2 text-xs">
             <span>Interpretar requisitos</span>
           </OrbitButton>
         </div>
-        {drag && <div className="pointer-events-none absolute inset-0 grid place-items-center rounded-2xl text-lg font-semibold text-ai">Suelta el plan aquí</div>}
-        <input ref={input} type="file" accept="application/pdf" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) onFile(f); }} />
       </div>
       <div className="mx-auto mt-4 flex max-w-3xl flex-wrap justify-center gap-2">
         {PROMPTS.map((p) => (
@@ -62,23 +89,26 @@ export function PlanIntake({ onFile, onText, scannedError }: { onFile: (f: File)
           </OrbitButton>
         ))}
       </div>
-          </div>
+    </div>
   );
 }
 
-export function ScanningDoc() {
+/** Loader while interpret-project runs (up to ~90 s), with elapsed seconds and Cancel. */
+export function ReadingRequest({ onCancel }: { onCancel: () => void }) {
+  const seconds = useElapsed();
   return (
     <div className="mx-auto flex max-w-md flex-col items-center py-12" role="status" aria-live="polite">
-      <div className="card relative h-80 w-64 overflow-hidden p-6">
-        {Array.from({ length: 14 }, (_, i) => (
+      <div className="card relative h-56 w-48 overflow-hidden p-5">
+        {Array.from({ length: 10 }, (_, i) => (
           <div key={i} className="mb-3 h-2 rounded-full bg-surface-2" style={{ width: `${55 + ((i * 37) % 45)}%` }} />
         ))}
         <div className="absolute inset-x-0 h-14 -translate-y-1/2 animate-scan bg-gradient-to-b from-transparent via-ai/30 to-transparent">
           <div className="absolute inset-x-0 top-1/2 h-px bg-ai" />
         </div>
       </div>
-      <p className="mt-6 text-xl font-semibold text-blue">Leyendo el plan…</p>
-      <p className="mt-1 text-sm text-muted-foreground">Identificando roles, posiciones y requisitos</p>
+      <p className="mt-6 text-xl font-semibold text-blue">ORBIT está leyendo la petición… <span className="tnum">{seconds}</span> s</p>
+      <p className="mt-1 text-sm text-muted-foreground">Identificando roles, posiciones y requisitos. Puede tardar hasta ~90 s.</p>
+      <OrbitButton variant="ghost" type="button" onClick={onCancel} className="mt-5">Cancelar</OrbitButton>
     </div>
   );
 }

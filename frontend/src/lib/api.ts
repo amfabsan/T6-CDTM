@@ -17,36 +17,15 @@ function sb(): SupabaseClient {
 
 const delay = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-export class PdfSinTextoError extends Error {
-  constructor() {
-    super("pdf_sin_texto");
-  }
-}
-
-export type InterpretInput = { file: File } | { text: string };
-
-export async function interpretProject(input: InterpretInput): Promise<InterpretResult> {
+/** interpret-project with JSON { project_text } (the request is always typed, no PDF). Can take up to ~90 s. */
+export async function interpretProject(text: string, signal?: AbortSignal): Promise<InterpretResult> {
   if (!isLive) {
     await delay(2400);
-    if ("file" in input && /escane/i.test(input.file.name)) throw new PdfSinTextoError();
-    const text = "text" in input && input.text.trim() ? input.text : MOCK_INTERPRET.source_text;
-    return structuredClone({ ...MOCK_INTERPRET, source: "file" in input ? "pdf" : "texto", source_text: text });
+    if (signal?.aborted) throw new DOMException("Aborted", "AbortError");
+    return structuredClone({ ...MOCK_INTERPRET, source: "texto", source_text: text.trim() || MOCK_INTERPRET.source_text });
   }
-  let body: FormData | { project_text: string };
-  if ("file" in input) {
-    const fd = new FormData();
-    fd.append("file", input.file);
-    body = fd;
-  } else body = { project_text: input.text };
-  const { data, error } = await sb().functions.invoke("interpret-project", { body });
-  if (error) {
-    const ctx = (error as { context?: Response }).context;
-    if (ctx && ctx.status === 422) {
-      const j = (await ctx.json().catch(() => null)) as { error?: string } | null;
-      if (j?.error === "pdf_sin_texto") throw new PdfSinTextoError();
-    }
-    throw error;
-  }
+  const { data, error } = await sb().functions.invoke("interpret-project", { body: { project_text: text }, ...(signal ? { signal } : {}) });
+  if (error) throw error;
   return data as InterpretResult;
 }
 
@@ -58,6 +37,16 @@ export async function saveRequirements(row: Record<string, unknown>): Promise<st
   const { data, error } = await sb().from("project_requirements").insert(row).select("id").single();
   if (error) throw error;
   return String((data as { id: unknown }).id);
+}
+
+/** Step 4: marks the saved requirements as reviewed. /match answers 409 for unconfirmed (draft) projects. */
+export async function confirmRequirements(projectId: string, reviewedBy: string): Promise<void> {
+  if (!isLive) {
+    await delay(200);
+    return;
+  }
+  const { error } = await sb().rpc("confirmar_requisitos", { p_project_id: projectId, p_reviewed_by: reviewedBy });
+  if (error) throw error;
 }
 
 /** Skill names for autocomplete, from table catalogo_skills. */
