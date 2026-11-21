@@ -1,6 +1,6 @@
 # ORBIT Talent Intelligence
 
-Design and build the visual identity and main screens of "ORBIT AI", an internal staffing intelligence product for NTT DATA managers. Tagline: "Find the talent. Validate the fit. Make the staffing decision." Spanish UI. It must look original and memorable — NOT a generic admin dashboard — while staying enterprise-credible and fast to read.
+Design and build the visual identity and main screens of "ORBIT AI", an internal staffing intelligence product for NTT DATA managers. Tagline: "Find the talent. Validate the fit. Make the staffing decision." English UI (dataset values such as availability, skills and sectors stay in Spanish and are shown through `src/lib/labels.ts`). It must look original and memorable — NOT a generic admin dashboard — while staying enterprise-credible and fast to read.
 
 
 
@@ -34,7 +34,7 @@ DATA HONESTY: availability text exactly as stored ("En banca", "Roll-off próxim
 
 
 
-DELIVERABLES NOW: the design system on a route "/design" showing all components (tokens, chips, badges, cards, funnel, ring gauge, orbit); the app shell; step 1 complete; step 2 with funnel + orbit map + list. Use mock data for a Spanish bank payments project with roles "Arquitecto cloud senior ×1", "Desarrollador backend Java ×2", "Especialista de seguridad ×1". Keep components reusable.
+DELIVERABLES NOW: the design system on a route "/design" showing all components (tokens, chips, badges, cards, funnel, ring gauge, orbit); the app shell; step 1 complete; step 2 with funnel + orbit map + list. Use mock data for a Spanish bank payments project with roles "Senior cloud architect ×1", "Java backend developer ×2", "Security specialist ×1". Keep components reusable.
 
 This project was built with [Lovable](https://lovable.dev).
 

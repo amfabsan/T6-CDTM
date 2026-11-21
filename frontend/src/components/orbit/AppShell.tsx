@@ -8,18 +8,18 @@ import { MOCK_INTERPRET } from "@/lib/mock-data";
 import { OrbitButton, SimPill } from "./primitives";
 
 const nav = [
-  { label: "1 · Necesidad", to: "/" as const, subtitle: "Requisitos", icon: ClipboardList },
-  { label: "2 · Talento", to: "/talento" as const, subtitle: "Candidatos", icon: Users },
-  { label: "3 · Equipos", to: "/equipos" as const, subtitle: "Equipos", icon: UsersRound },
-  { label: "4 · Decisión", to: "/decision" as const, subtitle: "Escenarios", icon: Scale },
-  { label: "Personas", to: "/personas" as const, subtitle: "Directorio", icon: Contact },
+  { label: "1 · Need", to: "/" as const, subtitle: "Requirements", icon: ClipboardList },
+  { label: "2 · Talent", to: "/talento" as const, subtitle: "Candidates", icon: Users },
+  { label: "3 · Teams", to: "/equipos" as const, subtitle: "Teams", icon: UsersRound },
+  { label: "4 · Decision", to: "/decision" as const, subtitle: "Scenarios", icon: Scale },
+  { label: "People", to: "/personas" as const, subtitle: "Directory", icon: Contact },
 ];
 
 export function OrbitLogo({ light = true }: { light?: boolean }) {
   return (
     <span className="flex items-baseline gap-2">
       <span className={cn("text-xl font-bold", light ? "text-on-accent" : "text-navy")}>ORBIT AI</span>
-      <span className={cn("text-xs", light ? "text-on-accent/70" : "text-muted-foreground")}>para NTT DATA</span>
+      <span className={cn("text-xs", light ? "text-on-accent/70" : "text-muted-foreground")}>for NTT DATA</span>
     </span>
   );
 }
@@ -38,7 +38,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <header className="mission-header sticky top-0 z-30 text-on-accent">
         <div className="mx-auto flex max-w-[1280px] flex-wrap items-center gap-x-8 gap-y-2 px-6">
           <Link to="/" className="py-4"><OrbitLogo /></Link>
-          <nav aria-label="Pasos" className="mission-nav order-3 -mx-2 flex w-full overflow-x-auto lg:order-none lg:w-auto">
+          <nav aria-label="Steps" className="mission-nav order-3 -mx-2 flex w-full overflow-x-auto lg:order-none lg:w-auto">
             {nav.map((s) => {
               const active = s.to === pathname;
               return (
@@ -53,7 +53,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           <div className="ml-auto flex items-center gap-3">
             <OrbitButton variant="ghost" onClick={toggleDemo} aria-pressed={demo}
               className="inline-flex items-center gap-2 rounded-[40px] border border-on-accent/40 px-3 py-1 text-xs font-medium text-on-accent hover:border-on-accent">
-              <Play className="size-3" aria-hidden />Modo demo
+              <Play className="size-3" aria-hidden />Demo mode
               <span className={cn("relative h-4 w-7 rounded-full transition-colors", demo ? "bg-gold" : "bg-on-accent/25")}>
                 <span className="absolute top-0.5 size-3 rounded-full bg-surface transition-all" style={{ left: demo ? 14 : 2 }} />
               </span>
@@ -64,15 +64,15 @@ export function AppShell({ children }: { children: ReactNode }) {
       </header>
       <div className="mission-project">
         <div className="mx-auto max-w-[1280px] px-6 py-2 text-xs">
-          <span className="text-muted-foreground">Proyecto: </span>
-          <b className="text-navy">{requirements?.project.project_name ?? "Nuevo proyecto"}</b>
+          <span className="text-muted-foreground">Project: </span>
+          <b className="text-navy">{requirements?.project.project_name ?? "New project"}</b>
         </div>
       </div>
       <main className="mx-auto w-full max-w-[1280px] flex-1 px-5 py-8 md:px-8 md:py-10">{children}</main>
       <footer className="border-t border-line text-blue-200">
         <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-between gap-3 px-6 py-6 text-xs">
-          <span>ORBIT AI · Inteligencia de talento</span>
-          <Link to="/design" className="hover:text-on-accent">Sistema de diseño</Link>
+          <span>ORBIT AI · Talent intelligence</span>
+          <Link to="/design" className="hover:text-on-accent">Design system</Link>
         </div>
       </footer>
     </div>

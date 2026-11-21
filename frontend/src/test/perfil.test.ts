@@ -39,7 +39,7 @@ describe("team selection", () => {
   it("sorts by fit with id tie-break and shows at most 5", () => {
     expect(selectTeams(teams, { maxBudget: null, minFit: 0, latestStart: null, minContinuity: 0 }, "fit").shown.map((t) => t.id)).toEqual(["T3", "T1", "T2", "T4"]);
   });
-  it("budget filter is inclusive and moves cost-pending teams to Pendientes de dato", () => {
+  it("budget filter is inclusive and moves cost-pending teams to Pending data", () => {
     const r = selectTeams(teams, { maxBudget: 9000, minFit: 0, latestStart: null, minContinuity: 0 }, "cost");
     expect(r.shown.map((t) => t.id)).toEqual(["T4", "T2"]);
     expect(r.pending.map((t) => t.id)).toEqual(["T3"]);
@@ -51,8 +51,8 @@ describe("team selection", () => {
 
 describe("weights", () => {
   it("always sum to 100", () => {
-    const w = rebalance({ coste: 30, tiempo: 20, cobertura: 25, disponibilidad: 15, riesgo: 10 }, "coste", 70);
+    const w = rebalance({ cost: 30, time: 20, coverage: 25, availability: 15, risk: 10 }, "cost", 70);
     expect(Object.values(w).reduce((a, b) => a + b, 0)).toBe(100);
-    expect(w.coste).toBe(70);
+    expect(w.cost).toBe(70);
   });
 });

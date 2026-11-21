@@ -1,6 +1,6 @@
 import type { MatchTeam } from "./types";
 
-export const WEIGHT_KEYS = ["coste", "tiempo", "cobertura", "disponibilidad", "riesgo"] as const;
+export const WEIGHT_KEYS = ["cost", "time", "coverage", "availability", "risk"] as const;
 export type WeightKey = (typeof WEIGHT_KEYS)[number];
 export type Weights = Record<WeightKey, number>;
 
@@ -23,7 +23,7 @@ export interface ScenarioInputs {
   external_rate_per_hour: number; hours_per_person: number; recruitment_cost: number;
   internal_onboarding_days: number; external_hiring_days: number; onboarding_days: number; rolloff_days: number;
 }
-export interface Scenario { key: "Interno" | "Externo" | "Híbrido"; cost: number | null; days: number; coverage: number; availability: number; risk: number; score: number }
+export interface Scenario { key: "Internal" | "External" | "Hybrid"; cost: number | null; days: number; coverage: number; availability: number; risk: number; score: number }
 
 /** Compares the three options for the chosen team. Internal cost comes from the service as-is. */
 export function scenarios(team: MatchTeam, a: ScenarioInputs, w: Weights): Scenario[] {
@@ -35,19 +35,19 @@ export function scenarios(team: MatchTeam, a: ScenarioInputs, w: Weights): Scena
   const intDays = a.internal_onboarding_days + (notBench ? a.rolloff_days : 0);
   const benchCost = bench.every((m) => m.cost != null) ? bench.reduce((s, m) => s + (m.cost ?? 0), 0) : null;
   const raw = [
-    { key: "Interno" as const, cost: team.cost.value, days: intDays, coverage: team.fit, availability: (bench.length / n) * 100, risk: Math.min(100, team.gaps * 15 + notBench * 15 + (100 - team.continuity.pct) / 2) },
-    { key: "Externo" as const, cost: extPerson * n, days: extDays, coverage: 75, availability: 100, risk: 55 },
-    { key: "Híbrido" as const, cost: benchCost == null ? null : benchCost + extPerson * notBench, days: notBench ? Math.max(a.internal_onboarding_days, extDays) : a.internal_onboarding_days, coverage: (team.fit * bench.length + 75 * notBench) / n, availability: 100, risk: Math.min(100, team.gaps * 10 + notBench * 20) },
+    { key: "Internal" as const, cost: team.cost.value, days: intDays, coverage: team.fit, availability: (bench.length / n) * 100, risk: Math.min(100, team.gaps * 15 + notBench * 15 + (100 - team.continuity.pct) / 2) },
+    { key: "External" as const, cost: extPerson * n, days: extDays, coverage: 75, availability: 100, risk: 55 },
+    { key: "Hybrid" as const, cost: benchCost == null ? null : benchCost + extPerson * notBench, days: notBench ? Math.max(a.internal_onboarding_days, extDays) : a.internal_onboarding_days, coverage: (team.fit * bench.length + 75 * notBench) / n, availability: 100, risk: Math.min(100, team.gaps * 10 + notBench * 20) },
   ];
   const costs = raw.map((r) => r.cost).filter((c): c is number => c != null);
   const minCost = Math.min(...costs), minDays = Math.min(...raw.map((r) => r.days));
   return raw.map((r) => {
     const parts = {
-      coste: r.cost == null ? 0 : minCost / r.cost,
-      tiempo: minDays / Math.max(1, r.days),
-      cobertura: r.coverage / 100,
-      disponibilidad: r.availability / 100,
-      riesgo: 1 - r.risk / 100,
+      cost: r.cost == null ? 0 : minCost / r.cost,
+      time: minDays / Math.max(1, r.days),
+      coverage: r.coverage / 100,
+      availability: r.availability / 100,
+      risk: 1 - r.risk / 100,
     };
     const score = WEIGHT_KEYS.reduce((s, k) => s + parts[k] * w[k], 0);
     return { ...r, score: Math.round(score) };

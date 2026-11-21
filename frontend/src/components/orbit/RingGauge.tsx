@@ -4,7 +4,7 @@ export function RingGauge({ value, total, size = 96, label }: { value: number; t
   const p = total ? value / total : 0;
   const tone = p >= 0.75 ? "var(--bench)" : p >= 0.5 ? "var(--rolloff)" : "var(--gap)";
   return (
-    <figure className="inline-flex flex-col items-center gap-1" aria-label={`${label ?? "Continuidad"}: ${value} de ${total}`}>
+    <figure className="inline-flex flex-col items-center gap-1" aria-label={`${label ?? "Continuity"}: ${value} of ${total}`}>
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
         <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="var(--surface-2)" strokeWidth="8" />
         <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={tone} strokeWidth="8" strokeLinecap="round"

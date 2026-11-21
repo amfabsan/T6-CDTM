@@ -6,6 +6,14 @@ export function topFourTeams(teams: MatchTeam[], filters: TeamFilters, sort: Tea
   return { ...result, shown: result.shown.slice(0, 4) };
 }
 
+/** The #1 team for each criterion, using the same filters and tie-breaks as the tabs. */
+export function topPerCriterion(teams: MatchTeam[], filters: TeamFilters) {
+  return (['fit', 'cost', 'start', 'continuity'] as TeamSort[]).map((sort) => ({
+    sort,
+    team: selectTeams(teams, filters, sort).shown[0] ?? null,
+  }));
+}
+
 /** Alternatives are existing service rankings, never replacement teams computed locally. */
 export function memberAlternatives(match: MatchResponse, team: MatchTeam, employeeId?: string) {
   const members = new Set(team.members.map(m => m.employee_id));

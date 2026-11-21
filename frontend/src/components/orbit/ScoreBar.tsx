@@ -9,7 +9,7 @@ export function ScoreBar({ breakdown, showLegend = true }: { breakdown: Record<B
   return (
     <div>
       <div className="flex h-2.5 w-full gap-px overflow-hidden bg-surface-2" role="img" aria-label={parts.map((p) => `${p.label} ${p.points.toFixed(1)}`).join(", ")}>
-        {parts.map((p) => <div key={p.k} className={p.shade} style={{ width: `${p.points}%` }} title={`${p.label}: ${p.points.toFixed(1)} de ${p.max.toFixed(0)}`} />)}
+        {parts.map((p) => <div key={p.k} className={p.shade} style={{ width: `${p.points}%` }} title={`${p.label}: ${p.points.toFixed(1)} of ${p.max.toFixed(0)}`} />)}
       </div>
       {showLegend && (
         <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-muted-foreground">

@@ -2,6 +2,7 @@ import { cn } from '@/lib/utils';
 import type { MatchTeamMember } from '@/lib/types';
 import { Link } from '@tanstack/react-router';
 import { setProject } from '@/lib/project-store';
+import { availabilityLabel } from '@/lib/labels';
 
 export function Crystal({ className, tone = 'blue-200' }: { className?: string; tone?: 'blue-200' | 'green' | 'amber' }) {
   return <svg viewBox="0 0 80 100" className={cn('crystal', `crystal-${tone}`, className)} aria-hidden="true"><path d="M39 3 69 24 76 66 39 96 5 67 12 25Z" className="crystal-base" /><path d="m39 3-8 36 8 57L5 67l7-42Z" className="crystal-light" /><path d="m39 3 30 21-38 15Z" className="crystal-facet" /><path d="m31 39 45 27-37 30Z" className="crystal-dark" /><path d="M39 3 69 24 76 66 39 96 5 67 12 25Z M12 25l19 14 38-15M31 39l8 57M31 39l45 27" className="crystal-outline" /></svg>;
@@ -27,13 +28,13 @@ export function MissionWorld() {
 
 export function FitGauge({ value, size = 80 }: { value: number; size?: number }) {
   const r = 42, circumference = 2 * Math.PI * r;
-  return <svg width={size} height={size} viewBox="0 0 100 100" className="fit-gauge shrink-0" role="img" aria-label={`Encaje ${Math.round(value)}%`}><circle cx="50" cy="50" r={r} className="gauge-track" /><circle cx="50" cy="50" r={r} className="gauge-value" strokeDasharray={`${Math.max(0, Math.min(100, value)) / 100 * circumference} ${circumference}`} transform="rotate(-90 50 50)" /><text x="50" y="47" textAnchor="middle" dominantBaseline="central" className="gauge-number">{Math.round(value)}</text><text x="50" y="67" textAnchor="middle" className="gauge-unit">%</text></svg>;
+  return <svg width={size} height={size} viewBox="0 0 100 100" className="fit-gauge shrink-0" role="img" aria-label={`Fit ${Math.round(value)}%`}><circle cx="50" cy="50" r={r} className="gauge-track" /><circle cx="50" cy="50" r={r} className="gauge-value" strokeDasharray={`${Math.max(0, Math.min(100, value)) / 100 * circumference} ${circumference}`} transform="rotate(-90 50 50)" /><text x="50" y="47" textAnchor="middle" dominantBaseline="central" className="gauge-number">{Math.round(value)}</text><text x="50" y="67" textAnchor="middle" className="gauge-unit">%</text></svg>;
 }
 
 export function CrewOrbit({ members, teamId }: { members: MatchTeamMember[]; teamId?: string }) {
-  return <div className="crew-orbit" aria-label={`Composición del equipo: ${members.length} integrantes`}><svg viewBox="0 0 280 140" aria-hidden="true"><ellipse cx="140" cy="70" rx="105" ry="44" className="planet-orbit" /><ellipse cx="140" cy="70" rx="65" ry="27" className="planet-ring-fine" /></svg><span className="crew-center">{members.length}<small title="Composición del equipo">POSICIONES</small></span>{members.map((m, i) => { const angle = i / members.length * Math.PI * 2; return <Link to="/persona/$id" params={{ id: m.employee_id }} onClick={() => { if (teamId) setProject({ teamId, teamArrival: false }); }} aria-label={`Ver ficha de ${m.nombre_completo}`} key={`${m.role}-${m.employee_id}`} className="crew-crystal" style={{ left: `${50 + Math.cos(angle) * 37}%`, top: `${50 + Math.sin(angle) * 32}%` }} title={`${m.nombre_completo} · ${Math.round(m.score)}% · ${m.disponibilidad}`}><Crystal tone={m.disponibilidad === 'En banca' ? 'green' : 'amber'} /></Link>; })}</div>;
+  return <div className="crew-orbit" aria-label={`Team composition: ${members.length} members`}><svg viewBox="0 0 280 140" aria-hidden="true"><ellipse cx="140" cy="70" rx="105" ry="44" className="planet-orbit" /><ellipse cx="140" cy="70" rx="65" ry="27" className="planet-ring-fine" /></svg><span className="crew-center">{members.length}<small title="Team composition">POSITIONS</small></span>{members.map((m, i) => { const angle = i / members.length * Math.PI * 2; return <Link to="/persona/$id" params={{ id: m.employee_id }} onClick={() => { if (teamId) setProject({ teamId, teamArrival: false }); }} aria-label={`View profile of ${m.nombre_completo}`} key={`${m.role}-${m.employee_id}`} className="crew-crystal" style={{ left: `${50 + Math.cos(angle) * 37}%`, top: `${50 + Math.sin(angle) * 32}%` }} title={`${m.nombre_completo} · ${Math.round(m.score)}% · ${availabilityLabel(m.disponibilidad)}`}><Crystal tone={m.disponibilidad === 'En banca' ? 'green' : 'amber'} /></Link>; })}</div>;
 }
 
 export function SkillDots({ level }: { level: number }) {
-  return <span className="inline-flex gap-1" role="img" aria-label={`Nivel ${level} de 5`}>{Array.from({ length: 5 }, (_, i) => <i key={i} className={cn('size-2 rounded-full', i < level ? 'bg-green' : 'bg-blue-200/20')} />)}</span>;
+  return <span className="inline-flex gap-1" role="img" aria-label={`Level ${level} of 5`}>{Array.from({ length: 5 }, (_, i) => <i key={i} className={cn('size-2 rounded-full', i < level ? 'bg-green' : 'bg-blue-200/20')} />)}</span>;
 }

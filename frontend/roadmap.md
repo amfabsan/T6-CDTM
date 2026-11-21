@@ -5,3 +5,4 @@
 - [x] Show team and member alternatives on team and individual views.
 - [x] Animate the prompt-to-team journey and verify navigation and ordering.
 - [x] Confirm requirements through the existing review action before opening the recommended team.
+- [x] Translate the whole UI to English (copy, tooltips, metadata, demo data); dataset values keep their Spanish values and get English labels.
