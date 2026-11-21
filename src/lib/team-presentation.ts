@@ -6,6 +6,15 @@ export function topFourTeams(teams: MatchTeam[], filters: TeamFilters, sort: Tea
   return { ...result, shown: result.shown.slice(0, 4) };
 }
 
+/** Visible team numbers: 1-based position in the list being shown, with the current order and filters.
+ *  Teams outside that list (a criterion's #1, alternatives, a selected team) take the next numbers,
+ *  so every visible team has one unique label and the raw id is never shown as text. */
+export function teamNumbers(displayed: MatchTeam[], rest: MatchTeam[] = []) {
+  const n = new Map<string, number>();
+  for (const t of [...displayed, ...rest]) if (!n.has(t.id)) n.set(t.id, n.size + 1);
+  return (t: MatchTeam) => n.get(t.id) ?? n.size + 1;
+}
+
 /** The #1 team for each criterion, using the same filters and tie-breaks as the tabs. */
 export function topPerCriterion(teams: MatchTeam[], filters: TeamFilters) {
   return (['fit', 'cost', 'start', 'continuity'] as TeamSort[]).map((sort) => ({

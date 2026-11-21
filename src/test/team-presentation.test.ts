@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { memberAlternatives, topFourTeams, topPerCriterion } from '@/lib/team-presentation';
+import { memberAlternatives, teamNumbers, topFourTeams, topPerCriterion } from '@/lib/team-presentation';
 import type { MatchResponse, MatchTeam } from '@/lib/types';
 import mock from '@/mocks/matching.json';
 
@@ -32,6 +32,16 @@ describe('top per criterion', () => {
   it('returns null for a criterion when no team passes the filters', () => {
     const tops = topPerCriterion(teams, { ...filters, minFit: 95 });
     expect(tops.every(t => t.team === null)).toBe(true);
+  });
+});
+describe('visible team numbers', () => {
+  it('numbers teams by position in the displayed list, then the rest, never by id', () => {
+    const [b, a, c] = teams;
+    if (!b || !a || !c) throw new Error('Missing example teams');
+    const numOf = teamNumbers([c, b], teams);
+    expect(numOf(c)).toBe(1);
+    expect(numOf(b)).toBe(2);
+    expect(numOf(a)).toBe(3);
   });
 });
 describe('member alternatives', () => {

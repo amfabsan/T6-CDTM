@@ -5,6 +5,7 @@ import { AppShell } from "@/components/orbit/AppShell";
 import { DataTag, eur, formatNum, OrbitButton, Panel, SectionLabel, SimPill } from "@/components/orbit/primitives";
 import { saveScenarioAssumptions } from "@/lib/api";
 import { useMatching, useRematch } from "@/lib/matching";
+import { teamNumbers } from "@/lib/team-presentation";
 import { useProject } from "@/lib/project-store";
 import { rebalance, scenarios, WEIGHT_KEYS, type Weights } from "@/lib/scenarios";
 import { cn } from "@/lib/utils";
@@ -45,6 +46,8 @@ function StepDecision() {
   const [status, setStatus] = useState<"idle" | "saving" | "error">("idle");
 
   const team = match ? match.data.teams.find((t) => t.id === teamId) ?? match.data.top_teams.items[0] ?? match.data.teams[0] : undefined;
+  /** Visible number of the team: position in the service's team list. */
+  const numOf = useMemo(() => teamNumbers(match?.data.teams ?? []), [match]);
 
   // Debounced: save scenario_assumptions row + re-run /match, replacing the store.
   const first = useRef(true);
@@ -99,7 +102,7 @@ function StepDecision() {
         {status === "saving" && <span className="text-sm text-muted-foreground" role="status">Recalculating…</span>}
         {status === "error" && <span className="text-sm text-danger" role="alert">Could not recalculate. Keeping the previous data.</span>}
       </div>
-      <div className="mt-5 flex flex-wrap items-center justify-between gap-3"><Link to="/equipos" className="text-xs text-blue-200">← Change team {team?.id}</Link><OrbitButton variant="ghost" onClick={() => setShowAssumptions(true)}><SlidersHorizontal className="size-4" />Assumptions</OrbitButton></div>
+      <div className="mt-5 flex flex-wrap items-center justify-between gap-3"><Link to="/equipos" className="text-xs text-blue-200">{team ? `← Change team ${numOf(team)}` : "← Change team"}</Link><OrbitButton variant="ghost" onClick={() => setShowAssumptions(true)}><SlidersHorizontal className="size-4" />Assumptions</OrbitButton></div>
 
       <div className="mt-10">
         {showAssumptions && <div onKeyDown={e => e.key === "Escape" && setShowAssumptions(false)}><OrbitButton variant="ghost" className="mission-backdrop rounded-none" onClick={() => setShowAssumptions(false)} aria-label="Close assumptions" /><aside className="mission-drawer space-y-5" role="dialog" aria-modal aria-label="Assumptions">
