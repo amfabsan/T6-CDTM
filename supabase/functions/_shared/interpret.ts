@@ -13,7 +13,7 @@ export interface Vocabulario {
   niveles_idioma: string[];   // A1 … C2, Nativo
   seniorities: string[];      // Trainee … Principal
   modalidades: string[];      // remoto, hibrido, presencial
-  skills_area?: Record<string, string>;  // área principal de cada skill (006): ayuda a elegir la acepción correcta
+  skills_area?: Record<string, string>;  // área principal de cada skill (007): ayuda a elegir la acepción correcta
 }
 
 export interface SkillReq { name: string; min_level: number | null }

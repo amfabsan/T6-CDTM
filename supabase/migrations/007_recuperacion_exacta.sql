@@ -99,7 +99,7 @@ begin
   order by 6 desc, 2 desc, 1;
 end $$;
 
--- Pasos 5+6 por rol (con la comprobación de 005: solo requisitos confirmados). Las alternativas de mandatory_any_of
+-- Pasos 5+6 por rol (con la comprobación de 006: solo requisitos confirmados). Las alternativas de mandatory_any_of
 -- también recuperan candidatos.
 create or replace function candidatos_proyecto(p_project_id uuid, p_limit int default 200)
 returns jsonb
