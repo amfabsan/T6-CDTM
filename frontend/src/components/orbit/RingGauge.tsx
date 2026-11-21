@@ -9,7 +9,7 @@ export function RingGauge({ value, total, size = 96, label }: { value: number; t
         <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="var(--surface-2)" strokeWidth="8" />
         <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={tone} strokeWidth="8" strokeLinecap="round"
           strokeDasharray={`${c * p} ${c}`} transform={`rotate(-90 ${size / 2} ${size / 2})`} style={{ transition: "stroke-dasharray 700ms ease" }} />
-        <text x="50%" y="50%" dominantBaseline="central" textAnchor="middle" fill="var(--foreground)" fontFamily="var(--font-display)" fontSize={size / 4.2} fontWeight={700}>
+        <text x="50%" y="50%" dominantBaseline="central" textAnchor="middle" fill="var(--navy)" fontFamily="var(--font-sans)" fontSize={size / 4.2} fontWeight={700}>
           {value}/{total}
         </text>
       </svg>

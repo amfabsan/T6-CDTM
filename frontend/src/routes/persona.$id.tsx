@@ -1,0 +1,88 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
+import { Award, Briefcase, Languages, Wrench } from "lucide-react";
+import { AppShell } from "@/components/orbit/AppShell";
+import { AvailabilityBadge, Panel, SectionLabel, SimPill } from "@/components/orbit/primitives";
+import { getProfile, isLive } from "@/lib/api";
+import { allCandidates, useMatching } from "@/lib/matching";
+import { perfilFromMatch } from "@/lib/mock-data";
+import { cn } from "@/lib/utils";
+
+export const Route = createFileRoute("/persona/$id")({
+  head: () => ({
+    meta: [
+      { title: "Ficha de persona · ORBIT AI" },
+      { name: "description", content: "Perfil completo: skills, proyectos, certificaciones e idiomas." },
+      { property: "og:title", content: "Ficha de persona · ORBIT AI" },
+      { property: "og:description", content: "Perfil completo: skills, proyectos, certificaciones e idiomas." },
+      { property: "og:type", content: "profile" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: PersonPage,
+});
+
+function PersonPage() {
+  const { id } = Route.useParams();
+  const { data: match } = useMatching();
+  const { data: p, isLoading } = useQuery({
+    queryKey: ["perfil", id, !!match],
+    queryFn: async () => {
+      if (isLive) return getProfile(id);
+      const c = match ? allCandidates(match.data).find((x) => x.employee_id === id) : undefined;
+      return c ? perfilFromMatch(c) : null;
+    },
+  });
+  return (
+    <AppShell>
+      <Link to="/talento" className="text-sm text-blue hover:underline">← Volver a Talento</Link>
+      {isLoading ? <p className="mt-10 text-muted-foreground">Cargando ficha…</p> : !p ? (
+        <p className="mt-10">No hemos encontrado la ficha de <b>{id}</b>.</p>
+      ) : (
+        <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_2fr]">
+          <Panel className="h-fit">
+            <div className="flex flex-wrap items-center gap-2"><h1 className="text-3xl">{p.nombre_completo}</h1>{!isLive && <SimPill />}</div>
+            <p className="mt-1 text-muted-foreground">{p.puesto_actual} · {p.nivel_seniority}</p>
+            <div className="mt-3"><AvailabilityBadge value={p.disponibilidad} /></div>
+            <dl className="mt-5 grid grid-cols-2 gap-3 text-sm">
+              {[["País", p.pais], ["Ciudad", p.ciudad], ["Sector principal", p.sector_principal], ["Modalidad", p.modalidad_trabajo], ["Años de experiencia", p.anios_experiencia], ["Años en NTT DATA", p.anios_en_ntt]].map(([k, v]) => (
+                <div key={String(k)}><dt className="text-xs text-muted-foreground">{k}</dt><dd className="text-navy">{v === "" || v == null ? "—" : String(v)}</dd></div>
+              ))}
+            </dl>
+            {p.resumen && <p className="mt-5 text-sm">{p.resumen}</p>}
+          </Panel>
+          <div className="space-y-6">
+            <Panel>
+              <SectionLabel>Skills</SectionLabel>
+              <table className="mt-3 w-full text-sm">
+                <thead className="text-left text-xs text-muted-foreground"><tr><th className="py-1 font-medium">Skill</th><th className="font-medium">Nivel</th><th className="font-medium">Años</th><th className="font-medium">Evidencia</th></tr></thead>
+                <tbody>{p.skills.map((s) => (
+                  <tr key={s.skill} className="border-t border-line"><td className="py-1.5 text-navy"><Wrench className="mr-1.5 inline size-3.5 text-muted-foreground" aria-hidden />{s.skill}</td><td className="tnum">{s.nivel}</td><td className="tnum">{s.anios}</td>
+                    <td className={cn(s.demostrada ? "text-success-ink" : "text-warn-ink")}>{s.demostrada ? "✓ Demostrada" : "Solo declarada"}</td></tr>
+                ))}</tbody>
+              </table>
+            </Panel>
+            <Panel>
+              <SectionLabel>Proyectos</SectionLabel>
+              <ul className="mt-3 space-y-2 text-sm">{p.proyectos.map((x) => (
+                <li key={x.orden} className="flex gap-2"><Briefcase className="mt-1 size-3.5 text-muted-foreground" aria-hidden /><span className="flex-1"><b className="text-navy">{x.nombre}</b> · {x.rol} · {x.cliente_sector}</span><span className="tnum">{x.anio}</span></li>
+              ))}{p.proyectos.length === 0 && <li className="text-muted-foreground">Sin proyectos registrados</li>}</ul>
+            </Panel>
+            <div className="grid gap-6 md:grid-cols-2">
+              <Panel>
+                <SectionLabel>Certificaciones</SectionLabel>
+                <ul className="mt-3 space-y-1 text-sm">{p.certificaciones.map((c) => <li key={c.nombre}><Award className="mr-1.5 inline size-3.5 text-muted-foreground" aria-hidden />{c.nombre}{c.anio ? ` · ${c.anio}` : ""}</li>)}
+                  {p.certificaciones.length === 0 && <li className="text-muted-foreground">Sin certificaciones</li>}</ul>
+              </Panel>
+              <Panel>
+                <SectionLabel>Idiomas</SectionLabel>
+                <ul className="mt-3 space-y-1 text-sm">{p.idiomas.map((l) => <li key={l.idioma}><Languages className="mr-1.5 inline size-3.5 text-muted-foreground" aria-hidden />{l.idioma} · {l.nivel}</li>)}
+                  {p.idiomas.length === 0 && <li className="text-muted-foreground">Sin datos de idiomas</li>}</ul>
+              </Panel>
+            </div>
+          </div>
+        </div>
+      )}
+    </AppShell>
+  );
+}

@@ -10,10 +10,10 @@ export function Funnel({ stages }: { stages: FunnelStage[] }) {
         {stages.map((s, i) => (
           <li key={s.label} className="relative">
             <div
-              className="flex h-full flex-col rounded-xl border border-line bg-surface p-4"
-              style={{ clipPath: i < stages.length - 1 ? "polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%)" : undefined, opacity: 1 - i * 0.04 }}
+              className={`card flex h-full flex-col p-5 ${i === stages.length - 1 ? "border-b-4 border-b-gold" : ""}`}
+              style={{ clipPath: i < stages.length - 1 ? "polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%)" : undefined, opacity: 1 }}
             >
-              <span className={`font-display text-3xl font-bold md:text-4xl ${i === stages.length - 1 ? "text-ai" : "text-foreground"}`}>
+              <span className={`text-3xl font-bold md:text-4xl ${i === stages.length - 1 ? "text-blue" : "text-navy"}`}>
                 <AnimatedNumber value={s.value} />
               </span>
               <span className="mt-1 pr-4 text-sm text-muted-foreground">{s.label}</span>
@@ -27,7 +27,7 @@ export function Funnel({ stages }: { stages: FunnelStage[] }) {
         ))}
       </ol>
       <p className="mt-3 flex items-center gap-2 text-xs text-muted-foreground">
-        <Info className="size-3.5 text-ai" aria-hidden /> Las skills nunca excluyen a nadie: solo ordenan. Solo los requisitos obligatorios filtran.
+        <Info className="size-3.5 text-blue" aria-hidden /> Solo se excluye a quien está «Asignado» y, si el país es exigido, a quien está fuera. Todo lo demás puntúa.
       </p>
     </div>
   );

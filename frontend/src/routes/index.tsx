@@ -3,7 +3,7 @@ import { useState } from "react";
 import { AppShell } from "@/components/orbit/AppShell";
 import { InterpretationView } from "@/components/orbit/InterpretationView";
 import { PlanIntake, ScanningDoc } from "@/components/orbit/PlanIntake";
-import { interpretProject, PdfSinTextoError, saveRequirements, type InterpretInput } from "@/lib/api";
+import { buildRequirementsRow, interpretProject, PdfSinTextoError, saveRequirements, type InterpretInput } from "@/lib/api";
 import { setProject, useProject } from "@/lib/project-store";
 import type { Requirements } from "@/lib/types";
 
@@ -42,7 +42,7 @@ function StepNeed() {
   async function confirm(req: Requirements) {
     if (!interpretation) return;
     setBusy(true);
-    const row = "requirements" in interpretation.row_template ? { ...interpretation.row_template, requirements: req } : interpretation.row_template;
+    const row = buildRequirementsRow(interpretation.row_template, req);
     const id = await saveRequirements(row);
     setProject({ requirements: req, projectId: id });
     navigate({ to: "/talento" });
@@ -54,12 +54,12 @@ function StepNeed() {
         <p className="text-sm text-muted-foreground">Paso 1 · Necesidad</p>
         <div className="mt-4">
           {said && phase !== "intake" || (said && interpretation) ? (
-            <div className="mb-6 flex justify-end"><p className="line-clamp-2 max-w-xl rounded-2xl rounded-tr-sm bg-surface-2 px-4 py-3 text-sm text-muted-foreground">{said}</p></div>
+            <div className="mb-6 flex justify-end"><p className="card line-clamp-2 max-w-xl px-4 py-3 text-sm">{said}</p></div>
           ) : null}
           {phase === "scanning" ? <ScanningDoc />
             : interpretation && phase === "intake" ? (
               <>
-                <button className="mb-4 text-xs text-muted-foreground hover:text-ai" onClick={() => { setSaid(null); setProject({ interpretation: null, demo: false }); }}>← Cargar otro plan</button>
+                <button className="mb-4 text-sm text-blue hover:underline" onClick={() => { setSaid(null); setProject({ interpretation: null, demo: false }); }}>← Cargar otro plan</button>
                 <InterpretationView key={interpretation.source_text} result={interpretation} onConfirm={confirm} busy={busy} />
               </>
             ) : (

@@ -1,28 +1,24 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { X } from "lucide-react";
+import { ArrowRight, Check, ChevronDown, X } from "lucide-react";
 import { AppShell } from "@/components/orbit/AppShell";
 import { CandidateCard } from "@/components/orbit/CandidateCard";
 import { Funnel } from "@/components/orbit/Funnel";
 import { OrbitLegend, OrbitMap } from "@/components/orbit/OrbitMap";
-import { AvailabilityBadge, OrbitButton, Panel, SectionLabel, SimPill } from "@/components/orbit/primitives";
-import { ScoreBar } from "@/components/orbit/ScoreBar";
-import { ArrowRight } from "lucide-react";
-import { MOCK_FUNNEL_AVAILABLE } from "@/lib/mock-data";
-import { useCandidates } from "@/lib/use-candidates";
-import { ProfileDrawer } from "@/components/orbit/ProfileDrawer";
-import { formatEs } from "@/components/orbit/primitives";
+import { AvailabilityBadge, Chip, formatEs, OrbitButton, Panel, primaryLinkCls, SectionLabel, SimPill } from "@/components/orbit/primitives";
+import { MOCK_INTERPRET } from "@/lib/mock-data";
+import { selectTop, TOTAL_AVAILABLE, useExplanations, useMatching } from "@/lib/matching";
 import { useProject } from "@/lib/project-store";
+import type { MatchCandidate, RoleReq } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import type { EnrichedCandidate } from "@/lib/types";
 
 export const Route = createFileRoute("/talento")({
   head: () => ({
     meta: [
       { title: "Talento · ORBIT AI" },
-      { name: "description", content: "Embudo, mapa orbital y ranking de candidatos por rol." },
+      { name: "description", content: "Embudo y ranking de candidatos por rol, con gaps, riesgos y evidencia." },
       { property: "og:title", content: "Talento · ORBIT AI" },
-      { property: "og:description", content: "Embudo, mapa orbital y ranking de candidatos por rol." },
+      { property: "og:description", content: "Embudo y ranking de candidatos por rol, con gaps, riesgos y evidencia." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -32,141 +28,157 @@ export const Route = createFileRoute("/talento")({
 
 function StepTalent() {
   const { requirements } = useProject();
-  const { data, isLoading, req } = useCandidates();
-  const [drawer, setDrawer] = useState<{ c: EnrichedCandidate; focus: string | null } | null>(null);
+  const req = requirements ?? MOCK_INTERPRET.requirements;
+  const { data: match, isLoading, isError } = useMatching();
+  const roleTitles = match ? Object.keys(match.data.ranking) : [];
+  const { data: explain } = useExplanations(false);
   const [tab, setTab] = useState(0);
   const [top, setTop] = useState(5);
   const [minFit, setMinFit] = useState(0);
+  const [showMap, setShowMap] = useState(false);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [compare, setCompare] = useState<string[]>([]);
   const [showCompare, setShowCompare] = useState(false);
 
-  const roleData = data?.[tab];
-  const role = req.roles[tab];
-  const shown = useMemo(() => (roleData?.enriched ?? []).filter((c) => c.fit >= minFit).slice(0, top), [roleData, minFit, top]);
-  const mustRules = ["disponibilidad", `≥ ${role?.min_years ?? 0} años`, "idioma ≥ B2", "certificación", `ubicación (${req.project.modality})`];
-  const compared = (roleData?.enriched ?? []).filter((c) => compare.includes(c.employee_id));
+  const title = roleTitles[tab] ?? "";
+  const roleReq = req.roles.find((r) => r.title === title);
+  const rk = match?.data.ranking[title];
+  const nFiltered = match?.data.n_filtrados[title] ?? 0;
+  const excluded = match?.data.excluded[title] ?? [];
+  const shown = useMemo(() => selectTop(rk?.items ?? [], minFit, top), [rk, minFit, top]);
+  const compared = (rk?.items ?? []).filter((c) => compare.includes(c.employee_id));
 
   return (
     <AppShell>
-      <div className="mx-auto max-w-7xl">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p className="text-sm text-muted-foreground">Paso 2 · Talento</p>
-            <h2 className="mt-1 text-4xl font-bold">¿Quién orbita este proyecto?</h2>
-          </div>
-          {!requirements && <Link to="/" className="text-xs text-muted-foreground hover:text-ai">Viendo el proyecto de ejemplo · Cargar un plan →</Link>}
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p className="text-sm text-muted-foreground">Paso 2 · Talento</p>
+          <div className="mt-1 flex items-center gap-3"><h1 className="text-4xl">¿Quién encaja en este proyecto?</h1>{match?.simulated && <SimPill />}</div>
         </div>
-
-        <div role="tablist" aria-label="Roles" className="mt-6 flex flex-wrap gap-2">
-          {req.roles.map((r, i) => (
-            <button key={r.role_index} role="tab" aria-selected={tab === i} onClick={() => { setTab(i); setCompare([]); }}
-              className={cn("rounded-full border px-4 py-2 text-sm font-medium transition-colors", tab === i ? "border-ai bg-ai/15 text-ai" : "border-line bg-surface text-muted-foreground hover:text-foreground")}>
-              {r.title} <span className="tnum opacity-70">×{r.seats}</span>
-            </button>
-          ))}
-        </div>
-
-        {isLoading || !roleData ? (
-          <p className="mt-16 text-center text-muted-foreground" role="status">Calculando órbitas…</p>
-        ) : (
-          <>
-            <p className="mt-6 text-lg">
-              De <b className="font-display tnum">{formatEs(MOCK_FUNNEL_AVAILABLE)}</b> personas disponibles, <b className="font-display tnum">{formatEs(roleData.n_filtrados)}</b> cumplen lo obligatorio; <span className="text-ai">estas {shown.length} encajan mejor.</span>
-            </p>
-            <section className="mt-4" aria-label="Embudo">
-              <Funnel key={tab} stages={[
-                { value: MOCK_FUNNEL_AVAILABLE, label: "disponibles" },
-                { value: roleData.n_filtrados, label: "pasan los requisitos obligatorios", rules: mustRules },
-                { value: Math.min(200, roleData.n_filtrados), label: "más parecidos", rules: ["búsqueda por texto", "búsqueda por significado"] },
-                { value: shown.length, label: `Top ${top}`, rules: ["encaje ponderado"] },
-              ]} />
-            </section>
-
-            <section className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-              <Panel className="h-fit lg:sticky lg:top-24">
-                <div className="flex items-center justify-between">
-                  <SectionLabel>Mapa orbital · {role?.title}</SectionLabel>
-                  <SimPill />
-                </div>
-                <OrbitMap center={role?.title ?? ""} candidates={shown} activeId={activeId} onActive={setActiveId}
-                  onSelect={(id) => document.getElementById(`c-${id}`)?.scrollIntoView({ behavior: "smooth", block: "center" })} />
-                <OrbitLegend />
-              </Panel>
-
-              <div>
-                <div className="mb-4 flex flex-wrap items-center gap-4">
-                  <div className="flex items-center gap-1 rounded-full border border-line bg-surface p-1" role="group" aria-label="Mostrar">
-                    <span className="px-2 text-xs text-muted-foreground">Mostrar:</span>
-                    {[3, 5, 10].map((n) => (
-                      <button key={n} aria-pressed={top === n} onClick={() => setTop(n)}
-                        className={cn("rounded-full px-3 py-1 text-xs font-medium", top === n ? "bg-ai text-on-accent" : "text-muted-foreground hover:text-foreground")}>Top {n}</button>
-                    ))}
-                  </div>
-                  <label className="flex items-center gap-2 text-xs text-muted-foreground">
-                    Encaje mínimo (%)
-                    <input type="range" min={0} max={90} step={5} value={minFit} onChange={(e) => setMinFit(+e.target.value)} className="accent-[var(--ai)]" />
-                    <b className="w-8 text-foreground tnum">{minFit}</b>
-                  </label>
-                </div>
-                <ol className="space-y-3">
-                  {shown.map((c, i) => (
-                    <li key={c.employee_id} id={`c-${c.employee_id}`}>
-                      <CandidateCard c={c} rank={i + 1} active={activeId === c.employee_id}
-                        onHover={(h) => setActiveId(h ? c.employee_id : null)}
-                        onOpenProfile={(focus) => setDrawer({ c, focus })}
-                        compared={compare.includes(c.employee_id)} compareDisabled={compare.length >= 4}
-                        onCompare={() => setCompare((s) => (s.includes(c.employee_id) ? s.filter((x) => x !== c.employee_id) : [...s, c.employee_id]))} />
-                    </li>
-                  ))}
-                  {shown.length === 0 && <p className="text-sm text-muted-foreground">Nadie supera ese encaje mínimo. Bájalo para ver más personas.</p>}
-                </ol>
-                <div className="mt-6 flex justify-end">
-                  <Link to="/equipos" className="inline-flex items-center gap-2 rounded-full bg-ai px-7 py-3 text-base font-semibold text-on-accent transition-all hover:glow-ai">
-                    Ver equipos posibles <ArrowRight className="size-4" />
-                  </Link>
-                </div>
-              </div>
-            </section>
-          </>
-        )}
+        {!requirements && <Link to="/" className="text-sm text-blue hover:underline">Viendo el proyecto de ejemplo · Cargar un plan →</Link>}
       </div>
 
+      {isLoading || !match ? (
+        <p className="mt-16 text-center text-muted-foreground" role="status">{isError ? "No se ha podido calcular el encaje." : "Calculando encaje…"}</p>
+      ) : (
+        <>
+          <div role="tablist" aria-label="Roles" className="mt-6 flex flex-wrap gap-2">
+            {roleTitles.map((t, i) => {
+              const plazas = req.roles.find((r) => r.title === t)?.count ?? 1;
+              return (
+                <button key={t} role="tab" aria-selected={tab === i} onClick={() => { setTab(i); setCompare([]); }}
+                  className={cn("rounded-[40px] border px-4 py-2 text-sm font-medium transition-colors", tab === i ? "border-blue bg-blue text-on-accent" : "border-line bg-surface text-text hover:border-blue")}>
+                  {t} · {plazas} {plazas === 1 ? "plaza" : "plazas"}
+                </button>
+              );
+            })}
+          </div>
+
+          <p className="mt-6 text-lg">
+            De <b className="text-navy tnum">{formatEs(TOTAL_AVAILABLE)}</b> personas disponibles, <b className="text-navy tnum">{formatEs(nFiltered)}</b> pasan el filtro; <b className="text-blue">estas {shown.length} encajan mejor.</b>
+          </p>
+          <section className="mt-4" aria-label="Embudo">
+            <Funnel key={title} stages={[
+              { value: TOTAL_AVAILABLE, label: "disponibles" },
+              { value: nFiltered, label: "pasan el filtro", rules: ["no «Asignado»", ...(req.project.country_required ? [`en ${req.project.country}`] : [])] },
+              { value: rk?.total ?? 0, label: "puntuados", rules: ["skills", "años", "seniority", "idiomas", "certificaciones"] },
+              { value: shown.length, label: `Top ${top}`, rules: [`encaje ≥ ${minFit}%`] },
+            ]} />
+          </section>
+
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="card flex items-center gap-1 rounded-full p-1" role="group" aria-label="Mostrar">
+              <span className="px-2 text-xs text-muted-foreground">Mostrar:</span>
+              {[3, 5, 10].map((n) => (
+                <button key={n} aria-pressed={top === n} onClick={() => setTop(n)} className={cn("rounded-full px-3 py-1 text-xs font-medium", top === n ? "bg-blue text-on-accent" : "text-muted-foreground hover:text-navy")}>Top {n}</button>
+              ))}
+            </div>
+            <label className="flex items-center gap-2 text-xs text-muted-foreground">
+              Encaje mínimo (%)
+              <input type="range" min={0} max={95} step={5} value={minFit} onChange={(e) => setMinFit(+e.target.value)} className="accent-[var(--blue)]" />
+              <b className="w-8 text-navy tnum">{minFit}</b>
+            </label>
+            <button onClick={() => setShowMap((v) => !v)} aria-pressed={showMap}
+              className={cn("rounded-[40px] border px-4 py-1.5 text-xs font-medium", showMap ? "border-blue bg-blue/8 text-blue" : "border-navy text-navy")}>Vista mapa</button>
+          </div>
+          {shown.length < top && <p className="mt-3 text-sm font-medium text-warn-ink">Cumplen {shown.length} de los {top} pedidos.</p>}
+
+          <section className={cn("mt-6 grid gap-6", showMap && "lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]")}>
+            {showMap && (
+              <Panel className="h-fit lg:sticky lg:top-32">
+                <SectionLabel>Vista mapa · {title}</SectionLabel>
+                <OrbitMap center={title} candidates={shown} activeId={activeId} onActive={setActiveId} />
+                <OrbitLegend />
+              </Panel>
+            )}
+            <ol className={cn("grid gap-4", !showMap && "xl:grid-cols-2")}>
+              {shown.map((c, i) => (
+                <li key={c.employee_id}>
+                  <CandidateCard c={c} rank={i + 1} why={explain?.candidates.find((x) => x.employee_id === c.employee_id)} active={activeId === c.employee_id} onHover={(h) => setActiveId(h ? c.employee_id : null)}
+                    compared={compare.includes(c.employee_id)} compareDisabled={compare.length >= 4}
+                    onCompare={() => setCompare((s) => (s.includes(c.employee_id) ? s.filter((x) => x !== c.employee_id) : [...s, c.employee_id]))} />
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          <details className="card mt-8 p-5">
+            <summary className="flex cursor-pointer items-center gap-2 font-semibold text-navy"><ChevronDown className="size-4" aria-hidden />Excluidos ({excluded.length})</summary>
+            <p className="mt-2 text-sm text-muted-foreground">Nadie desaparece sin un motivo.</p>
+            <table className="mt-3 w-full text-sm">
+              <thead className="text-left text-xs text-muted-foreground"><tr><th className="py-1 font-medium">Persona</th><th className="font-medium">Encaje</th><th className="font-medium">Motivos</th></tr></thead>
+              <tbody>
+                {excluded.map((e) => (
+                  <tr key={e.employee_id} className="border-t border-line">
+                    <td className="py-2"><Link to="/persona/$id" params={{ id: e.employee_id }} className="text-blue hover:underline">{e.employee_id}</Link></td>
+                    <td className="tnum">{Math.round(e.score)}%</td>
+                    <td><span className="flex flex-wrap gap-1">{e.reasons.map((r) => <Chip key={r} tone="gap">{r}</Chip>)}</span></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </details>
+
+          <div className="mt-8 flex justify-end">
+            <Link to="/equipos" className={primaryLinkCls}>Ver equipos <ArrowRight className="size-4" /></Link>
+          </div>
+        </>
+      )}
+
       {compare.length > 0 && !showCompare && (
-        <div className="glass fixed bottom-6 left-1/2 z-30 flex -translate-x-1/2 items-center gap-3 rounded-full border border-line px-4 py-2 shadow-xl">
+        <div className="card fixed bottom-6 left-1/2 z-30 flex -translate-x-1/2 items-center gap-3 rounded-[40px] px-4 py-2 shadow-xl">
           <span className="text-sm"><b className="tnum">{compare.length}</b>/4 seleccionados</span>
           <OrbitButton variant="ghost" onClick={() => setShowCompare(true)} disabled={compare.length < 2}>Comparar</OrbitButton>
         </div>
       )}
-      {drawer && <ProfileDrawer c={drawer.c} focus={drawer.focus} onClose={() => setDrawer(null)} />}
-      {showCompare && <CompareOverlay list={compared} onClose={() => setShowCompare(false)} />}
+      {showCompare && <CompareDrawer list={compared} role={roleReq} onClose={() => setShowCompare(false)} />}
     </AppShell>
   );
 }
 
-function CompareOverlay({ list, onClose }: { list: EnrichedCandidate[]; onClose: () => void }) {
+function CompareDrawer({ list, role, onClose }: { list: MatchCandidate[]; role?: RoleReq | undefined; onClose: () => void }) {
+  const must = role?.mandatory_skills.map((s) => s.name) ?? [...new Set(list.flatMap((c) => c.skills.filter((s) => s.tipo === "obligatoria").map((s) => s.name)))];
+  const has = (c: MatchCandidate, n: string) => c.skills.some((s) => s.name.toLowerCase() === n.toLowerCase());
   return (
-    <div className="fixed inset-0 z-50 grid place-items-center bg-background/60 p-6 backdrop-blur-sm" role="dialog" aria-modal aria-label="Comparar candidatos" onKeyDown={(e) => e.key === "Escape" && onClose()}>
-      <div className="glass max-h-[90vh] w-full max-w-6xl overflow-auto rounded-2xl border border-line p-6">
-        <div className="flex items-center justify-between">
-          <h3 className="text-2xl font-bold">Comparar</h3>
-          <button onClick={onClose} aria-label="Cerrar" autoFocus className="rounded-full p-2 hover:bg-surface-2"><X className="size-5" /></button>
-        </div>
-        <div className="mt-6 grid gap-4" style={{ gridTemplateColumns: `repeat(${list.length}, minmax(0,1fr))` }}>
-          {list.map((c) => (
-            <div key={c.employee_id} className="rounded-xl border border-line bg-surface p-4">
-              <p className="font-semibold">{c.name}</p>
-              <p className="font-display text-5xl font-bold tnum">{c.fit}%</p>
-              <div className="mt-2"><AvailabilityBadge value={c.availability} /></div>
-              <div className="mt-4"><ScoreBar parts={c.breakdown} /></div>
-              <SectionLabel><span className="mt-4 block">Evidencias</span></SectionLabel>
-              <ul className="mt-1 space-y-1 text-xs">{c.evidence.map((e) => <li key={e.ref} className={e.demonstrated ? "text-bench" : e.demonstrated === false ? "text-rolloff" : ""}>{e.demonstrated ? "✓" : "○"} {e.label}</li>)}</ul>
-              <SectionLabel><span className="mt-4 block">Huecos</span></SectionLabel>
-              <p className="mt-1 text-xs">{c.gaps.length ? <span className="text-gap">⚠ {c.gaps.join(", ")}</span> : <span className="text-muted-foreground">Ninguno</span>}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+    <div className="fixed inset-0 z-50" role="dialog" aria-modal aria-label="Comparar candidatos" onKeyDown={(e) => e.key === "Escape" && onClose()}>
+      <button className="absolute inset-0 bg-navy/40" aria-label="Cerrar" onClick={onClose} />
+      <aside className="absolute right-0 top-0 h-full w-full max-w-4xl overflow-auto border-l border-line bg-surface p-6 shadow-2xl">
+        <div className="flex items-center justify-between"><h2 className="text-2xl">Comparar</h2><button onClick={onClose} autoFocus aria-label="Cerrar" className="rounded-full p-2 hover:bg-surface-2"><X className="size-5" /></button></div>
+        <table className="mt-6 w-full text-sm">
+          <thead><tr><th className="w-40" />{list.map((c) => <th key={c.employee_id} className="p-2 text-left text-navy">{c.nombre_completo}</th>)}</tr></thead>
+          <tbody>
+            <tr className="border-t border-line"><td className="p-2 text-muted-foreground">Encaje</td>{list.map((c) => <td key={c.employee_id} className="p-2 text-2xl font-bold text-navy tnum">{Math.round(c.score)}%</td>)}</tr>
+            <tr className="border-t border-line"><td className="p-2 text-muted-foreground">Disponibilidad</td>{list.map((c) => <td key={c.employee_id} className="p-2"><AvailabilityBadge value={c.disponibilidad} /></td>)}</tr>
+            {must.map((m) => (
+              <tr key={m} className="border-t border-line"><td className="p-2 text-muted-foreground">{m}</td>
+                {list.map((c) => <td key={c.employee_id} className="p-2">{has(c, m) ? <span className="inline-flex items-center gap-1 text-success-ink"><Check className="size-4" aria-hidden />Sí</span> : <span className="inline-flex items-center gap-1 text-danger"><X className="size-4" aria-hidden />No</span>}</td>)}
+              </tr>
+            ))}
+            <tr className="border-t border-line"><td className="p-2 align-top text-muted-foreground">Gaps</td>{list.map((c) => <td key={c.employee_id} className="p-2 align-top"><span className="flex flex-wrap gap-1">{c.gaps.length ? c.gaps.map((g) => <Chip key={g} tone="gap">{g}</Chip>) : "Ninguno"}</span></td>)}</tr>
+            <tr className="border-t border-line"><td className="p-2 align-top text-muted-foreground">Riesgos</td>{list.map((c) => <td key={c.employee_id} className="p-2 align-top"><span className="flex flex-wrap gap-1">{c.risks.length ? c.risks.map((r) => <Chip key={r} tone="rolloff">{r}</Chip>) : "Ninguno"}</span></td>)}</tr>
+          </tbody>
+        </table>
+      </aside>
     </div>
   );
 }

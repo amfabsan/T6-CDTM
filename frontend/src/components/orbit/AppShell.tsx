@@ -1,28 +1,25 @@
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
-import { Mic, Play, X } from "lucide-react";
+import type { ReactNode } from "react";
+import { ClipboardList, Contact, Play, Scale, Users, UsersRound } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { isLive } from "@/lib/api";
 import { EMPTY, setProject, useProject } from "@/lib/project-store";
 import { MOCK_INTERPRET } from "@/lib/mock-data";
 import { SimPill } from "./primitives";
 
-const steps = [
-  { n: 1, label: "Necesidad", to: "/" as const },
-  { n: 2, label: "Talento", to: "/talento" as const },
-  { n: 3, label: "Equipos", to: "/equipos" as const },
-  { n: 4, label: "Decisión", to: "/decision" as const },
+const nav = [
+  { label: "1 · Necesidad", to: "/" as const, icon: ClipboardList },
+  { label: "2 · Talento", to: "/talento" as const, icon: Users },
+  { label: "3 · Equipos", to: "/equipos" as const, icon: UsersRound },
+  { label: "4 · Decisión", to: "/decision" as const, icon: Scale },
+  { label: "Personas", to: "/personas" as const, icon: Contact },
 ];
 
-export function OrbitLogo() {
+export function OrbitLogo({ light = true }: { light?: boolean }) {
   return (
-    <span className="flex items-center gap-2">
-      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden>
-        <circle cx="14" cy="14" r="4.5" fill="var(--ai)" />
-        <ellipse cx="14" cy="14" rx="12" ry="5" fill="none" stroke="var(--ai)" strokeOpacity=".6" transform="rotate(-30 14 14)" />
-        <circle cx="24" cy="9" r="2" fill="var(--bench)" />
-      </svg>
-      <span className="font-display text-lg font-bold tracking-tight">ORBIT<span className="text-ai"> AI</span></span>
+    <span className="flex items-baseline gap-2">
+      <span className={cn("text-xl font-bold tracking-tight", light ? "text-on-accent" : "text-navy")}>ORBIT AI</span>
+      <span className={cn("text-xs", light ? "text-on-accent/70" : "text-muted-foreground")}>para NTT DATA</span>
     </span>
   );
 }
@@ -37,79 +34,47 @@ export function AppShell({ children }: { children: ReactNode }) {
     navigate({ to: "/" });
   };
   return (
-    <div className="flex min-h-screen">
-      <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col border-r border-line bg-surface/60 p-5 md:flex">
-        <OrbitLogo />
-        <p className="mt-2 text-xs leading-snug text-muted-foreground">Find the talent. Validate the fit. Make the staffing decision.</p>
-        <nav aria-label="Pasos" className="mt-10">
-          <ol className="relative space-y-1">
-            <span className="absolute left-[15px] top-4 bottom-4 w-px bg-line" aria-hidden />
-            {steps.map((s) => {
+    <div className="flex min-h-screen flex-col">
+      <header className="sticky top-0 z-30 bg-navy text-on-accent">
+        <div className="mx-auto flex max-w-[1280px] flex-wrap items-center gap-x-8 gap-y-2 px-6">
+          <Link to="/" className="py-4"><OrbitLogo /></Link>
+          <nav aria-label="Pasos" className="order-3 -mx-2 flex w-full overflow-x-auto lg:order-none lg:w-auto">
+            {nav.map((s) => {
               const active = s.to === pathname;
-              const inner = (
-                <>
-                  <span className={cn("relative z-10 grid size-8 place-items-center rounded-full border font-display text-sm font-bold tnum",
-                    active ? "border-ai bg-ai text-on-accent" : "border-line bg-surface text-muted-foreground")}>{s.n}</span>
-                  <span className={cn("text-sm", active ? "font-semibold text-foreground" : "text-muted-foreground")}>{s.label}</span>
-                </>
-              );
               return (
-                <li key={s.n}>
-                  <Link to={s.to} aria-current={active ? "step" : undefined} className="flex items-center gap-3 rounded-lg px-0 py-2 hover:text-foreground">{inner}</Link>
-                </li>
+                <Link key={s.to} to={s.to} aria-current={active ? "page" : undefined}
+                  className={cn("flex items-center gap-2 whitespace-nowrap border-b-[3px] px-3 py-4 text-sm transition-colors",
+                    active ? "border-gold font-semibold text-on-accent" : "border-transparent text-on-accent/75 hover:text-on-accent")}>
+                  <s.icon className="size-4" strokeWidth={1.75} aria-hidden />{s.label}
+                </Link>
               );
             })}
-          </ol>
-        </nav>
-        <Link to="/design" className="mt-auto text-xs text-muted-foreground hover:text-ai">Sistema de diseño →</Link>
-      </aside>
-      <div className="flex min-w-0 flex-1 flex-col">
-        <header className="sticky top-0 z-20 flex items-center gap-4 border-b border-line bg-background/80 px-6 py-3 backdrop-blur">
-          <span className="md:hidden"><OrbitLogo /></span>
-          <div className="min-w-0">
-            <p className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">Proyecto</p>
-            <h1 className="truncate text-base font-semibold">{requirements?.project.name ?? "Nuevo proyecto"}</h1>
-          </div>
+          </nav>
           <div className="ml-auto flex items-center gap-3">
             <button onClick={toggleDemo} aria-pressed={demo}
-              className={cn("inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium transition-colors", demo ? "border-ai bg-ai/15 text-ai" : "border-line text-muted-foreground hover:text-foreground")}>
+              className="inline-flex items-center gap-2 rounded-[40px] border border-on-accent/40 px-3 py-1 text-xs font-medium text-on-accent hover:border-on-accent">
               <Play className="size-3" aria-hidden />Modo demo
-              <span className={cn("relative h-4 w-7 rounded-full transition-colors", demo ? "bg-ai" : "bg-surface-2")}>
-                <span className={cn("absolute top-0.5 size-3 rounded-full bg-foreground transition-all", demo ? "left-3.5" : "left-0.5")} />
+              <span className={cn("relative h-4 w-7 rounded-full transition-colors", demo ? "bg-gold" : "bg-on-accent/25")}>
+                <span className="absolute top-0.5 size-3 rounded-full bg-surface transition-all" style={{ left: demo ? 14 : 2 }} />
               </span>
             </button>
             {!isLive && <SimPill />}
-            <span className="text-xs text-muted-foreground">NTT DATA · Staffing</span>
           </div>
-        </header>
-        <main className="flex-1 px-6 py-8">{children}</main>
-      </div>
-      <VoiceOrb />
-    </div>
-  );
-}
-
-export function VoiceOrb() {
-  const [on, setOn] = useState(false);
-  return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3">
-      {on && (
-        <div className="glass w-72 rounded-xl border border-line p-4 text-sm shadow-xl" role="status">
-          <div className="flex items-center justify-between">
-            <b className="text-ai">Escuchando…</b>
-            <SimPill />
-          </div>
-          <p className="mt-2 text-muted-foreground">Prueba: «¿Quién está en banca con Kubernetes y banca?»</p>
         </div>
-      )}
-      <button
-        onClick={() => setOn((v) => !v)} aria-pressed={on} aria-label="Pregunta a ORBIT"
-        className="relative grid size-16 place-items-center rounded-full bg-ai text-on-accent shadow-xl transition-transform duration-200 hover:scale-105"
-      >
-        {on && <span className="absolute inset-0 rounded-full border-2 border-ai animate-pulse-ring" aria-hidden />}
-        {on ? <X className="size-6" /> : <Mic className="size-6" />}
-      </button>
-      {!on && <span className="-mt-1 text-[11px] font-medium text-muted-foreground">Pregunta a ORBIT</span>}
+      </header>
+      <div className="border-b border-line bg-surface">
+        <div className="mx-auto max-w-[1280px] px-6 py-3 text-sm">
+          <span className="text-muted-foreground">Proyecto: </span>
+          <b className="text-navy">{requirements?.project.project_name ?? "Nuevo proyecto"}</b>
+        </div>
+      </div>
+      <main className="mx-auto w-full max-w-[1280px] flex-1 px-6 py-10">{children}</main>
+      <footer className="bg-navy text-on-accent/80">
+        <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-between gap-3 px-6 py-6 text-xs">
+          <span>Find the talent. Validate the fit. Make the staffing decision.</span>
+          <Link to="/design" className="hover:text-on-accent">Sistema de diseño</Link>
+        </div>
+      </footer>
     </div>
   );
 }
