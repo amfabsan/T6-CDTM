@@ -166,8 +166,9 @@ export interface GeminiOptions {
   totalBudgetMs?: number;          // total con reintentos (120 s por defecto)
 }
 
-// Alias que Google mantiene al día, de más a menos capaz. Se prueban en orden si el anterior está saturado.
-export const GEMINI_FALLBACK_MODELS = ["gemini-flash-latest", "gemini-3.8-flash", "gemini-3.5-flash", "gemini-flash-lite-latest"];
+// Se prueban en orden si el anterior está saturado. Primero los lite: el 21-11-2026, con la clave del proyecto,
+// respondían en menos de 1 s, mientras que gemini-flash-latest y 3.5/3.6/3.8-flash no respondían en 40 s.
+export const GEMINI_FALLBACK_MODELS = ["gemini-3.5-flash-lite", "gemini-flash-lite-latest", "gemini-flash-latest", "gemini-3.5-flash"];
 const RETRYABLE = new Set([429, 500, 502, 503, 504]);
 
 /** Llama a Gemini con salida JSON estructurada y devuelve el objeto tal cual (interpretation_raw).
@@ -201,10 +202,16 @@ export async function callGemini(planText: string, v: Vocabulario, opts: GeminiO
         continue;
       }
       if (res.ok) {
-        const data = await res.json();
-        const text: string = data?.candidates?.[0]?.content?.parts?.map((p: { text?: string }) => p.text ?? "").join("") ?? "";
-        if (!text) throw new Error(`Gemini (${model}) no devolvió contenido (finishReason: ${data?.candidates?.[0]?.finishReason ?? "?"})`);
-        return JSON.parse(text);
+        // Respuesta vacía, cortada o con JSON roto: se prueba el siguiente modelo en vez de devolver 500.
+        try {
+          const data = await res.json();
+          const text: string = data?.candidates?.[0]?.content?.parts?.map((p: { text?: string }) => p.text ?? "").join("") ?? "";
+          if (!text) throw new Error(`no devolvió contenido (finishReason: ${data?.candidates?.[0]?.finishReason ?? "?"})`);
+          return JSON.parse(text);
+        } catch (e) {
+          lastError = `Gemini (${model}) respuesta no válida: ${e instanceof Error ? e.message : String(e)}`.slice(0, 400);
+          break;
+        }
       }
       lastError = `Gemini (${model}) respondió ${res.status}: ${(await res.text()).slice(0, 300)}`;
       if (res.status === 404) break;                       // modelo retirado o no disponible: siguiente modelo
@@ -237,10 +244,14 @@ const MODALIDADES: Record<string, ProjectReq["modality"]> = {
   presencial: "presencial", "on-site": "presencial", onsite: "presencial", "on site": "presencial",
 };
 
+// El prompt muestra cada skill como "Nombre [Área]" y a veces el modelo copia la etiqueta: se quita antes de buscar.
+// Ningún valor del vocabulario lleva corchetes, así que no se pierde nada.
+const AREA_SUFFIX = /\s*\[[^\]]*\]\s*$/;
+
 function lookup(list: string[], alias: Record<string, string> = {}) {
   const map = new Map(list.map((x) => [norm(x), x]));
   return (value: unknown): string | null => {
-    const n = norm(value);
+    const n = norm(typeof value === "string" ? value.replace(AREA_SUFFIX, "") : value);
     if (!n) return null;
     const hit = map.get(n) ?? (alias[n] && map.get(norm(alias[n])));
     return hit ?? null;

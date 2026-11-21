@@ -83,6 +83,7 @@ Deno.serve(async (req) => {
       }),
     });
   } catch (e) {
+    console.error("interpret-project", e instanceof Error ? e.message : e); // queda en los logs de Supabase
     return json({ error: "Error interpretando el plan", detail: String(e instanceof Error ? e.message : e) }, 500);
   }
 });

@@ -1,7 +1,7 @@
 // Pruebas de la validación (paso 3). Ejecutar: node --test --experimental-strip-types supabase/functions/_shared/interpret.test.ts
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { buildResponseSchema, buildSystemPrompt, validateInterpretation, type Vocabulario } from "./interpret.ts";
+import { buildResponseSchema, buildSystemPrompt, callGemini, validateInterpretation, type Vocabulario } from "./interpret.ts";
 
 const vocab: Vocabulario = {
   skills: ["Kubernetes", "Terraform", "Azure", "AWS", "Java", "Spring Boot", "Ciberseguridad"],
@@ -130,4 +130,35 @@ test("el prompt incluye el vocabulario y el esquema fuerza los enumerados cortos
   const s = buildResponseSchema(vocab) as any;
   assert.deepEqual(s.properties.project.properties.client_sector.enum, vocab.sectores);
   assert.deepEqual(s.properties.roles.items.properties.seniority_min.enum, vocab.seniorities);
+});
+
+test("quita la etiqueta [área] que a veces copia el modelo y lo apunta como corregido", () => {
+  const { requirements, review } = validateInterpretation({
+    project: { client_sector: "Banca y Finanzas", country: null, modality: null, country_required: false },
+    roles: [{
+      title: "Backend", count: 1, matching_roles: ["Backend Developer Java"],
+      mandatory_skills: [{ name: "Java [Software Engineering]", min_level: null }],
+      mandatory_any_of: [{ options: ["Azure [Cloud & Infraestructura]", "AWS [Cloud & Infraestructura]"], min_level: null }],
+      desirable_skills: [{ name: "Spring Boot [Software Engineering]" }],
+      languages: [], certifications: [], certification_options: [],
+    }],
+  }, vocab);
+  const r = requirements.roles[0];
+  assert.deepEqual(r.mandatory_skills, [{ name: "Java", min_level: null }]);
+  assert.deepEqual(r.mandatory_any_of, [{ options: ["Azure", "AWS"], min_level: null }]);
+  assert.deepEqual(r.desirable_skills, [{ name: "Spring Boot" }]);
+  assert.ok(review.every((x) => x.action === "corregido"), "no se elimina nada");
+});
+
+test("si un modelo devuelve JSON roto, prueba el siguiente en vez de fallar", async () => {
+  const calls: string[] = [];
+  const reply = (text: string) => new Response(JSON.stringify({ candidates: [{ content: { parts: [{ text }] } }] }), { status: 200 });
+  const fetchImpl = (async (url: string) => {
+    calls.push(String(url).match(/models\/([^:]+)/)![1]);
+    return calls.length === 1 ? reply('{"project": {"client_sector": "Ban') : reply('{"project": {}, "roles": []}');
+  }) as unknown as typeof fetch;
+  const out = await callGemini("plan de prueba", vocab, { apiKey: "x", model: "modelo-a", fetchImpl, sleep: async () => {} });
+  assert.deepEqual(out, { project: {}, roles: [] });
+  assert.equal(calls.length, 2);
+  assert.equal(calls[0], "modelo-a");
 });
