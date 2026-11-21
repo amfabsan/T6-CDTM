@@ -35,6 +35,7 @@ Un manager de NTT DATA describe una necesidad de proyecto en lenguaje natural. O
 | `data/sample/profiles_sample.json` / `.csv` | ✅ | 42 perfiles elegidos a propósito, para leer y para pruebas |
 | `data/sample/vocabulario.json` | ✅ | 614 skills, roles por área, sectores, certificaciones: **vocabulario para el LLM** |
 | `docs/DATA.md` | ✅ | Estructura del dataset, hallazgos y cifras |
+| `docs/WORKFLOW_MATCHING.md` | 📝 propuesta | Workflow de matching: filtros duros, búsqueda híbrida (pgvector + RRF), score y equipos |
 | `docs/ITERATIONS.md`, `docs/PATTERNS.md` | ✅ | Cuaderno de Improven e investigación de ediciones anteriores |
 | `prompts/lovable.md` | ✅ | Prompts para construir las pantallas en Lovable |
 | `supabase/functions/*` | ⏳ **por hacer** | Las 3 edge functions de la §5 |
