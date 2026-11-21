@@ -2,8 +2,10 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { MOCK_INTERPRET } from "./mock-data";
 import type { ExplainResponse, InterpretResult, MatchResponse, Perfil, Requirements } from "./types";
 
-const url = import.meta.env["VITE_SUPABASE_URL"] as string | undefined;
-const key = import.meta.env["VITE_SUPABASE_ANON_KEY"] as string | undefined;
+// Public project URL and publishable (anon) key: safe in browser code, access is limited by RLS.
+// Env vars override them; never put a service_role / secret key here.
+const url = (import.meta.env["VITE_SUPABASE_URL"] as string | undefined) || "https://kyctboziuldkowtwkboe.supabase.co";
+const key = (import.meta.env["VITE_SUPABASE_ANON_KEY"] as string | undefined) || "sb_publishable_5eXe-fG116hbjs0xERDCiQ_hpT1uhh2";
 
 /** True when the external backend is configured; otherwise everything falls back to mock data. */
 export const isLive = Boolean(url && key);
