@@ -47,7 +47,28 @@ class Pasos7a9(unittest.TestCase):
         self.assertTrue(any(r.startswith("Kubernetes: nivel 1") for r in s["risks"]))
         self.assertEqual(s["evidence"][0]["proyecto"], "Pasarela de pagos")
         self.assertTrue(80 < s["score"] < 100, s["score"])
-        self.assertEqual(sum(b["weight"] for b in s["breakdown"].values()), 100)
+        self.assertAlmostEqual(sum(b["weight"] for b in s["breakdown"].values()), 100, delta=0.5)
+        self.assertAlmostEqual(sum(b["points"] for b in s["breakdown"].values()), s["score"], delta=0.5)  # la barra suma el score
+
+    def test_sin_puntos_regalados(self):
+        # La plaza no pide idiomas, certificaciones, seniority ni deseables: esos componentes no aplican y no suman.
+        req = from_llm_plan({"project": {}, "roles": [{"title": "B", "count": 1, "mandatory_skills": [{"name": "Java"}]}]})[1][0]
+        nada = score_candidate({**BASE, "skills": [{"skill": "Excel", "nivel": 3, "anios": 2, "demostrada": True,
+                                                    "n_proyectos": 1, "ultimo_anio": 2025}]}, req, PROJECT)
+        self.assertEqual(nada["score"], 0)  # antes: ~25 puntos «regalados»
+        b = nada["breakdown"]
+        self.assertFalse(b["langCert"]["applies"] or b["desirable"]["applies"] or b["seniority"]["applies"])
+        self.assertEqual((b["langCert"]["points"], b["desirable"]["value"]), (0.0, None))
+
+    def test_desempate_en_la_parte_alta(self):
+        req = from_llm_plan({"project": {}, "roles": [{"title": "B", "count": 1, "min_years_experience": 3,
+                                                       "mandatory_skills": [{"name": "REST APIs", "min_level": 3}]}]})[1][0]
+        sk = {"skill": "REST APIs", "nivel": 5, "anios": 8, "demostrada": True, "n_proyectos": 2, "ultimo_anio": 2026}
+        a = score_candidate({**BASE, "employee_id": "A", "anios_experiencia": 4, "skills": [sk]}, req, PROJECT)
+        b = score_candidate({**BASE, "employee_id": "B", "anios_experiencia": 12, "skills": [{**sk, "n_proyectos": 4}]}, req, PROJECT)
+        self.assertEqual(a["score"], b["score"])                     # mismo encaje…
+        self.assertGreater(b["tiebreak"], a["tiebreak"])             # …pero B tiene más años sobre el mínimo y más proyectos
+        self.assertEqual([x["employee_id"] for x in rank_role([a, b])["items"]], ["B", "A"])
 
     def test_obligatoria_ausente_es_gap_no_descarte(self):
         s = score_candidate({**BASE, "skills": BASE["skills"][2:]}, BACKEND, PROJECT)

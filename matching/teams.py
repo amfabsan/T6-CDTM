@@ -15,7 +15,7 @@ SORT_BY = ("fit", "cost", "start", "risk")
 
 
 def _by_score(c: dict):
-    return (-c["score"], c["employee_id"])
+    return (-c["score"], -c.get("tiebreak", 0), c["employee_id"])
 
 
 def build_teams(slots: list[dict], scored_by_role: dict[str, list[dict]],
@@ -101,6 +101,7 @@ def score_teams(combos: list[list[dict]], slots: list[dict], eligible_by_role: d
                          "score": m["score"], "disponibilidad": m.get("disponibilidad"), "available_on": d, "cost": c}
                         for m, d, c in zip(members, dates, costs)],
             "fit": sum(m["score"] for m in members) / total,       # sin redondear: la UI redondea
+            "tiebreak": round(sum(m.get("tiebreak", 0) for m in members) / total, 3),  # solo desempata equipos con el mismo encaje
             "cost": {"value": sum(costs) if cost_known else None, "is_illustrative": True,
                      "status": ("supuesto" if any(a for _, a in costed) else "estimado") if cost_known else "por estimar"},
             "start": {"date": start,
@@ -116,7 +117,7 @@ def sort_teams(teams: list[dict], by: str = "fit") -> list[dict]:
     def key(t):
         k = {"cost": t["cost"]["value"], "start": t["start"]["date"],
              "risk": -t["continuity"]["covered"] / (t["continuity"]["total"] or 1), "fit": -t["fit"]}[by]
-        return (k is None, k if k is not None else 0, -t["fit"], t["id"])
+        return (k is None, k if k is not None else 0, -t["fit"], -t.get("tiebreak", 0), t["id"])
     return sorted(teams, key=key)
 
 

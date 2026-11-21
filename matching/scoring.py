@@ -12,7 +12,8 @@ SENIORITY = ["Trainee", "Junior", "Mid", "Senior", "Lead", "Principal"]
 LANG = ["A1", "A2", "B1", "B2", "C1", "C2", "Nativo"]
 
 
-def _mean(xs, empty=1.0):
+def _mean(xs, empty=None):
+    """Media; None = el componente no aplica (no se piden datos de ese tipo) y su peso se reparte entre los demás."""
     xs = list(xs)
     return sum(xs) / len(xs) if xs else empty
 
@@ -172,7 +173,7 @@ def score_candidate(p: dict, req: RoleRequirements, prj: Project, ref_year: int 
     asked = exact + req.desirable
     used = [by_skill[n] for n in asked if n in by_skill]
     last = max((s["ultimo_anio"] or 0 for s in used), default=0)
-    recency = max(0.0, min(1.0, 1 - (ref_year - last) * 0.2)) if last else 0.0
+    recency = (max(0.0, min(1.0, 1 - (ref_year - last) * 0.2)) if last else 0.0) if (items or req.desirable) else None
     if last and ref_year - last > 3:
         risks.append(f"Último uso de las skills pedidas en {last}")
     risks += [f"{s['skill']}: nivel {s['nivel']} con {s['anios']} años (no cuadra)" for s in used if incoherent(s)]
@@ -182,8 +183,15 @@ def score_candidate(p: dict, req: RoleRequirements, prj: Project, ref_year: int 
 
     values = {"mandatory": mandatory, "evidence": evidence, "sectorRole": sector_role, "seniority": seniority,
               "desirable": desirable, "langCert": lang_cert, "recency": recency}
-    # Normalizado a 0-100 aunque la UI cambie los pesos y no sumen 100.
-    total = 100 * sum(values[k] * w for k, w in weights.items()) / (sum(weights.values()) or 1)
+    # Sin puntos regalados: los componentes que no aplican (None) no cuentan y su peso se reparte entre los que sí.
+    # Normalizado a 0-100 aunque la UI cambie los pesos y no sumen 100; los `points` del desglose suman el score.
+    applies = {k: w for k, w in weights.items() if values[k] is not None}
+    eff = {k: 100 * w / (sum(applies.values()) or 1) for k, w in applies.items()}
+    total = sum(values[k] * eff[k] for k in applies)
+    # Desempate en la parte alta (no cambia el score): años sobre el mínimo, proyectos con las obligatorias y recencia.
+    years_extra = max(0, p["anios_experiencia"] - (req.min_years or 0))
+    proj = sum(c["s"]["n_proyectos"] for c in covered if c["s"] and not c["afin"])
+    tiebreak = round((min(years_extra, 10) / 10 + min(proj, 10) / 10 + (max(0, last - 2018) / 8 if last else 0)) / 3, 3)
     wanted = set(asked) | {o for opts, _ in req.mandatory_any_of for o in opts} | {n for n, _ in req.mandatory}
     return {
         "employee_id": p["employee_id"], "nombre_completo": p.get("nombre_completo"), "puesto_actual": p.get("puesto_actual"),
@@ -192,7 +200,10 @@ def score_candidate(p: dict, req: RoleRequirements, prj: Project, ref_year: int 
         "available_on": p.get("available_on"), "cost_per_hour": p.get("cost_per_hour"),
         "retrieval": p.get("retrieval"),  # rrf y posiciones del paso 6, si viene de candidatos_proyecto
         "score": round(total, 1),
-        "breakdown": {k: {"value": round(values[k], 2), "weight": w, "points": round(values[k] * w, 1)} for k, w in weights.items()},
+        "tiebreak": tiebreak,  # 0-1, solo ordena empates de score
+        "breakdown": {k: {"value": round(values[k], 2) if k in applies else None, "applies": k in applies, "weight_base": w,
+                          "weight": round(eff.get(k, 0), 1), "points": round(values[k] * eff[k], 1) if k in applies else 0.0}
+                      for k, w in weights.items()},
         "gaps": gaps, "risks": risks,
         "evidence": sorted(({"proyecto": x["nombre"], "anio": x["anio"], "sector": x["cliente_sector"],
                              "skills": [t for t in x["tecnologias"] if t in wanted]}
@@ -210,7 +221,7 @@ def score_candidate(p: dict, req: RoleRequirements, prj: Project, ref_year: int 
 
 
 def rank_role(scored: list[dict], top: int = 5, min_score: float = 0, only_without_gaps: bool = False) -> dict:
-    """Paso 8 · Orden por score (empate → ID), encaje mínimo y Top N. `cumplen` = cuántos pasan el mínimo."""
+    """Paso 8 · Orden por score (empate → desempate fino → ID), encaje mínimo y Top N. `cumplen` = cuántos pasan el mínimo."""
     ok = sorted((s for s in scored if s["score"] >= min_score and (not only_without_gaps or not s["gaps"])),
-                key=lambda s: (-s["score"], s["employee_id"]))
+                key=lambda s: (-s["score"], -s.get("tiebreak", 0), s["employee_id"]))
     return {"cumplen": len(ok), "total": len(scored), "items": ok[:top]}
