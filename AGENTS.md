@@ -39,6 +39,7 @@ El manager puede manejar por voz los rankings y los equipos con un asistente de 
 | `supabase/migrations/002_orbit_app.sql` | ✅ hecho, probado en local | Tablas de la **app**: `project_requirements`, `scenario_assumptions` |
 | `supabase/migrations/003_busqueda.sql` | ✅ hecho, probado en local (pgvector) | Pasos 5-6: pgvector, `perfil_busqueda`, embeddings de skills/roles, filtros duros, búsqueda híbrida con RRF y `vocabulario_orbit` |
 | `supabase/migrations/004_filtros_minimos.sql` | ✅ probado en local, **pendiente de aplicar en Supabase** | `filtrar_candidatos` solo excluye `Asignado` y el país si es exigido (el resto lo puntúa `matching/`); RPC `perfiles(ids)` |
+| `supabase/migrations/005_requisitos_confirmados.sql` | ✅ probado en local, **pendiente de aplicar en Supabase** | Paso 4 obligatorio: `project_requirements.status` (borrador/confirmado), `reviewed_by`, `reviewed_at`; `confirmar_requisitos()`; `candidatos_proyecto` y `/match` rechazan borradores |
 | `matching/` (+ `matching/api.py`) | ✅ hecho, 24 tests | Pasos 7-10 en Python y servicio HTTP `match-candidates` (FastAPI): `POST /match {project_id}` |
 | `scripts/build_embeddings.py` | ✅ hecho | Embeddings locales (MiniLM multilingüe, 384 dim) de skills, roles y perfiles. Se ejecuta tras cada carga |
 | `supabase/functions/interpret-project/` + `_shared/interpret.ts` | ✅ hecho, probado con Gemini (sin desplegar) | Pasos 1-3: PDF o texto → Gemini con vocabulario cerrado → validación. Tests: `_shared/interpret.test.ts` |

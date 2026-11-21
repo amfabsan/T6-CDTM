@@ -6,7 +6,9 @@ de Supabase solo ejecutan Deno.
     uvicorn matching.api:app --port 8000
 
 POST /match         {"project_id": "<uuid>", "options": {...}}   lee project_requirements + candidatos_proyecto + perfiles
-POST /match/direct  {"requirements": {...}, "candidates_by_role": {...}, "options": {...}}   sin base de datos
+                    → 409 si los requisitos no están confirmados por una persona (status 'confirmado', migración 005)
+POST /match/direct  {"requirements": {...}, "candidates_by_role": {...}, "options": {...}}   sin base de datos;
+                    desactivado salvo ORBIT_ALLOW_DIRECT=1 (pruebas), porque se salta la revisión humana
 `options` = argumentos con nombre de run_matching (top, min_score, sort_by, team_filters, rate_per_hour…).
 """
 from __future__ import annotations
@@ -44,6 +46,8 @@ def match_project(project_id: str, options: dict, fetch: Callable[[str, dict | N
     rows = fetch(f"project_requirements?id=eq.{urllib.parse.quote(project_id)}&select=*", None)
     if not rows:
         raise HTTPException(404, f"project_requirements {project_id} no existe")
+    if rows[0].get("status") != "confirmado":  # paso 4: sin revisión humana no se filtra ni se puntúa (migración 005)
+        raise HTTPException(409, "Requisitos sin revisar: un responsable debe confirmarlos (confirmar_requisitos) antes de buscar")
     rpc = fetch("rpc/candidatos_proyecto", {"p_project_id": project_id})
     ids = sorted({c["employee_id"] for r in rpc for c in r["candidates"]})
     profiles = fetch("rpc/perfiles", {"p_ids": ids}) if ids else []
@@ -86,4 +90,7 @@ def match(req: MatchRequest):
 
 @app.post("/match/direct")
 def match_direct(req: DirectRequest):
+    # Recibe requisitos del cliente sin pasar por la revisión de la 005: solo para pruebas y demos locales.
+    if os.environ.get("ORBIT_ALLOW_DIRECT") != "1":
+        raise HTTPException(403, "/match/direct está desactivado: usa /match con requisitos confirmados (ORBIT_ALLOW_DIRECT=1 para pruebas)")
     return run_matching(req.requirements, req.candidates_by_role, **_opts(req.options))

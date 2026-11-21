@@ -1,8 +1,11 @@
 """Supuestos por defecto, plazas con el mismo título y servicio HTTP (sin red: Supabase simulado)."""
 import json
+import os
 import pathlib
 import unittest
+from unittest.mock import patch
 
+from fastapi import HTTPException
 from fastapi.testclient import TestClient
 
 from matching.api import app, match_project
@@ -40,14 +43,13 @@ class Supuestos(unittest.TestCase):
 
 
 class Api(unittest.TestCase):
-    def test_match_project_con_supabase_simulado(self):
+    def fake_supabase(self, status, calls):
         ids = [p["employee_id"] for p in SAMPLE[:20]]
-        calls = []
 
         def fake(path, body):
             calls.append(path)
             if path.startswith("project_requirements"):
-                return [{"id": "p1", "country": "España", "modality": "remoto", "country_required": False,
+                return [{"id": "p1", "status": status, "country": "España", "modality": "remoto", "country_required": False,
                          "project_start_date": "2026-12-01", "client_sector": "Banca y Finanzas", "roles": REQ["roles"]}]
             if path == "rpc/candidatos_proyecto":
                 return [{"role_index": i, "title": "Backend", "count": 1, "n_filtrados": 20,
@@ -55,20 +57,36 @@ class Api(unittest.TestCase):
             if path == "rpc/perfiles":
                 return [p for p in SAMPLE if p["employee_id"] in body["p_ids"]]
             raise AssertionError(path)
+        return fake
 
-        out = match_project("p1", {"top": 3}, fetch=fake)
+    def test_match_project_confirmado(self):
+        calls = []
+        out = match_project("p1", {"top": 3}, fetch=self.fake_supabase("confirmado", calls))
         self.assertEqual(calls, ["project_requirements?id=eq.p1&select=*", "rpc/candidatos_proyecto", "rpc/perfiles"])
         self.assertEqual(set(out["ranking"]), {"Backend", "Backend (2)"})
         self.assertEqual(out["n_filtrados"], {"Backend": 20})
         json.dumps(out)
 
+    def test_match_project_sin_revisar_no_filtra_ni_puntua(self):
+        for status in ("borrador", None):
+            calls = []
+            with self.assertRaises(HTTPException) as e:
+                match_project("p1", {}, fetch=self.fake_supabase(status, calls))
+            self.assertEqual(e.exception.status_code, 409)
+            self.assertEqual(calls, ["project_requirements?id=eq.p1&select=*"])  # no llega a pedir candidatos
+
     def test_endpoints(self):
         c = TestClient(app)
         self.assertEqual(c.get("/health").json(), {"ok": True})
-        r = c.post("/match/direct", json={"requirements": REQ, "candidates_by_role": {"Backend": SAMPLE[:10]}, "options": {"top": 2}})
-        self.assertEqual(r.status_code, 200)
-        self.assertLessEqual(len(r.json()["ranking"]["Backend"]["items"]), 2)
-        self.assertEqual(c.post("/match/direct", json={"requirements": REQ, "candidates_by_role": {}, "options": {"x": 1}}).status_code, 422)
+        body = {"requirements": REQ, "candidates_by_role": {"Backend": SAMPLE[:10]}, "options": {"top": 2}}
+        with patch.dict(os.environ, {}, clear=False):
+            os.environ.pop("ORBIT_ALLOW_DIRECT", None)
+            self.assertEqual(c.post("/match/direct", json=body).status_code, 403)  # se salta la revisión: desactivado
+        with patch.dict(os.environ, {"ORBIT_ALLOW_DIRECT": "1"}):
+            r = c.post("/match/direct", json=body)
+            self.assertEqual(r.status_code, 200)
+            self.assertLessEqual(len(r.json()["ranking"]["Backend"]["items"]), 2)
+            self.assertEqual(c.post("/match/direct", json={**body, "options": {"x": 1}}).status_code, 422)
 
 
 if __name__ == "__main__":
