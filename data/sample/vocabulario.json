@@ -1,0 +1,3671 @@
+{
+  "disponibilidad": [
+    "Asignado",
+    "Roll-off próximo (<3 meses)",
+    "En banca"
+  ],
+  "nivel_seniority": [
+    "Trainee",
+    "Junior",
+    "Mid",
+    "Senior",
+    "Lead",
+    "Principal"
+  ],
+  "modalidad_trabajo": [
+    "Híbrido",
+    "Presencial",
+    "Remoto"
+  ],
+  "sectores": [
+    "Banca y Finanzas",
+    "Sector Público",
+    "Telecomunicaciones y Media",
+    "Industria y Automoción",
+    "Retail y Consumo",
+    "Seguros",
+    "Energía y Utilities",
+    "Sanidad y Farma",
+    "Transporte y Logística",
+    "Turismo y Ocio"
+  ],
+  "areas_y_roles": {
+    "Cloud & Infraestructura": [
+      "DevOps Engineer",
+      "IT Service Desk Technician",
+      "Systems Administrator",
+      "Cloud Engineer (AWS)",
+      "Cloud Engineer (Azure)",
+      "Network Engineer",
+      "Database Administrator",
+      "IT Operations Analyst",
+      "Site Reliability Engineer",
+      "Cloud Architect",
+      "Platform Engineer",
+      "Cloud Engineer (GCP)"
+    ],
+    "Software Engineering": [
+      "Backend Developer Java",
+      "Full Stack Developer",
+      "Frontend Developer",
+      "Backend Developer .NET",
+      "Python Developer",
+      "Integration Developer",
+      "Mobile Developer",
+      "Low-Code Developer",
+      "Software Architect",
+      "Mainframe Developer (COBOL)",
+      "Embedded Software Engineer"
+    ],
+    "Data & AI": [
+      "Data Engineer",
+      "Data Analyst",
+      "Data Scientist",
+      "BI Developer",
+      "AI Engineer (GenAI/LLM)",
+      "Machine Learning Engineer",
+      "Analytics Engineer",
+      "Data Architect",
+      "Data Governance Analyst",
+      "MLOps Engineer"
+    ],
+    "Aplicaciones Empresariales": [
+      "SAP ABAP Developer",
+      "SAP MM/SD Consultant",
+      "SAP FI/CO Consultant",
+      "Salesforce Developer",
+      "Salesforce Consultant",
+      "ServiceNow Developer",
+      "Dynamics 365 Consultant",
+      "SAP BTP Developer",
+      "Oracle ERP Consultant",
+      "Workday Consultant",
+      "SAP S/4HANA Architect"
+    ],
+    "Consultoría de Negocio": [
+      "Business Analyst",
+      "Functional Consultant (Banca)",
+      "Management Consultant",
+      "Scrum Master / Agile Coach",
+      "Digital Transformation Consultant",
+      "Product Owner",
+      "Functional Consultant (Seguros)",
+      "Process Consultant (BPM)"
+    ],
+    "Gestión y Delivery": [
+      "Project Manager",
+      "PMO Analyst",
+      "Delivery Manager",
+      "Account Manager",
+      "Program Manager",
+      "Service Delivery Manager"
+    ],
+    "Ciberseguridad": [
+      "SOC Analyst",
+      "GRC Consultant",
+      "Penetration Tester",
+      "IAM Specialist",
+      "DevSecOps Engineer",
+      "Security Architect",
+      "DFIR Analyst",
+      "Security Consultant (CISO Office)"
+    ],
+    "Calidad y Testing": [
+      "QA Engineer",
+      "Test Automation Engineer",
+      "Performance Test Engineer",
+      "Test Manager"
+    ],
+    "Corporativo y Comercial": [
+      "Talent Acquisition Specialist",
+      "Pre-sales Solution Consultant",
+      "Sales Executive",
+      "Financial Controller",
+      "HR Business Partner",
+      "Marketing & Communications Specialist",
+      "Legal & Compliance Specialist"
+    ],
+    "Diseño y Experiencia": [
+      "UX Designer",
+      "UI Designer",
+      "CX Consultant",
+      "UX Researcher",
+      "Service Designer"
+    ],
+    "Automatización y RPA": [
+      "RPA Developer",
+      "Intelligent Automation Consultant"
+    ],
+    "Telecom e IoT": [
+      "IoT Solutions Engineer",
+      "OSS/BSS Consultant",
+      "5G Network Engineer"
+    ]
+  },
+  "skills": [
+    {
+      "skill": "SQL",
+      "perfiles": 43620,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Python",
+      "perfiles": 34009,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Power BI",
+      "perfiles": 17224,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Docker",
+      "perfiles": 16958,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "REST APIs",
+      "perfiles": 16751,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Jira",
+      "perfiles": 16301,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Terraform",
+      "perfiles": 14871,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Kubernetes",
+      "perfiles": 14693,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Análisis funcional",
+      "perfiles": 12616,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Linux",
+      "perfiles": 11434,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "TypeScript",
+      "perfiles": 11340,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "CI/CD",
+      "perfiles": 11164,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Java",
+      "perfiles": 10906,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "JavaScript",
+      "perfiles": 9840,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Excel avanzado",
+      "perfiles": 9507,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "ITIL",
+      "perfiles": 9061,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Bash",
+      "perfiles": 8931,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "PostgreSQL",
+      "perfiles": 8802,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Git",
+      "perfiles": 8610,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Kafka",
+      "perfiles": 8599,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Active Directory",
+      "perfiles": 8219,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "ServiceNow",
+      "perfiles": 8115,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Spark",
+      "perfiles": 8095,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Gestión del cambio",
+      "perfiles": 8049,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Tableau",
+      "perfiles": 7930,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "SAP S/4HANA",
+      "perfiles": 7151,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Gestión de riesgos",
+      "perfiles": 7025,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Gestión de incidencias",
+      "perfiles": 6932,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "React",
+      "perfiles": 6798,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "DAX",
+      "perfiles": 6672,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Machine Learning",
+      "perfiles": 6631,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Historias de usuario",
+      "perfiles": 6598,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Spring Boot",
+      "perfiles": 6561,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Scripting",
+      "perfiles": 6449,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Planificación",
+      "perfiles": 6143,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Node.js",
+      "perfiles": 6120,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Wireframing",
+      "perfiles": 6008,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "ETL/ELT",
+      "perfiles": 5944,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "PowerShell",
+      "perfiles": 5774,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Azure",
+      "perfiles": 5675,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "MS Project",
+      "perfiles": 5370,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Gestión de stakeholders",
+      "perfiles": 5331,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Modelado de procesos",
+      "perfiles": 5029,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Microservicios",
+      "perfiles": 5019,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Windows",
+      "perfiles": 4996,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Visualización de datos",
+      "perfiles": 4984,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Soporte N1/N2",
+      "perfiles": 4970,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "UML/BPMN",
+      "perfiles": 4926,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Levantamiento de requisitos",
+      "perfiles": 4923,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Agile/Scrum",
+      "perfiles": 4896,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Vue.js",
+      "perfiles": 4640,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Snowflake",
+      "perfiles": 4512,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Virtualización",
+      "perfiles": 4511,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Looker",
+      "perfiles": 4509,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Windows Server",
+      "perfiles": 4502,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Angular",
+      "perfiles": 4476,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Testing funcional",
+      "perfiles": 4461,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Gestión de defectos",
+      "perfiles": 4452,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Diseño de casos de prueba",
+      "perfiles": 4420,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Airflow",
+      "perfiles": 4409,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Gestión de proyectos",
+      "perfiles": 4408,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Estadística",
+      "perfiles": 4358,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "PyTorch",
+      "perfiles": 4320,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "SAP Fiori",
+      "perfiles": 4318,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Google Analytics",
+      "perfiles": 4265,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "OKRs",
+      "perfiles": 4248,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Modelado dimensional",
+      "perfiles": 4246,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Design Thinking",
+      "perfiles": 4237,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Atención al cliente",
+      "perfiles": 4139,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Intune",
+      "perfiles": 4132,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Microsoft 365",
+      "perfiles": 4103,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Figma",
+      "perfiles": 4044,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "AWS",
+      "perfiles": 4024,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "dbt",
+      "perfiles": 4017,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "MongoDB",
+      "perfiles": 4009,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "FastAPI",
+      "perfiles": 4006,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Cypress",
+      "perfiles": 3943,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Splunk",
+      "perfiles": 3814,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Power Automate",
+      "perfiles": 3782,
+      "area_principal": "Automatización y RPA"
+    },
+    {
+      "skill": "Sales Cloud",
+      "perfiles": 3673,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "SonarQube",
+      "perfiles": 3632,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "JUnit",
+      "perfiles": 3618,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Service Cloud",
+      "perfiles": 3611,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Gestión de costes",
+      "perfiles": 3605,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Design Systems",
+      "perfiles": 3601,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Maven",
+      "perfiles": 3598,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Respuesta a incidentes",
+      "perfiles": 3598,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Storytelling con datos",
+      "perfiles": 3582,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "SQL Server",
+      "perfiles": 3581,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Confluence",
+      "perfiles": 3572,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Helm",
+      "perfiles": 3569,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Hibernate",
+      "perfiles": 3566,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Reporting ejecutivo",
+      "perfiles": 3561,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Scrum",
+      "perfiles": 3555,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Oracle DB",
+      "perfiles": 3547,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "ArgoCD",
+      "perfiles": 3541,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Databricks",
+      "perfiles": 3526,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "TensorFlow",
+      "perfiles": 3517,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "IAM",
+      "perfiles": 3435,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Automatización de pruebas",
+      "perfiles": 3422,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Selenium",
+      "perfiles": 3413,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "CSS3",
+      "perfiles": 3302,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "HTML5",
+      "perfiles": 3296,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Experience Cloud",
+      "perfiles": 3287,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "ABAP",
+      "perfiles": 3280,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Testing de APIs",
+      "perfiles": 3279,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Flow",
+      "perfiles": 3275,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "OData",
+      "perfiles": 3272,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Xray",
+      "perfiles": 3247,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "SAP SD",
+      "perfiles": 3243,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Logística",
+      "perfiles": 3240,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Postman",
+      "perfiles": 3238,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "SAP MM",
+      "perfiles": 3195,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "TestRail",
+      "perfiles": 3182,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Gherkin/BDD",
+      "perfiles": 3166,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Entra ID",
+      "perfiles": 3157,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "MLOps",
+      "perfiles": 3112,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Redes cloud",
+      "perfiles": 3091,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "SIEM",
+      "perfiles": 3066,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Análisis de logs",
+      "perfiles": 3059,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "MITRE ATT&CK",
+      "perfiles": 3039,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "SAP CO",
+      "perfiles": 3022,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "SAP FI",
+      "perfiles": 3018,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "SAP S/4HANA Finance",
+      "perfiles": 3006,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Contabilidad financiera",
+      "perfiles": 3004,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "RPA",
+      "perfiles": 3002,
+      "area_principal": "Automatización y RPA"
+    },
+    {
+      "skill": "Azure Synapse",
+      "perfiles": 3001,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "CRM",
+      "perfiles": 2982,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Azure Data Factory",
+      "perfiles": 2906,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "SAPUI5",
+      "perfiles": 2904,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "AWS Glue",
+      "perfiles": 2895,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Backup y DR",
+      "perfiles": 2864,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "UiPath",
+      "perfiles": 2852,
+      "area_principal": "Automatización y RPA"
+    },
+    {
+      "skill": "Delta Lake",
+      "perfiles": 2847,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "VMware vSphere",
+      "perfiles": 2841,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Scala",
+      "perfiles": 2836,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Zabbix",
+      "perfiles": 2774,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "GraphQL",
+      "perfiles": 2764,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Jest",
+      "perfiles": 2762,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Next.js",
+      "perfiles": 2757,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Red Hat",
+      "perfiles": 2750,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Testing de usabilidad",
+      "perfiles": 2725,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "SAP EWM",
+      "perfiles": 2720,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "SAP IBP",
+      "perfiles": 2702,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Facturación",
+      "perfiles": 2700,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Pricing",
+      "perfiles": 2693,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Gestión de compras",
+      "perfiles": 2691,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Ansible",
+      "perfiles": 2684,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "GitLab CI",
+      "perfiles": 2679,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Customer Journey",
+      "perfiles": 2662,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Jenkins",
+      "perfiles": 2637,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "GitHub Actions",
+      "perfiles": 2624,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Grafana",
+      "perfiles": 2595,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "ISO 27001",
+      "perfiles": 2578,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Cierre contable",
+      "perfiles": 2527,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Apex",
+      "perfiles": 2524,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Salesforce Platform",
+      "perfiles": 2519,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Lightning Web Components",
+      "perfiles": 2511,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Activos fijos",
+      "perfiles": 2508,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "SOQL",
+      "perfiles": 2506,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "SAP Group Reporting",
+      "perfiles": 2498,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Controlling de costes",
+      "perfiles": 2492,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Diseño UX",
+      "perfiles": 2483,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "SAP BPC",
+      "perfiles": 2482,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "LLMs",
+      "perfiles": 2470,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Prototipado",
+      "perfiles": 2470,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Prompt Engineering",
+      "perfiles": 2469,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "SAFe",
+      "perfiles": 2440,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "RAG",
+      "perfiles": 2439,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Pagos",
+      "perfiles": 2418,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Normativa financiera",
+      "perfiles": 2415,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Banca",
+      "perfiles": 2409,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Negociación",
+      "perfiles": 2375,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Routing y Switching",
+      "perfiles": 2370,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": ".NET",
+      "perfiles": 2356,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "C#",
+      "perfiles": 2351,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "VPN",
+      "perfiles": 2350,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Firewalls",
+      "perfiles": 2347,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Redes LAN/WAN",
+      "perfiles": 2329,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "SOAP",
+      "perfiles": 2290,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Mensajería asíncrona",
+      "perfiles": 2278,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "ESB",
+      "perfiles": 2255,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "SSIS",
+      "perfiles": 2252,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "SOAR",
+      "perfiles": 2238,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Azure DevOps",
+      "perfiles": 2228,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "CrowdStrike",
+      "perfiles": 2226,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "SSAS",
+      "perfiles": 2219,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "QRadar",
+      "perfiles": 2219,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Threat Hunting",
+      "perfiles": 2215,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Microsoft Sentinel",
+      "perfiles": 2204,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Qlik Sense",
+      "perfiles": 2199,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Cognos",
+      "perfiles": 2191,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Azure Monitor",
+      "perfiles": 2182,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "ARM Templates",
+      "perfiles": 2181,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Series temporales",
+      "perfiles": 2165,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Forecast comercial",
+      "perfiles": 2156,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Automatización de procesos",
+      "perfiles": 2152,
+      "area_principal": "Automatización y RPA"
+    },
+    {
+      "skill": "Orchestrator",
+      "perfiles": 2150,
+      "area_principal": "Automatización y RPA"
+    },
+    {
+      "skill": "scikit-learn",
+      "perfiles": 2147,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Appium",
+      "perfiles": 2143,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Cucumber",
+      "perfiles": 2140,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Bicep",
+      "perfiles": 2137,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "AKS",
+      "perfiles": 2135,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Playwright",
+      "perfiles": 2117,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "PL/SQL",
+      "perfiles": 2113,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Seguridad cloud",
+      "perfiles": 2105,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "PMO",
+      "perfiles": 2084,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "REST Assured",
+      "perfiles": 2082,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Reporting",
+      "perfiles": 2082,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Business Case",
+      "perfiles": 2079,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "RGPD",
+      "perfiles": 2074,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "XGBoost",
+      "perfiles": 2073,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Gestión de proveedores",
+      "perfiles": 2070,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Arquitectura de la información",
+      "perfiles": 2066,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Control de costes",
+      "perfiles": 2063,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "NLP",
+      "perfiles": 2061,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Swift",
+      "perfiles": 2049,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Kotlin",
+      "perfiles": 2047,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Accesibilidad",
+      "perfiles": 2044,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "MLflow",
+      "perfiles": 2029,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "IDocs",
+      "perfiles": 2026,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "CDS Views",
+      "perfiles": 2025,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Smartforms",
+      "perfiles": 2017,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Modelado financiero",
+      "perfiles": 2015,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "RAP",
+      "perfiles": 2012,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Presentaciones ejecutivas",
+      "perfiles": 2009,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Análisis de negocio",
+      "perfiles": 2008,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Estrategia",
+      "perfiles": 2008,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Kubeflow",
+      "perfiles": 2008,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "ABAP OO",
+      "perfiles": 2004,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "BAPI",
+      "perfiles": 1992,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Tuning",
+      "perfiles": 1966,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Backup y recuperación",
+      "perfiles": 1960,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Administración de BBDD",
+      "perfiles": 1960,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "CloudFormation",
+      "perfiles": 1940,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "CloudWatch",
+      "perfiles": 1936,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Facilitación",
+      "perfiles": 1928,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Monitorización",
+      "perfiles": 1926,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "EKS",
+      "perfiles": 1916,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Kanban",
+      "perfiles": 1911,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Agile Coaching",
+      "perfiles": 1907,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Lambda",
+      "perfiles": 1905,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Sistemas embebidos",
+      "perfiles": 1886,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "Storybook",
+      "perfiles": 1826,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Integraciones REST",
+      "perfiles": 1821,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Salesforce Admin",
+      "perfiles": 1811,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Process Mining",
+      "perfiles": 1788,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "PSD2",
+      "perfiles": 1779,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Redux",
+      "perfiles": 1779,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Core bancario",
+      "perfiles": 1769,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Salesforce DX",
+      "perfiles": 1767,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Prevención de blanqueo (AML)",
+      "perfiles": 1765,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Entity Framework",
+      "perfiles": 1762,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Webpack",
+      "perfiles": 1758,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Basilea III",
+      "perfiles": 1758,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Open Banking",
+      "perfiles": 1757,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Accesibilidad web",
+      "perfiles": 1756,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "xUnit",
+      "perfiles": 1749,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Palo Alto",
+      "perfiles": 1738,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "SEPA",
+      "perfiles": 1735,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Prometheus",
+      "perfiles": 1731,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Gestión de portfolio",
+      "perfiles": 1729,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "RabbitMQ",
+      "perfiles": 1729,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "BGP/OSPF",
+      "perfiles": 1720,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Fortinet",
+      "perfiles": 1711,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Wi-Fi corporativo",
+      "perfiles": 1704,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Blazor",
+      "perfiles": 1700,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Cisco",
+      "perfiles": 1694,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "SD-WAN",
+      "perfiles": 1690,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "BigQuery",
+      "perfiles": 1685,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "PowerPoint",
+      "perfiles": 1672,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Transformación digital",
+      "perfiles": 1669,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Operating model",
+      "perfiles": 1659,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Roadmaps tecnológicos",
+      "perfiles": 1656,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "SAP BTP",
+      "perfiles": 1650,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Benchmarking",
+      "perfiles": 1643,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Product Discovery",
+      "perfiles": 1626,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Gobierno del dato",
+      "perfiles": 1623,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Gestión de backlog",
+      "perfiles": 1613,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "ITSM",
+      "perfiles": 1597,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Nagios",
+      "perfiles": 1589,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Métricas ágiles",
+      "perfiles": 1588,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "REFramework",
+      "perfiles": 1586,
+      "area_principal": "Automatización y RPA"
+    },
+    {
+      "skill": "OCR/IDP",
+      "perfiles": 1582,
+      "area_principal": "Automatización y RPA"
+    },
+    {
+      "skill": "Gestión de cambios",
+      "perfiles": 1580,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Retrospectivas",
+      "perfiles": 1570,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Flow Designer",
+      "perfiles": 1559,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Celonis",
+      "perfiles": 1556,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Observabilidad",
+      "perfiles": 1553,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Automation Anywhere",
+      "perfiles": 1552,
+      "area_principal": "Automatización y RPA"
+    },
+    {
+      "skill": "DORA",
+      "perfiles": 1550,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Gestión de la entrega",
+      "perfiles": 1549,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Gestión de clientes",
+      "perfiles": 1546,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Diseño UI",
+      "perfiles": 1545,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Incident Management",
+      "perfiles": 1545,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Tipografía y color",
+      "perfiles": 1541,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "KPIs/SLAs",
+      "perfiles": 1528,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Gestión de equipos",
+      "perfiles": 1518,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Marketing Cloud",
+      "perfiles": 1516,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Flutter",
+      "perfiles": 1513,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "ENS",
+      "perfiles": 1512,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "NIS2",
+      "perfiles": 1511,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Power Apps",
+      "perfiles": 1510,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "React Native",
+      "perfiles": 1503,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Data Cloud",
+      "perfiles": 1501,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Patrones de diseño",
+      "perfiles": 1496,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "OutSystems",
+      "perfiles": 1495,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "CPQ",
+      "perfiles": 1490,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Firebase",
+      "perfiles": 1486,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Arquitectura de Software",
+      "perfiles": 1482,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Diseño de APIs",
+      "perfiles": 1480,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "SAP Integration Suite",
+      "perfiles": 1462,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Jetpack Compose",
+      "perfiles": 1457,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "SwiftUI",
+      "perfiles": 1454,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Fastlane",
+      "perfiles": 1445,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Feature Stores",
+      "perfiles": 1430,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "IBM App Connect",
+      "perfiles": 1429,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "OpenAPI",
+      "perfiles": 1412,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "MuleSoft",
+      "perfiles": 1406,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "OWASP Top 10",
+      "perfiles": 1392,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Kali Linux",
+      "perfiles": 1383,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Apache Camel",
+      "perfiles": 1374,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Innovación",
+      "perfiles": 1374,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Selección de personal",
+      "perfiles": 1372,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Pentesting",
+      "perfiles": 1372,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "TIBCO",
+      "perfiles": 1371,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Agile at scale",
+      "perfiles": 1370,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "WSO2",
+      "perfiles": 1364,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Vector DBs",
+      "perfiles": 1361,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Entrevistas por competencias",
+      "perfiles": 1353,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "LinkedIn Recruiter",
+      "perfiles": 1349,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Elaboración de propuestas",
+      "perfiles": 1345,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Employer branding",
+      "perfiles": 1344,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Preventa",
+      "perfiles": 1342,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Arquitectura cloud",
+      "perfiles": 1341,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "SAST/DAST",
+      "perfiles": 1339,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Evaluación de LLMs",
+      "perfiles": 1339,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Roadmap de producto",
+      "perfiles": 1338,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Presentaciones a cliente",
+      "perfiles": 1338,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Métricas de producto",
+      "perfiles": 1337,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "A/B testing",
+      "perfiles": 1336,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "MFA",
+      "perfiles": 1336,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Azure OpenAI",
+      "perfiles": 1334,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Hugging Face",
+      "perfiles": 1334,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Fine-tuning",
+      "perfiles": 1332,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "SSO",
+      "perfiles": 1330,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Seguridad en contenedores",
+      "perfiles": 1330,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Gestión de identidades",
+      "perfiles": 1327,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Landing Zones",
+      "perfiles": 1323,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "DB2",
+      "perfiles": 1319,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Diseño de soluciones",
+      "perfiles": 1319,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "ITOM",
+      "perfiles": 1317,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "LlamaIndex",
+      "perfiles": 1312,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "LangChain",
+      "perfiles": 1311,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Adobe XD",
+      "perfiles": 1309,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Escalado de riesgos",
+      "perfiles": 1308,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Seguros",
+      "perfiles": 1306,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Integration Hub",
+      "perfiles": 1305,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Siniestros",
+      "perfiles": 1304,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Ciclo de póliza",
+      "perfiles": 1300,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "CICS",
+      "perfiles": 1297,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Venta consultiva",
+      "perfiles": 1297,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "COBOL",
+      "perfiles": 1296,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "CMDB",
+      "perfiles": 1295,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Prospección B2B",
+      "perfiles": 1294,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "HRSD",
+      "perfiles": 1291,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Flask",
+      "perfiles": 1287,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Handoff a desarrollo",
+      "perfiles": 1284,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Motion design",
+      "perfiles": 1283,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "P&L de proyecto",
+      "perfiles": 1282,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "JCL",
+      "perfiles": 1281,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Sketch",
+      "perfiles": 1279,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "UI Builder",
+      "perfiles": 1274,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "pytest",
+      "perfiles": 1270,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Illustrator",
+      "perfiles": 1270,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Celery",
+      "perfiles": 1255,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Django",
+      "perfiles": 1252,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Onboarding",
+      "perfiles": 1249,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Mendix",
+      "perfiles": 1243,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "ATS",
+      "perfiles": 1241,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Appian",
+      "perfiles": 1239,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Marca empleadora",
+      "perfiles": 1235,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Oracle",
+      "perfiles": 1228,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Headhunting IT",
+      "perfiles": 1220,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "MySQL",
+      "perfiles": 1185,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Oracle RAC",
+      "perfiles": 1173,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Redis",
+      "perfiles": 1167,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Burp Suite",
+      "perfiles": 1140,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Power Platform",
+      "perfiles": 1130,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "SLI/SLO",
+      "perfiles": 1129,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Cloud pentesting",
+      "perfiles": 1128,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Chaos Engineering",
+      "perfiles": 1127,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Dataverse",
+      "perfiles": 1127,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Dynamics 365",
+      "perfiles": 1123,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Datadog",
+      "perfiles": 1122,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Metasploit",
+      "perfiles": 1121,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "GitOps",
+      "perfiles": 1119,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "PCI-DSS",
+      "perfiles": 1118,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Demos",
+      "perfiles": 1117,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Active Directory attacks",
+      "perfiles": 1114,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Red Teaming",
+      "perfiles": 1113,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Estimación de proyectos",
+      "perfiles": 1112,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Internal Developer Platforms",
+      "perfiles": 1109,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "RFP/RFI",
+      "perfiles": 1108,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Arquitectura de soluciones",
+      "perfiles": 1105,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Auditoría de seguridad",
+      "perfiles": 1096,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Gestión de cuentas",
+      "perfiles": 1091,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Relación con cliente",
+      "perfiles": 1090,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "CAP",
+      "perfiles": 1089,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Cloud",
+      "perfiles": 1087,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "BIA/BCP",
+      "perfiles": 1087,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "SOC 2",
+      "perfiles": 1085,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Solvencia II",
+      "perfiles": 1083,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "NIST CSF",
+      "perfiles": 1078,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Gestión de pipeline",
+      "perfiles": 1075,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Tarificación",
+      "perfiles": 1074,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Guidewire",
+      "perfiles": 1073,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Salesforce",
+      "perfiles": 1072,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Mediación",
+      "perfiles": 1064,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Networking",
+      "perfiles": 1050,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Reaseguro",
+      "perfiles": 1047,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Oracle Fusion Cloud",
+      "perfiles": 1030,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Licitaciones públicas",
+      "perfiles": 1027,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "IoT",
+      "perfiles": 1025,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "Oracle EBS",
+      "perfiles": 1024,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Edge computing",
+      "perfiles": 1018,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "MQTT",
+      "perfiles": 1018,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "Planes de cuenta",
+      "perfiles": 1016,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Snyk",
+      "perfiles": 1009,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Cross-selling",
+      "perfiles": 1008,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "SAML/OAuth2",
+      "perfiles": 1002,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "FinOps",
+      "perfiles": 1000,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Arquitectura de datos",
+      "perfiles": 1000,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Well-Architected",
+      "perfiles": 997,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Modelado de datos",
+      "perfiles": 996,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Data Lakehouse",
+      "perfiles": 991,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Gestión de contratos",
+      "perfiles": 988,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "PAM",
+      "perfiles": 973,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Changeman",
+      "perfiles": 972,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "SailPoint",
+      "perfiles": 971,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Endevor",
+      "perfiles": 963,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "CyberArk",
+      "perfiles": 959,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Trivy",
+      "perfiles": 959,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "IMS",
+      "perfiles": 955,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "VSAM",
+      "perfiles": 955,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Vault",
+      "perfiles": 954,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "z/OS",
+      "perfiles": 952,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "X++",
+      "perfiles": 951,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Multicloud",
+      "perfiles": 950,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "REXX",
+      "perfiles": 948,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Gestión de presupuesto",
+      "perfiles": 948,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Finance & Operations",
+      "perfiles": 943,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Okta",
+      "perfiles": 938,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Gobierno",
+      "perfiles": 933,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Crossplane",
+      "perfiles": 932,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Seguridad de aplicaciones",
+      "perfiles": 932,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Lean Six Sigma",
+      "perfiles": 932,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "C4 Model",
+      "perfiles": 929,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Cloud (AWS/Azure)",
+      "perfiles": 928,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Event-driven architecture",
+      "perfiles": 926,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Contabilidad",
+      "perfiles": 922,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Control de gestión",
+      "perfiles": 915,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Gestión de programas",
+      "perfiles": 915,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Mejora de procesos",
+      "perfiles": 914,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Customer Engagement",
+      "perfiles": 913,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Presupuestos",
+      "perfiles": 912,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Backstage",
+      "perfiles": 910,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "BPMN",
+      "perfiles": 910,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "DDD",
+      "perfiles": 910,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Calidad de datos",
+      "perfiles": 908,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Google Cloud",
+      "perfiles": 908,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Reporting financiero",
+      "perfiles": 901,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Workday HCM",
+      "perfiles": 900,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Workday Reporting",
+      "perfiles": 895,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Configuración funcional",
+      "perfiles": 895,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "JMeter",
+      "perfiles": 892,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Go",
+      "perfiles": 892,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Pruebas de rendimiento",
+      "perfiles": 890,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Cloud Foundry",
+      "perfiles": 889,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Metadatos",
+      "perfiles": 889,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Compensación",
+      "perfiles": 889,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Relaciones laborales",
+      "perfiles": 884,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Gestión del talento",
+      "perfiles": 882,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Oracle Financials",
+      "perfiles": 881,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "SAP Build",
+      "perfiles": 879,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Análisis de métricas",
+      "perfiles": 877,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Gestión de personas",
+      "perfiles": 874,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "C",
+      "perfiles": 872,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "APM",
+      "perfiles": 872,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "RTOS",
+      "perfiles": 870,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Provisioning",
+      "perfiles": 870,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "C++",
+      "perfiles": 869,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Oracle HCM",
+      "perfiles": 867,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Core de red",
+      "perfiles": 864,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "Facturación telecom",
+      "perfiles": 864,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "TM Forum",
+      "perfiles": 860,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "Automatización inteligente",
+      "perfiles": 860,
+      "area_principal": "Automatización y RPA"
+    },
+    {
+      "skill": "Optimización RAN",
+      "perfiles": 858,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "Gestión de incidencias mayores",
+      "perfiles": 856,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Redes móviles",
+      "perfiles": 855,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "OSS/BSS",
+      "perfiles": 854,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "Análisis de procesos",
+      "perfiles": 854,
+      "area_principal": "Automatización y RPA"
+    },
+    {
+      "skill": "OIC",
+      "perfiles": 853,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Signavio",
+      "perfiles": 853,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "SLAs",
+      "perfiles": 852,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Oracle SCM",
+      "perfiles": 851,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Reporting C-level",
+      "perfiles": 849,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Gestión de dependencias",
+      "perfiles": 846,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Bizagi",
+      "perfiles": 846,
+      "area_principal": "Consultoría de Negocio"
+    },
+    {
+      "skill": "Gestión de servicios",
+      "perfiles": 844,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "5G NR",
+      "perfiles": 843,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "Integraciones EIB",
+      "perfiles": 831,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "People Analytics",
+      "perfiles": 828,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Workday Studio",
+      "perfiles": 827,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Workday Payroll",
+      "perfiles": 824,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Workday Recruiting",
+      "perfiles": 824,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Desarrollo organizativo",
+      "perfiles": 823,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Comunicación corporativa",
+      "perfiles": 812,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Workday",
+      "perfiles": 806,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Mejora continua",
+      "perfiles": 794,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "Gestión de contenidos",
+      "perfiles": 794,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Redes sociales",
+      "perfiles": 788,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Marketing digital",
+      "perfiles": 787,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Continuidad de negocio",
+      "perfiles": 780,
+      "area_principal": "Gestión y Delivery"
+    },
+    {
+      "skill": "AWS IoT",
+      "perfiles": 754,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "IFRS",
+      "perfiles": 754,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Consolidación",
+      "perfiles": 753,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "SAP FI/CO",
+      "perfiles": 753,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Zero Trust",
+      "perfiles": 751,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Arquitectura de seguridad",
+      "perfiles": 750,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Collibra",
+      "perfiles": 746,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "DAMA-DMBOK",
+      "perfiles": 745,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Node-RED",
+      "perfiles": 745,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "Cloud Run",
+      "perfiles": 743,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "Gatling",
+      "perfiles": 741,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "GKE",
+      "perfiles": 740,
+      "area_principal": "Cloud & Infraestructura"
+    },
+    {
+      "skill": "GDPR",
+      "perfiles": 740,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "Data Lineage",
+      "perfiles": 738,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "LoadRunner",
+      "perfiles": 738,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Data Mesh",
+      "perfiles": 735,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "k6",
+      "perfiles": 731,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Experiencia de cliente",
+      "perfiles": 731,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Informatica",
+      "perfiles": 730,
+      "area_principal": "Data & AI"
+    },
+    {
+      "skill": "NPS",
+      "perfiles": 730,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Inventario de red",
+      "perfiles": 729,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "Azure IoT Hub",
+      "perfiles": 728,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "Netcracker",
+      "perfiles": 727,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "VoC",
+      "perfiles": 727,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Dynatrace",
+      "perfiles": 726,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "eTOM",
+      "perfiles": 722,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "LoRaWAN",
+      "perfiles": 720,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "Amdocs",
+      "perfiles": 718,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "IDP",
+      "perfiles": 692,
+      "area_principal": "Automatización y RPA"
+    },
+    {
+      "skill": "SAP Activate",
+      "perfiles": 689,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Arquitectura SAP",
+      "perfiles": 678,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Migración a S/4HANA",
+      "perfiles": 675,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Investigación de usuarios",
+      "perfiles": 675,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Entrevistas",
+      "perfiles": 672,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Analítica de cliente",
+      "perfiles": 672,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "SEO/SEM",
+      "perfiles": 669,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "HubSpot",
+      "perfiles": 666,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Copywriting",
+      "perfiles": 664,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Omnicanalidad",
+      "perfiles": 660,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Análisis cualitativo",
+      "perfiles": 657,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "MISRA C",
+      "perfiles": 641,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Card sorting",
+      "perfiles": 641,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Eventos",
+      "perfiles": 639,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Nokia",
+      "perfiles": 639,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "Threat Modeling",
+      "perfiles": 638,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Network slicing",
+      "perfiles": 633,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "SASE",
+      "perfiles": 632,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "CAN bus",
+      "perfiles": 630,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Linux embebido",
+      "perfiles": 629,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "Analítica web",
+      "perfiles": 627,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Encuestas",
+      "perfiles": 626,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Estrategia de testing",
+      "perfiles": 625,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Gestión de equipos de QA",
+      "perfiles": 622,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Planificación de pruebas",
+      "perfiles": 622,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Yocto",
+      "perfiles": 621,
+      "area_principal": "Software Engineering"
+    },
+    {
+      "skill": "PKI",
+      "perfiles": 618,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Open RAN",
+      "perfiles": 617,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "ISTQB",
+      "perfiles": 616,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Ericsson",
+      "perfiles": 614,
+      "area_principal": "Telecom e IoT"
+    },
+    {
+      "skill": "Journey Mapping",
+      "perfiles": 609,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Service Design",
+      "perfiles": 582,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Clean Core",
+      "perfiles": 581,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Blueprinting",
+      "perfiles": 578,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "TMMi",
+      "perfiles": 577,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Co-creación",
+      "perfiles": 577,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Métricas de calidad",
+      "perfiles": 576,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Greenfield/Brownfield",
+      "perfiles": 568,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Shift-left testing",
+      "perfiles": 564,
+      "area_principal": "Calidad y Testing"
+    },
+    {
+      "skill": "Derecho tecnológico",
+      "perfiles": 562,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Compliance",
+      "perfiles": 560,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Análisis forense",
+      "perfiles": 558,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Contratación IT",
+      "perfiles": 558,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "SAP Cloud ALM",
+      "perfiles": 557,
+      "area_principal": "Aplicaciones Empresariales"
+    },
+    {
+      "skill": "Análisis de malware",
+      "perfiles": 554,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Volatility",
+      "perfiles": 554,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Estrategia de ciberseguridad",
+      "perfiles": 548,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Normativa",
+      "perfiles": 541,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Gobierno de seguridad",
+      "perfiles": 539,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Personas",
+      "perfiles": 531,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Auditoría interna",
+      "perfiles": 530,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Workshops",
+      "perfiles": 529,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Propiedad intelectual",
+      "perfiles": 522,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Miro",
+      "perfiles": 521,
+      "area_principal": "Diseño y Experiencia"
+    },
+    {
+      "skill": "Cumplimiento normativo",
+      "perfiles": 520,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "Licitaciones",
+      "perfiles": 518,
+      "area_principal": "Corporativo y Comercial"
+    },
+    {
+      "skill": "YARA",
+      "perfiles": 490,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Velociraptor",
+      "perfiles": 476,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "EnCase",
+      "perfiles": 469,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Concienciación",
+      "perfiles": 448,
+      "area_principal": "Ciberseguridad"
+    },
+    {
+      "skill": "Memory forensics",
+      "perfiles": 442,
+      "area_principal": "Ciberseguridad"
+    }
+  ],
+  "certificaciones": [
+    {
+      "nombre": "ITIL 4 Foundation",
+      "perfiles": 13981
+    },
+    {
+      "nombre": "AWS Certified Cloud Practitioner",
+      "perfiles": 11024
+    },
+    {
+      "nombre": "Scrum Fundamentals (SFPC)",
+      "perfiles": 10954
+    },
+    {
+      "nombre": "Microsoft AZ-900 Azure Fundamentals",
+      "perfiles": 10600
+    },
+    {
+      "nombre": "PMP",
+      "perfiles": 5245
+    },
+    {
+      "nombre": "Certified Kubernetes Administrator (CKA)",
+      "perfiles": 4145
+    },
+    {
+      "nombre": "CBAP",
+      "perfiles": 3973
+    },
+    {
+      "nombre": "Microsoft PL-300 Power BI Data Analyst",
+      "perfiles": 3754
+    },
+    {
+      "nombre": "ISTQB Foundation Level",
+      "perfiles": 3630
+    },
+    {
+      "nombre": "PMI-ACP",
+      "perfiles": 3563
+    },
+    {
+      "nombre": "Google Professional ML Engineer",
+      "perfiles": 3016
+    },
+    {
+      "nombre": "Oracle Certified Professional Java SE",
+      "perfiles": 3004
+    },
+    {
+      "nombre": "Spring Professional Certification",
+      "perfiles": 2980
+    },
+    {
+      "nombre": "Databricks Certified Data Engineer Associate",
+      "perfiles": 2727
+    },
+    {
+      "nombre": "AWS Certified Data Analytics – Specialty",
+      "perfiles": 2724
+    },
+    {
+      "nombre": "PRINCE2 Practitioner",
+      "perfiles": 2670
+    },
+    {
+      "nombre": "Microsoft DP-203",
+      "perfiles": 2623
+    },
+    {
+      "nombre": "TOGAF 9",
+      "perfiles": 2511
+    },
+    {
+      "nombre": "HashiCorp Certified: Terraform Associate",
+      "perfiles": 2507
+    },
+    {
+      "nombre": "AWS Certified Solutions Architect – Associate",
+      "perfiles": 2381
+    },
+    {
+      "nombre": "CompTIA A+",
+      "perfiles": 2309
+    },
+    {
+      "nombre": "Microsoft AZ-305 Azure Solutions Architect",
+      "perfiles": 2292
+    },
+    {
+      "nombre": "AWS Certified Developer – Associate",
+      "perfiles": 2255
+    },
+    {
+      "nombre": "IIBA-ECBA",
+      "perfiles": 2237
+    },
+    {
+      "nombre": "VMware VCP-DCV",
+      "perfiles": 2082
+    },
+    {
+      "nombre": "Red Hat Certified System Administrator (RHCSA)",
+      "perfiles": 2045
+    },
+    {
+      "nombre": "Microsoft Certified: Azure Data Scientist Associate",
+      "perfiles": 1968
+    },
+    {
+      "nombre": "ITIL 4 Managing Professional",
+      "perfiles": 1658
+    },
+    {
+      "nombre": "GIAC GCIH",
+      "perfiles": 1630
+    },
+    {
+      "nombre": "ISTQB Test Automation Engineer",
+      "perfiles": 1538
+    },
+    {
+      "nombre": "SAP Certified Application Associate – Sales",
+      "perfiles": 1489
+    },
+    {
+      "nombre": "SAP Certified Development Associate – ABAP",
+      "perfiles": 1479
+    },
+    {
+      "nombre": "Cisco CCNA",
+      "perfiles": 1451
+    },
+    {
+      "nombre": "Microsoft SC-200",
+      "perfiles": 1415
+    },
+    {
+      "nombre": "AWS Certified SysOps Administrator",
+      "perfiles": 1413
+    },
+    {
+      "nombre": "SAP Certified Application Associate – Financial Accounting",
+      "perfiles": 1375
+    },
+    {
+      "nombre": "Microsoft AZ-104 Azure Administrator",
+      "perfiles": 1364
+    },
+    {
+      "nombre": "CompTIA Security+",
+      "perfiles": 1356
+    },
+    {
+      "nombre": "Salesforce Platform Developer I",
+      "perfiles": 1178
+    },
+    {
+      "nombre": "Salesforce Platform Developer II",
+      "perfiles": 1137
+    },
+    {
+      "nombre": "NN/g UX Certification",
+      "perfiles": 1135
+    },
+    {
+      "nombre": "Microsoft Certified: Azure Developer Associate",
+      "perfiles": 1116
+    },
+    {
+      "nombre": "Certificación EFPA",
+      "perfiles": 1097
+    },
+    {
+      "nombre": "NVIDIA DLI – Generative AI",
+      "perfiles": 1087
+    },
+    {
+      "nombre": "Microsoft AI-102",
+      "perfiles": 1078
+    },
+    {
+      "nombre": "PCPP – Certified Professional in Python Programming",
+      "perfiles": 1066
+    },
+    {
+      "nombre": "Cisco CCNP Enterprise",
+      "perfiles": 1038
+    },
+    {
+      "nombre": "MuleSoft Certified Developer",
+      "perfiles": 1009
+    },
+    {
+      "nombre": "UiPath RPA Developer Advanced",
+      "perfiles": 1006
+    },
+    {
+      "nombre": "AWS Certified Machine Learning – Specialty",
+      "perfiles": 985
+    },
+    {
+      "nombre": "PRINCE2 Foundation",
+      "perfiles": 978
+    },
+    {
+      "nombre": "UiPath Certified RPA Associate",
+      "perfiles": 955
+    },
+    {
+      "nombre": "Oracle Certified Professional DBA",
+      "perfiles": 947
+    },
+    {
+      "nombre": "SAFe Scrum Master",
+      "perfiles": 945
+    },
+    {
+      "nombre": "Professional Scrum Master (PSM I)",
+      "perfiles": 932
+    },
+    {
+      "nombre": "Associate Android Developer",
+      "perfiles": 931
+    },
+    {
+      "nombre": "CISSP",
+      "perfiles": 904
+    },
+    {
+      "nombre": "AWS Certified Solutions Architect – Professional",
+      "perfiles": 899
+    },
+    {
+      "nombre": "Microsoft DP-300",
+      "perfiles": 893
+    },
+    {
+      "nombre": "SAFe Agilist",
+      "perfiles": 845
+    },
+    {
+      "nombre": "Professional Scrum Product Owner (PSPO I)",
+      "perfiles": 836
+    },
+    {
+      "nombre": "Salesforce Administrator",
+      "perfiles": 828
+    },
+    {
+      "nombre": "Salesforce Sales Cloud Consultant",
+      "perfiles": 815
+    },
+    {
+      "nombre": "CRISC",
+      "perfiles": 732
+    },
+    {
+      "nombre": "ISO 27001 Lead Implementer",
+      "perfiles": 729
+    },
+    {
+      "nombre": "ServiceNow Certified Application Developer",
+      "perfiles": 719
+    },
+    {
+      "nombre": "CISA",
+      "perfiles": 713
+    },
+    {
+      "nombre": "Databricks Certified Data Engineer Professional",
+      "perfiles": 700
+    },
+    {
+      "nombre": "ServiceNow Certified System Administrator",
+      "perfiles": 695
+    },
+    {
+      "nombre": "OutSystems Associate Developer",
+      "perfiles": 665
+    },
+    {
+      "nombre": "eJPT",
+      "perfiles": 639
+    },
+    {
+      "nombre": "PgMP",
+      "perfiles": 633
+    },
+    {
+      "nombre": "SAFe Program Consultant",
+      "perfiles": 631
+    },
+    {
+      "nombre": "OSCP",
+      "perfiles": 631
+    },
+    {
+      "nombre": "Certified Kubernetes Security Specialist (CKS)",
+      "perfiles": 628
+    },
+    {
+      "nombre": "Microsoft PL-400",
+      "perfiles": 628
+    },
+    {
+      "nombre": "GIAC GPEN",
+      "perfiles": 614
+    },
+    {
+      "nombre": "Okta Certified Professional",
+      "perfiles": 599
+    },
+    {
+      "nombre": "CyberArk Defender",
+      "perfiles": 598
+    },
+    {
+      "nombre": "SABSA",
+      "perfiles": 540
+    },
+    {
+      "nombre": "Microsoft MB-210",
+      "perfiles": 505
+    },
+    {
+      "nombre": "Microsoft PL-200",
+      "perfiles": 503
+    },
+    {
+      "nombre": "AWS Certified Security – Specialty",
+      "perfiles": 491
+    },
+    {
+      "nombre": "SAP Certified Technology Professional – S/4HANA",
+      "perfiles": 484
+    },
+    {
+      "nombre": "SAP Certified Associate – Backend Developer SAP BTP",
+      "perfiles": 478
+    },
+    {
+      "nombre": "UiPath Business Analyst",
+      "perfiles": 478
+    },
+    {
+      "nombre": "Oracle Cloud Financials Certified Implementation Professional",
+      "perfiles": 467
+    },
+    {
+      "nombre": "CFA Level I",
+      "perfiles": 462
+    },
+    {
+      "nombre": "AWS Certified IoT Specialty",
+      "perfiles": 454
+    },
+    {
+      "nombre": "ISTQB Advanced Test Manager",
+      "perfiles": 453
+    },
+    {
+      "nombre": "TM Forum Frameworx",
+      "perfiles": 441
+    },
+    {
+      "nombre": "Workday Pro – HCM",
+      "perfiles": 414
+    },
+    {
+      "nombre": "Lean Six Sigma Green Belt",
+      "perfiles": 413
+    },
+    {
+      "nombre": "Google Associate Cloud Engineer",
+      "perfiles": 411
+    },
+    {
+      "nombre": "CDMP – Certified Data Management Professional",
+      "perfiles": 405
+    },
+    {
+      "nombre": "CISM",
+      "perfiles": 404
+    },
+    {
+      "nombre": "CCXP",
+      "perfiles": 393
+    },
+    {
+      "nombre": "Ericsson Certified Professional",
+      "perfiles": 392
+    },
+    {
+      "nombre": "ISTQB Performance Testing",
+      "perfiles": 379
+    },
+    {
+      "nombre": "GIAC GCFA",
+      "perfiles": 254
+    }
+  ],
+  "metodologias": [
+    "Lean",
+    "Design Thinking",
+    "DevOps",
+    "PRINCE2",
+    "Kanban",
+    "PMBOK",
+    "Scrum",
+    "ITIL",
+    "Extreme Programming",
+    "SAFe"
+  ],
+  "habilidades_blandas": [
+    "Pensamiento crítico",
+    "Comunicación efectiva",
+    "Negociación",
+    "Gestión del tiempo",
+    "Liderazgo",
+    "Orientación a cliente",
+    "Adaptabilidad",
+    "Autonomía",
+    "Resolución de problemas",
+    "Gestión de conflictos",
+    "Presentaciones a cliente",
+    "Mentoring",
+    "Trabajo en equipo"
+  ],
+  "idiomas": [
+    "Inglés",
+    "Español",
+    "Portugués",
+    "Catalán",
+    "Italiano",
+    "Alemán",
+    "Hindi",
+    "Japonés",
+    "Chino mandarín",
+    "Francés",
+    "Polaco",
+    "Valenciano",
+    "Gallego",
+    "Rumano",
+    "Euskera"
+  ],
+  "niveles_idioma": [
+    "A2",
+    "B1",
+    "B2",
+    "C1",
+    "C2",
+    "Nativo"
+  ]
+}

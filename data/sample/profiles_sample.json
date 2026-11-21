@@ -1,0 +1,6775 @@
+[
+  {
+    "_por_que_en_muestra": "Una persona aleatoria por área (visión general)",
+    "employee_id": "NTT0049055",
+    "nombre": "Ana Carolina",
+    "apellidos": "Barbosa",
+    "nombre_completo": "Ana Carolina Barbosa",
+    "email": "ana.barbosa2@nttdata.com",
+    "pais": "Brasil",
+    "ciudad": "São Paulo",
+    "area": "Consultoría de Negocio",
+    "rol": "Digital Transformation Consultant",
+    "nivel_seniority": "Lead",
+    "puesto_actual": "Lead Digital Transformation Consultant",
+    "anios_experiencia": 11,
+    "anios_en_ntt": 8.9,
+    "fecha_incorporacion": "2017-12-24",
+    "sector_principal": "Retail y Consumo",
+    "disponibilidad": "Asignado",
+    "modalidad_trabajo": "Presencial",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "Transformación digital",
+        "nivel": 4,
+        "anios": 11.5
+      },
+      {
+        "skill": "Gestión del cambio",
+        "nivel": 4,
+        "anios": 5.0
+      },
+      {
+        "skill": "Roadmaps tecnológicos",
+        "nivel": 5,
+        "anios": 3.5
+      },
+      {
+        "skill": "Design Thinking",
+        "nivel": 4,
+        "anios": 3.5
+      },
+      {
+        "skill": "Business Case",
+        "nivel": 4,
+        "anios": 11.5
+      },
+      {
+        "skill": "Innovación",
+        "nivel": 5,
+        "anios": 5.0
+      },
+      {
+        "skill": "Agile at scale",
+        "nivel": 4,
+        "anios": 7.5
+      },
+      {
+        "skill": "Customer Journey",
+        "nivel": 4,
+        "anios": 5.0
+      }
+    ],
+    "skills_texto": "Transformación digital, Gestión del cambio, Roadmaps tecnológicos, Design Thinking, Business Case, Innovación, Agile at scale, Customer Journey",
+    "metodologias": [
+      "Lean",
+      "SAFe",
+      "ITIL"
+    ],
+    "habilidades_blandas": [
+      "Gestión de conflictos",
+      "Resolución de problemas",
+      "Orientación a cliente",
+      "Presentaciones a cliente"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería de Organización Industrial",
+        "institucion": "FEI",
+        "anio_inicio": 2011,
+        "anio_fin": 2015
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "SAFe Agilist",
+        "anio": 2026
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Lead Digital Transformation Consultant",
+        "inicio": "2017-12-24",
+        "fin": "Actual",
+        "ubicacion": "São Paulo",
+        "tecnologias": [
+          "Transformación digital",
+          "Roadmaps tecnológicos",
+          "Gestión del cambio",
+          "Agile at scale"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "Consultora boutique",
+        "puesto": "Junior Digital Transformation Consultant",
+        "inicio": "2015-01-09",
+        "fin": "2017-12-24",
+        "ubicacion": "Rio de Janeiro",
+        "tecnologias": [
+          "Design Thinking",
+          "Gestión del cambio"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Rediseño de la experiencia de banca móvil",
+        "cliente_sector": "Banca y Finanzas",
+        "anio": 2025,
+        "rol": "Senior Digital Transformation Consultant",
+        "tecnologias": [
+          "Transformación digital",
+          "Innovación",
+          "Roadmaps tecnológicos",
+          "Customer Journey",
+          "Gestión del cambio"
+        ]
+      },
+      {
+        "nombre": "Modernización de comercio electrónico",
+        "cliente_sector": "Retail y Consumo",
+        "anio": 2022,
+        "rol": "Lead Digital Transformation Consultant",
+        "tecnologias": [
+          "Customer Journey",
+          "Agile at scale",
+          "Gestión del cambio",
+          "Transformación digital",
+          "Innovación"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Portugués",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "C2"
+      },
+      {
+        "idioma": "Catalán",
+        "nivel": "A2"
+      }
+    ],
+    "resumen": "Lead Digital Transformation Consultant con 11 años de experiencia en el sector retail y consumo. Especializado en Transformación digital, Gestión del cambio, Roadmaps tecnológicos. Basado en São Paulo (Brasil). Metodologías: Lean, SAFe, ITIL."
+  },
+  {
+    "_por_que_en_muestra": "Una persona aleatoria por área (visión general)",
+    "employee_id": "NTT0080907",
+    "nombre": "Albina",
+    "apellidos": "Cámara Piñol",
+    "nombre_completo": "Albina Cámara Piñol",
+    "email": "albina.camara@nttdata.com",
+    "pais": "España",
+    "ciudad": "Barcelona",
+    "area": "Automatización y RPA",
+    "rol": "RPA Developer",
+    "nivel_seniority": "Senior",
+    "puesto_actual": "Senior RPA Developer",
+    "anios_experiencia": 9,
+    "anios_en_ntt": 9.7,
+    "fecha_incorporacion": "2017-03-02",
+    "sector_principal": "Telecomunicaciones y Media",
+    "disponibilidad": "Asignado",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "UiPath",
+        "nivel": 5,
+        "anios": 4.5
+      },
+      {
+        "skill": "RPA",
+        "nivel": 4,
+        "anios": 4.0
+      },
+      {
+        "skill": "Automatización de procesos",
+        "nivel": 4,
+        "anios": 6.0
+      },
+      {
+        "skill": "Orchestrator",
+        "nivel": 4,
+        "anios": 5.0
+      },
+      {
+        "skill": "Python",
+        "nivel": 4,
+        "anios": 9.5
+      },
+      {
+        "skill": "OCR/IDP",
+        "nivel": 2,
+        "anios": 7.0
+      },
+      {
+        "skill": "REFramework",
+        "nivel": 4,
+        "anios": 6.5
+      },
+      {
+        "skill": "SQL",
+        "nivel": 3,
+        "anios": 3.5
+      },
+      {
+        "skill": "Power Automate",
+        "nivel": 3,
+        "anios": 3.5
+      }
+    ],
+    "skills_texto": "UiPath, RPA, Automatización de procesos, Orchestrator, Python, OCR/IDP, REFramework, SQL, Power Automate",
+    "metodologias": [
+      "Scrum",
+      "Design Thinking",
+      "DevOps"
+    ],
+    "habilidades_blandas": [
+      "Adaptabilidad",
+      "Gestión del tiempo"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería Informática",
+        "institucion": "Universidad Carlos III de Madrid",
+        "anio_inicio": 2013,
+        "anio_fin": 2017
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "UiPath RPA Developer Advanced",
+        "anio": 2021
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Senior RPA Developer",
+        "inicio": "2017-03-02",
+        "fin": "Actual",
+        "ubicacion": "Barcelona",
+        "tecnologias": [
+          "Power Automate",
+          "RPA",
+          "REFramework",
+          "Python"
+        ],
+        "es_ntt": true
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Analítica avanzada para plataforma de contenidos",
+        "cliente_sector": "Telecomunicaciones y Media",
+        "anio": 2026,
+        "rol": "Senior RPA Developer",
+        "tecnologias": [
+          "REFramework",
+          "OCR/IDP",
+          "Power Automate",
+          "SQL",
+          "RPA"
+        ]
+      },
+      {
+        "nombre": "Desarrollo de la plataforma de portal de clientes",
+        "cliente_sector": "Telecomunicaciones y Media",
+        "anio": 2023,
+        "rol": "Senior RPA Developer",
+        "tecnologias": [
+          "RPA",
+          "REFramework"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "B2"
+      }
+    ],
+    "resumen": "Senior RPA Developer con 9 años de experiencia en el sector telecomunicaciones y media. Especializado en UiPath, RPA, Automatización de procesos. Basado en Barcelona (España). Metodologías: Scrum, Design Thinking, DevOps."
+  },
+  {
+    "_por_que_en_muestra": "Una persona aleatoria por área (visión general)",
+    "employee_id": "NTT0052675",
+    "nombre": "Elías",
+    "apellidos": "Fernandez Landa",
+    "nombre_completo": "Elías Fernandez Landa",
+    "email": "elias.fernandez@nttdata.com",
+    "pais": "España",
+    "ciudad": "Granada",
+    "area": "Aplicaciones Empresariales",
+    "rol": "SAP BTP Developer",
+    "nivel_seniority": "Senior",
+    "puesto_actual": "Senior SAP BTP Developer",
+    "anios_experiencia": 7,
+    "anios_en_ntt": 7.3,
+    "fecha_incorporacion": "2019-07-15",
+    "sector_principal": "Transporte y Logística",
+    "disponibilidad": "Asignado",
+    "modalidad_trabajo": "Remoto",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "SAP BTP",
+        "nivel": 4,
+        "anios": 3.5
+      },
+      {
+        "skill": "CAP",
+        "nivel": 4,
+        "anios": 4.0
+      },
+      {
+        "skill": "Node.js",
+        "nivel": 4,
+        "anios": 3.0
+      },
+      {
+        "skill": "SAP Fiori",
+        "nivel": 5,
+        "anios": 6.0
+      },
+      {
+        "skill": "TypeScript",
+        "nivel": 5,
+        "anios": 4.5
+      },
+      {
+        "skill": "SAPUI5",
+        "nivel": 3,
+        "anios": 4.5
+      },
+      {
+        "skill": "Cloud Foundry",
+        "nivel": 3,
+        "anios": 3.0
+      },
+      {
+        "skill": "SAP Build",
+        "nivel": 3,
+        "anios": 2.0
+      },
+      {
+        "skill": "SAP Integration Suite",
+        "nivel": 4,
+        "anios": 2.5
+      }
+    ],
+    "skills_texto": "SAP BTP, CAP, Node.js, SAP Fiori, TypeScript, SAPUI5, Cloud Foundry, SAP Build, SAP Integration Suite",
+    "metodologias": [
+      "Design Thinking",
+      "SAFe",
+      "DevOps"
+    ],
+    "habilidades_blandas": [
+      "Autonomía",
+      "Mentoring"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Matemáticas",
+        "institucion": "Universidad de Zaragoza",
+        "anio_inicio": 2015,
+        "anio_fin": 2019
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "SAP Certified Associate – Backend Developer SAP BTP",
+        "anio": 2021
+      },
+      {
+        "nombre": "Microsoft AZ-900 Azure Fundamentals",
+        "anio": 2022
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Senior SAP BTP Developer",
+        "inicio": "2022-08-31",
+        "fin": "Actual",
+        "ubicacion": "Granada",
+        "tecnologias": [
+          "CAP",
+          "TypeScript",
+          "SAP Build",
+          "Cloud Foundry"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "NTT DATA",
+        "puesto": "SAP BTP Developer",
+        "inicio": "2019-07-15",
+        "fin": "2022-08-31",
+        "ubicacion": "Granada",
+        "tecnologias": [
+          "CAP",
+          "SAP Integration Suite",
+          "Cloud Foundry"
+        ],
+        "es_ntt": true
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Implantación de gestión de flotas",
+        "cliente_sector": "Transporte y Logística",
+        "anio": 2024,
+        "rol": "SAP BTP Developer",
+        "tecnologias": [
+          "SAP Fiori",
+          "SAP BTP",
+          "CAP",
+          "SAPUI5"
+        ]
+      },
+      {
+        "nombre": "Modernización de gestión de flotas",
+        "cliente_sector": "Transporte y Logística",
+        "anio": 2020,
+        "rol": "SAP BTP Developer",
+        "tecnologias": [
+          "SAP BTP",
+          "SAP Build",
+          "SAP Fiori",
+          "Node.js"
+        ]
+      },
+      {
+        "nombre": "Modernización de trazabilidad de envíos",
+        "cliente_sector": "Transporte y Logística",
+        "anio": 2019,
+        "rol": "Senior SAP BTP Developer",
+        "tecnologias": [
+          "SAPUI5",
+          "SAP BTP",
+          "Node.js",
+          "Cloud Foundry"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "C2"
+      }
+    ],
+    "resumen": "Senior SAP BTP Developer con 7 años de experiencia en el sector transporte y logística. Especializado en SAP BTP, CAP, Node.js. Basado en Granada (España). Metodologías: Design Thinking, SAFe, DevOps."
+  },
+  {
+    "_por_que_en_muestra": "Una persona aleatoria por área (visión general)",
+    "employee_id": "NTT0098380",
+    "nombre": "Sosimo",
+    "apellidos": "Ramirez Aguilera",
+    "nombre_completo": "Sosimo Ramirez Aguilera",
+    "email": "sosimo.ramirez2@nttdata.com",
+    "pais": "España",
+    "ciudad": "Madrid",
+    "area": "Cloud & Infraestructura",
+    "rol": "Network Engineer",
+    "nivel_seniority": "Mid",
+    "puesto_actual": "Network Engineer",
+    "anios_experiencia": 4,
+    "anios_en_ntt": 4.6,
+    "fecha_incorporacion": "2022-04-11",
+    "sector_principal": "Retail y Consumo",
+    "disponibilidad": "Asignado",
+    "modalidad_trabajo": "Presencial",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "Redes LAN/WAN",
+        "nivel": 3,
+        "anios": 0.5
+      },
+      {
+        "skill": "Routing y Switching",
+        "nivel": 4,
+        "anios": 2.0
+      },
+      {
+        "skill": "Firewalls",
+        "nivel": 3,
+        "anios": 1.5
+      },
+      {
+        "skill": "VPN",
+        "nivel": 3,
+        "anios": 1.5
+      },
+      {
+        "skill": "Fortinet",
+        "nivel": 3,
+        "anios": 1.5
+      },
+      {
+        "skill": "Palo Alto",
+        "nivel": 5,
+        "anios": 2.0
+      },
+      {
+        "skill": "Wi-Fi corporativo",
+        "nivel": 3,
+        "anios": 2.5
+      }
+    ],
+    "skills_texto": "Redes LAN/WAN, Routing y Switching, Firewalls, VPN, Fortinet, Palo Alto, Wi-Fi corporativo",
+    "metodologias": [
+      "ITIL",
+      "SAFe",
+      "Lean"
+    ],
+    "habilidades_blandas": [
+      "Liderazgo",
+      "Comunicación efectiva"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería del Software",
+        "institucion": "Universidad de Málaga",
+        "anio_inicio": 2018,
+        "anio_fin": 2022
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "Scrum Fundamentals (SFPC)",
+        "anio": 2024
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Network Engineer",
+        "inicio": "2022-04-11",
+        "fin": "Actual",
+        "ubicacion": "Madrid",
+        "tecnologias": [
+          "Firewalls",
+          "Palo Alto",
+          "Routing y Switching",
+          "VPN"
+        ],
+        "es_ntt": true
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Desarrollo de la plataforma de comercio electrónico",
+        "cliente_sector": "Retail y Consumo",
+        "anio": 2023,
+        "rol": "Trainee Network Engineer",
+        "tecnologias": [
+          "Fortinet",
+          "Routing y Switching"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "B2"
+      }
+    ],
+    "resumen": "Network Engineer con 4 años de experiencia en el sector retail y consumo. Especializado en Redes LAN/WAN, Routing y Switching, Firewalls. Basado en Madrid (España). Metodologías: ITIL, SAFe, Lean."
+  },
+  {
+    "_por_que_en_muestra": "Una persona aleatoria por área (visión general)",
+    "employee_id": "NTT0015860",
+    "nombre": "Heliodoro",
+    "apellidos": "Rosell Ferrer",
+    "nombre_completo": "Heliodoro Rosell Ferrer",
+    "email": "heliodoro.rosell@nttdata.com",
+    "pais": "España",
+    "ciudad": "Barcelona",
+    "area": "Calidad y Testing",
+    "rol": "QA Engineer",
+    "nivel_seniority": "Junior",
+    "puesto_actual": "Junior QA Engineer",
+    "anios_experiencia": 1,
+    "anios_en_ntt": 1.7,
+    "fecha_incorporacion": "2025-02-27",
+    "sector_principal": "Sector Público",
+    "disponibilidad": "En banca",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "Testing funcional",
+        "nivel": 3,
+        "anios": 1.5
+      },
+      {
+        "skill": "Diseño de casos de prueba",
+        "nivel": 3,
+        "anios": 1.0
+      },
+      {
+        "skill": "Jira",
+        "nivel": 2,
+        "anios": 1.5
+      },
+      {
+        "skill": "Gestión de defectos",
+        "nivel": 3,
+        "anios": 1.5
+      },
+      {
+        "skill": "SQL",
+        "nivel": 2,
+        "anios": 1.5
+      },
+      {
+        "skill": "Testing de APIs",
+        "nivel": 1,
+        "anios": 0.5
+      },
+      {
+        "skill": "TestRail",
+        "nivel": 2,
+        "anios": 1.0
+      },
+      {
+        "skill": "Postman",
+        "nivel": 2,
+        "anios": 0.5
+      },
+      {
+        "skill": "Gherkin/BDD",
+        "nivel": 2,
+        "anios": 0.5
+      },
+      {
+        "skill": "Xray",
+        "nivel": 3,
+        "anios": 1.0
+      }
+    ],
+    "skills_texto": "Testing funcional, Diseño de casos de prueba, Jira, Gestión de defectos, SQL, Testing de APIs, TestRail, Postman, Gherkin/BDD, Xray",
+    "metodologias": [
+      "PMBOK",
+      "SAFe"
+    ],
+    "habilidades_blandas": [
+      "Gestión de conflictos",
+      "Presentaciones a cliente",
+      "Adaptabilidad"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería de Telecomunicaciones",
+        "institucion": "Universidad de Zaragoza",
+        "anio_inicio": 2021,
+        "anio_fin": 2025
+      }
+    ],
+    "certificaciones": [],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Junior QA Engineer",
+        "inicio": "2025-02-27",
+        "fin": "Actual",
+        "ubicacion": "Barcelona",
+        "tecnologias": [
+          "Testing de APIs",
+          "Gestión de defectos",
+          "SQL",
+          "Postman"
+        ],
+        "es_ntt": true
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Rediseño de la experiencia de administración electrónica",
+        "cliente_sector": "Sector Público",
+        "anio": 2025,
+        "rol": "Trainee QA Engineer",
+        "tecnologias": [
+          "Gestión de defectos",
+          "Gherkin/BDD",
+          "Testing de APIs"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Catalán",
+        "nivel": "C1"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "C1"
+      }
+    ],
+    "resumen": "Junior QA Engineer con 1 años de experiencia en el sector sector público. Especializado en Testing funcional, Diseño de casos de prueba, Jira. Basado en Barcelona (España). Metodologías: PMBOK, SAFe."
+  },
+  {
+    "_por_que_en_muestra": "Una persona aleatoria por área (visión general)",
+    "employee_id": "NTT0184525",
+    "nombre": "Julia",
+    "apellidos": "Rhodes",
+    "nombre_completo": "Julia Rhodes",
+    "email": "julia.rhodes@nttdata.com",
+    "pais": "Reino Unido",
+    "ciudad": "Londres",
+    "area": "Software Engineering",
+    "rol": "Full Stack Developer",
+    "nivel_seniority": "Lead",
+    "puesto_actual": "Lead Full Stack Developer",
+    "anios_experiencia": 10,
+    "anios_en_ntt": 3.6,
+    "fecha_incorporacion": "2023-04-29",
+    "sector_principal": "Sector Público",
+    "disponibilidad": "Asignado",
+    "modalidad_trabajo": "Remoto",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "TypeScript",
+        "nivel": 5,
+        "anios": 10.0
+      },
+      {
+        "skill": "React",
+        "nivel": 5,
+        "anios": 3.5
+      },
+      {
+        "skill": "Node.js",
+        "nivel": 4,
+        "anios": 9.5
+      },
+      {
+        "skill": "Jest",
+        "nivel": 4,
+        "anios": 5.5
+      },
+      {
+        "skill": "MongoDB",
+        "nivel": 4,
+        "anios": 2.0
+      },
+      {
+        "skill": "GraphQL",
+        "nivel": 3,
+        "anios": 2.5
+      },
+      {
+        "skill": "Vue.js",
+        "nivel": 3,
+        "anios": 6.5
+      },
+      {
+        "skill": "Next.js",
+        "nivel": 5,
+        "anios": 0.5
+      }
+    ],
+    "skills_texto": "TypeScript, React, Node.js, Jest, MongoDB, GraphQL, Vue.js, Next.js",
+    "metodologias": [
+      "Lean",
+      "DevOps",
+      "Design Thinking"
+    ],
+    "habilidades_blandas": [
+      "Gestión del tiempo",
+      "Negociación"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Matemáticas",
+        "institucion": "University of Edinburgh",
+        "anio_inicio": 2011,
+        "anio_fin": 2015
+      }
+    ],
+    "certificaciones": [],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Lead Full Stack Developer",
+        "inicio": "2023-04-29",
+        "fin": "Actual",
+        "ubicacion": "Londres",
+        "tecnologias": [
+          "MongoDB",
+          "Node.js",
+          "TypeScript",
+          "Vue.js"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "Ayesa",
+        "puesto": "Senior Full Stack Developer",
+        "inicio": "2020-02-07",
+        "fin": "2023-04-29",
+        "ubicacion": "Londres",
+        "tecnologias": [
+          "GraphQL",
+          "Vue.js",
+          "TypeScript"
+        ],
+        "es_ntt": false
+      },
+      {
+        "empresa": "Administración Pública",
+        "puesto": "Full Stack Developer",
+        "inicio": "2017-07-03",
+        "fin": "2020-02-07",
+        "ubicacion": "Birmingham",
+        "tecnologias": [
+          "Next.js",
+          "MongoDB"
+        ],
+        "es_ntt": false
+      },
+      {
+        "empresa": "Infosys",
+        "puesto": "Junior Full Stack Developer",
+        "inicio": "2015-12-18",
+        "fin": "2017-07-03",
+        "ubicacion": "Londres",
+        "tecnologias": [
+          "GraphQL",
+          "Next.js"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Rediseño de la experiencia de sede electrónica",
+        "cliente_sector": "Sector Público",
+        "anio": 2023,
+        "rol": "Senior Full Stack Developer",
+        "tecnologias": [
+          "Vue.js",
+          "Next.js",
+          "MongoDB"
+        ]
+      },
+      {
+        "nombre": "Automatización de gestión de expedientes",
+        "cliente_sector": "Sector Público",
+        "anio": 2020,
+        "rol": "Senior Full Stack Developer",
+        "tecnologias": [
+          "TypeScript",
+          "GraphQL"
+        ]
+      },
+      {
+        "nombre": "Implantación de historia clínica digital",
+        "cliente_sector": "Sector Público",
+        "anio": 2020,
+        "rol": "Senior Full Stack Developer",
+        "tecnologias": [
+          "MongoDB",
+          "Jest",
+          "GraphQL",
+          "TypeScript"
+        ]
+      },
+      {
+        "nombre": "Modernización de sede electrónica",
+        "cliente_sector": "Sector Público",
+        "anio": 2018,
+        "rol": "Senior Full Stack Developer",
+        "tecnologias": [
+          "Node.js",
+          "React"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Inglés",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Japonés",
+        "nivel": "B1"
+      }
+    ],
+    "resumen": "Lead Full Stack Developer con 10 años de experiencia en el sector sector público. Especializado en TypeScript, React, Node.js. Basado en Londres (Reino Unido). Metodologías: Lean, DevOps, Design Thinking."
+  },
+  {
+    "_por_que_en_muestra": "Una persona aleatoria por área (visión general)",
+    "employee_id": "NTT0178200",
+    "nombre": "Diego",
+    "apellidos": "Zabaleta Aguilera",
+    "nombre_completo": "Diego Zabaleta Aguilera",
+    "email": "diego.zabaleta@nttdata.com",
+    "pais": "España",
+    "ciudad": "Las Palmas",
+    "area": "Corporativo y Comercial",
+    "rol": "Pre-sales Solution Consultant",
+    "nivel_seniority": "Lead",
+    "puesto_actual": "Lead Pre-sales Solution Consultant",
+    "anios_experiencia": 10,
+    "anios_en_ntt": 10.7,
+    "fecha_incorporacion": "2016-03-20",
+    "sector_principal": "Industria y Automoción",
+    "disponibilidad": "Asignado",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "Preventa",
+        "nivel": 5,
+        "anios": 3.0
+      },
+      {
+        "skill": "Diseño de soluciones",
+        "nivel": 4,
+        "anios": 10.5
+      },
+      {
+        "skill": "Elaboración de propuestas",
+        "nivel": 5,
+        "anios": 8.0
+      },
+      {
+        "skill": "Presentaciones a cliente",
+        "nivel": 5,
+        "anios": 5.0
+      },
+      {
+        "skill": "Demos",
+        "nivel": 4,
+        "anios": 7.5
+      },
+      {
+        "skill": "Arquitectura de soluciones",
+        "nivel": 2,
+        "anios": 3.0
+      },
+      {
+        "skill": "Estimación de proyectos",
+        "nivel": 5,
+        "anios": 6.0
+      },
+      {
+        "skill": "Cloud",
+        "nivel": 5,
+        "anios": 7.0
+      }
+    ],
+    "skills_texto": "Preventa, Diseño de soluciones, Elaboración de propuestas, Presentaciones a cliente, Demos, Arquitectura de soluciones, Estimación de proyectos, Cloud",
+    "metodologias": [
+      "Lean",
+      "PRINCE2"
+    ],
+    "habilidades_blandas": [
+      "Presentaciones a cliente",
+      "Adaptabilidad",
+      "Liderazgo"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería Informática",
+        "institucion": "Universidad Rey Juan Carlos",
+        "anio_inicio": 2012,
+        "anio_fin": 2016
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "TOGAF 9",
+        "anio": 2020
+      },
+      {
+        "nombre": "AWS Certified Cloud Practitioner",
+        "anio": 2026
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Lead Pre-sales Solution Consultant",
+        "inicio": "2020-09-03",
+        "fin": "Actual",
+        "ubicacion": "Las Palmas",
+        "tecnologias": [
+          "Demos",
+          "Cloud",
+          "Estimación de proyectos",
+          "Elaboración de propuestas"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Pre-sales Solution Consultant",
+        "inicio": "2016-03-20",
+        "fin": "2020-09-03",
+        "ubicacion": "Las Palmas",
+        "tecnologias": [
+          "Presentaciones a cliente",
+          "Estimación de proyectos",
+          "Elaboración de propuestas"
+        ],
+        "es_ntt": true
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Migración a la nube de mantenimiento predictivo",
+        "cliente_sector": "Industria y Automoción",
+        "anio": 2026,
+        "rol": "Senior Pre-sales Solution Consultant",
+        "tecnologias": [
+          "Demos",
+          "Presentaciones a cliente",
+          "Estimación de proyectos",
+          "Arquitectura de soluciones",
+          "Elaboración de propuestas"
+        ]
+      },
+      {
+        "nombre": "Evolución y mantenimiento de gestión de calidad",
+        "cliente_sector": "Industria y Automoción",
+        "anio": 2023,
+        "rol": "Senior Pre-sales Solution Consultant",
+        "tecnologias": [
+          "Presentaciones a cliente",
+          "Diseño de soluciones",
+          "Demos",
+          "Preventa"
+        ]
+      },
+      {
+        "nombre": "Modernización de gemelo digital",
+        "cliente_sector": "Industria y Automoción",
+        "anio": 2022,
+        "rol": "Senior Pre-sales Solution Consultant",
+        "tecnologias": [
+          "Presentaciones a cliente",
+          "Demos"
+        ]
+      },
+      {
+        "nombre": "Desarrollo de la plataforma de facturación energética",
+        "cliente_sector": "Energía y Utilities",
+        "anio": 2019,
+        "rol": "Senior Pre-sales Solution Consultant",
+        "tecnologias": [
+          "Arquitectura de soluciones",
+          "Elaboración de propuestas",
+          "Estimación de proyectos",
+          "Diseño de soluciones"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "B2"
+      }
+    ],
+    "resumen": "Lead Pre-sales Solution Consultant con 10 años de experiencia en el sector industria y automoción. Especializado en Preventa, Diseño de soluciones, Elaboración de propuestas. Basado en Las Palmas (España). Metodologías: Lean, PRINCE2."
+  },
+  {
+    "_por_que_en_muestra": "Una persona aleatoria por área (visión general)",
+    "employee_id": "NTT0065579",
+    "nombre": "Lara",
+    "apellidos": "Araújo",
+    "nombre_completo": "Lara Araújo",
+    "email": "lara.araujo2@nttdata.com",
+    "pais": "Brasil",
+    "ciudad": "São Paulo",
+    "area": "Data & AI",
+    "rol": "Machine Learning Engineer",
+    "nivel_seniority": "Senior",
+    "puesto_actual": "Senior Machine Learning Engineer",
+    "anios_experiencia": 6,
+    "anios_en_ntt": 2.5,
+    "fecha_incorporacion": "2024-05-20",
+    "sector_principal": "Transporte y Logística",
+    "disponibilidad": "Roll-off próximo (<3 meses)",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "Python",
+        "nivel": 5,
+        "anios": 6.5
+      },
+      {
+        "skill": "Machine Learning",
+        "nivel": 4,
+        "anios": 2.0
+      },
+      {
+        "skill": "PyTorch",
+        "nivel": 5,
+        "anios": 6.5
+      },
+      {
+        "skill": "MLOps",
+        "nivel": 4,
+        "anios": 5.0
+      },
+      {
+        "skill": "MLflow",
+        "nivel": 3,
+        "anios": 5.5
+      },
+      {
+        "skill": "TensorFlow",
+        "nivel": 5,
+        "anios": 3.5
+      },
+      {
+        "skill": "Kubeflow",
+        "nivel": 3,
+        "anios": 6.5
+      }
+    ],
+    "skills_texto": "Python, Machine Learning, PyTorch, MLOps, MLflow, TensorFlow, Kubeflow",
+    "metodologias": [
+      "Scrum",
+      "Lean",
+      "DevOps"
+    ],
+    "habilidades_blandas": [
+      "Pensamiento crítico",
+      "Resolución de problemas",
+      "Comunicación efectiva",
+      "Orientación a cliente"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería de Sistemas de Información",
+        "institucion": "UNICAMP",
+        "anio_inicio": 2015,
+        "anio_fin": 2019
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "Google Professional ML Engineer",
+        "anio": 2025
+      },
+      {
+        "nombre": "AWS Certified Machine Learning – Specialty",
+        "anio": 2025
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Senior Machine Learning Engineer",
+        "inicio": "2024-05-20",
+        "fin": "Actual",
+        "ubicacion": "São Paulo",
+        "tecnologias": [
+          "Machine Learning",
+          "Python",
+          "PyTorch",
+          "MLOps"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "Sener",
+        "puesto": "Machine Learning Engineer",
+        "inicio": "2019-12-07",
+        "fin": "2024-05-20",
+        "ubicacion": "São Paulo",
+        "tecnologias": [
+          "Kubeflow",
+          "Python",
+          "TensorFlow",
+          "MLOps"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Desarrollo de la plataforma de gestión tributaria",
+        "cliente_sector": "Sector Público",
+        "anio": 2023,
+        "rol": "Senior Machine Learning Engineer",
+        "tecnologias": [
+          "TensorFlow",
+          "MLflow",
+          "Kubeflow",
+          "MLOps",
+          "Machine Learning"
+        ]
+      },
+      {
+        "nombre": "Rediseño de la experiencia de planificación de rutas",
+        "cliente_sector": "Transporte y Logística",
+        "anio": 2020,
+        "rol": "Machine Learning Engineer",
+        "tecnologias": [
+          "Machine Learning",
+          "TensorFlow"
+        ]
+      },
+      {
+        "nombre": "Rediseño de la experiencia de pagos instantáneos",
+        "cliente_sector": "Banca y Finanzas",
+        "anio": 2019,
+        "rol": "Junior Machine Learning Engineer",
+        "tecnologias": [
+          "MLOps",
+          "TensorFlow"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Portugués",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "C1"
+      }
+    ],
+    "resumen": "Senior Machine Learning Engineer con 6 años de experiencia en el sector transporte y logística. Especializado en Python, Machine Learning, PyTorch. Basado en São Paulo (Brasil). Metodologías: Scrum, Lean, DevOps."
+  },
+  {
+    "_por_que_en_muestra": "Una persona aleatoria por área (visión general)",
+    "employee_id": "NTT0109468",
+    "nombre": "Minoru",
+    "apellidos": "Fujii",
+    "nombre_completo": "Minoru Fujii",
+    "email": "minoru.fujii@nttdata.com",
+    "pais": "Japón",
+    "ciudad": "Tokio",
+    "area": "Ciberseguridad",
+    "rol": "IAM Specialist",
+    "nivel_seniority": "Mid",
+    "puesto_actual": "IAM Specialist",
+    "anios_experiencia": 3,
+    "anios_en_ntt": 2.3,
+    "fecha_incorporacion": "2024-08-09",
+    "sector_principal": "Seguros",
+    "disponibilidad": "Asignado",
+    "modalidad_trabajo": "Remoto",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "Gestión de identidades",
+        "nivel": 3,
+        "anios": 1.5
+      },
+      {
+        "skill": "SSO",
+        "nivel": 3,
+        "anios": 1.5
+      },
+      {
+        "skill": "MFA",
+        "nivel": 3,
+        "anios": 1.0
+      },
+      {
+        "skill": "Active Directory",
+        "nivel": 3,
+        "anios": 1.0
+      },
+      {
+        "skill": "Entra ID",
+        "nivel": 2,
+        "anios": 3.0
+      },
+      {
+        "skill": "PAM",
+        "nivel": 3,
+        "anios": 1.5
+      },
+      {
+        "skill": "SAML/OAuth2",
+        "nivel": 3,
+        "anios": 0.5
+      },
+      {
+        "skill": "Okta",
+        "nivel": 2,
+        "anios": 3.0
+      }
+    ],
+    "skills_texto": "Gestión de identidades, SSO, MFA, Active Directory, Entra ID, PAM, SAML/OAuth2, Okta",
+    "metodologias": [
+      "ITIL",
+      "DevOps",
+      "Scrum"
+    ],
+    "habilidades_blandas": [
+      "Comunicación efectiva",
+      "Pensamiento crítico",
+      "Adaptabilidad",
+      "Orientación a cliente"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería de Sistemas de Información",
+        "institucion": "University of Tokyo",
+        "anio_inicio": 2019,
+        "anio_fin": 2023
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "Okta Certified Professional",
+        "anio": 2025
+      },
+      {
+        "nombre": "AWS Certified Cloud Practitioner",
+        "anio": 2026
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "IAM Specialist",
+        "inicio": "2024-08-09",
+        "fin": "Actual",
+        "ubicacion": "Tokio",
+        "tecnologias": [
+          "Gestión de identidades",
+          "Okta",
+          "SAML/OAuth2",
+          "PAM"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "Sener",
+        "puesto": "Junior IAM Specialist",
+        "inicio": "2023-06-12",
+        "fin": "2024-08-09",
+        "ubicacion": "Tokio",
+        "tecnologias": [
+          "MFA",
+          "Entra ID"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Migración a la nube de comercio electrónico",
+        "cliente_sector": "Retail y Consumo",
+        "anio": 2025,
+        "rol": "Junior IAM Specialist",
+        "tecnologias": [
+          "PAM",
+          "MFA",
+          "Gestión de identidades",
+          "Entra ID",
+          "Active Directory"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Japonés",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "B2"
+      }
+    ],
+    "resumen": "IAM Specialist con 3 años de experiencia en el sector seguros. Especializado en Gestión de identidades, SSO, MFA. Basado en Tokio (Japón). Metodologías: ITIL, DevOps, Scrum."
+  },
+  {
+    "_por_que_en_muestra": "Una persona aleatoria por área (visión general)",
+    "employee_id": "NTT0144820",
+    "nombre": "Eric",
+    "apellidos": "Escudero Garriga",
+    "nombre_completo": "Eric Escudero Garriga",
+    "email": "eric.escudero@nttdata.com",
+    "pais": "España",
+    "ciudad": "Murcia",
+    "area": "Telecom e IoT",
+    "rol": "IoT Solutions Engineer",
+    "nivel_seniority": "Lead",
+    "puesto_actual": "Lead IoT Solutions Engineer",
+    "anios_experiencia": 12,
+    "anios_en_ntt": 3.2,
+    "fecha_incorporacion": "2023-08-28",
+    "sector_principal": "Banca y Finanzas",
+    "disponibilidad": "Asignado",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "IoT",
+        "nivel": 4,
+        "anios": 5.5
+      },
+      {
+        "skill": "MQTT",
+        "nivel": 5,
+        "anios": 9.0
+      },
+      {
+        "skill": "Sistemas embebidos",
+        "nivel": 5,
+        "anios": 6.0
+      },
+      {
+        "skill": "Edge computing",
+        "nivel": 5,
+        "anios": 10.0
+      },
+      {
+        "skill": "AWS IoT",
+        "nivel": 4,
+        "anios": 8.5
+      },
+      {
+        "skill": "Node-RED",
+        "nivel": 5,
+        "anios": 6.0
+      }
+    ],
+    "skills_texto": "IoT, MQTT, Sistemas embebidos, Edge computing, AWS IoT, Node-RED",
+    "metodologias": [
+      "Scrum",
+      "Design Thinking",
+      "Lean"
+    ],
+    "habilidades_blandas": [
+      "Adaptabilidad",
+      "Gestión del tiempo"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Física",
+        "institucion": "Universidade da Coruña",
+        "anio_inicio": 2010,
+        "anio_fin": 2014
+      }
+    ],
+    "certificaciones": [],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Lead IoT Solutions Engineer",
+        "inicio": "2023-08-28",
+        "fin": "Actual",
+        "ubicacion": "Murcia",
+        "tecnologias": [
+          "Node-RED",
+          "MQTT",
+          "Sistemas embebidos",
+          "IoT"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "CaixaBank Tech",
+        "puesto": "Senior IoT Solutions Engineer",
+        "inicio": "2014-04-28",
+        "fin": "2023-08-28",
+        "ubicacion": "Murcia",
+        "tecnologias": [
+          "Node-RED",
+          "Edge computing",
+          "AWS IoT"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Desarrollo de la plataforma de banca móvil",
+        "cliente_sector": "Banca y Finanzas",
+        "anio": 2025,
+        "rol": "Senior IoT Solutions Engineer",
+        "tecnologias": [
+          "Edge computing",
+          "MQTT",
+          "IoT"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "C2"
+      }
+    ],
+    "resumen": "Lead IoT Solutions Engineer con 12 años de experiencia en el sector banca y finanzas. Especializado en IoT, MQTT, Sistemas embebidos. Basado en Murcia (España). Metodologías: Scrum, Design Thinking, Lean."
+  },
+  {
+    "_por_que_en_muestra": "Una persona aleatoria por área (visión general)",
+    "employee_id": "NTT0038924",
+    "nombre": "Ascensión",
+    "apellidos": "Barrios Cortes",
+    "nombre_completo": "Ascensión Barrios Cortes",
+    "email": "ascension.barrios@nttdata.com",
+    "pais": "España",
+    "ciudad": "Valencia",
+    "area": "Gestión y Delivery",
+    "rol": "PMO Analyst",
+    "nivel_seniority": "Senior",
+    "puesto_actual": "Senior PMO Analyst",
+    "anios_experiencia": 6,
+    "anios_en_ntt": 0.2,
+    "fecha_incorporacion": "2026-09-01",
+    "sector_principal": "Banca y Finanzas",
+    "disponibilidad": "Asignado",
+    "modalidad_trabajo": "Presencial",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "PMO",
+        "nivel": 3,
+        "anios": 5.5
+      },
+      {
+        "skill": "Reporting",
+        "nivel": 4,
+        "anios": 6.0
+      },
+      {
+        "skill": "Excel avanzado",
+        "nivel": 5,
+        "anios": 6.0
+      },
+      {
+        "skill": "Power BI",
+        "nivel": 4,
+        "anios": 2.5
+      },
+      {
+        "skill": "Jira",
+        "nivel": 4,
+        "anios": 5.0
+      }
+    ],
+    "skills_texto": "PMO, Reporting, Excel avanzado, Power BI, Jira",
+    "metodologias": [
+      "PRINCE2",
+      "SAFe",
+      "Scrum"
+    ],
+    "habilidades_blandas": [
+      "Gestión de conflictos",
+      "Mentoring",
+      "Pensamiento crítico",
+      "Gestión del tiempo"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería de Organización Industrial",
+        "institucion": "Universidad de Alicante",
+        "anio_inicio": 2016,
+        "anio_fin": 2020
+      },
+      {
+        "nivel": "Máster",
+        "titulo": "Máster en Dirección de Proyectos",
+        "institucion": "UOC",
+        "anio_inicio": 2020,
+        "anio_fin": 2021
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "PRINCE2 Foundation",
+        "anio": 2024
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Senior PMO Analyst",
+        "inicio": "2026-09-01",
+        "fin": "Actual",
+        "ubicacion": "Valencia",
+        "tecnologias": [
+          "PMO",
+          "Excel avanzado",
+          "Jira",
+          "Power BI"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "Santander Tecnología",
+        "puesto": "Senior Project Manager",
+        "inicio": "2024-08-02",
+        "fin": "2026-09-01",
+        "ubicacion": "Bilbao",
+        "tecnologias": [
+          "Jira",
+          "PMO",
+          "Reporting",
+          "Power BI"
+        ],
+        "es_ntt": false
+      },
+      {
+        "empresa": "Altran",
+        "puesto": "PMO Analyst",
+        "inicio": "2022-03-02",
+        "fin": "2024-08-02",
+        "ubicacion": "Valencia",
+        "tecnologias": [
+          "Power BI",
+          "Jira",
+          "Reporting"
+        ],
+        "es_ntt": false
+      },
+      {
+        "empresa": "TCS",
+        "puesto": "Junior PMO Analyst",
+        "inicio": "2020-08-22",
+        "fin": "2022-03-02",
+        "ubicacion": "Valencia",
+        "tecnologias": [
+          "PMO",
+          "Excel avanzado",
+          "Power BI",
+          "Reporting"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Evolución y mantenimiento de tarificación",
+        "cliente_sector": "Seguros",
+        "anio": 2022,
+        "rol": "PMO Analyst",
+        "tecnologias": [
+          "PMO",
+          "Reporting",
+          "Jira",
+          "Excel avanzado"
+        ]
+      },
+      {
+        "nombre": "Rediseño de la experiencia de fabricación conectada",
+        "cliente_sector": "Industria y Automoción",
+        "anio": 2020,
+        "rol": "PMO Analyst",
+        "tecnologias": [
+          "Excel avanzado",
+          "Power BI",
+          "PMO"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "B2"
+      },
+      {
+        "idioma": "Japonés",
+        "nivel": "A2"
+      }
+    ],
+    "resumen": "Senior PMO Analyst con 6 años de experiencia en el sector banca y finanzas. Especializado en PMO, Reporting, Excel avanzado. Basado en Valencia (España). Metodologías: PRINCE2, SAFe, Scrum."
+  },
+  {
+    "_por_que_en_muestra": "Una persona aleatoria por área (visión general)",
+    "employee_id": "NTT0052882",
+    "nombre": "Fulgencio",
+    "apellidos": "Gutiérrez Sastre",
+    "nombre_completo": "Fulgencio Gutiérrez Sastre",
+    "email": "fulgencio.gutierrez@nttdata.com",
+    "pais": "España",
+    "ciudad": "Bilbao",
+    "area": "Diseño y Experiencia",
+    "rol": "UX Researcher",
+    "nivel_seniority": "Lead",
+    "puesto_actual": "Lead UX Researcher",
+    "anios_experiencia": 11,
+    "anios_en_ntt": 2.8,
+    "fecha_incorporacion": "2024-02-05",
+    "sector_principal": "Retail y Consumo",
+    "disponibilidad": "Asignado",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "Investigación de usuarios",
+        "nivel": 5,
+        "anios": 7.0
+      },
+      {
+        "skill": "Entrevistas",
+        "nivel": 5,
+        "anios": 4.0
+      },
+      {
+        "skill": "Testing de usabilidad",
+        "nivel": 3,
+        "anios": 4.5
+      },
+      {
+        "skill": "Análisis cualitativo",
+        "nivel": 5,
+        "anios": 7.5
+      },
+      {
+        "skill": "Card sorting",
+        "nivel": 5,
+        "anios": 6.0
+      },
+      {
+        "skill": "Encuestas",
+        "nivel": 4,
+        "anios": 8.5
+      },
+      {
+        "skill": "Analítica web",
+        "nivel": 2,
+        "anios": 4.5
+      },
+      {
+        "skill": "Journey Mapping",
+        "nivel": 4,
+        "anios": 7.5
+      }
+    ],
+    "skills_texto": "Investigación de usuarios, Entrevistas, Testing de usabilidad, Análisis cualitativo, Card sorting, Encuestas, Analítica web, Journey Mapping",
+    "metodologias": [
+      "Scrum"
+    ],
+    "habilidades_blandas": [
+      "Trabajo en equipo",
+      "Gestión del tiempo",
+      "Adaptabilidad"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería Informática",
+        "institucion": "Universidad Complutense de Madrid",
+        "anio_inicio": 2011,
+        "anio_fin": 2015
+      }
+    ],
+    "certificaciones": [],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Lead UX Researcher",
+        "inicio": "2024-02-05",
+        "fin": "Actual",
+        "ubicacion": "Bilbao",
+        "tecnologias": [
+          "Card sorting",
+          "Analítica web",
+          "Encuestas",
+          "Journey Mapping"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "Minsait",
+        "puesto": "Senior UX Researcher",
+        "inicio": "2018-12-07",
+        "fin": "2024-02-05",
+        "ubicacion": "Bilbao",
+        "tecnologias": [
+          "Analítica web",
+          "Journey Mapping",
+          "Investigación de usuarios"
+        ],
+        "es_ntt": false
+      },
+      {
+        "empresa": "Banco regional",
+        "puesto": "UX Designer",
+        "inicio": "2015-01-25",
+        "fin": "2018-12-07",
+        "ubicacion": "Bilbao",
+        "tecnologias": [
+          "Analítica web",
+          "Card sorting",
+          "Análisis cualitativo"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Evolución y mantenimiento de gestión de inventario",
+        "cliente_sector": "Retail y Consumo",
+        "anio": 2025,
+        "rol": "Lead UX Researcher",
+        "tecnologias": [
+          "Investigación de usuarios",
+          "Encuestas",
+          "Card sorting",
+          "Análisis cualitativo",
+          "Testing de usabilidad"
+        ]
+      },
+      {
+        "nombre": "Automatización de gestión de inventario",
+        "cliente_sector": "Retail y Consumo",
+        "anio": 2022,
+        "rol": "Senior UX Researcher",
+        "tecnologias": [
+          "Card sorting",
+          "Encuestas",
+          "Análisis cualitativo"
+        ]
+      },
+      {
+        "nombre": "Evolución y mantenimiento de programa de fidelización",
+        "cliente_sector": "Retail y Consumo",
+        "anio": 2021,
+        "rol": "Senior UX Researcher",
+        "tecnologias": [
+          "Entrevistas",
+          "Analítica web"
+        ]
+      },
+      {
+        "nombre": "Implantación de omnicanalidad",
+        "cliente_sector": "Retail y Consumo",
+        "anio": 2018,
+        "rol": "Lead UX Researcher",
+        "tecnologias": [
+          "Testing de usabilidad",
+          "Journey Mapping",
+          "Entrevistas",
+          "Analítica web",
+          "Análisis cualitativo"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Euskera",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "B1"
+      }
+    ],
+    "resumen": "Lead UX Researcher con 11 años de experiencia en el sector retail y consumo. Especializado en Investigación de usuarios, Entrevistas, Testing de usabilidad. Basado en Bilbao (España). Metodologías: Scrum."
+  },
+  {
+    "_por_que_en_muestra": "Brief ciberseguridad: PASA filtros (En banca, ≥3 años, área Ciberseguridad)",
+    "employee_id": "NTT0131099",
+    "nombre": "Antonio",
+    "apellidos": "Vega Martínez",
+    "nombre_completo": "Antonio Vega Martínez",
+    "email": "antonio.vega2@nttdata.com",
+    "pais": "Colombia",
+    "ciudad": "Bogotá",
+    "area": "Ciberseguridad",
+    "rol": "SOC Analyst",
+    "nivel_seniority": "Senior",
+    "puesto_actual": "Senior SOC Analyst",
+    "anios_experiencia": 9,
+    "anios_en_ntt": 1.3,
+    "fecha_incorporacion": "2025-08-03",
+    "sector_principal": "Sector Público",
+    "disponibilidad": "En banca",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": true,
+    "skills": [
+      {
+        "skill": "SIEM",
+        "nivel": 4,
+        "anios": 0.5
+      },
+      {
+        "skill": "Análisis de logs",
+        "nivel": 4,
+        "anios": 5.0
+      },
+      {
+        "skill": "Respuesta a incidentes",
+        "nivel": 4,
+        "anios": 1.0
+      },
+      {
+        "skill": "MITRE ATT&CK",
+        "nivel": 5,
+        "anios": 1.5
+      },
+      {
+        "skill": "Splunk",
+        "nivel": 4,
+        "anios": 8.5
+      },
+      {
+        "skill": "SOAR",
+        "nivel": 4,
+        "anios": 3.5
+      },
+      {
+        "skill": "CrowdStrike",
+        "nivel": 4,
+        "anios": 4.0
+      },
+      {
+        "skill": "Threat Hunting",
+        "nivel": 4,
+        "anios": 5.0
+      }
+    ],
+    "skills_texto": "SIEM, Análisis de logs, Respuesta a incidentes, MITRE ATT&CK, Splunk, SOAR, CrowdStrike, Threat Hunting",
+    "metodologias": [
+      "ITIL"
+    ],
+    "habilidades_blandas": [
+      "Autonomía",
+      "Comunicación efectiva",
+      "Adaptabilidad",
+      "Presentaciones a cliente"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Matemáticas",
+        "institucion": "Universidad de los Andes",
+        "anio_inicio": 2013,
+        "anio_fin": 2017
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "Microsoft SC-200",
+        "anio": 2021
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Senior SOC Analyst",
+        "inicio": "2025-08-03",
+        "fin": "Actual",
+        "ubicacion": "Bogotá",
+        "tecnologias": [
+          "Análisis de logs",
+          "SOAR",
+          "MITRE ATT&CK",
+          "Threat Hunting"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "Administración Pública",
+        "puesto": "Senior SOC Analyst",
+        "inicio": "2021-09-01",
+        "fin": "2025-08-03",
+        "ubicacion": "Medellín",
+        "tecnologias": [
+          "SIEM",
+          "MITRE ATT&CK"
+        ],
+        "es_ntt": false
+      },
+      {
+        "empresa": "Telefónica Tech",
+        "puesto": "GRC Consultant",
+        "inicio": "2017-05-24",
+        "fin": "2021-09-01",
+        "ubicacion": "Medellín",
+        "tecnologias": [
+          "MITRE ATT&CK",
+          "CrowdStrike"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Automatización de gestión tributaria",
+        "cliente_sector": "Sector Público",
+        "anio": 2025,
+        "rol": "Senior SOC Analyst",
+        "tecnologias": [
+          "MITRE ATT&CK",
+          "SIEM"
+        ]
+      },
+      {
+        "nombre": "Desarrollo de la plataforma de administración electrónica",
+        "cliente_sector": "Sector Público",
+        "anio": 2024,
+        "rol": "SOC Analyst",
+        "tecnologias": [
+          "SOAR",
+          "MITRE ATT&CK",
+          "Respuesta a incidentes",
+          "Análisis de logs",
+          "Splunk"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "C1"
+      },
+      {
+        "idioma": "Chino mandarín",
+        "nivel": "B1"
+      }
+    ],
+    "resumen": "Senior SOC Analyst con 9 años de experiencia en el sector sector público. Especializado en SIEM, Análisis de logs, Respuesta a incidentes. Basado en Bogotá (Colombia). Metodologías: ITIL."
+  },
+  {
+    "_por_que_en_muestra": "Brief ciberseguridad: PASA filtros (En banca, ≥3 años, área Ciberseguridad)",
+    "employee_id": "NTT0120222",
+    "nombre": "Julie",
+    "apellidos": "Williams",
+    "nombre_completo": "Julie Williams",
+    "email": "julie.williams@nttdata.com",
+    "pais": "Reino Unido",
+    "ciudad": "Mánchester",
+    "area": "Ciberseguridad",
+    "rol": "SOC Analyst",
+    "nivel_seniority": "Senior",
+    "puesto_actual": "Senior SOC Analyst",
+    "anios_experiencia": 7,
+    "anios_en_ntt": 5.1,
+    "fecha_incorporacion": "2021-10-10",
+    "sector_principal": "Seguros",
+    "disponibilidad": "En banca",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "SIEM",
+        "nivel": 4,
+        "anios": 3.5
+      },
+      {
+        "skill": "Análisis de logs",
+        "nivel": 3,
+        "anios": 4.0
+      },
+      {
+        "skill": "Respuesta a incidentes",
+        "nivel": 5,
+        "anios": 5.0
+      },
+      {
+        "skill": "MITRE ATT&CK",
+        "nivel": 3,
+        "anios": 5.5
+      },
+      {
+        "skill": "QRadar",
+        "nivel": 3,
+        "anios": 1.0
+      },
+      {
+        "skill": "Threat Hunting",
+        "nivel": 5,
+        "anios": 5.0
+      },
+      {
+        "skill": "Microsoft Sentinel",
+        "nivel": 4,
+        "anios": 5.0
+      },
+      {
+        "skill": "SOAR",
+        "nivel": 4,
+        "anios": 2.5
+      },
+      {
+        "skill": "CrowdStrike",
+        "nivel": 3,
+        "anios": 6.0
+      },
+      {
+        "skill": "Splunk",
+        "nivel": 4,
+        "anios": 4.0
+      }
+    ],
+    "skills_texto": "SIEM, Análisis de logs, Respuesta a incidentes, MITRE ATT&CK, QRadar, Threat Hunting, Microsoft Sentinel, SOAR, CrowdStrike, Splunk",
+    "metodologias": [
+      "SAFe",
+      "Extreme Programming"
+    ],
+    "habilidades_blandas": [
+      "Gestión de conflictos",
+      "Adaptabilidad",
+      "Comunicación efectiva",
+      "Pensamiento crítico"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería de Computadores",
+        "institucion": "University of Edinburgh",
+        "anio_inicio": 2013,
+        "anio_fin": 2017
+      },
+      {
+        "nivel": "Máster",
+        "titulo": "Máster en Ciberseguridad",
+        "institucion": "Imperial College London",
+        "anio_inicio": 2017,
+        "anio_fin": 2019
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "GIAC GCIH",
+        "anio": 2020
+      },
+      {
+        "nombre": "Microsoft SC-200",
+        "anio": 2023
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Senior SOC Analyst",
+        "inicio": "2024-10-28",
+        "fin": "Actual",
+        "ubicacion": "Mánchester",
+        "tecnologias": [
+          "SOAR",
+          "CrowdStrike",
+          "Splunk",
+          "Threat Hunting"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "NTT DATA",
+        "puesto": "SOC Analyst",
+        "inicio": "2021-10-10",
+        "fin": "2024-10-28",
+        "ubicacion": "Mánchester",
+        "tecnologias": [
+          "MITRE ATT&CK",
+          "Threat Hunting",
+          "Análisis de logs"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "CaixaBank Tech",
+        "puesto": "Junior SOC Analyst",
+        "inicio": "2019-07-09",
+        "fin": "2021-10-10",
+        "ubicacion": "Mánchester",
+        "tecnologias": [
+          "SOAR",
+          "Splunk",
+          "Respuesta a incidentes",
+          "Análisis de logs"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Implantación de revenue management",
+        "cliente_sector": "Turismo y Ocio",
+        "anio": 2024,
+        "rol": "SOC Analyst",
+        "tecnologias": [
+          "Respuesta a incidentes",
+          "Splunk"
+        ]
+      },
+      {
+        "nombre": "Desarrollo de la plataforma de administración electrónica",
+        "cliente_sector": "Sector Público",
+        "anio": 2021,
+        "rol": "SOC Analyst",
+        "tecnologias": [
+          "MITRE ATT&CK",
+          "QRadar",
+          "SOAR",
+          "Respuesta a incidentes",
+          "Microsoft Sentinel"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Inglés",
+        "nivel": "Nativo"
+      }
+    ],
+    "resumen": "Senior SOC Analyst con 7 años de experiencia en el sector seguros. Especializado en SIEM, Análisis de logs, Respuesta a incidentes. Basado en Mánchester (Reino Unido). Metodologías: SAFe, Extreme Programming."
+  },
+  {
+    "_por_que_en_muestra": "Brief ciberseguridad: PASA filtros (En banca, ≥3 años, área Ciberseguridad)",
+    "employee_id": "NTT0178183",
+    "nombre": "Ewa",
+    "apellidos": "Krzysiek",
+    "nombre_completo": "Ewa Krzysiek",
+    "email": "ewa.krzysiek@nttdata.com",
+    "pais": "Polonia",
+    "ciudad": "Varsovia",
+    "area": "Ciberseguridad",
+    "rol": "SOC Analyst",
+    "nivel_seniority": "Mid",
+    "puesto_actual": "SOC Analyst",
+    "anios_experiencia": 3,
+    "anios_en_ntt": 3.9,
+    "fecha_incorporacion": "2022-12-08",
+    "sector_principal": "Banca y Finanzas",
+    "disponibilidad": "En banca",
+    "modalidad_trabajo": "Remoto",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "SIEM",
+        "nivel": 2,
+        "anios": 3.5
+      },
+      {
+        "skill": "Análisis de logs",
+        "nivel": 4,
+        "anios": 1.5
+      },
+      {
+        "skill": "MITRE ATT&CK",
+        "nivel": 5,
+        "anios": 1.0
+      },
+      {
+        "skill": "SOAR",
+        "nivel": 4,
+        "anios": 3.5
+      },
+      {
+        "skill": "QRadar",
+        "nivel": 3,
+        "anios": 2.0
+      },
+      {
+        "skill": "CrowdStrike",
+        "nivel": 3,
+        "anios": 0.5
+      },
+      {
+        "skill": "Threat Hunting",
+        "nivel": 4,
+        "anios": 0.5
+      }
+    ],
+    "skills_texto": "SIEM, Análisis de logs, MITRE ATT&CK, SOAR, QRadar, CrowdStrike, Threat Hunting",
+    "metodologias": [
+      "ITIL",
+      "Lean",
+      "PMBOK"
+    ],
+    "habilidades_blandas": [
+      "Mentoring",
+      "Presentaciones a cliente",
+      "Resolución de problemas",
+      "Autonomía"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería Informática",
+        "institucion": "AGH Kraków",
+        "anio_inicio": 2016,
+        "anio_fin": 2020
+      },
+      {
+        "nivel": "Máster",
+        "titulo": "Máster en Hacking Ético",
+        "institucion": "Uniwersytet Jagielloński",
+        "anio_inicio": 2020,
+        "anio_fin": 2022
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "CompTIA Security+",
+        "anio": 2025
+      },
+      {
+        "nombre": "Microsoft SC-200",
+        "anio": 2024
+      },
+      {
+        "nombre": "ITIL 4 Foundation",
+        "anio": 2026
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "SOC Analyst",
+        "inicio": "2022-12-08",
+        "fin": "Actual",
+        "ubicacion": "Varsovia",
+        "tecnologias": [
+          "Threat Hunting",
+          "Análisis de logs",
+          "MITRE ATT&CK",
+          "SIEM"
+        ],
+        "es_ntt": true
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Desarrollo de la plataforma de sede electrónica",
+        "cliente_sector": "Sector Público",
+        "anio": 2024,
+        "rol": "Trainee SOC Analyst",
+        "tecnologias": [
+          "Análisis de logs",
+          "Threat Hunting",
+          "CrowdStrike"
+        ]
+      },
+      {
+        "nombre": "Analítica avanzada para gestión tributaria",
+        "cliente_sector": "Sector Público",
+        "anio": 2024,
+        "rol": "Junior SOC Analyst",
+        "tecnologias": [
+          "MITRE ATT&CK",
+          "Threat Hunting",
+          "SOAR"
+        ]
+      },
+      {
+        "nombre": "Analítica avanzada para fabricación conectada",
+        "cliente_sector": "Industria y Automoción",
+        "anio": 2022,
+        "rol": "Junior SOC Analyst",
+        "tecnologias": [
+          "MITRE ATT&CK",
+          "SIEM",
+          "Threat Hunting",
+          "QRadar"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Polaco",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "B2"
+      }
+    ],
+    "resumen": "SOC Analyst con 3 años de experiencia en el sector banca y finanzas. Especializado en SIEM, Análisis de logs, MITRE ATT&CK. Basado en Varsovia (Polonia). Metodologías: ITIL, Lean, PMBOK."
+  },
+  {
+    "_por_que_en_muestra": "Brief ciberseguridad: PASA filtros (En banca, ≥3 años, área Ciberseguridad)",
+    "employee_id": "NTT0037940",
+    "nombre": "Jorge Luis",
+    "apellidos": "Lebrón Briones",
+    "nombre_completo": "Jorge Luis Lebrón Briones",
+    "email": "jorge.lebron@nttdata.com",
+    "pais": "México",
+    "ciudad": "Ciudad de México",
+    "area": "Ciberseguridad",
+    "rol": "SOC Analyst",
+    "nivel_seniority": "Senior",
+    "puesto_actual": "Senior SOC Analyst",
+    "anios_experiencia": 6,
+    "anios_en_ntt": 6.1,
+    "fecha_incorporacion": "2020-10-20",
+    "sector_principal": "Transporte y Logística",
+    "disponibilidad": "En banca",
+    "modalidad_trabajo": "Remoto",
+    "movilidad_internacional": true,
+    "skills": [
+      {
+        "skill": "SIEM",
+        "nivel": 4,
+        "anios": 1.5
+      },
+      {
+        "skill": "Análisis de logs",
+        "nivel": 3,
+        "anios": 5.5
+      },
+      {
+        "skill": "Respuesta a incidentes",
+        "nivel": 4,
+        "anios": 3.5
+      },
+      {
+        "skill": "MITRE ATT&CK",
+        "nivel": 5,
+        "anios": 6.5
+      },
+      {
+        "skill": "SOAR",
+        "nivel": 4,
+        "anios": 0.5
+      },
+      {
+        "skill": "CrowdStrike",
+        "nivel": 4,
+        "anios": 5.0
+      },
+      {
+        "skill": "Threat Hunting",
+        "nivel": 5,
+        "anios": 2.5
+      },
+      {
+        "skill": "QRadar",
+        "nivel": 4,
+        "anios": 6.5
+      }
+    ],
+    "skills_texto": "SIEM, Análisis de logs, Respuesta a incidentes, MITRE ATT&CK, SOAR, CrowdStrike, Threat Hunting, QRadar",
+    "metodologias": [
+      "Kanban",
+      "SAFe",
+      "PMBOK"
+    ],
+    "habilidades_blandas": [
+      "Adaptabilidad",
+      "Liderazgo"
+    ],
+    "estudios": [
+      {
+        "nivel": "Formación Profesional Superior",
+        "titulo": "CFGS Administración de Sistemas Informáticos en Red",
+        "institucion": "IES Juan de la Cierva (Ciudad de México)",
+        "anio_inicio": 2018,
+        "anio_fin": 2020
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "Microsoft SC-200",
+        "anio": 2021
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Senior SOC Analyst",
+        "inicio": "2025-01-06",
+        "fin": "Actual",
+        "ubicacion": "Ciudad de México",
+        "tecnologias": [
+          "Respuesta a incidentes",
+          "CrowdStrike",
+          "SOAR",
+          "SIEM"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "NTT DATA",
+        "puesto": "SOC Analyst",
+        "inicio": "2020-10-20",
+        "fin": "2025-01-06",
+        "ubicacion": "Ciudad de México",
+        "tecnologias": [
+          "SIEM",
+          "Threat Hunting",
+          "MITRE ATT&CK"
+        ],
+        "es_ntt": true
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Desarrollo de la plataforma de gestión de expedientes",
+        "cliente_sector": "Sector Público",
+        "anio": 2024,
+        "rol": "Senior SOC Analyst",
+        "tecnologias": [
+          "Threat Hunting",
+          "SIEM",
+          "QRadar",
+          "MITRE ATT&CK",
+          "Análisis de logs"
+        ]
+      },
+      {
+        "nombre": "Modernización de gestión de almacenes",
+        "cliente_sector": "Transporte y Logística",
+        "anio": 2021,
+        "rol": "Junior SOC Analyst",
+        "tecnologias": [
+          "SIEM",
+          "Análisis de logs",
+          "CrowdStrike",
+          "QRadar",
+          "Respuesta a incidentes"
+        ]
+      },
+      {
+        "nombre": "Desarrollo de la plataforma de gestión de flotas",
+        "cliente_sector": "Transporte y Logística",
+        "anio": 2020,
+        "rol": "SOC Analyst",
+        "tecnologias": [
+          "CrowdStrike",
+          "SOAR",
+          "MITRE ATT&CK",
+          "Análisis de logs"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "B2"
+      }
+    ],
+    "resumen": "Senior SOC Analyst con 6 años de experiencia en el sector transporte y logística. Especializado en SIEM, Análisis de logs, Respuesta a incidentes. Basado en Ciudad de México (México). Metodologías: Kanban, SAFe, PMBOK."
+  },
+  {
+    "_por_que_en_muestra": "Brief ciberseguridad: NO pasa, <3 años de experiencia aunque esté En banca",
+    "employee_id": "NTT0187225",
+    "nombre": "Carolina",
+    "apellidos": "Fernández Alvarado",
+    "nombre_completo": "Carolina Fernández Alvarado",
+    "email": "carolina.fernandez@nttdata.com",
+    "pais": "Chile",
+    "ciudad": "Santiago",
+    "area": "Ciberseguridad",
+    "rol": "IAM Specialist",
+    "nivel_seniority": "Junior",
+    "puesto_actual": "Junior IAM Specialist",
+    "anios_experiencia": 2,
+    "anios_en_ntt": 1.0,
+    "fecha_incorporacion": "2025-12-05",
+    "sector_principal": "Energía y Utilities",
+    "disponibilidad": "En banca",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "SSO",
+        "nivel": 2,
+        "anios": 0.5
+      },
+      {
+        "skill": "MFA",
+        "nivel": 2,
+        "anios": 2.0
+      },
+      {
+        "skill": "Active Directory",
+        "nivel": 3,
+        "anios": 1.0
+      },
+      {
+        "skill": "SAML/OAuth2",
+        "nivel": 3,
+        "anios": 0.5
+      },
+      {
+        "skill": "PAM",
+        "nivel": 2,
+        "anios": 1.5
+      },
+      {
+        "skill": "Entra ID",
+        "nivel": 2,
+        "anios": 0.5
+      },
+      {
+        "skill": "CyberArk",
+        "nivel": 2,
+        "anios": 1.5
+      },
+      {
+        "skill": "Okta",
+        "nivel": 2,
+        "anios": 1.0
+      }
+    ],
+    "skills_texto": "SSO, MFA, Active Directory, SAML/OAuth2, PAM, Entra ID, CyberArk, Okta",
+    "metodologias": [
+      "Lean",
+      "Extreme Programming"
+    ],
+    "habilidades_blandas": [
+      "Gestión de conflictos",
+      "Resolución de problemas"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería de Computadores",
+        "institucion": "Pontificia Universidad Católica de Chile",
+        "anio_inicio": 2020,
+        "anio_fin": 2024
+      }
+    ],
+    "certificaciones": [],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Junior IAM Specialist",
+        "inicio": "2025-12-05",
+        "fin": "Actual",
+        "ubicacion": "Santiago",
+        "tecnologias": [
+          "PAM",
+          "SAML/OAuth2",
+          "Okta",
+          "SSO"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "Startup tecnológica",
+        "puesto": "Junior IAM Specialist",
+        "inicio": "2024-03-07",
+        "fin": "2025-12-05",
+        "ubicacion": "Santiago",
+        "tecnologias": [
+          "MFA",
+          "SAML/OAuth2"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Modernización de telelectura inteligente",
+        "cliente_sector": "Energía y Utilities",
+        "anio": 2025,
+        "rol": "Trainee IAM Specialist",
+        "tecnologias": [
+          "MFA",
+          "Okta"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "C1"
+      }
+    ],
+    "resumen": "Junior IAM Specialist con 2 años de experiencia en el sector energía y utilities. Especializado en SSO, MFA, Active Directory. Basado en Santiago (Chile). Metodologías: Lean, Extreme Programming."
+  },
+  {
+    "_por_que_en_muestra": "Brief ciberseguridad: NO pasa, <3 años de experiencia aunque esté En banca",
+    "employee_id": "NTT0074915",
+    "nombre": "Esteban",
+    "apellidos": "Carbó Coca",
+    "nombre_completo": "Esteban Carbó Coca",
+    "email": "esteban.carbo2@nttdata.com",
+    "pais": "España",
+    "ciudad": "Madrid",
+    "area": "Ciberseguridad",
+    "rol": "IAM Specialist",
+    "nivel_seniority": "Junior",
+    "puesto_actual": "Junior IAM Specialist",
+    "anios_experiencia": 1,
+    "anios_en_ntt": 1.9,
+    "fecha_incorporacion": "2024-12-14",
+    "sector_principal": "Sector Público",
+    "disponibilidad": "En banca",
+    "modalidad_trabajo": "Presencial",
+    "movilidad_internacional": true,
+    "skills": [
+      {
+        "skill": "Gestión de identidades",
+        "nivel": 2,
+        "anios": 1.5
+      },
+      {
+        "skill": "SSO",
+        "nivel": 1,
+        "anios": 0.5
+      },
+      {
+        "skill": "MFA",
+        "nivel": 3,
+        "anios": 0.5
+      },
+      {
+        "skill": "Active Directory",
+        "nivel": 2,
+        "anios": 1.0
+      },
+      {
+        "skill": "SAML/OAuth2",
+        "nivel": 2,
+        "anios": 0.5
+      },
+      {
+        "skill": "Entra ID",
+        "nivel": 1,
+        "anios": 0.5
+      }
+    ],
+    "skills_texto": "Gestión de identidades, SSO, MFA, Active Directory, SAML/OAuth2, Entra ID",
+    "metodologias": [
+      "ITIL"
+    ],
+    "habilidades_blandas": [
+      "Mentoring",
+      "Resolución de problemas"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería del Software",
+        "institucion": "Universidad de Granada",
+        "anio_inicio": 2020,
+        "anio_fin": 2024
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "Okta Certified Professional",
+        "anio": 2025
+      },
+      {
+        "nombre": "Microsoft AZ-900 Azure Fundamentals",
+        "anio": 2025
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Junior IAM Specialist",
+        "inicio": "2024-12-14",
+        "fin": "Actual",
+        "ubicacion": "Madrid",
+        "tecnologias": [
+          "MFA",
+          "SSO",
+          "SAML/OAuth2",
+          "Active Directory"
+        ],
+        "es_ntt": true
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Automatización de gestión de expedientes",
+        "cliente_sector": "Sector Público",
+        "anio": 2025,
+        "rol": "Trainee IAM Specialist",
+        "tecnologias": [
+          "SAML/OAuth2",
+          "MFA",
+          "Active Directory",
+          "SSO",
+          "Gestión de identidades"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "B1"
+      }
+    ],
+    "resumen": "Junior IAM Specialist con 1 años de experiencia en el sector sector público. Especializado en Gestión de identidades, SSO, MFA. Basado en Madrid (España). Metodologías: ITIL."
+  },
+  {
+    "_por_que_en_muestra": "Brief ciberseguridad: NO pasa, Roll-off (no disponible inmediatamente)",
+    "employee_id": "NTT0076696",
+    "nombre": "Agapito",
+    "apellidos": "Santamaria Barrera",
+    "nombre_completo": "Agapito Santamaria Barrera",
+    "email": "agapito.santamaria@nttdata.com",
+    "pais": "España",
+    "ciudad": "Madrid",
+    "area": "Ciberseguridad",
+    "rol": "IAM Specialist",
+    "nivel_seniority": "Senior",
+    "puesto_actual": "Senior IAM Specialist",
+    "anios_experiencia": 9,
+    "anios_en_ntt": 0.7,
+    "fecha_incorporacion": "2026-03-08",
+    "sector_principal": "Banca y Finanzas",
+    "disponibilidad": "Roll-off próximo (<3 meses)",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "Gestión de identidades",
+        "nivel": 5,
+        "anios": 8.5
+      },
+      {
+        "skill": "SSO",
+        "nivel": 4,
+        "anios": 3.5
+      },
+      {
+        "skill": "MFA",
+        "nivel": 5,
+        "anios": 6.0
+      },
+      {
+        "skill": "Active Directory",
+        "nivel": 5,
+        "anios": 6.0
+      },
+      {
+        "skill": "SAML/OAuth2",
+        "nivel": 3,
+        "anios": 4.5
+      },
+      {
+        "skill": "PAM",
+        "nivel": 4,
+        "anios": 1.5
+      },
+      {
+        "skill": "Okta",
+        "nivel": 5,
+        "anios": 8.0
+      },
+      {
+        "skill": "Entra ID",
+        "nivel": 4,
+        "anios": 6.5
+      }
+    ],
+    "skills_texto": "Gestión de identidades, SSO, MFA, Active Directory, SAML/OAuth2, PAM, Okta, Entra ID",
+    "metodologias": [
+      "ITIL"
+    ],
+    "habilidades_blandas": [
+      "Comunicación efectiva",
+      "Orientación a cliente",
+      "Negociación"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Matemáticas",
+        "institucion": "UNED",
+        "anio_inicio": 2013,
+        "anio_fin": 2017
+      },
+      {
+        "nivel": "Máster",
+        "titulo": "Máster en Seguridad de la Información",
+        "institucion": "Universidad de Málaga",
+        "anio_inicio": 2020,
+        "anio_fin": 2022
+      }
+    ],
+    "certificaciones": [],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Senior IAM Specialist",
+        "inicio": "2026-03-08",
+        "fin": "Actual",
+        "ubicacion": "Madrid",
+        "tecnologias": [
+          "Active Directory",
+          "MFA",
+          "Okta",
+          "Entra ID"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "Accenture",
+        "puesto": "Senior IAM Specialist",
+        "inicio": "2017-11-07",
+        "fin": "2026-03-08",
+        "ubicacion": "Madrid",
+        "tecnologias": [
+          "SSO",
+          "Active Directory"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Desarrollo de la plataforma de banca móvil",
+        "cliente_sector": "Banca y Finanzas",
+        "anio": 2018,
+        "rol": "Senior IAM Specialist",
+        "tecnologias": [
+          "MFA",
+          "SAML/OAuth2",
+          "Gestión de identidades",
+          "Active Directory"
+        ]
+      },
+      {
+        "nombre": "Analítica avanzada para onboarding digital de clientes",
+        "cliente_sector": "Banca y Finanzas",
+        "anio": 2018,
+        "rol": "Senior IAM Specialist",
+        "tecnologias": [
+          "Entra ID",
+          "PAM",
+          "SSO",
+          "MFA"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "C1"
+      }
+    ],
+    "resumen": "Senior IAM Specialist con 9 años de experiencia en el sector banca y finanzas. Especializado en Gestión de identidades, SSO, MFA. Basado en Madrid (España). Metodologías: ITIL."
+  },
+  {
+    "_por_que_en_muestra": "Brief ciberseguridad: NO pasa, Roll-off (no disponible inmediatamente)",
+    "employee_id": "NTT0057774",
+    "nombre": "Gervasio",
+    "apellidos": "Bermejo Adán",
+    "nombre_completo": "Gervasio Bermejo Adán",
+    "email": "gervasio.bermejo@nttdata.com",
+    "pais": "España",
+    "ciudad": "Madrid",
+    "area": "Ciberseguridad",
+    "rol": "Security Architect",
+    "nivel_seniority": "Senior",
+    "puesto_actual": "Senior Security Architect",
+    "anios_experiencia": 8,
+    "anios_en_ntt": 2.3,
+    "fecha_incorporacion": "2024-07-13",
+    "sector_principal": "Sanidad y Farma",
+    "disponibilidad": "Roll-off próximo (<3 meses)",
+    "modalidad_trabajo": "Presencial",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "Arquitectura de seguridad",
+        "nivel": 5,
+        "anios": 6.0
+      },
+      {
+        "skill": "Zero Trust",
+        "nivel": 3,
+        "anios": 8.0
+      },
+      {
+        "skill": "IAM",
+        "nivel": 4,
+        "anios": 6.0
+      },
+      {
+        "skill": "Seguridad cloud",
+        "nivel": 3,
+        "anios": 2.0
+      },
+      {
+        "skill": "Threat Modeling",
+        "nivel": 3,
+        "anios": 6.5
+      },
+      {
+        "skill": "ISO 27001",
+        "nivel": 4,
+        "anios": 4.5
+      },
+      {
+        "skill": "SASE",
+        "nivel": 4,
+        "anios": 6.5
+      },
+      {
+        "skill": "PKI",
+        "nivel": 3,
+        "anios": 5.0
+      },
+      {
+        "skill": "NIST CSF",
+        "nivel": 4,
+        "anios": 6.0
+      }
+    ],
+    "skills_texto": "Arquitectura de seguridad, Zero Trust, IAM, Seguridad cloud, Threat Modeling, ISO 27001, SASE, PKI, NIST CSF",
+    "metodologias": [
+      "Design Thinking",
+      "Kanban",
+      "Lean"
+    ],
+    "habilidades_blandas": [
+      "Liderazgo",
+      "Gestión del tiempo",
+      "Resolución de problemas",
+      "Negociación"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería Informática",
+        "institucion": "Universidad de Navarra",
+        "anio_inicio": 2014,
+        "anio_fin": 2018
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "SABSA",
+        "anio": 2024
+      },
+      {
+        "nombre": "AWS Certified Security – Specialty",
+        "anio": 2021
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Senior Security Architect",
+        "inicio": "2024-07-13",
+        "fin": "Actual",
+        "ubicacion": "Madrid",
+        "tecnologias": [
+          "Arquitectura de seguridad",
+          "Zero Trust",
+          "IAM",
+          "Seguridad cloud"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "Atos",
+        "puesto": "Senior Security Architect",
+        "inicio": "2021-08-21",
+        "fin": "2024-07-13",
+        "ubicacion": "Madrid",
+        "tecnologias": [
+          "NIST CSF",
+          "Arquitectura de seguridad"
+        ],
+        "es_ntt": false
+      },
+      {
+        "empresa": "IBM",
+        "puesto": "Security Architect",
+        "inicio": "2018-07-03",
+        "fin": "2021-08-21",
+        "ubicacion": "Madrid",
+        "tecnologias": [
+          "Threat Modeling",
+          "IAM",
+          "PKI"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Implantación de historia clínica",
+        "cliente_sector": "Sanidad y Farma",
+        "anio": 2025,
+        "rol": "Security Architect",
+        "tecnologias": [
+          "Zero Trust",
+          "Arquitectura de seguridad"
+        ]
+      },
+      {
+        "nombre": "Rediseño de la experiencia de ensayos clínicos",
+        "cliente_sector": "Sanidad y Farma",
+        "anio": 2025,
+        "rol": "Senior Security Architect",
+        "tecnologias": [
+          "NIST CSF",
+          "PKI",
+          "ISO 27001",
+          "Threat Modeling"
+        ]
+      },
+      {
+        "nombre": "Implantación de onboarding digital de clientes",
+        "cliente_sector": "Banca y Finanzas",
+        "anio": 2021,
+        "rol": "Senior Security Architect",
+        "tecnologias": [
+          "ISO 27001",
+          "NIST CSF",
+          "Threat Modeling",
+          "Seguridad cloud"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "C1"
+      }
+    ],
+    "resumen": "Senior Security Architect con 8 años de experiencia en el sector sanidad y farma. Especializado en Arquitectura de seguridad, Zero Trust, IAM. Basado en Madrid (España). Metodologías: Design Thinking, Kanban, Lean."
+  },
+  {
+    "_por_que_en_muestra": "Brief ciberseguridad: NO pasa, Asignado aunque sea Senior+",
+    "employee_id": "NTT0044020",
+    "nombre": "Desiderio",
+    "apellidos": "Segovia Pelayo",
+    "nombre_completo": "Desiderio Segovia Pelayo",
+    "email": "desiderio.segovia@nttdata.com",
+    "pais": "España",
+    "ciudad": "Madrid",
+    "area": "Ciberseguridad",
+    "rol": "Security Consultant (CISO Office)",
+    "nivel_seniority": "Lead",
+    "puesto_actual": "Lead Security Consultant (CISO Office)",
+    "anios_experiencia": 10,
+    "anios_en_ntt": 10.1,
+    "fecha_incorporacion": "2016-10-17",
+    "sector_principal": "Industria y Automoción",
+    "disponibilidad": "Asignado",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": true,
+    "skills": [
+      {
+        "skill": "Estrategia de ciberseguridad",
+        "nivel": 5,
+        "anios": 8.5
+      },
+      {
+        "skill": "Gestión de riesgos",
+        "nivel": 5,
+        "anios": 3.5
+      },
+      {
+        "skill": "Gobierno de seguridad",
+        "nivel": 4,
+        "anios": 7.5
+      },
+      {
+        "skill": "Normativa",
+        "nivel": 5,
+        "anios": 10.0
+      },
+      {
+        "skill": "DORA",
+        "nivel": 5,
+        "anios": 0.5
+      },
+      {
+        "skill": "NIS2",
+        "nivel": 5,
+        "anios": 10.0
+      },
+      {
+        "skill": "NIST CSF",
+        "nivel": 4,
+        "anios": 3.5
+      },
+      {
+        "skill": "Concienciación",
+        "nivel": 5,
+        "anios": 6.0
+      },
+      {
+        "skill": "ISO 27001",
+        "nivel": 3,
+        "anios": 3.5
+      }
+    ],
+    "skills_texto": "Estrategia de ciberseguridad, Gestión de riesgos, Gobierno de seguridad, Normativa, DORA, NIS2, NIST CSF, Concienciación, ISO 27001",
+    "metodologias": [
+      "Scrum",
+      "PMBOK",
+      "PRINCE2"
+    ],
+    "habilidades_blandas": [
+      "Gestión de conflictos",
+      "Gestión del tiempo"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Matemáticas",
+        "institucion": "UOC",
+        "anio_inicio": 2010,
+        "anio_fin": 2014
+      },
+      {
+        "nivel": "Máster",
+        "titulo": "Máster en Ciberseguridad",
+        "institucion": "Universitat Pompeu Fabra",
+        "anio_inicio": 2014,
+        "anio_fin": 2016
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "CISM",
+        "anio": 2020
+      },
+      {
+        "nombre": "ITIL 4 Foundation",
+        "anio": 2017
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Lead Security Consultant (CISO Office)",
+        "inicio": "2021-02-17",
+        "fin": "Actual",
+        "ubicacion": "Madrid",
+        "tecnologias": [
+          "ISO 27001",
+          "Gestión de riesgos",
+          "NIST CSF",
+          "Gobierno de seguridad"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Security Consultant (CISO Office)",
+        "inicio": "2016-10-17",
+        "fin": "2021-02-17",
+        "ubicacion": "Madrid",
+        "tecnologias": [
+          "Estrategia de ciberseguridad",
+          "Concienciación",
+          "DORA"
+        ],
+        "es_ntt": true
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Implantación de fabricación conectada",
+        "cliente_sector": "Industria y Automoción",
+        "anio": 2026,
+        "rol": "Senior Security Consultant (CISO Office)",
+        "tecnologias": [
+          "DORA",
+          "ISO 27001",
+          "Concienciación",
+          "NIS2",
+          "Gestión de riesgos"
+        ]
+      },
+      {
+        "nombre": "Automatización de gemelo digital",
+        "cliente_sector": "Industria y Automoción",
+        "anio": 2026,
+        "rol": "Senior Security Consultant (CISO Office)",
+        "tecnologias": [
+          "NIST CSF",
+          "Concienciación",
+          "ISO 27001",
+          "DORA",
+          "Estrategia de ciberseguridad"
+        ]
+      },
+      {
+        "nombre": "Migración a la nube de omnicanalidad",
+        "cliente_sector": "Retail y Consumo",
+        "anio": 2023,
+        "rol": "Senior Security Consultant (CISO Office)",
+        "tecnologias": [
+          "ISO 27001",
+          "Gobierno de seguridad",
+          "NIS2"
+        ]
+      },
+      {
+        "nombre": "Implantación de gestión de calidad",
+        "cliente_sector": "Industria y Automoción",
+        "anio": 2020,
+        "rol": "Senior Security Consultant (CISO Office)",
+        "tecnologias": [
+          "Concienciación",
+          "DORA",
+          "NIS2"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "C2"
+      }
+    ],
+    "resumen": "Lead Security Consultant (CISO Office) con 10 años de experiencia en el sector industria y automoción. Especializado en Estrategia de ciberseguridad, Gestión de riesgos, Gobierno de seguridad. Basado en Madrid (España). Metodologías: Scrum, PMBOK, PRINCE2."
+  },
+  {
+    "_por_que_en_muestra": "Brief ciberseguridad: NO pasa, Asignado aunque sea Senior+",
+    "employee_id": "NTT0046746",
+    "nombre": "Anastasio",
+    "apellidos": "Arnal Narváez",
+    "nombre_completo": "Anastasio Arnal Narváez",
+    "email": "anastasio.arnal@nttdata.com",
+    "pais": "España",
+    "ciudad": "Vigo",
+    "area": "Ciberseguridad",
+    "rol": "DevSecOps Engineer",
+    "nivel_seniority": "Senior",
+    "puesto_actual": "Senior DevSecOps Engineer",
+    "anios_experiencia": 9,
+    "anios_en_ntt": 4.5,
+    "fecha_incorporacion": "2022-06-02",
+    "sector_principal": "Seguros",
+    "disponibilidad": "Asignado",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "CI/CD",
+        "nivel": 5,
+        "anios": 8.5
+      },
+      {
+        "skill": "SAST/DAST",
+        "nivel": 5,
+        "anios": 7.5
+      },
+      {
+        "skill": "Seguridad en contenedores",
+        "nivel": 3,
+        "anios": 5.5
+      },
+      {
+        "skill": "Git",
+        "nivel": 5,
+        "anios": 9.0
+      },
+      {
+        "skill": "Vault",
+        "nivel": 4,
+        "anios": 5.5
+      },
+      {
+        "skill": "SonarQube",
+        "nivel": 4,
+        "anios": 5.0
+      },
+      {
+        "skill": "Snyk",
+        "nivel": 3,
+        "anios": 9.5
+      },
+      {
+        "skill": "Trivy",
+        "nivel": 4,
+        "anios": 1.0
+      },
+      {
+        "skill": "Kubernetes",
+        "nivel": 4,
+        "anios": 6.0
+      }
+    ],
+    "skills_texto": "CI/CD, SAST/DAST, Seguridad en contenedores, Git, Vault, SonarQube, Snyk, Trivy, Kubernetes",
+    "metodologias": [
+      "Lean",
+      "ITIL",
+      "Scrum"
+    ],
+    "habilidades_blandas": [
+      "Gestión del tiempo",
+      "Gestión de conflictos",
+      "Resolución de problemas"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería de Telecomunicaciones",
+        "institucion": "UNED",
+        "anio_inicio": 2010,
+        "anio_fin": 2014
+      },
+      {
+        "nivel": "Máster",
+        "titulo": "Máster en Seguridad de la Información",
+        "institucion": "Universidad de Sevilla",
+        "anio_inicio": 2014,
+        "anio_fin": 2016
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "Certified Kubernetes Security Specialist (CKS)",
+        "anio": 2019
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Senior DevSecOps Engineer",
+        "inicio": "2022-06-02",
+        "fin": "Actual",
+        "ubicacion": "Vigo",
+        "tecnologias": [
+          "SAST/DAST",
+          "Trivy",
+          "SonarQube",
+          "Seguridad en contenedores"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "Sopra Steria",
+        "puesto": "DevSecOps Engineer",
+        "inicio": "2020-08-09",
+        "fin": "2022-06-02",
+        "ubicacion": "Vigo",
+        "tecnologias": [
+          "Trivy",
+          "Vault",
+          "Seguridad en contenedores",
+          "SAST/DAST"
+        ],
+        "es_ntt": false
+      },
+      {
+        "empresa": "Sener",
+        "puesto": "DevSecOps Engineer",
+        "inicio": "2016-12-31",
+        "fin": "2020-08-09",
+        "ubicacion": "Vigo",
+        "tecnologias": [
+          "SonarQube",
+          "Kubernetes"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Implantación de gestión de siniestros",
+        "cliente_sector": "Seguros",
+        "anio": 2025,
+        "rol": "Senior DevSecOps Engineer",
+        "tecnologias": [
+          "Snyk",
+          "Trivy",
+          "CI/CD",
+          "SonarQube"
+        ]
+      },
+      {
+        "nombre": "Automatización de suscripción de pólizas",
+        "cliente_sector": "Seguros",
+        "anio": 2020,
+        "rol": "DevSecOps Engineer",
+        "tecnologias": [
+          "SAST/DAST",
+          "Kubernetes",
+          "Seguridad en contenedores",
+          "Trivy"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "C2"
+      }
+    ],
+    "resumen": "Senior DevSecOps Engineer con 9 años de experiencia en el sector seguros. Especializado en CI/CD, SAST/DAST, Seguridad en contenedores. Basado en Vigo (España). Metodologías: Lean, ITIL, Scrum."
+  },
+  {
+    "_por_que_en_muestra": "Brief core banking cloud: perfil cloud con proyectos de banca, disponible",
+    "employee_id": "NTT0068150",
+    "nombre": "Gabino",
+    "apellidos": "Cabán Meraz",
+    "nombre_completo": "Gabino Cabán Meraz",
+    "email": "gabino.caban@nttdata.com",
+    "pais": "México",
+    "ciudad": "Ciudad de México",
+    "area": "Cloud & Infraestructura",
+    "rol": "Cloud Engineer (Azure)",
+    "nivel_seniority": "Junior",
+    "puesto_actual": "Junior Cloud Engineer (Azure)",
+    "anios_experiencia": 1,
+    "anios_en_ntt": 1.6,
+    "fecha_incorporacion": "2025-04-23",
+    "sector_principal": "Banca y Finanzas",
+    "disponibilidad": "Roll-off próximo (<3 meses)",
+    "modalidad_trabajo": "Presencial",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "Azure",
+        "nivel": 2,
+        "anios": 1.5
+      },
+      {
+        "skill": "Terraform",
+        "nivel": 2,
+        "anios": 1.0
+      },
+      {
+        "skill": "Linux",
+        "nivel": 2,
+        "anios": 0.5
+      },
+      {
+        "skill": "PowerShell",
+        "nivel": 4,
+        "anios": 0.5
+      },
+      {
+        "skill": "Azure DevOps",
+        "nivel": 2,
+        "anios": 0.5
+      },
+      {
+        "skill": "AKS",
+        "nivel": 3,
+        "anios": 1.5
+      },
+      {
+        "skill": "Bicep",
+        "nivel": 2,
+        "anios": 1.0
+      }
+    ],
+    "skills_texto": "Azure, Terraform, Linux, PowerShell, Azure DevOps, AKS, Bicep",
+    "metodologias": [
+      "Lean",
+      "Extreme Programming",
+      "Kanban"
+    ],
+    "habilidades_blandas": [
+      "Negociación",
+      "Adaptabilidad"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería Informática",
+        "institucion": "Universidad Panamericana",
+        "anio_inicio": 2021,
+        "anio_fin": 2025
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "Scrum Fundamentals (SFPC)",
+        "anio": 2026
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Junior Cloud Engineer (Azure)",
+        "inicio": "2025-04-23",
+        "fin": "Actual",
+        "ubicacion": "Ciudad de México",
+        "tecnologias": [
+          "Bicep",
+          "Azure",
+          "Azure DevOps",
+          "Terraform"
+        ],
+        "es_ntt": true
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Desarrollo de la plataforma de prevención de fraude",
+        "cliente_sector": "Banca y Finanzas",
+        "anio": 2025,
+        "rol": "Trainee Cloud Engineer (Azure)",
+        "tecnologias": [
+          "Bicep",
+          "AKS"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "C1"
+      }
+    ],
+    "resumen": "Junior Cloud Engineer (Azure) con 1 años de experiencia en el sector banca y finanzas. Especializado en Azure, Terraform, Linux. Basado en Ciudad de México (México). Metodologías: Lean, Extreme Programming, Kanban."
+  },
+  {
+    "_por_que_en_muestra": "Brief core banking cloud: perfil cloud con proyectos de banca, disponible",
+    "employee_id": "NTT0178741",
+    "nombre": "Lázaro",
+    "apellidos": "Isern Borrás",
+    "nombre_completo": "Lázaro Isern Borrás",
+    "email": "lazaro.isern@nttdata.com",
+    "pais": "España",
+    "ciudad": "Madrid",
+    "area": "Cloud & Infraestructura",
+    "rol": "DevOps Engineer",
+    "nivel_seniority": "Mid",
+    "puesto_actual": "DevOps Engineer",
+    "anios_experiencia": 5,
+    "anios_en_ntt": 5.3,
+    "fecha_incorporacion": "2021-07-21",
+    "sector_principal": "Banca y Finanzas",
+    "disponibilidad": "Roll-off próximo (<3 meses)",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "CI/CD",
+        "nivel": 3,
+        "anios": 2.5
+      },
+      {
+        "skill": "Docker",
+        "nivel": 4,
+        "anios": 0.5
+      },
+      {
+        "skill": "Kubernetes",
+        "nivel": 5,
+        "anios": 2.0
+      },
+      {
+        "skill": "Git",
+        "nivel": 2,
+        "anios": 3.5
+      },
+      {
+        "skill": "Jenkins",
+        "nivel": 3,
+        "anios": 4.0
+      },
+      {
+        "skill": "SonarQube",
+        "nivel": 2,
+        "anios": 5.0
+      }
+    ],
+    "skills_texto": "CI/CD, Docker, Kubernetes, Git, Jenkins, SonarQube",
+    "metodologias": [
+      "Extreme Programming"
+    ],
+    "habilidades_blandas": [
+      "Autonomía",
+      "Trabajo en equipo",
+      "Comunicación efectiva"
+    ],
+    "estudios": [
+      {
+        "nivel": "Formación Profesional Superior",
+        "titulo": "CFGS Sistemas Microinformáticos y Redes",
+        "institucion": "IES Tecnológico (Madrid)",
+        "anio_inicio": 2019,
+        "anio_fin": 2021
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "Certified Kubernetes Administrator (CKA)",
+        "anio": 2026
+      },
+      {
+        "nombre": "HashiCorp Certified: Terraform Associate",
+        "anio": 2023
+      },
+      {
+        "nombre": "AWS Certified Cloud Practitioner",
+        "anio": 2024
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "DevOps Engineer",
+        "inicio": "2021-07-21",
+        "fin": "Actual",
+        "ubicacion": "Madrid",
+        "tecnologias": [
+          "Jenkins",
+          "Docker",
+          "SonarQube",
+          "Kubernetes"
+        ],
+        "es_ntt": true
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Modernización de scoring de riesgo",
+        "cliente_sector": "Banca y Finanzas",
+        "anio": 2025,
+        "rol": "Junior DevOps Engineer",
+        "tecnologias": [
+          "Jenkins",
+          "SonarQube"
+        ]
+      },
+      {
+        "nombre": "Rediseño de la experiencia de core bancario",
+        "cliente_sector": "Banca y Finanzas",
+        "anio": 2024,
+        "rol": "Junior DevOps Engineer",
+        "tecnologias": [
+          "CI/CD",
+          "Docker",
+          "Jenkins",
+          "SonarQube",
+          "Kubernetes"
+        ]
+      },
+      {
+        "nombre": "Rediseño de la experiencia de onboarding digital de clientes",
+        "cliente_sector": "Banca y Finanzas",
+        "anio": 2021,
+        "rol": "DevOps Engineer",
+        "tecnologias": [
+          "CI/CD",
+          "Docker"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "C2"
+      }
+    ],
+    "resumen": "DevOps Engineer con 5 años de experiencia en el sector banca y finanzas. Especializado en CI/CD, Docker, Kubernetes. Basado en Madrid (España). Metodologías: Extreme Programming."
+  },
+  {
+    "_por_que_en_muestra": "Brief core banking cloud: perfil cloud con proyectos de banca, disponible",
+    "employee_id": "NTT0110591",
+    "nombre": "Luigi",
+    "apellidos": "Fernandes",
+    "nombre_completo": "Luigi Fernandes",
+    "email": "luigi.fernandes@nttdata.com",
+    "pais": "Brasil",
+    "ciudad": "São Paulo",
+    "area": "Cloud & Infraestructura",
+    "rol": "Platform Engineer",
+    "nivel_seniority": "Lead",
+    "puesto_actual": "Lead Platform Engineer",
+    "anios_experiencia": 13,
+    "anios_en_ntt": 7.9,
+    "fecha_incorporacion": "2019-01-08",
+    "sector_principal": "Banca y Finanzas",
+    "disponibilidad": "Roll-off próximo (<3 meses)",
+    "modalidad_trabajo": "Presencial",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "Kubernetes",
+        "nivel": 5,
+        "anios": 11.0
+      },
+      {
+        "skill": "Terraform",
+        "nivel": 4,
+        "anios": 12.0
+      },
+      {
+        "skill": "Internal Developer Platforms",
+        "nivel": 5,
+        "anios": 6.0
+      },
+      {
+        "skill": "GitOps",
+        "nivel": 5,
+        "anios": 7.5
+      },
+      {
+        "skill": "ArgoCD",
+        "nivel": 4,
+        "anios": 0.5
+      },
+      {
+        "skill": "Backstage",
+        "nivel": 3,
+        "anios": 6.5
+      },
+      {
+        "skill": "Helm",
+        "nivel": 3,
+        "anios": 8.0
+      },
+      {
+        "skill": "Crossplane",
+        "nivel": 2,
+        "anios": 7.0
+      },
+      {
+        "skill": "Go",
+        "nivel": 4,
+        "anios": 7.0
+      }
+    ],
+    "skills_texto": "Kubernetes, Terraform, Internal Developer Platforms, GitOps, ArgoCD, Backstage, Helm, Crossplane, Go",
+    "metodologias": [
+      "SAFe",
+      "Extreme Programming"
+    ],
+    "habilidades_blandas": [
+      "Adaptabilidad",
+      "Pensamiento crítico"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería Informática",
+        "institucion": "UFRGS",
+        "anio_inicio": 2009,
+        "anio_fin": 2013
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "Certified Kubernetes Administrator (CKA)",
+        "anio": 2023
+      },
+      {
+        "nombre": "Microsoft AZ-900 Azure Fundamentals",
+        "anio": 2022
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Lead Platform Engineer",
+        "inicio": "2022-10-28",
+        "fin": "Actual",
+        "ubicacion": "São Paulo",
+        "tecnologias": [
+          "GitOps",
+          "Terraform",
+          "ArgoCD",
+          "Backstage"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Senior Platform Engineer",
+        "inicio": "2019-01-08",
+        "fin": "2022-10-28",
+        "ubicacion": "São Paulo",
+        "tecnologias": [
+          "Kubernetes",
+          "Internal Developer Platforms",
+          "Helm"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "TCS",
+        "puesto": "Cloud Engineer (GCP)",
+        "inicio": "2016-01-09",
+        "fin": "2019-01-08",
+        "ubicacion": "São Paulo",
+        "tecnologias": [
+          "ArgoCD",
+          "Terraform"
+        ],
+        "es_ntt": false
+      },
+      {
+        "empresa": "Ayesa",
+        "puesto": "Junior Platform Engineer",
+        "inicio": "2013-03-20",
+        "fin": "2016-01-09",
+        "ubicacion": "São Paulo",
+        "tecnologias": [
+          "Crossplane",
+          "ArgoCD"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Implantación de prevención de fraude",
+        "cliente_sector": "Banca y Finanzas",
+        "anio": 2025,
+        "rol": "Lead Platform Engineer",
+        "tecnologias": [
+          "ArgoCD",
+          "Crossplane",
+          "GitOps"
+        ]
+      },
+      {
+        "nombre": "Migración a la nube de portal de mediadores",
+        "cliente_sector": "Seguros",
+        "anio": 2024,
+        "rol": "Lead Platform Engineer",
+        "tecnologias": [
+          "Terraform",
+          "Go"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Portugués",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "C2"
+      }
+    ],
+    "resumen": "Lead Platform Engineer con 13 años de experiencia en el sector banca y finanzas. Especializado en Kubernetes, Terraform, Internal Developer Platforms. Basado en São Paulo (Brasil). Metodologías: SAFe, Extreme Programming."
+  },
+  {
+    "_por_que_en_muestra": "Brief core banking cloud: perfil cloud con proyectos de banca, disponible",
+    "employee_id": "NTT0012115",
+    "nombre": "Pedro Lucas",
+    "apellidos": "Melo",
+    "nombre_completo": "Pedro Lucas Melo",
+    "email": "pedro.melo@nttdata.com",
+    "pais": "Brasil",
+    "ciudad": "São Paulo",
+    "area": "Cloud & Infraestructura",
+    "rol": "DevOps Engineer",
+    "nivel_seniority": "Mid",
+    "puesto_actual": "DevOps Engineer",
+    "anios_experiencia": 3,
+    "anios_en_ntt": 4.0,
+    "fecha_incorporacion": "2022-11-26",
+    "sector_principal": "Banca y Finanzas",
+    "disponibilidad": "En banca",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "CI/CD",
+        "nivel": 2,
+        "anios": 3.5
+      },
+      {
+        "skill": "Docker",
+        "nivel": 5,
+        "anios": 2.5
+      },
+      {
+        "skill": "Kubernetes",
+        "nivel": 3,
+        "anios": 1.5
+      },
+      {
+        "skill": "Git",
+        "nivel": 2,
+        "anios": 0.5
+      },
+      {
+        "skill": "GitHub Actions",
+        "nivel": 4,
+        "anios": 3.0
+      },
+      {
+        "skill": "ArgoCD",
+        "nivel": 3,
+        "anios": 2.0
+      }
+    ],
+    "skills_texto": "CI/CD, Docker, Kubernetes, Git, GitHub Actions, ArgoCD",
+    "metodologias": [
+      "Lean",
+      "ITIL"
+    ],
+    "habilidades_blandas": [
+      "Trabajo en equipo",
+      "Negociación"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería Informática",
+        "institucion": "UFRJ",
+        "anio_inicio": 2018,
+        "anio_fin": 2022
+      },
+      {
+        "nivel": "Máster",
+        "titulo": "Máster en Ingeniería Informática",
+        "institucion": "PUC-Rio",
+        "anio_inicio": 2022,
+        "anio_fin": 2023
+      }
+    ],
+    "certificaciones": [],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "DevOps Engineer",
+        "inicio": "2022-11-26",
+        "fin": "Actual",
+        "ubicacion": "São Paulo",
+        "tecnologias": [
+          "Docker",
+          "GitHub Actions",
+          "ArgoCD",
+          "CI/CD"
+        ],
+        "es_ntt": true
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Analítica avanzada para prevención de fraude",
+        "cliente_sector": "Banca y Finanzas",
+        "anio": 2026,
+        "rol": "DevOps Engineer",
+        "tecnologias": [
+          "Docker",
+          "CI/CD",
+          "GitHub Actions",
+          "Git",
+          "ArgoCD"
+        ]
+      },
+      {
+        "nombre": "Evolución y mantenimiento de portal de mediadores",
+        "cliente_sector": "Seguros",
+        "anio": 2025,
+        "rol": "Junior DevOps Engineer",
+        "tecnologias": [
+          "Docker",
+          "Git",
+          "ArgoCD",
+          "Kubernetes",
+          "GitHub Actions"
+        ]
+      },
+      {
+        "nombre": "Rediseño de la experiencia de gestión de red 5G",
+        "cliente_sector": "Telecomunicaciones y Media",
+        "anio": 2022,
+        "rol": "Junior DevOps Engineer",
+        "tecnologias": [
+          "GitHub Actions",
+          "CI/CD",
+          "Kubernetes",
+          "Docker"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Portugués",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "C1"
+      }
+    ],
+    "resumen": "DevOps Engineer con 3 años de experiencia en el sector banca y finanzas. Especializado en CI/CD, Docker, Kubernetes. Basado en São Paulo (Brasil). Metodologías: Lean, ITIL."
+  },
+  {
+    "_por_que_en_muestra": "Brief core banking cloud: Functional Consultant (Banca) disponible",
+    "employee_id": "NTT0180786",
+    "nombre": "Begoña",
+    "apellidos": "Acevedo Gimenez",
+    "nombre_completo": "Begoña Acevedo Gimenez",
+    "email": "begona.acevedo@nttdata.com",
+    "pais": "España",
+    "ciudad": "Madrid",
+    "area": "Consultoría de Negocio",
+    "rol": "Functional Consultant (Banca)",
+    "nivel_seniority": "Mid",
+    "puesto_actual": "Functional Consultant (Banca)",
+    "anios_experiencia": 3,
+    "anios_en_ntt": 0.3,
+    "fecha_incorporacion": "2026-08-17",
+    "sector_principal": "Banca y Finanzas",
+    "disponibilidad": "En banca",
+    "modalidad_trabajo": "Presencial",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "Banca",
+        "nivel": 3,
+        "anios": 1.5
+      },
+      {
+        "skill": "Pagos",
+        "nivel": 3,
+        "anios": 1.5
+      },
+      {
+        "skill": "Análisis funcional",
+        "nivel": 3,
+        "anios": 2.0
+      },
+      {
+        "skill": "Normativa financiera",
+        "nivel": 3,
+        "anios": 3.5
+      },
+      {
+        "skill": "Prevención de blanqueo (AML)",
+        "nivel": 3,
+        "anios": 1.5
+      },
+      {
+        "skill": "Open Banking",
+        "nivel": 3,
+        "anios": 3.0
+      },
+      {
+        "skill": "PSD2",
+        "nivel": 3,
+        "anios": 1.0
+      },
+      {
+        "skill": "SEPA",
+        "nivel": 3,
+        "anios": 3.5
+      },
+      {
+        "skill": "Basilea III",
+        "nivel": 3,
+        "anios": 2.5
+      }
+    ],
+    "skills_texto": "Banca, Pagos, Análisis funcional, Normativa financiera, Prevención de blanqueo (AML), Open Banking, PSD2, SEPA, Basilea III",
+    "metodologias": [
+      "SAFe"
+    ],
+    "habilidades_blandas": [
+      "Autonomía",
+      "Mentoring",
+      "Resolución de problemas"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Finanzas y Contabilidad",
+        "institucion": "Universidad de Zaragoza",
+        "anio_inicio": 2019,
+        "anio_fin": 2023
+      }
+    ],
+    "certificaciones": [],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Functional Consultant (Banca)",
+        "inicio": "2026-08-17",
+        "fin": "Actual",
+        "ubicacion": "Madrid",
+        "tecnologias": [
+          "Open Banking",
+          "Banca",
+          "Pagos",
+          "PSD2"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "Inditex Tech",
+        "puesto": "Functional Consultant (Banca)",
+        "inicio": "2024-10-27",
+        "fin": "2026-08-17",
+        "ubicacion": "Pamplona",
+        "tecnologias": [
+          "SEPA",
+          "Pagos",
+          "Banca",
+          "Basilea III"
+        ],
+        "es_ntt": false
+      },
+      {
+        "empresa": "Indra",
+        "puesto": "Junior Functional Consultant (Banca)",
+        "inicio": "2023-05-11",
+        "fin": "2024-10-27",
+        "ubicacion": "Madrid",
+        "tecnologias": [
+          "Open Banking",
+          "Banca"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Evolución y mantenimiento de suscripción de pólizas",
+        "cliente_sector": "Seguros",
+        "anio": 2025,
+        "rol": "Junior Functional Consultant (Banca)",
+        "tecnologias": [
+          "Normativa financiera",
+          "Basilea III",
+          "Prevención de blanqueo (AML)",
+          "PSD2"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "C2"
+      }
+    ],
+    "resumen": "Functional Consultant (Banca) con 3 años de experiencia en el sector banca y finanzas. Especializado en Banca, Pagos, Análisis funcional. Basado en Madrid (España). Metodologías: SAFe."
+  },
+  {
+    "_por_que_en_muestra": "Brief core banking cloud: Functional Consultant (Banca) disponible",
+    "employee_id": "NTT0113498",
+    "nombre": "Catalina",
+    "apellidos": "Zapata Cedillo",
+    "nombre_completo": "Catalina Zapata Cedillo",
+    "email": "catalina.zapata@nttdata.com",
+    "pais": "México",
+    "ciudad": "Monterrey",
+    "area": "Consultoría de Negocio",
+    "rol": "Functional Consultant (Banca)",
+    "nivel_seniority": "Principal",
+    "puesto_actual": "Principal Functional Consultant (Banca)",
+    "anios_experiencia": 18,
+    "anios_en_ntt": 1.3,
+    "fecha_incorporacion": "2025-07-24",
+    "sector_principal": "Banca y Finanzas",
+    "disponibilidad": "Roll-off próximo (<3 meses)",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "Banca",
+        "nivel": 3,
+        "anios": 11.5
+      },
+      {
+        "skill": "Pagos",
+        "nivel": 3,
+        "anios": 11.0
+      },
+      {
+        "skill": "Análisis funcional",
+        "nivel": 5,
+        "anios": 14.5
+      },
+      {
+        "skill": "Normativa financiera",
+        "nivel": 4,
+        "anios": 5.5
+      },
+      {
+        "skill": "Prevención de blanqueo (AML)",
+        "nivel": 3,
+        "anios": 10.5
+      },
+      {
+        "skill": "SEPA",
+        "nivel": 5,
+        "anios": 10.5
+      },
+      {
+        "skill": "PSD2",
+        "nivel": 4,
+        "anios": 15.5
+      },
+      {
+        "skill": "Open Banking",
+        "nivel": 4,
+        "anios": 9.0
+      },
+      {
+        "skill": "Basilea III",
+        "nivel": 4,
+        "anios": 7.5
+      },
+      {
+        "skill": "Core bancario",
+        "nivel": 5,
+        "anios": 11.5
+      }
+    ],
+    "skills_texto": "Banca, Pagos, Análisis funcional, Normativa financiera, Prevención de blanqueo (AML), SEPA, PSD2, Open Banking, Basilea III, Core bancario",
+    "metodologias": [
+      "PRINCE2",
+      "Scrum"
+    ],
+    "habilidades_blandas": [
+      "Resolución de problemas",
+      "Presentaciones a cliente",
+      "Pensamiento crítico",
+      "Gestión del tiempo"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería de Organización Industrial",
+        "institucion": "Tecnológico de Monterrey",
+        "anio_inicio": 2004,
+        "anio_fin": 2008
+      },
+      {
+        "nivel": "Máster",
+        "titulo": "Máster en Transformación Digital",
+        "institucion": "Tecnológico de Monterrey",
+        "anio_inicio": 2011,
+        "anio_fin": 2012
+      }
+    ],
+    "certificaciones": [],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Principal Functional Consultant (Banca)",
+        "inicio": "2025-07-24",
+        "fin": "Actual",
+        "ubicacion": "Monterrey",
+        "tecnologias": [
+          "Banca",
+          "Core bancario",
+          "Análisis funcional",
+          "PSD2"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "Capgemini",
+        "puesto": "Principal Process Consultant (BPM)",
+        "inicio": "2022-07-23",
+        "fin": "2025-07-24",
+        "ubicacion": "Monterrey",
+        "tecnologias": [
+          "PSD2",
+          "Banca",
+          "Pagos",
+          "Core bancario"
+        ],
+        "es_ntt": false
+      },
+      {
+        "empresa": "Telefónica Tech",
+        "puesto": "Lead Functional Consultant (Banca)",
+        "inicio": "2020-02-20",
+        "fin": "2022-07-23",
+        "ubicacion": "Monterrey",
+        "tecnologias": [
+          "Análisis funcional",
+          "Basilea III",
+          "Open Banking"
+        ],
+        "es_ntt": false
+      },
+      {
+        "empresa": "GFT Technologies",
+        "puesto": "Lead Functional Consultant (Banca)",
+        "inicio": "2015-08-03",
+        "fin": "2020-02-20",
+        "ubicacion": "Querétaro",
+        "tecnologias": [
+          "Normativa financiera",
+          "SEPA"
+        ],
+        "es_ntt": false
+      },
+      {
+        "empresa": "Vodafone",
+        "puesto": "Senior Management Consultant",
+        "inicio": "2012-06-01",
+        "fin": "2015-08-03",
+        "ubicacion": "Monterrey",
+        "tecnologias": [
+          "SEPA",
+          "PSD2"
+        ],
+        "es_ntt": false
+      },
+      {
+        "empresa": "GFT Technologies",
+        "puesto": "Functional Consultant (Banca)",
+        "inicio": "2008-09-01",
+        "fin": "2012-06-01",
+        "ubicacion": "Monterrey",
+        "tecnologias": [
+          "SEPA",
+          "Banca"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Analítica avanzada para onboarding digital de clientes",
+        "cliente_sector": "Banca y Finanzas",
+        "anio": 2025,
+        "rol": "Principal Functional Consultant (Banca)",
+        "tecnologias": [
+          "Core bancario",
+          "SEPA",
+          "Análisis funcional"
+        ]
+      },
+      {
+        "nombre": "Desarrollo de la plataforma de prevención de fraude",
+        "cliente_sector": "Banca y Finanzas",
+        "anio": 2022,
+        "rol": "Principal Functional Consultant (Banca)",
+        "tecnologias": [
+          "Prevención de blanqueo (AML)",
+          "Basilea III",
+          "Pagos",
+          "Core bancario"
+        ]
+      },
+      {
+        "nombre": "Evolución y mantenimiento de core bancario",
+        "cliente_sector": "Banca y Finanzas",
+        "anio": 2018,
+        "rol": "Principal Functional Consultant (Banca)",
+        "tecnologias": [
+          "Pagos",
+          "Normativa financiera",
+          "Open Banking",
+          "Análisis funcional"
+        ]
+      },
+      {
+        "nombre": "Evolución y mantenimiento de banca móvil",
+        "cliente_sector": "Banca y Finanzas",
+        "anio": 2018,
+        "rol": "Principal Functional Consultant (Banca)",
+        "tecnologias": [
+          "Basilea III",
+          "PSD2",
+          "Normativa financiera",
+          "Análisis funcional"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "C1"
+      },
+      {
+        "idioma": "Portugués",
+        "nivel": "A2"
+      }
+    ],
+    "resumen": "Principal Functional Consultant (Banca) con 18 años de experiencia en el sector banca y finanzas. Especializado en Banca, Pagos, Análisis funcional. Basado en Monterrey (México). Metodologías: PRINCE2, Scrum."
+  },
+  {
+    "_por_que_en_muestra": "TALENTO OCULTO: fuera de Cloud/banca por área y sector principal, pero con skills cloud y proyectos de banca",
+    "employee_id": "NTT0011735",
+    "nombre": "Krystyna",
+    "apellidos": "Kurcz",
+    "nombre_completo": "Krystyna Kurcz",
+    "email": "krystyna.kurcz@nttdata.com",
+    "pais": "Polonia",
+    "ciudad": "Varsovia",
+    "area": "Software Engineering",
+    "rol": "Backend Developer .NET",
+    "nivel_seniority": "Mid",
+    "puesto_actual": "Backend Developer .NET",
+    "anios_experiencia": 3,
+    "anios_en_ntt": 1.1,
+    "fecha_incorporacion": "2025-10-21",
+    "sector_principal": "Seguros",
+    "disponibilidad": "En banca",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "C#",
+        "nivel": 3,
+        "anios": 1.0
+      },
+      {
+        "skill": ".NET",
+        "nivel": 3,
+        "anios": 1.0
+      },
+      {
+        "skill": "SQL Server",
+        "nivel": 4,
+        "anios": 2.0
+      },
+      {
+        "skill": "REST APIs",
+        "nivel": 4,
+        "anios": 2.0
+      },
+      {
+        "skill": "Azure",
+        "nivel": 2,
+        "anios": 1.5
+      },
+      {
+        "skill": "Blazor",
+        "nivel": 4,
+        "anios": 1.0
+      },
+      {
+        "skill": "Docker",
+        "nivel": 4,
+        "anios": 2.5
+      },
+      {
+        "skill": "xUnit",
+        "nivel": 4,
+        "anios": 0.5
+      }
+    ],
+    "skills_texto": "C#, .NET, SQL Server, REST APIs, Azure, Blazor, Docker, xUnit",
+    "metodologias": [
+      "Scrum",
+      "ITIL"
+    ],
+    "habilidades_blandas": [
+      "Adaptabilidad",
+      "Comunicación efectiva"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería Informática",
+        "institucion": "Politechnika Warszawska",
+        "anio_inicio": 2019,
+        "anio_fin": 2023
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "Microsoft AZ-900 Azure Fundamentals",
+        "anio": 2026
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Backend Developer .NET",
+        "inicio": "2025-10-21",
+        "fin": "Actual",
+        "ubicacion": "Varsovia",
+        "tecnologias": [
+          "Docker",
+          "C#",
+          "SQL Server",
+          "xUnit"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "Tecnocom",
+        "puesto": "Junior Backend Developer .NET",
+        "inicio": "2023-10-21",
+        "fin": "2025-10-21",
+        "ubicacion": "Cracovia",
+        "tecnologias": [
+          "C#",
+          "SQL Server",
+          "REST APIs",
+          "Blazor"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Implantación de plataforma de contenidos",
+        "cliente_sector": "Telecomunicaciones y Media",
+        "anio": 2024,
+        "rol": "Junior Backend Developer .NET",
+        "tecnologias": [
+          "Azure",
+          "REST APIs"
+        ]
+      },
+      {
+        "nombre": "Migración a la nube de core bancario",
+        "cliente_sector": "Banca y Finanzas",
+        "anio": 2023,
+        "rol": "Junior Backend Developer .NET",
+        "tecnologias": [
+          "REST APIs",
+          "SQL Server",
+          "C#",
+          "Blazor",
+          ".NET"
+        ]
+      },
+      {
+        "nombre": "Rediseño de la experiencia de pagos instantáneos",
+        "cliente_sector": "Banca y Finanzas",
+        "anio": 2023,
+        "rol": "Junior Backend Developer .NET",
+        "tecnologias": [
+          "Blazor",
+          "Docker",
+          "Azure"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Polaco",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "B1"
+      }
+    ],
+    "resumen": "Backend Developer .NET con 3 años de experiencia en el sector seguros. Especializado en C#, .NET, SQL Server. Basado en Varsovia (Polonia). Metodologías: Scrum, ITIL."
+  },
+  {
+    "_por_que_en_muestra": "TALENTO OCULTO: fuera de Cloud/banca por área y sector principal, pero con skills cloud y proyectos de banca",
+    "employee_id": "NTT0067691",
+    "nombre": "Leonardo",
+    "apellidos": "Llamas Leiva",
+    "nombre_completo": "Leonardo Llamas Leiva",
+    "email": "leonardo.llamas@nttdata.com",
+    "pais": "España",
+    "ciudad": "Valencia",
+    "area": "Ciberseguridad",
+    "rol": "DevSecOps Engineer",
+    "nivel_seniority": "Mid",
+    "puesto_actual": "DevSecOps Engineer",
+    "anios_experiencia": 4,
+    "anios_en_ntt": 4.3,
+    "fecha_incorporacion": "2022-08-13",
+    "sector_principal": "Industria y Automoción",
+    "disponibilidad": "En banca",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "CI/CD",
+        "nivel": 4,
+        "anios": 2.5
+      },
+      {
+        "skill": "SAST/DAST",
+        "nivel": 3,
+        "anios": 2.0
+      },
+      {
+        "skill": "Seguridad en contenedores",
+        "nivel": 3,
+        "anios": 2.5
+      },
+      {
+        "skill": "Git",
+        "nivel": 4,
+        "anios": 1.5
+      },
+      {
+        "skill": "Terraform",
+        "nivel": 2,
+        "anios": 0.5
+      },
+      {
+        "skill": "Vault",
+        "nivel": 2,
+        "anios": 4.0
+      },
+      {
+        "skill": "Kubernetes",
+        "nivel": 3,
+        "anios": 2.0
+      },
+      {
+        "skill": "Snyk",
+        "nivel": 4,
+        "anios": 2.0
+      }
+    ],
+    "skills_texto": "CI/CD, SAST/DAST, Seguridad en contenedores, Git, Terraform, Vault, Kubernetes, Snyk",
+    "metodologias": [
+      "PRINCE2"
+    ],
+    "habilidades_blandas": [
+      "Orientación a cliente",
+      "Trabajo en equipo"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería de Telecomunicaciones",
+        "institucion": "Universidad Pontificia Comillas",
+        "anio_inicio": 2018,
+        "anio_fin": 2022
+      },
+      {
+        "nivel": "Máster",
+        "titulo": "Máster en Hacking Ético",
+        "institucion": "EAE Business School",
+        "anio_inicio": 2022,
+        "anio_fin": 2024
+      }
+    ],
+    "certificaciones": [],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "DevSecOps Engineer",
+        "inicio": "2022-08-13",
+        "fin": "Actual",
+        "ubicacion": "Valencia",
+        "tecnologias": [
+          "Vault",
+          "Snyk",
+          "Seguridad en contenedores",
+          "SAST/DAST"
+        ],
+        "es_ntt": true
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Analítica avanzada para mantenimiento predictivo",
+        "cliente_sector": "Industria y Automoción",
+        "anio": 2026,
+        "rol": "Trainee DevSecOps Engineer",
+        "tecnologias": [
+          "Snyk",
+          "Seguridad en contenedores",
+          "Kubernetes",
+          "Terraform"
+        ]
+      },
+      {
+        "nombre": "Automatización de onboarding digital de clientes",
+        "cliente_sector": "Banca y Finanzas",
+        "anio": 2022,
+        "rol": "DevSecOps Engineer",
+        "tecnologias": [
+          "Vault",
+          "Seguridad en contenedores",
+          "SAST/DAST",
+          "Kubernetes",
+          "Terraform"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Valenciano",
+        "nivel": "C1"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "C1"
+      }
+    ],
+    "resumen": "DevSecOps Engineer con 4 años de experiencia en el sector industria y automoción. Especializado en CI/CD, SAST/DAST, Seguridad en contenedores. Basado en Valencia (España). Metodologías: PRINCE2."
+  },
+  {
+    "_por_que_en_muestra": "TALENTO OCULTO: fuera de Cloud/banca por área y sector principal, pero con skills cloud y proyectos de banca",
+    "employee_id": "NTT0057857",
+    "nombre": "Emma",
+    "apellidos": "Suarez Romero",
+    "nombre_completo": "Emma Suarez Romero",
+    "email": "emma.suarez2@nttdata.com",
+    "pais": "Argentina",
+    "ciudad": "Buenos Aires",
+    "area": "Software Engineering",
+    "rol": "Backend Developer .NET",
+    "nivel_seniority": "Mid",
+    "puesto_actual": "Backend Developer .NET",
+    "anios_experiencia": 3,
+    "anios_en_ntt": 3.3,
+    "fecha_incorporacion": "2023-07-31",
+    "sector_principal": "Transporte y Logística",
+    "disponibilidad": "En banca",
+    "modalidad_trabajo": "Presencial",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "C#",
+        "nivel": 3,
+        "anios": 2.5
+      },
+      {
+        "skill": ".NET",
+        "nivel": 4,
+        "anios": 1.0
+      },
+      {
+        "skill": "SQL Server",
+        "nivel": 4,
+        "anios": 2.5
+      },
+      {
+        "skill": "REST APIs",
+        "nivel": 3,
+        "anios": 2.0
+      },
+      {
+        "skill": "Azure",
+        "nivel": 2,
+        "anios": 1.5
+      },
+      {
+        "skill": "Entity Framework",
+        "nivel": 2,
+        "anios": 0.5
+      },
+      {
+        "skill": "RabbitMQ",
+        "nivel": 3,
+        "anios": 0.5
+      },
+      {
+        "skill": "Blazor",
+        "nivel": 3,
+        "anios": 1.5
+      },
+      {
+        "skill": "Docker",
+        "nivel": 4,
+        "anios": 1.0
+      },
+      {
+        "skill": "xUnit",
+        "nivel": 3,
+        "anios": 0.5
+      }
+    ],
+    "skills_texto": "C#, .NET, SQL Server, REST APIs, Azure, Entity Framework, RabbitMQ, Blazor, Docker, xUnit",
+    "metodologias": [
+      "Extreme Programming",
+      "SAFe",
+      "Kanban"
+    ],
+    "habilidades_blandas": [
+      "Autonomía",
+      "Adaptabilidad",
+      "Mentoring"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería Electrónica",
+        "institucion": "Universidad Nacional de Córdoba",
+        "anio_inicio": 2017,
+        "anio_fin": 2021
+      },
+      {
+        "nivel": "Máster",
+        "titulo": "Máster en Desarrollo de Software",
+        "institucion": "Universidad de Buenos Aires",
+        "anio_inicio": 2021,
+        "anio_fin": 2023
+      }
+    ],
+    "certificaciones": [],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Backend Developer .NET",
+        "inicio": "2023-07-31",
+        "fin": "Actual",
+        "ubicacion": "Buenos Aires",
+        "tecnologias": [
+          "Azure",
+          ".NET",
+          "RabbitMQ",
+          "SQL Server"
+        ],
+        "es_ntt": true
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Evolución y mantenimiento de trazabilidad de envíos",
+        "cliente_sector": "Transporte y Logística",
+        "anio": 2026,
+        "rol": "Trainee Backend Developer .NET",
+        "tecnologias": [
+          "Azure",
+          "Entity Framework",
+          "Docker"
+        ]
+      },
+      {
+        "nombre": "Automatización de banca móvil",
+        "cliente_sector": "Banca y Finanzas",
+        "anio": 2024,
+        "rol": "Junior Backend Developer .NET",
+        "tecnologias": [
+          ".NET",
+          "REST APIs",
+          "Blazor",
+          "RabbitMQ",
+          "xUnit"
+        ]
+      },
+      {
+        "nombre": "Migración a la nube de gestión de almacenes",
+        "cliente_sector": "Transporte y Logística",
+        "anio": 2024,
+        "rol": "Trainee Backend Developer .NET",
+        "tecnologias": [
+          "Blazor",
+          "Azure",
+          "REST APIs"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "B2"
+      }
+    ],
+    "resumen": "Backend Developer .NET con 3 años de experiencia en el sector transporte y logística. Especializado en C#, .NET, SQL Server. Basado en Buenos Aires (Argentina). Metodologías: Extreme Programming, SAFe, Kanban."
+  },
+  {
+    "_por_que_en_muestra": "TALENTO OCULTO: fuera de Cloud/banca por área y sector principal, pero con skills cloud y proyectos de banca",
+    "employee_id": "NTT0107818",
+    "nombre": "Emiliano",
+    "apellidos": "Agudo Carranza",
+    "nombre_completo": "Emiliano Agudo Carranza",
+    "email": "emiliano.agudo@nttdata.com",
+    "pais": "España",
+    "ciudad": "Barcelona",
+    "area": "Ciberseguridad",
+    "rol": "DevSecOps Engineer",
+    "nivel_seniority": "Lead",
+    "puesto_actual": "Lead DevSecOps Engineer",
+    "anios_experiencia": 14,
+    "anios_en_ntt": 2.7,
+    "fecha_incorporacion": "2024-02-20",
+    "sector_principal": "Transporte y Logística",
+    "disponibilidad": "En banca",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "CI/CD",
+        "nivel": 5,
+        "anios": 9.5
+      },
+      {
+        "skill": "SAST/DAST",
+        "nivel": 5,
+        "anios": 7.0
+      },
+      {
+        "skill": "Seguridad en contenedores",
+        "nivel": 5,
+        "anios": 4.0
+      },
+      {
+        "skill": "Git",
+        "nivel": 5,
+        "anios": 2.5
+      },
+      {
+        "skill": "Kubernetes",
+        "nivel": 4,
+        "anios": 9.0
+      },
+      {
+        "skill": "Snyk",
+        "nivel": 3,
+        "anios": 4.5
+      },
+      {
+        "skill": "Vault",
+        "nivel": 4,
+        "anios": 14.5
+      },
+      {
+        "skill": "Terraform",
+        "nivel": 4,
+        "anios": 4.0
+      },
+      {
+        "skill": "Trivy",
+        "nivel": 4,
+        "anios": 8.5
+      }
+    ],
+    "skills_texto": "CI/CD, SAST/DAST, Seguridad en contenedores, Git, Kubernetes, Snyk, Vault, Terraform, Trivy",
+    "metodologias": [
+      "PRINCE2"
+    ],
+    "habilidades_blandas": [
+      "Trabajo en equipo",
+      "Presentaciones a cliente",
+      "Pensamiento crítico"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Matemáticas",
+        "institucion": "Universidad de Murcia",
+        "anio_inicio": 2007,
+        "anio_fin": 2011
+      },
+      {
+        "nivel": "Máster",
+        "titulo": "Máster en Ciberseguridad",
+        "institucion": "Universitat Pompeu Fabra",
+        "anio_inicio": 2011,
+        "anio_fin": 2012
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "Certified Kubernetes Security Specialist (CKS)",
+        "anio": 2022
+      },
+      {
+        "nombre": "Scrum Fundamentals (SFPC)",
+        "anio": 2015
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Lead DevSecOps Engineer",
+        "inicio": "2024-02-20",
+        "fin": "Actual",
+        "ubicacion": "Barcelona",
+        "tecnologias": [
+          "Vault",
+          "Seguridad en contenedores",
+          "Git",
+          "Terraform"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "Operadora de telecomunicaciones",
+        "puesto": "Lead DevSecOps Engineer",
+        "inicio": "2018-12-04",
+        "fin": "2024-02-20",
+        "ubicacion": "Las Palmas",
+        "tecnologias": [
+          "CI/CD",
+          "Vault",
+          "Kubernetes",
+          "SAST/DAST"
+        ],
+        "es_ntt": false
+      },
+      {
+        "empresa": "GFT Technologies",
+        "puesto": "Senior DevSecOps Engineer",
+        "inicio": "2012-04-05",
+        "fin": "2018-12-04",
+        "ubicacion": "Barcelona",
+        "tecnologias": [
+          "Git",
+          "Kubernetes",
+          "Vault"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Desarrollo de la plataforma de banca móvil",
+        "cliente_sector": "Banca y Finanzas",
+        "anio": 2024,
+        "rol": "Lead DevSecOps Engineer",
+        "tecnologias": [
+          "Kubernetes",
+          "Git",
+          "Vault",
+          "CI/CD"
+        ]
+      },
+      {
+        "nombre": "Modernización de trazabilidad de envíos",
+        "cliente_sector": "Transporte y Logística",
+        "anio": 2020,
+        "rol": "Lead DevSecOps Engineer",
+        "tecnologias": [
+          "Kubernetes",
+          "SAST/DAST",
+          "Terraform",
+          "Seguridad en contenedores",
+          "CI/CD"
+        ]
+      },
+      {
+        "nombre": "Migración a la nube de prevención de fraude",
+        "cliente_sector": "Banca y Finanzas",
+        "anio": 2018,
+        "rol": "Lead DevSecOps Engineer",
+        "tecnologias": [
+          "Trivy",
+          "Seguridad en contenedores",
+          "Snyk"
+        ]
+      },
+      {
+        "nombre": "Implantación de trazabilidad de medicamentos",
+        "cliente_sector": "Sanidad y Farma",
+        "anio": 2018,
+        "rol": "Lead DevSecOps Engineer",
+        "tecnologias": [
+          "SAST/DAST",
+          "Kubernetes",
+          "Git"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Catalán",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "B1"
+      }
+    ],
+    "resumen": "Lead DevSecOps Engineer con 14 años de experiencia en el sector transporte y logística. Especializado en CI/CD, SAST/DAST, Seguridad en contenedores. Basado en Barcelona (España). Metodologías: PRINCE2."
+  },
+  {
+    "_por_que_en_muestra": "Brief asistente IA retail: perfil IA/ML con proyectos de retail",
+    "employee_id": "NTT0017925",
+    "nombre": "Marc",
+    "apellidos": "Madrigal Miguel",
+    "nombre_completo": "Marc Madrigal Miguel",
+    "email": "marc.madrigal@nttdata.com",
+    "pais": "España",
+    "ciudad": "Barcelona",
+    "area": "Data & AI",
+    "rol": "Data Scientist",
+    "nivel_seniority": "Lead",
+    "puesto_actual": "Lead Data Scientist",
+    "anios_experiencia": 14,
+    "anios_en_ntt": 0.1,
+    "fecha_incorporacion": "2026-10-09",
+    "sector_principal": "Retail y Consumo",
+    "disponibilidad": "Roll-off próximo (<3 meses)",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "Python",
+        "nivel": 5,
+        "anios": 12.5
+      },
+      {
+        "skill": "SQL",
+        "nivel": 4,
+        "anios": 11.5
+      },
+      {
+        "skill": "Estadística",
+        "nivel": 5,
+        "anios": 7.0
+      },
+      {
+        "skill": "scikit-learn",
+        "nivel": 3,
+        "anios": 7.0
+      },
+      {
+        "skill": "TensorFlow",
+        "nivel": 4,
+        "anios": 7.5
+      },
+      {
+        "skill": "XGBoost",
+        "nivel": 5,
+        "anios": 8.0
+      },
+      {
+        "skill": "Spark",
+        "nivel": 4,
+        "anios": 10.0
+      },
+      {
+        "skill": "PyTorch",
+        "nivel": 4,
+        "anios": 8.5
+      }
+    ],
+    "skills_texto": "Python, SQL, Estadística, scikit-learn, TensorFlow, XGBoost, Spark, PyTorch",
+    "metodologias": [
+      "SAFe",
+      "Design Thinking",
+      "Scrum"
+    ],
+    "habilidades_blandas": [
+      "Gestión del tiempo",
+      "Autonomía"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Estadística",
+        "institucion": "Universidad Carlos III de Madrid",
+        "anio_inicio": 2008,
+        "anio_fin": 2012
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "Microsoft Certified: Azure Data Scientist Associate",
+        "anio": 2023
+      },
+      {
+        "nombre": "ITIL 4 Foundation",
+        "anio": 2023
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Lead Data Scientist",
+        "inicio": "2026-10-09",
+        "fin": "Actual",
+        "ubicacion": "Barcelona",
+        "tecnologias": [
+          "XGBoost",
+          "Estadística",
+          "Python",
+          "Spark"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "Retailer internacional",
+        "puesto": "Lead Data Scientist",
+        "inicio": "2024-05-01",
+        "fin": "2026-10-09",
+        "ubicacion": "Barcelona",
+        "tecnologias": [
+          "PyTorch",
+          "Python",
+          "TensorFlow",
+          "Spark"
+        ],
+        "es_ntt": false
+      },
+      {
+        "empresa": "Sener",
+        "puesto": "Lead Data Architect",
+        "inicio": "2020-12-24",
+        "fin": "2024-05-01",
+        "ubicacion": "Barcelona",
+        "tecnologias": [
+          "Spark",
+          "Python",
+          "XGBoost"
+        ],
+        "es_ntt": false
+      },
+      {
+        "empresa": "Hexaware",
+        "puesto": "Senior Data Scientist",
+        "inicio": "2018-06-04",
+        "fin": "2020-12-24",
+        "ubicacion": "Barcelona",
+        "tecnologias": [
+          "Estadística",
+          "SQL",
+          "TensorFlow"
+        ],
+        "es_ntt": false
+      },
+      {
+        "empresa": "CaixaBank Tech",
+        "puesto": "Data Scientist",
+        "inicio": "2015-06-20",
+        "fin": "2018-06-04",
+        "ubicacion": "Barcelona",
+        "tecnologias": [
+          "PyTorch",
+          "SQL"
+        ],
+        "es_ntt": false
+      },
+      {
+        "empresa": "Administración Pública",
+        "puesto": "Junior Data Scientist",
+        "inicio": "2012-11-01",
+        "fin": "2015-06-20",
+        "ubicacion": "Valladolid",
+        "tecnologias": [
+          "scikit-learn",
+          "Estadística",
+          "PyTorch",
+          "TensorFlow"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Evolución y mantenimiento de previsión de demanda",
+        "cliente_sector": "Retail y Consumo",
+        "anio": 2026,
+        "rol": "Lead Data Scientist",
+        "tecnologias": [
+          "scikit-learn",
+          "XGBoost",
+          "PyTorch",
+          "SQL"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Catalán",
+        "nivel": "C1"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "C1"
+      }
+    ],
+    "resumen": "Lead Data Scientist con 14 años de experiencia en el sector retail y consumo. Especializado en Python, SQL, Estadística. Basado en Barcelona (España). Metodologías: SAFe, Design Thinking, Scrum."
+  },
+  {
+    "_por_que_en_muestra": "Brief asistente IA retail: perfil IA/ML con proyectos de retail",
+    "employee_id": "NTT0052650",
+    "nombre": "Ekantika",
+    "apellidos": "Kapoor",
+    "nombre_completo": "Ekantika Kapoor",
+    "email": "ekantika.kapoor@nttdata.com",
+    "pais": "India",
+    "ciudad": "Pune",
+    "area": "Data & AI",
+    "rol": "AI Engineer (GenAI/LLM)",
+    "nivel_seniority": "Mid",
+    "puesto_actual": "AI Engineer (GenAI/LLM)",
+    "anios_experiencia": 3,
+    "anios_en_ntt": 3.9,
+    "fecha_incorporacion": "2022-12-26",
+    "sector_principal": "Retail y Consumo",
+    "disponibilidad": "Roll-off próximo (<3 meses)",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": true,
+    "skills": [
+      {
+        "skill": "Python",
+        "nivel": 5,
+        "anios": 3.0
+      },
+      {
+        "skill": "LLMs",
+        "nivel": 4,
+        "anios": 0.5
+      },
+      {
+        "skill": "Prompt Engineering",
+        "nivel": 3,
+        "anios": 2.0
+      },
+      {
+        "skill": "Azure OpenAI",
+        "nivel": 4,
+        "anios": 1.5
+      },
+      {
+        "skill": "LlamaIndex",
+        "nivel": 3,
+        "anios": 2.5
+      },
+      {
+        "skill": "FastAPI",
+        "nivel": 4,
+        "anios": 3.5
+      },
+      {
+        "skill": "Hugging Face",
+        "nivel": 4,
+        "anios": 1.5
+      },
+      {
+        "skill": "LangChain",
+        "nivel": 2,
+        "anios": 0.5
+      }
+    ],
+    "skills_texto": "Python, LLMs, Prompt Engineering, Azure OpenAI, LlamaIndex, FastAPI, Hugging Face, LangChain",
+    "metodologias": [
+      "Design Thinking",
+      "Kanban",
+      "PRINCE2"
+    ],
+    "habilidades_blandas": [
+      "Orientación a cliente",
+      "Liderazgo",
+      "Gestión del tiempo"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ciencia de Datos e Inteligencia Artificial",
+        "institucion": "Anna University",
+        "anio_inicio": 2018,
+        "anio_fin": 2022
+      },
+      {
+        "nivel": "Máster",
+        "titulo": "Máster en Big Data y Analítica",
+        "institucion": "NIT Trichy",
+        "anio_inicio": 2024,
+        "anio_fin": 2026
+      }
+    ],
+    "certificaciones": [],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "AI Engineer (GenAI/LLM)",
+        "inicio": "2022-12-26",
+        "fin": "Actual",
+        "ubicacion": "Pune",
+        "tecnologias": [
+          "LLMs",
+          "Python",
+          "LangChain",
+          "Prompt Engineering"
+        ],
+        "es_ntt": true
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Analítica avanzada para omnicanalidad",
+        "cliente_sector": "Retail y Consumo",
+        "anio": 2025,
+        "rol": "Trainee AI Engineer (GenAI/LLM)",
+        "tecnologias": [
+          "Python",
+          "Hugging Face",
+          "Prompt Engineering"
+        ]
+      },
+      {
+        "nombre": "Implantación de omnicanalidad",
+        "cliente_sector": "Retail y Consumo",
+        "anio": 2024,
+        "rol": "Trainee AI Engineer (GenAI/LLM)",
+        "tecnologias": [
+          "Hugging Face",
+          "Python"
+        ]
+      },
+      {
+        "nombre": "Analítica avanzada para programa de fidelización",
+        "cliente_sector": "Retail y Consumo",
+        "anio": 2024,
+        "rol": "Junior AI Engineer (GenAI/LLM)",
+        "tecnologias": [
+          "Python",
+          "Prompt Engineering",
+          "LangChain",
+          "Hugging Face"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Hindi",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "C2"
+      }
+    ],
+    "resumen": "AI Engineer (GenAI/LLM) con 3 años de experiencia en el sector retail y consumo. Especializado en Python, LLMs, Prompt Engineering. Basado en Pune (India). Metodologías: Design Thinking, Kanban, PRINCE2."
+  },
+  {
+    "_por_que_en_muestra": "Brief asistente IA retail: perfil IA/ML con proyectos de retail",
+    "employee_id": "NTT0053067",
+    "nombre": "Nirja",
+    "apellidos": "Pandya",
+    "nombre_completo": "Nirja Pandya",
+    "email": "nirja.pandya@nttdata.com",
+    "pais": "India",
+    "ciudad": "Pune",
+    "area": "Data & AI",
+    "rol": "Machine Learning Engineer",
+    "nivel_seniority": "Mid",
+    "puesto_actual": "Machine Learning Engineer",
+    "anios_experiencia": 4,
+    "anios_en_ntt": 4.9,
+    "fecha_incorporacion": "2021-12-24",
+    "sector_principal": "Retail y Consumo",
+    "disponibilidad": "Roll-off próximo (<3 meses)",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "Python",
+        "nivel": 3,
+        "anios": 3.5
+      },
+      {
+        "skill": "Machine Learning",
+        "nivel": 4,
+        "anios": 3.5
+      },
+      {
+        "skill": "PyTorch",
+        "nivel": 4,
+        "anios": 2.0
+      },
+      {
+        "skill": "MLOps",
+        "nivel": 4,
+        "anios": 3.0
+      },
+      {
+        "skill": "MLflow",
+        "nivel": 1,
+        "anios": 3.5
+      },
+      {
+        "skill": "Kubeflow",
+        "nivel": 1,
+        "anios": 3.0
+      },
+      {
+        "skill": "Docker",
+        "nivel": 4,
+        "anios": 2.0
+      },
+      {
+        "skill": "Feature Stores",
+        "nivel": 3,
+        "anios": 4.5
+      },
+      {
+        "skill": "TensorFlow",
+        "nivel": 3,
+        "anios": 4.0
+      }
+    ],
+    "skills_texto": "Python, Machine Learning, PyTorch, MLOps, MLflow, Kubeflow, Docker, Feature Stores, TensorFlow",
+    "metodologias": [
+      "PMBOK"
+    ],
+    "habilidades_blandas": [
+      "Adaptabilidad",
+      "Mentoring",
+      "Resolución de problemas",
+      "Autonomía"
+    ],
+    "estudios": [
+      {
+        "nivel": "Formación Profesional Superior",
+        "titulo": "CFGS Desarrollo de Aplicaciones Multiplataforma",
+        "institucion": "IES Juan de la Cierva (Pune)",
+        "anio_inicio": 2019,
+        "anio_fin": 2021
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "Google Professional ML Engineer",
+        "anio": 2024
+      },
+      {
+        "nombre": "AWS Certified Machine Learning – Specialty",
+        "anio": 2024
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Machine Learning Engineer",
+        "inicio": "2024-02-05",
+        "fin": "Actual",
+        "ubicacion": "Pune",
+        "tecnologias": [
+          "Kubeflow",
+          "Machine Learning",
+          "Feature Stores",
+          "MLflow"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Junior Machine Learning Engineer",
+        "inicio": "2021-12-24",
+        "fin": "2024-02-05",
+        "ubicacion": "Pune",
+        "tecnologias": [
+          "Feature Stores",
+          "Python",
+          "MLOps"
+        ],
+        "es_ntt": true
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Automatización de previsión de demanda",
+        "cliente_sector": "Retail y Consumo",
+        "anio": 2026,
+        "rol": "Machine Learning Engineer",
+        "tecnologias": [
+          "Python",
+          "Machine Learning"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Hindi",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "B2"
+      }
+    ],
+    "resumen": "Machine Learning Engineer con 4 años de experiencia en el sector retail y consumo. Especializado en Python, Machine Learning, PyTorch. Basado en Pune (India). Metodologías: PMBOK."
+  },
+  {
+    "_por_que_en_muestra": "Brief asistente IA retail: perfil IA/ML SIN experiencia retail (retail como deseable, no debe filtrar)",
+    "employee_id": "NTT0179074",
+    "nombre": "Jesús",
+    "apellidos": "Fonseca Exposito",
+    "nombre_completo": "Jesús Fonseca Exposito",
+    "email": "jesus.fonseca2@nttdata.com",
+    "pais": "España",
+    "ciudad": "Madrid",
+    "area": "Data & AI",
+    "rol": "Machine Learning Engineer",
+    "nivel_seniority": "Junior",
+    "puesto_actual": "Junior Machine Learning Engineer",
+    "anios_experiencia": 2,
+    "anios_en_ntt": 2.2,
+    "fecha_incorporacion": "2024-09-04",
+    "sector_principal": "Energía y Utilities",
+    "disponibilidad": "En banca",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": true,
+    "skills": [
+      {
+        "skill": "Python",
+        "nivel": 2,
+        "anios": 0.5
+      },
+      {
+        "skill": "Machine Learning",
+        "nivel": 4,
+        "anios": 1.5
+      },
+      {
+        "skill": "PyTorch",
+        "nivel": 2,
+        "anios": 1.5
+      },
+      {
+        "skill": "MLOps",
+        "nivel": 3,
+        "anios": 2.0
+      },
+      {
+        "skill": "Feature Stores",
+        "nivel": 3,
+        "anios": 2.0
+      },
+      {
+        "skill": "Kubernetes",
+        "nivel": 2,
+        "anios": 0.5
+      },
+      {
+        "skill": "MLflow",
+        "nivel": 1,
+        "anios": 2.5
+      },
+      {
+        "skill": "Docker",
+        "nivel": 2,
+        "anios": 0.5
+      },
+      {
+        "skill": "Kubeflow",
+        "nivel": 2,
+        "anios": 0.5
+      }
+    ],
+    "skills_texto": "Python, Machine Learning, PyTorch, MLOps, Feature Stores, Kubernetes, MLflow, Docker, Kubeflow",
+    "metodologias": [
+      "PMBOK",
+      "PRINCE2",
+      "SAFe"
+    ],
+    "habilidades_blandas": [
+      "Presentaciones a cliente",
+      "Mentoring"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería de Sistemas de Información",
+        "institucion": "Universidad Autónoma de Madrid",
+        "anio_inicio": 2020,
+        "anio_fin": 2024
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "AWS Certified Machine Learning – Specialty",
+        "anio": 2025
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Junior Machine Learning Engineer",
+        "inicio": "2024-09-04",
+        "fin": "Actual",
+        "ubicacion": "Madrid",
+        "tecnologias": [
+          "Kubeflow",
+          "MLOps",
+          "Machine Learning",
+          "Feature Stores"
+        ],
+        "es_ntt": true
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Migración a la nube de facturación energética",
+        "cliente_sector": "Energía y Utilities",
+        "anio": 2025,
+        "rol": "Trainee Machine Learning Engineer",
+        "tecnologias": [
+          "Kubernetes",
+          "PyTorch",
+          "Feature Stores"
+        ]
+      },
+      {
+        "nombre": "Migración a la nube de comercialización de energía",
+        "cliente_sector": "Energía y Utilities",
+        "anio": 2025,
+        "rol": "Junior Machine Learning Engineer",
+        "tecnologias": [
+          "Kubernetes",
+          "MLOps"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "C1"
+      }
+    ],
+    "resumen": "Junior Machine Learning Engineer con 2 años de experiencia en el sector energía y utilities. Especializado en Python, Machine Learning, PyTorch. Basado en Madrid (España). Metodologías: PMBOK, PRINCE2, SAFe."
+  },
+  {
+    "_por_que_en_muestra": "RIESGO: skill con ≥3 años de uso pero nivel 1",
+    "employee_id": "NTT0116839",
+    "nombre": "Andrés",
+    "apellidos": "Castro Molina",
+    "nombre_completo": "Andrés Castro Molina",
+    "email": "andres.castro2@nttdata.com",
+    "pais": "Colombia",
+    "ciudad": "Bogotá",
+    "area": "Data & AI",
+    "rol": "Analytics Engineer",
+    "nivel_seniority": "Mid",
+    "puesto_actual": "Analytics Engineer",
+    "anios_experiencia": 4,
+    "anios_en_ntt": 3.3,
+    "fecha_incorporacion": "2023-07-24",
+    "sector_principal": "Sector Público",
+    "disponibilidad": "En banca",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": true,
+    "skills": [
+      {
+        "skill": "SQL",
+        "nivel": 3,
+        "anios": 2.5
+      },
+      {
+        "skill": "dbt",
+        "nivel": 2,
+        "anios": 3.5
+      },
+      {
+        "skill": "Modelado dimensional",
+        "nivel": 3,
+        "anios": 4.0
+      },
+      {
+        "skill": "Git",
+        "nivel": 2,
+        "anios": 3.5
+      },
+      {
+        "skill": "Airflow",
+        "nivel": 2,
+        "anios": 1.5
+      },
+      {
+        "skill": "Snowflake",
+        "nivel": 1,
+        "anios": 4.0
+      }
+    ],
+    "skills_texto": "SQL, dbt, Modelado dimensional, Git, Airflow, Snowflake",
+    "metodologias": [
+      "DevOps",
+      "Extreme Programming"
+    ],
+    "habilidades_blandas": [
+      "Gestión del tiempo",
+      "Negociación",
+      "Adaptabilidad"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ciencia de Datos e Inteligencia Artificial",
+        "institucion": "Universidad de los Andes",
+        "anio_inicio": 2018,
+        "anio_fin": 2022
+      }
+    ],
+    "certificaciones": [],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Analytics Engineer",
+        "inicio": "2023-07-24",
+        "fin": "Actual",
+        "ubicacion": "Bogotá",
+        "tecnologias": [
+          "Snowflake",
+          "Modelado dimensional",
+          "dbt",
+          "SQL"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "Cognizant",
+        "puesto": "Trainee Analytics Engineer",
+        "inicio": "2022-09-07",
+        "fin": "2023-07-24",
+        "ubicacion": "Bogotá",
+        "tecnologias": [
+          "SQL",
+          "Airflow",
+          "Git"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Rediseño de la experiencia de gestión de expedientes",
+        "cliente_sector": "Sector Público",
+        "anio": 2022,
+        "rol": "Trainee Analytics Engineer",
+        "tecnologias": [
+          "Airflow",
+          "SQL",
+          "Modelado dimensional",
+          "Snowflake"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "B2"
+      }
+    ],
+    "resumen": "Analytics Engineer con 4 años de experiencia en el sector sector público. Especializado en SQL, dbt, Modelado dimensional. Basado en Bogotá (Colombia). Metodologías: DevOps, Extreme Programming."
+  },
+  {
+    "_por_que_en_muestra": "RIESGO: skill con ≥3 años de uso pero nivel 1",
+    "employee_id": "NTT0176568",
+    "nombre": "Blas",
+    "apellidos": "Arnal Cobos",
+    "nombre_completo": "Blas Arnal Cobos",
+    "email": "blas.arnal@nttdata.com",
+    "pais": "España",
+    "ciudad": "Madrid",
+    "area": "Cloud & Infraestructura",
+    "rol": "DevOps Engineer",
+    "nivel_seniority": "Mid",
+    "puesto_actual": "DevOps Engineer",
+    "anios_experiencia": 5,
+    "anios_en_ntt": 2.8,
+    "fecha_incorporacion": "2024-01-20",
+    "sector_principal": "Transporte y Logística",
+    "disponibilidad": "Roll-off próximo (<3 meses)",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "CI/CD",
+        "nivel": 3,
+        "anios": 2.5
+      },
+      {
+        "skill": "Docker",
+        "nivel": 3,
+        "anios": 2.0
+      },
+      {
+        "skill": "Kubernetes",
+        "nivel": 4,
+        "anios": 4.0
+      },
+      {
+        "skill": "Git",
+        "nivel": 4,
+        "anios": 1.5
+      },
+      {
+        "skill": "Bash",
+        "nivel": 3,
+        "anios": 1.5
+      },
+      {
+        "skill": "ArgoCD",
+        "nivel": 1,
+        "anios": 3.5
+      },
+      {
+        "skill": "GitLab CI",
+        "nivel": 3,
+        "anios": 1.0
+      },
+      {
+        "skill": "Terraform",
+        "nivel": 3,
+        "anios": 3.0
+      }
+    ],
+    "skills_texto": "CI/CD, Docker, Kubernetes, Git, Bash, ArgoCD, GitLab CI, Terraform",
+    "metodologias": [
+      "Design Thinking",
+      "PMBOK"
+    ],
+    "habilidades_blandas": [
+      "Liderazgo",
+      "Mentoring",
+      "Comunicación efectiva",
+      "Autonomía"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería del Software",
+        "institucion": "Universidad de Málaga",
+        "anio_inicio": 2017,
+        "anio_fin": 2021
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "Certified Kubernetes Administrator (CKA)",
+        "anio": 2026
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "DevOps Engineer",
+        "inicio": "2024-01-20",
+        "fin": "Actual",
+        "ubicacion": "Madrid",
+        "tecnologias": [
+          "CI/CD",
+          "Bash",
+          "GitLab CI",
+          "Kubernetes"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "Inditex Tech",
+        "puesto": "Junior DevOps Engineer",
+        "inicio": "2021-08-25",
+        "fin": "2024-01-20",
+        "ubicacion": "Madrid",
+        "tecnologias": [
+          "GitLab CI",
+          "Terraform"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Rediseño de la experiencia de gestión de inventario",
+        "cliente_sector": "Retail y Consumo",
+        "anio": 2026,
+        "rol": "Junior DevOps Engineer",
+        "tecnologias": [
+          "GitLab CI",
+          "Bash",
+          "Git",
+          "Docker",
+          "CI/CD"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "A2"
+      }
+    ],
+    "resumen": "DevOps Engineer con 5 años de experiencia en el sector transporte y logística. Especializado en CI/CD, Docker, Kubernetes. Basado en Madrid (España). Metodologías: Design Thinking, PMBOK."
+  },
+  {
+    "_por_que_en_muestra": "RIESGO: skill con ≥3 años de uso pero nivel 1",
+    "employee_id": "NTT0157013",
+    "nombre": "Saturnina",
+    "apellidos": "Corbacho Casas",
+    "nombre_completo": "Saturnina Corbacho Casas",
+    "email": "saturnina.corbacho@nttdata.com",
+    "pais": "España",
+    "ciudad": "Madrid",
+    "area": "Aplicaciones Empresariales",
+    "rol": "Salesforce Developer",
+    "nivel_seniority": "Mid",
+    "puesto_actual": "Salesforce Developer",
+    "anios_experiencia": 3,
+    "anios_en_ntt": 3.2,
+    "fecha_incorporacion": "2023-08-20",
+    "sector_principal": "Sector Público",
+    "disponibilidad": "En banca",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "Apex",
+        "nivel": 1,
+        "anios": 3.0
+      },
+      {
+        "skill": "SOQL",
+        "nivel": 4,
+        "anios": 2.0
+      },
+      {
+        "skill": "Salesforce Platform",
+        "nivel": 4,
+        "anios": 0.5
+      },
+      {
+        "skill": "Service Cloud",
+        "nivel": 3,
+        "anios": 2.0
+      },
+      {
+        "skill": "Experience Cloud",
+        "nivel": 3,
+        "anios": 3.0
+      }
+    ],
+    "skills_texto": "Apex, SOQL, Salesforce Platform, Service Cloud, Experience Cloud",
+    "metodologias": [
+      "Design Thinking"
+    ],
+    "habilidades_blandas": [
+      "Presentaciones a cliente",
+      "Adaptabilidad"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Matemáticas",
+        "institucion": "Universidad del País Vasco",
+        "anio_inicio": 2019,
+        "anio_fin": 2023
+      },
+      {
+        "nivel": "Máster",
+        "titulo": "Máster en SAP",
+        "institucion": "Universidade da Coruña",
+        "anio_inicio": 2023,
+        "anio_fin": 2024
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "AWS Certified Cloud Practitioner",
+        "anio": 2024
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Salesforce Developer",
+        "inicio": "2023-08-20",
+        "fin": "Actual",
+        "ubicacion": "Madrid",
+        "tecnologias": [
+          "Service Cloud",
+          "Salesforce Platform",
+          "Experience Cloud",
+          "Apex"
+        ],
+        "es_ntt": true
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Desarrollo de la plataforma de historia clínica digital",
+        "cliente_sector": "Sector Público",
+        "anio": 2024,
+        "rol": "Salesforce Developer",
+        "tecnologias": [
+          "Apex",
+          "Salesforce Platform",
+          "Service Cloud"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "A2"
+      }
+    ],
+    "resumen": "Salesforce Developer con 3 años de experiencia en el sector sector público. Especializado en Apex, SOQL, Salesforce Platform. Basado en Madrid (España). Metodologías: Design Thinking."
+  },
+  {
+    "_por_que_en_muestra": "RIESGO: skill con nivel 5 y menos de 1 año de uso",
+    "employee_id": "NTT0001249",
+    "nombre": "Harish",
+    "apellidos": "Prakash",
+    "nombre_completo": "Harish Prakash",
+    "email": "harish.prakash@nttdata.com",
+    "pais": "India",
+    "ciudad": "Chennai",
+    "area": "Calidad y Testing",
+    "rol": "Test Automation Engineer",
+    "nivel_seniority": "Lead",
+    "puesto_actual": "Lead Test Automation Engineer",
+    "anios_experiencia": 14,
+    "anios_en_ntt": 9.9,
+    "fecha_incorporacion": "2016-12-19",
+    "sector_principal": "Seguros",
+    "disponibilidad": "En banca",
+    "modalidad_trabajo": "Presencial",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "Selenium",
+        "nivel": 5,
+        "anios": 0.5
+      },
+      {
+        "skill": "Java",
+        "nivel": 5,
+        "anios": 14.5
+      },
+      {
+        "skill": "Automatización de pruebas",
+        "nivel": 4,
+        "anios": 8.0
+      },
+      {
+        "skill": "REST Assured",
+        "nivel": 4,
+        "anios": 9.5
+      },
+      {
+        "skill": "Appium",
+        "nivel": 3,
+        "anios": 9.5
+      },
+      {
+        "skill": "TypeScript",
+        "nivel": 4,
+        "anios": 6.0
+      },
+      {
+        "skill": "Cypress",
+        "nivel": 3,
+        "anios": 9.5
+      },
+      {
+        "skill": "Playwright",
+        "nivel": 3,
+        "anios": 10.5
+      }
+    ],
+    "skills_texto": "Selenium, Java, Automatización de pruebas, REST Assured, Appium, TypeScript, Cypress, Playwright",
+    "metodologias": [
+      "Design Thinking",
+      "Kanban"
+    ],
+    "habilidades_blandas": [
+      "Gestión del tiempo",
+      "Comunicación efectiva",
+      "Trabajo en equipo"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Ingeniería Industrial",
+        "institucion": "BITS Pilani",
+        "anio_inicio": 2008,
+        "anio_fin": 2012
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "ISTQB Foundation Level",
+        "anio": 2015
+      },
+      {
+        "nombre": "ISTQB Test Automation Engineer",
+        "anio": 2025
+      },
+      {
+        "nombre": "ITIL 4 Foundation",
+        "anio": 2025
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Lead Test Automation Engineer",
+        "inicio": "2016-12-19",
+        "fin": "Actual",
+        "ubicacion": "Chennai",
+        "tecnologias": [
+          "Selenium",
+          "Playwright",
+          "TypeScript",
+          "Java"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "Startup tecnológica",
+        "puesto": "Test Automation Engineer",
+        "inicio": "2014-10-18",
+        "fin": "2016-12-19",
+        "ubicacion": "Chennai",
+        "tecnologias": [
+          "TypeScript",
+          "Cypress",
+          "REST Assured",
+          "Appium"
+        ],
+        "es_ntt": false
+      },
+      {
+        "empresa": "BBVA Technology",
+        "puesto": "Junior Test Automation Engineer",
+        "inicio": "2012-03-02",
+        "fin": "2014-10-18",
+        "ubicacion": "Chennai",
+        "tecnologias": [
+          "Appium",
+          "REST Assured",
+          "Playwright",
+          "Selenium"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Modernización de programa de fidelización",
+        "cliente_sector": "Retail y Consumo",
+        "anio": 2026,
+        "rol": "Lead Test Automation Engineer",
+        "tecnologias": [
+          "Appium",
+          "Automatización de pruebas",
+          "Playwright",
+          "Selenium",
+          "TypeScript"
+        ]
+      },
+      {
+        "nombre": "Modernización de comercialización de energía",
+        "cliente_sector": "Energía y Utilities",
+        "anio": 2025,
+        "rol": "Lead Test Automation Engineer",
+        "tecnologias": [
+          "Automatización de pruebas",
+          "Selenium",
+          "REST Assured",
+          "Playwright",
+          "Cypress"
+        ]
+      },
+      {
+        "nombre": "Desarrollo de la plataforma de gestión de siniestros",
+        "cliente_sector": "Seguros",
+        "anio": 2022,
+        "rol": "Lead Test Automation Engineer",
+        "tecnologias": [
+          "REST Assured",
+          "Selenium",
+          "TypeScript"
+        ]
+      },
+      {
+        "nombre": "Modernización de suscripción de pólizas",
+        "cliente_sector": "Seguros",
+        "anio": 2019,
+        "rol": "Lead Test Automation Engineer",
+        "tecnologias": [
+          "Playwright",
+          "Automatización de pruebas",
+          "Cypress",
+          "Selenium",
+          "Java"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Hindi",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "C2"
+      },
+      {
+        "idioma": "Alemán",
+        "nivel": "B2"
+      }
+    ],
+    "resumen": "Lead Test Automation Engineer con 14 años de experiencia en el sector seguros. Especializado en Selenium, Java, Automatización de pruebas. Basado en Chennai (India). Metodologías: Design Thinking, Kanban."
+  },
+  {
+    "_por_que_en_muestra": "RIESGO: skill con nivel 5 y menos de 1 año de uso",
+    "employee_id": "NTT0122101",
+    "nombre": "Belen",
+    "apellidos": "Mendizábal Nuñez",
+    "nombre_completo": "Belen Mendizábal Nuñez",
+    "email": "belen.mendizabal@nttdata.com",
+    "pais": "España",
+    "ciudad": "Madrid",
+    "area": "Data & AI",
+    "rol": "Data Engineer",
+    "nivel_seniority": "Junior",
+    "puesto_actual": "Junior Data Engineer",
+    "anios_experiencia": 1,
+    "anios_en_ntt": 0.4,
+    "fecha_incorporacion": "2026-06-21",
+    "sector_principal": "Telecomunicaciones y Media",
+    "disponibilidad": "Roll-off próximo (<3 meses)",
+    "modalidad_trabajo": "Híbrido",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "Python",
+        "nivel": 1,
+        "anios": 0.5
+      },
+      {
+        "skill": "SQL",
+        "nivel": 5,
+        "anios": 0.5
+      },
+      {
+        "skill": "ETL/ELT",
+        "nivel": 4,
+        "anios": 1.0
+      },
+      {
+        "skill": "Spark",
+        "nivel": 3,
+        "anios": 0.5
+      },
+      {
+        "skill": "Databricks",
+        "nivel": 3,
+        "anios": 0.5
+      },
+      {
+        "skill": "AWS Glue",
+        "nivel": 2,
+        "anios": 0.5
+      },
+      {
+        "skill": "Azure Data Factory",
+        "nivel": 2,
+        "anios": 1.0
+      }
+    ],
+    "skills_texto": "Python, SQL, ETL/ELT, Spark, Databricks, AWS Glue, Azure Data Factory",
+    "metodologias": [
+      "Lean",
+      "Design Thinking"
+    ],
+    "habilidades_blandas": [
+      "Pensamiento crítico",
+      "Trabajo en equipo"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Estadística",
+        "institucion": "Universidade da Coruña",
+        "anio_inicio": 2021,
+        "anio_fin": 2025
+      }
+    ],
+    "certificaciones": [],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Junior Data Engineer",
+        "inicio": "2026-06-21",
+        "fin": "Actual",
+        "ubicacion": "Madrid",
+        "tecnologias": [
+          "ETL/ELT",
+          "SQL",
+          "Azure Data Factory",
+          "Databricks"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "Orange",
+        "puesto": "Trainee Data Engineer",
+        "inicio": "2025-09-13",
+        "fin": "2026-06-21",
+        "ubicacion": "Madrid",
+        "tecnologias": [
+          "SQL",
+          "ETL/ELT"
+        ],
+        "es_ntt": false
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Modernización de facturación",
+        "cliente_sector": "Telecomunicaciones y Media",
+        "anio": 2026,
+        "rol": "Trainee Data Engineer",
+        "tecnologias": [
+          "Spark",
+          "Azure Data Factory",
+          "SQL",
+          "Databricks",
+          "AWS Glue"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "A2"
+      }
+    ],
+    "resumen": "Junior Data Engineer con 1 años de experiencia en el sector telecomunicaciones y media. Especializado en Python, SQL, ETL/ELT. Basado en Madrid (España). Metodologías: Lean, Design Thinking."
+  },
+  {
+    "_por_que_en_muestra": "RIESGO: skill declarada que no aparece en ningún proyecto ni puesto (solo autodeclarada)",
+    "employee_id": "NTT0042106",
+    "nombre": "Cristian",
+    "apellidos": "Maldonado Pulido",
+    "nombre_completo": "Cristian Maldonado Pulido",
+    "email": "cristian.maldonado@nttdata.com",
+    "pais": "México",
+    "ciudad": "Ciudad de México",
+    "area": "Data & AI",
+    "rol": "BI Developer",
+    "nivel_seniority": "Mid",
+    "puesto_actual": "BI Developer",
+    "anios_experiencia": 5,
+    "anios_en_ntt": 5.1,
+    "fecha_incorporacion": "2021-09-23",
+    "sector_principal": "Banca y Finanzas",
+    "disponibilidad": "Roll-off próximo (<3 meses)",
+    "modalidad_trabajo": "Presencial",
+    "movilidad_internacional": false,
+    "skills": [
+      {
+        "skill": "SQL",
+        "nivel": 3,
+        "anios": 2.5
+      },
+      {
+        "skill": "Power BI",
+        "nivel": 4,
+        "anios": 4.0
+      },
+      {
+        "skill": "Modelado dimensional",
+        "nivel": 3,
+        "anios": 3.0
+      },
+      {
+        "skill": "DAX",
+        "nivel": 3,
+        "anios": 3.5
+      },
+      {
+        "skill": "SSAS",
+        "nivel": 5,
+        "anios": 2.0
+      },
+      {
+        "skill": "Qlik Sense",
+        "nivel": 4,
+        "anios": 3.5
+      },
+      {
+        "skill": "Tableau",
+        "nivel": 2,
+        "anios": 4.5
+      },
+      {
+        "skill": "Cognos",
+        "nivel": 4,
+        "anios": 4.0
+      },
+      {
+        "skill": "Azure Synapse",
+        "nivel": 3,
+        "anios": 2.0
+      }
+    ],
+    "skills_texto": "SQL, Power BI, Modelado dimensional, DAX, SSAS, Qlik Sense, Tableau, Cognos, Azure Synapse",
+    "metodologias": [
+      "Scrum"
+    ],
+    "habilidades_blandas": [
+      "Liderazgo",
+      "Gestión del tiempo",
+      "Presentaciones a cliente",
+      "Adaptabilidad"
+    ],
+    "estudios": [
+      {
+        "nivel": "Grado",
+        "titulo": "Grado en Física",
+        "institucion": "Universidad Panamericana",
+        "anio_inicio": 2017,
+        "anio_fin": 2021
+      }
+    ],
+    "certificaciones": [
+      {
+        "nombre": "Microsoft PL-300 Power BI Data Analyst",
+        "anio": 2023
+      }
+    ],
+    "experiencia": [
+      {
+        "empresa": "NTT DATA",
+        "puesto": "BI Developer",
+        "inicio": "2023-11-01",
+        "fin": "Actual",
+        "ubicacion": "Ciudad de México",
+        "tecnologias": [
+          "Tableau",
+          "SSAS",
+          "DAX",
+          "Azure Synapse"
+        ],
+        "es_ntt": true
+      },
+      {
+        "empresa": "NTT DATA",
+        "puesto": "Junior BI Developer",
+        "inicio": "2021-09-23",
+        "fin": "2023-11-01",
+        "ubicacion": "Ciudad de México",
+        "tecnologias": [
+          "Azure Synapse",
+          "SSAS",
+          "SQL"
+        ],
+        "es_ntt": true
+      }
+    ],
+    "proyectos": [
+      {
+        "nombre": "Rediseño de la experiencia de portal de mediadores",
+        "cliente_sector": "Seguros",
+        "anio": 2024,
+        "rol": "BI Developer",
+        "tecnologias": [
+          "DAX",
+          "Power BI"
+        ]
+      }
+    ],
+    "idiomas": [
+      {
+        "idioma": "Español",
+        "nivel": "Nativo"
+      },
+      {
+        "idioma": "Inglés",
+        "nivel": "B2"
+      }
+    ],
+    "resumen": "BI Developer con 5 años de experiencia en el sector banca y finanzas. Especializado en SQL, Power BI, Modelado dimensional. Basado en Ciudad de México (México). Metodologías: Scrum."
+  }
+]
