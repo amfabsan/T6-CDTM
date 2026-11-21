@@ -16,7 +16,7 @@
 - **IA:** el LLM solo interpreta el brief y redacta explicaciones con evidencia recuperada. Los filtros, el score y los escenarios son **código determinista**.
 
 ## Para el equipo y sus IAs
-Empezad por **[`AGENTS.md`](AGENTS.md)**: estado del repo, tablas reales, reglas, contratos de las edge functions y reparto. El brief técnico completo está en [`docs/ORBIT_AI_Brief_Tecnico_MVP.docx`](docs/ORBIT_AI_Brief_Tecnico_MVP.docx).
+Empezad por **[`AGENTS.md`](AGENTS.md)**: estado del repo, tablas reales, reglas, contratos de las edge functions y reparto. El brief técnico completo está en [`docs/IDEA.md`](docs/IDEA.md) (original en `docs/ORBIT_AI_Brief_Tecnico_MVP.docx`).
 
 ## Resultados
 _(Rellenar con la medición real: tiempo hasta shortlist manual frente a ORBIT, cobertura interna, etc.)_
