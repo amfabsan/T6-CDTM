@@ -163,7 +163,7 @@ Pipeline completo en [`docs/WORKFLOW_MATCHING.md`](docs/WORKFLOW_MATCHING.md):
 }
 ```
 **Reglas de los equipos** (PDF de rankings):
-- **Coste** = supuesto €/día (`scenario_assumptions`) × días planificados por persona.
+- **Coste (en €/hora)** = tarifa €/h × horas planificadas por persona; el del equipo es la suma (`matching/teams.py`). Tarifa: `cost_per_hour` del perfil o, si no, `rates_by_seniority` / `internal_rate_per_hour` de `scenario_assumptions` (004). Horas: `planned_hours` del rol o, si no, `hours_per_person`. Si falta algún dato, `cost.value = null` → "Por estimar". Siempre `is_illustrative: true`.
 - **Inicio:** "En banca" = día 0; "Roll-off" = `por_confirmar`, una ventana sin fecha.
 - **Continuidad:** se retira a cada integrante por turno y se busca sustituto en el pool del mismo rol.
 - **En la UI:** filtrar y ordenar los 15 equipos y mostrar hasta 5.
