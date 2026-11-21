@@ -39,6 +39,8 @@ El manager puede manejar por voz los rankings y los equipos con un asistente de 
 | `supabase/migrations/002_orbit_app.sql` | ✅ hecho, probado en local | Tablas de la **app**: `project_requirements`, `scenario_assumptions` |
 | `supabase/migrations/003_busqueda.sql` | ✅ hecho, probado en local (pgvector) | Pasos 5-6: pgvector, `perfil_busqueda`, embeddings de skills/roles, filtros duros, búsqueda híbrida con RRF y `vocabulario_orbit` |
 | `supabase/migrations/004_filtros_minimos.sql` | ✅ probado en local, **pendiente de aplicar en Supabase** | `filtrar_candidatos` solo excluye `Asignado` y el país si es exigido (el resto lo puntúa `matching/`); RPC `perfiles(ids)` |
+| `supabase/migrations/005_costes_por_hora.sql` | ✅ probado en local (idempotente) | Columnas €/h, horas y roll-off en `scenario_assumptions` (las de €/día quedan obsoletas) |
+| `supabase/functions/explain-recommendations/` + `_shared/explain.ts`, `from_matching.ts` | ✅ hecho, probado con Gemini (sin desplegar) | Paso 11: explica equipos y personas con la salida de `/match`; valida contra la evidencia; secreto `GEMINI_API_KEY_EXPLAIN` |
 | `supabase/migrations/006_requisitos_confirmados.sql` | ✅ probado en local, **pendiente de aplicar en Supabase** | Paso 4 obligatorio: `project_requirements.status` (borrador/confirmado), `reviewed_by`, `reviewed_at`; `confirmar_requisitos()`; `candidatos_proyecto` y `/match` rechazan borradores |
 | `supabase/migrations/007_recuperacion_exacta.sql` | ✅ probado en local, **pendiente de aplicar en Supabase** | Todo disponible con ≥1 obligatoria entra siempre (RRF solo completa, campo `exacto`); `mandatory_any_of`; `skills_afines()` por co-ocurrencia; `vocabulario_orbit().skills_area` |
 | `matching/` (+ `matching/api.py`) | ✅ hecho, 24 tests | Pasos 7-10 en Python y servicio HTTP `match-candidates` (FastAPI): `POST /match {project_id}` |
@@ -55,9 +57,10 @@ El manager puede manejar por voz los rankings y los equipos con un asistente de 
 | `docs/WORKFLOW_MATCHING.md` | ✅ adoptado (código pendiente de PR) | Workflow de matching: filtros duros, búsqueda híbrida (pgvector + RRF), score y equipos |
 | `docs/ORBIT_AI_Rankings_y_Filtros.pdf` | ✅ | Especificación de los controles de ranking, el Top 5 de equipos y la continuidad |
 | `docs/ITERATIONS.md`, `docs/PATTERNS.md` | ✅ | Cuaderno de Improven e investigación de ediciones anteriores |
-| `prompts/lovable.md` | ✅ | Prompts para construir las pantallas en Lovable (incluido el asistente de voz) |
+| `prompts/lovable.md` | ✅ | Prompts para construir las pantallas en Lovable, con el tema visual de NTT DATA (sin asistente de voz) |
 | `prompts/elevenlabs.md` | ✅ | Configuración del asistente de voz: prompt, client tools y guion de demo |
 | `supabase/functions/*` (resto) | ⏳ **por hacer** | `match-candidates` (score y equipos sobre `candidatos_proyecto`), `calculate-staffing-scenarios`, `elevenlabs-signed-url` |
+| `frontend/` | 🔁 copia de Lovable, **no editar aquí** | App React de Lovable, sincronizada con `git subtree` desde [`chechupv/orbit-talent-intelligence`](https://github.com/chechupv/orbit-talent-intelligence). Los cambios se hacen en Lovable y se traen con `git subtree pull --prefix=frontend https://github.com/chechupv/orbit-talent-intelligence.git main --squash` |
 | `legacy/skillsonar/` | ⛔ **no usar** | Diseño anterior (SkillSonar). Solo como referencia: ver `legacy/README.md` |
 
 ## 3. Datos: qué hay en Supabase
@@ -167,10 +170,20 @@ Pipeline completo en [`docs/WORKFLOW_MATCHING.md`](docs/WORKFLOW_MATCHING.md):
 }
 ```
 **Reglas de los equipos** (PDF de rankings):
-- **Coste** = supuesto €/día (`scenario_assumptions`) × días planificados por persona.
+- **Coste (en €/hora)** = tarifa €/h × horas planificadas por persona; el del equipo es la suma (`matching/teams.py`). Tarifa: `cost_per_hour` del perfil o, si no, `rates_by_seniority` / `internal_rate_per_hour` de `scenario_assumptions` (005). Horas: `planned_hours` del rol o, si no, `hours_per_person`. Si no se pasan, `matching/pipeline.py` usa `DEFAULT_ASSUMPTIONS` (Trainee 20 · Junior 30 · Mid 45 · Senior 60 · Lead 75 · Principal 90 €/h; 160 h; roll-off 45 días) y el equipo sale con `status: "supuesto"`. Siempre `is_illustrative: true`.
 - **Inicio:** "En banca" = día 0; "Roll-off" = `por_confirmar`, una ventana sin fecha.
 - **Continuidad:** se retira a cada integrante por turno y se busca sustituto en el pool del mismo rol.
 - **En la UI:** filtrar y ordenar los 15 equipos y mostrar hasta 5.
+
+### `explain-recommendations` (paso 11, LLM: Gemini)
+- **Código:** `supabase/functions/explain-recommendations/index.ts`, con la lógica pura en `_shared/explain.ts` y tests en `_shared/explain.test.ts` (`node --experimental-strip-types --test supabase/functions/_shared/explain.test.ts`). Prueba real: `scripts/try_explain.ts`.
+- **In (lo normal):** la salida de `run_matching` (pasos 7-10, `matching/pipeline.py`) con `plan`, `top_teams` y **`members_detail`** (ficha puntuada de cada integrante de los equipos mostrados). `_shared/from_matching.ts` la convierte y asigna ids de evidencia (`P1…` proyectos, `S1…` skills).
+- **In (alternativa):** `{ project_summary, candidates[], teams[] }`. Cada candidato trae lo que ya calculó el score: `employee_id, nombre, role, fit, disponibilidad, breakdown, gaps[], risks[]` y **`evidence[{id, type: project|skill|certification|experience, ref, detail?}]`**, con `id` único dentro del candidato (`P1`, `S2`…). Máximo 40 candidatos por llamada.
+- **Out:** `candidates[{employee_id, summary, strengths[{text, evidence_ids}], source, dropped}]` y `teams[{team_id, summary, reasons[{text, evidence_ids}], source, dropped}]`. En los equipos, los ids van prefijados: `NTT…:P1`. `source` es `"llm"` o `"fallback"`, y `error` aparece si Gemini falló.
+- **Los gaps y riesgos no los escribe el LLM:** la UI los muestra tal cual salen del score.
+- **Validación (código):** se descarta toda frase que cite un id inexistente o de otra persona, que nombre entre «» un proyecto que no está en la evidencia, o que use un número que no aparece en los datos. Si no queda nada, o todos los modelos fallan o tardan más de 15 s, se usa una plantilla determinista: la pantalla nunca se queda vacía.
+- **Secretos:** `GEMINI_API_KEY_EXPLAIN` (clave propia del paso 11, para no compartir cuota con el paso 2; si falta, usa `GEMINI_API_KEY`); opcionales `GEMINI_MODEL_EXPLAIN` y `GEMINI_FALLBACK_MODELS_EXPLAIN` (separados de los del paso 2). Por defecto prueba `gemini-3.5-flash-lite` → `gemini-flash-lite-latest` → `gemini-3.6-flash` (15 s por intento). Los `gemini-2.5-*` dan 404 a cuentas nuevas.
+- **Cuándo llamarla:** después de `match-candidates`, con el Top 5 de equipos y sus integrantes (pocas personas). Una llamada por pantalla, no una por candidato.
 
 ### `calculate-staffing-scenarios` (módulo D, rol 3)
 - **In:** `{ project_id, team_id, assumptions }`: requisitos + equipo elegido (con cobertura y disponibilidad) + `scenario_assumptions`.
