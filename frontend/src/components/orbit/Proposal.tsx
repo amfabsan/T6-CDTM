@@ -5,7 +5,7 @@ import type { MatchCandidate, MatchResponse, MatchTeam, Requirements } from "@/l
 import { OrbitButton, Panel, SectionLabel, SimPill } from "./primitives";
 
 /** Editable "Proposed team" section + request messages. Nothing is sent automatically. */
-export function Proposal({ team, match, projectName, req }: { team: MatchTeam; match: MatchResponse; projectName: string; req: Requirements }) {
+export function Proposal({ team, teamNum, match, projectName, req }: { team: MatchTeam; teamNum: number; match: MatchResponse; projectName: string; req: Requirements }) {
   const ref = useRef<HTMLDivElement>(null);
   const [copied, setCopied] = useState<string | null>(null);
   const copy = async (k: string, t: string) => { await navigator.clipboard.writeText(t); setCopied(k); setTimeout(() => setCopied(null), 1800); };
@@ -13,7 +13,7 @@ export function Proposal({ team, match, projectName, req }: { team: MatchTeam; m
   return (
     <section className="mt-10 space-y-6">
       <div className="flex flex-wrap items-center gap-3">
-        <h2 className="text-2xl">Proposal for team {team.id}</h2><SimPill />
+        <h2 className="text-2xl">Proposal for team {teamNum}</h2><SimPill />
         <p className="w-full text-sm text-muted-foreground">Everything is editable. Nothing is sent automatically: you decide.</p>
       </div>
       <Panel>

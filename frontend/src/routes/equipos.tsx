@@ -10,7 +10,7 @@ import { CrewOrbit } from "@/components/orbit/MissionVisuals";
 import { RingGauge } from "@/components/orbit/RingGauge";
 import { TeamAlternatives } from "@/components/orbit/TeamAlternatives";
 import { RocketJourney } from "@/components/orbit/RocketJourney";
-import { topFourTeams, topPerCriterion } from "@/lib/team-presentation";
+import { teamNumbers, topFourTeams, topPerCriterion } from "@/lib/team-presentation";
 import { allCandidates, useExplanations, useMatching, type TeamFilters, type TeamSort } from "@/lib/matching";
 import { MOCK_INTERPRET } from "@/lib/mock-data";
 import { setProject, useProject } from "@/lib/project-store";
@@ -52,6 +52,8 @@ function StepTeams() {
   const { shown, pending } = useMemo(() => (match ? topFourTeams(match.data.teams, f, sort) : { shown: [], pending: [] }), [match, f, sort]);
   const tops = useMemo(() => (match ? topPerCriterion(match.data.teams, f) : []), [match, f]);
   const mainTeam = match?.data.teams.find(t => t.id === teamId) ?? shown[0];
+  /** Visible number of each team: position in the list being shown, with the current order and filters. */
+  const numOf = useMemo(() => teamNumbers([...shown, ...pending], match?.data.teams ?? []), [match, shown, pending]);
   const setFilters = (filters: TeamFilters) => { setF(filters); setProject({ teamId: null, teamArrival: false }); };
   const focusTeam = (id: string) => { setProject({ teamId: id, teamArrival: false }); document.getElementById('main-team')?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' }); };
   const proposalTeam = match?.data.teams.find((t) => t.id === proposalFor);
@@ -91,7 +93,7 @@ function StepTeams() {
                   <p className="text-xs font-semibold tracking-[0.12em] text-muted-foreground">{SORTS.find(s => s.k === k)?.label.toUpperCase()}</p>
                   {top ? (
                     <>
-                      <p className="mt-2 text-sm font-semibold text-navy">Team {top.id}</p>
+                      <p className="mt-2 text-sm font-semibold text-navy">Team {numOf(top)}</p>
                       <p className="mt-1 text-2xl font-bold text-navy tnum">
                         {k === "cost" ? (top.cost.value != null ? eur(top.cost.value) : "To be estimated")
                           : k === "start" ? (top.start.date ? fmtDate(top.start.date) : "To be confirmed")
@@ -110,12 +112,12 @@ function StepTeams() {
             <div className="mb-4 flex items-center justify-between gap-3"><h2 className="text-lg">{teamId && !shown.some(t => t.id === teamId) ? 'Selected team' : `Top ${shown.length} teams`}</h2><span className="text-xs text-muted-foreground" title={SORT_HELP[sort]}>Criterion and tie-breaks ⓘ</span></div>
             {mainTeam && <div id="main-team" className="relative scroll-mt-24">
               {teamArrival && <RocketJourney arriving />}
-              <TeamCard key={mainTeam.id} t={mainTeam} match={match.data} ideal={sort === 'fit' && shown[0]?.id === mainTeam.id} selected primary
+              <TeamCard key={mainTeam.id} t={mainTeam} num={numOf(mainTeam)} match={match.data} ideal={sort === 'fit' && shown[0]?.id === mainTeam.id} selected primary
                 why={explain?.teams.find(x => x.team_id === mainTeam.id)} explaining={explaining}
                 onUse={() => { setProject({ teamId: mainTeam.id }); navigate({ to: '/decision' }); }} onProposal={() => setProposalFor(mainTeam.id)} />
               <h2 className="mb-4 mt-8 text-2xl">Other Top 4 teams</h2>
-              <div className="grid gap-4 lg:grid-cols-3">{shown.filter(t => t.id !== mainTeam.id).map(t => <TeamCard key={t.id} t={t} match={match.data} ideal={sort === 'fit' && shown[0]?.id === t.id} selected={false} why={explain?.teams.find(x => x.team_id === t.id)} explaining={explaining} onView={() => focusTeam(t.id)} onUse={() => { setProject({ teamId: t.id }); navigate({ to: '/decision' }); }} onProposal={() => setProposalFor(t.id)} />)}</div>
-              <TeamAlternatives match={match.data} team={mainTeam} onTeam={focusTeam} />
+              <div className="grid gap-4 lg:grid-cols-3">{shown.filter(t => t.id !== mainTeam.id).map(t => <TeamCard key={t.id} t={t} num={numOf(t)} match={match.data} ideal={sort === 'fit' && shown[0]?.id === t.id} selected={false} why={explain?.teams.find(x => x.team_id === t.id)} explaining={explaining} onView={() => focusTeam(t.id)} onUse={() => { setProject({ teamId: t.id }); navigate({ to: '/decision' }); }} onProposal={() => setProposalFor(t.id)} />)}</div>
+              <TeamAlternatives match={match.data} team={mainTeam} onTeam={focusTeam} numOf={numOf} />
             </div>}
           </section>
           {pending.length > 0 && (
@@ -124,21 +126,21 @@ function StepTeams() {
               <p className="mt-1 text-xs text-blue-200" title="Teams without a confirmed cost or date: we can't tell whether they meet your filters.">Cost or date to be confirmed.</p>
               <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                 {pending.map((t) => (
-                  <TeamCard key={t.id} t={t} match={match.data} ideal={false} selected={teamId === t.id} why={explain?.teams.find((x) => x.team_id === t.id)} explaining={explaining}
+                  <TeamCard key={t.id} t={t} num={numOf(t)} match={match.data} ideal={false} selected={teamId === t.id} why={explain?.teams.find((x) => x.team_id === t.id)} explaining={explaining}
                     onUse={() => { setProject({ teamId: t.id }); navigate({ to: "/decision" }); }} onProposal={() => setProposalFor(t.id)} />
                 ))}
               </div>
             </section>
           )}
-          {proposalTeam && <Proposal team={proposalTeam} match={match.data} projectName={req.project.project_name} req={req} />}
+          {proposalTeam && <Proposal team={proposalTeam} teamNum={numOf(proposalTeam)} match={match.data} projectName={req.project.project_name} req={req} />}
         </>
       )}
     </AppShell>
   );
 }
 
-function TeamCard({ t, match, ideal, selected, primary = false, why, explaining, onUse, onProposal, onView }: {
-  t: MatchTeam; match: MatchResponse; ideal: boolean; selected: boolean; primary?: boolean; why?: ExplainResponse["teams"][number] | undefined; explaining: boolean; onUse: () => void; onProposal: () => void; onView?: () => void;
+function TeamCard({ t, num, match, ideal, selected, primary = false, why, explaining, onUse, onProposal, onView }: {
+  t: MatchTeam; num: number; match: MatchResponse; ideal: boolean; selected: boolean; primary?: boolean; why?: ExplainResponse["teams"][number] | undefined; explaining: boolean; onUse: () => void; onProposal: () => void; onView?: () => void;
 }) {
   const names = new Map(allCandidates(match).map((c) => [c.employee_id, c.nombre_completo]));
   t.members.forEach((m) => names.set(m.employee_id, m.nombre_completo));
@@ -150,7 +152,7 @@ function TeamCard({ t, match, ideal, selected, primary = false, why, explaining,
       <div className="team-composition">
       <div className="flex items-start justify-between gap-2">
         <div>
-          <p className="text-xs font-semibold tracking-[0.15em] text-muted-foreground">TEAM {t.id}</p>
+          <p className="text-xs font-semibold tracking-[0.15em] text-muted-foreground">TEAM {num}</p>
           <p className="text-5xl font-bold text-navy tnum">{Math.round(t.fit)}<span className="text-2xl text-muted-foreground">%</span></p>
           <p className="text-xs text-muted-foreground" title="Fit provided by the service. No locally computed synergy is added.">team fit</p>
         </div>
