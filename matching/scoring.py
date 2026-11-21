@@ -99,6 +99,21 @@ def _location(p: dict, prj: Project, gaps: list, risks: list) -> None:
                 f"Ubicado en {p.get('ciudad')} ({p.get('pais')})" + (", con movilidad internacional" if mov else ""))
 
 
+def requirement_items(req: RoleRequirements) -> list[tuple[str, list[str], int]]:
+    """Obligatorias de una plaza como items (clave, opciones, nivel mínimo). Una skill suelta es un item de una opción."""
+    key = lambda opts, lv: f"{' / '.join(opts)} (nivel ≥{lv})"
+    return [(key([n], lv), [n], lv) for n, lv in req.mandatory] + [(key(o, lv), o, lv) for o, lv in req.mandatory_any_of]
+
+
+def coverage(p: dict, options: list[str], min_level: int) -> tuple[float, bool]:
+    """Cobertura 0-1 de un item por un perfil (mejor opción exacta: nivel/mínimo × confianza) y si llega al nivel mínimo."""
+    present = [s for s in p["skills"] if s["skill"] in options]
+    if not present:
+        return 0.0, False
+    best = max(present, key=lambda s: min(1.0, s["nivel"] / min_level) * confidence(s))
+    return min(1.0, best["nivel"] / min_level) * confidence(best), best["nivel"] >= min_level
+
+
 AFFINITY_FACTOR = 0.5  # una skill afín vale como mucho la mitad que la exacta (es una inferencia, no un dato)
 
 

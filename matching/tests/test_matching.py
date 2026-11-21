@@ -30,6 +30,10 @@ BASE = {
 }
 
 
+def top_teams_ids(out):
+    return [t["id"] for t in out["top_teams"]["items"]]
+
+
 def mk(eid, role, score):
     return {"employee_id": eid, "role": role, "score": score, "gaps": [], "disponibilidad": "En banca", "nivel_seniority": "Senior"}
 
@@ -59,6 +63,28 @@ class Pasos7a9(unittest.TestCase):
         b = nada["breakdown"]
         self.assertFalse(b["langCert"]["applies"] or b["desirable"]["applies"] or b["seniority"]["applies"])
         self.assertEqual((b["langCert"]["points"], b["desirable"]["value"]), (0.0, None))
+
+    def test_sinergia_complementariedad(self):
+        # Seguridad pide Azure + identidades; la de Seguridad solo tiene identidades y el arquitecto domina Azure:
+        # juntos cubren la plaza de Seguridad → sinergia. Un compañero por debajo del nivel mínimo no cubre.
+        plan = {"project": {}, "roles": [
+            {"title": "ARQ", "count": 1, "mandatory_skills": [{"name": "Azure"}]},
+            {"title": "SEG", "count": 1, "mandatory_skills": [{"name": "Azure"}],
+             "mandatory_any_of": [{"options": ["Gestión de identidades", "Entra ID"]}]}]}
+        sk = lambda n, nv=4: {"skill": n, "nivel": nv, "anios": 5, "demostrada": True, "n_proyectos": 2, "ultimo_anio": 2025}
+        arq = {**BASE, "employee_id": "ARQ1", "nombre_completo": "Alicia", "skills": [sk("Azure")]}
+        arq_flojo = {**BASE, "employee_id": "ARQ2", "nombre_completo": "Bea", "skills": [sk("Azure", 2)]}
+        seg = {**BASE, "employee_id": "SEG1", "nombre_completo": "Sara", "skills": [sk("Gestión de identidades")]}
+        out = run_matching(plan, {"ARQ": [arq, arq_flojo], "SEG": [seg]}, rate_per_hour=None, hours_per_person=None)
+        t = {x["id"]: x for x in out["teams"]}
+        con, sin = t["ARQ1+SEG1"], t["ARQ2+SEG1"]
+        # SEG: individual (0 + 1)/2 = 0,5; con Alicia (Azure ≥3) el equipo cubre (1 + 1)/2 = 1 → +0,5. ARQ: +0. Media 0,25.
+        self.assertEqual(con["synergy"]["value"], 0.25)
+        self.assertAlmostEqual(con["fit"], con["fit_base"] + 15 * 0.25)
+        self.assertTrue(any("Alicia (ARQ) cubre Azure" in d and "plaza SEG" in d for d in con["synergy"]["details"]))
+        self.assertEqual(sin["synergy"]["value"], 0.0)               # Bea tiene Azure a nivel 2 < 3: no cubre a nadie
+        self.assertIn("Falta obligatoria: Azure", out["ranking"]["SEG"]["items"][0]["gaps"])  # el gap individual se mantiene
+        self.assertEqual(top_teams_ids(out), ["ARQ1+SEG1", "ARQ2+SEG1"])
 
     def test_desempate_en_la_parte_alta(self):
         req = from_llm_plan({"project": {}, "roles": [{"title": "B", "count": 1, "min_years_experience": 3,
