@@ -26,7 +26,7 @@ _(Medición cruzada: 2 probadores × 2 necesidades, con el orden invertido.)_
 - **LLM** solo para extraer, en `supabase/functions/extract`. Descarta las citas que no aparecen literalmente en la transcripción.
 - **Lógica de staffing determinista**, sin LLM, en `src/lib/teamBuilder.ts`. Se verifica con `node scripts/verify_demo.ts`.
 
-Más detalle en [`docs/STACK.md`](docs/STACK.md) y [`docs/IDEA.md`](docs/IDEA.md). Las iteraciones están en [`docs/ITERATIONS.md`](docs/ITERATIONS.md).
+Más detalle en [`docs/STACK.md`](docs/STACK.md) y [`docs/IDEA.md`](docs/IDEA.md). Propuestas pendientes de comentar: [`docs/IDEAS-SAMUEL.md`](docs/IDEAS-SAMUEL.md). Las iteraciones están en [`docs/ITERATIONS.md`](docs/ITERATIONS.md).
 
 ## Datos y privacidad
 _(Indicar qué datos se usaron y si el repo contiene datos ficticios o anonimizados.)_ El sistema no evalúa niveles ni potencial de nadie: solo muestra evidencias revisables.
