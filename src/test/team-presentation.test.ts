@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { memberAlternatives, topFourTeams } from '@/lib/team-presentation';
+import { memberAlternatives, topFourTeams, topPerCriterion } from '@/lib/team-presentation';
 import type { MatchResponse, MatchTeam } from '@/lib/types';
 import mock from '@/mocks/matching.json';
 
@@ -13,14 +13,25 @@ const teams = [team('B', 89.25, 100, '2027-01-01', 90), team('A', 89.25, 100, '2
 const ids = (sort: 'fit' | 'cost' | 'start' | 'continuity') => topFourTeams(teams, filters, sort).shown.map(t => t.id);
 
 describe('top four team tabs', () => {
-  it('Mayor encaje uses unrounded fit descending then ID and returns four', () => expect(ids('fit')).toEqual(['C', 'A', 'B', 'D']));
-  it('Menor coste uses cost ascending then fit descending then ID', () => expect(ids('cost')).toEqual(['D', 'C', 'A', 'B']));
-  it('Inicio más temprano uses earliest date then fit descending then ID', () => expect(ids('start')).toEqual(['D', 'C', 'A', 'B']));
-  it('Menor riesgo uses continuity descending then fit descending then ID', () => expect(ids('continuity')).toEqual(['D', 'C', 'A', 'B']));
+  it('Best fit uses unrounded fit descending then ID and returns four', () => expect(ids('fit')).toEqual(['C', 'A', 'B', 'D']));
+  it('Lowest cost uses cost ascending then fit descending then ID', () => expect(ids('cost')).toEqual(['D', 'C', 'A', 'B']));
+  it('Earliest start uses earliest date then fit descending then ID', () => expect(ids('start')).toEqual(['D', 'C', 'A', 'B']));
+  it('Lowest risk uses continuity descending then fit descending then ID', () => expect(ids('continuity')).toEqual(['D', 'C', 'A', 'B']));
   it('keeps unknown costs pending when the inclusive budget filter is active', () => {
     const result = topFourTeams(teams, { ...filters, maxBudget: 100 }, 'cost');
     expect(result.shown.map(t => t.id)).toEqual(['D', 'C', 'A', 'B']);
     expect(result.pending.map(t => t.id)).toEqual(['E']);
+  });
+});
+describe('top per criterion', () => {
+  it('returns the #1 team of each criterion with the same tie-breaks as the tabs', () => {
+    const tops = topPerCriterion(teams, filters);
+    expect(tops.map(t => t.sort)).toEqual(['fit', 'cost', 'start', 'continuity']);
+    expect(tops.map(t => t.team?.id)).toEqual(['C', 'D', 'D', 'D']);
+  });
+  it('returns null for a criterion when no team passes the filters', () => {
+    const tops = topPerCriterion(teams, { ...filters, minFit: 95 });
+    expect(tops.every(t => t.team === null)).toBe(true);
   });
 });
 describe('member alternatives', () => {

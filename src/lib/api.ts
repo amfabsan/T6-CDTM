@@ -10,7 +10,7 @@ export const isLive = Boolean(url && key);
 
 let client: SupabaseClient | null = null;
 function sb(): SupabaseClient {
-  if (!url || !key) throw new Error("Supabase no configurado");
+  if (!url || !key) throw new Error("Supabase not configured");
   client ??= createClient(url, key);
   return client;
 }
@@ -81,17 +81,17 @@ export async function explainRecommendations(match: MatchResponse): Promise<Expl
     return {
       teams: match.teams.map((t) => ({
         team_id: t.id,
-        summary: `Encaje medio del ${Math.round(t.fit)} % con ${t.gaps === 0 ? "todas las obligatorias cubiertas" : `${t.gaps} gap${t.gaps === 1 ? "" : "s"} a vigilar`}.`,
+        summary: `Average fit of ${Math.round(t.fit)}% with ${t.gaps === 0 ? "all mandatory skills covered" : `${t.gaps} gap${t.gaps === 1 ? "" : "s"} to watch`}.`,
         reasons: [
-          { text: `${t.members.filter((m) => m.disponibilidad === "En banca").length} de ${t.members.length} personas están en banca.`, evidence_ids: [] },
-          { text: `Si falla una persona clave, se mantienen ${t.continuity.covered} de ${t.continuity.total} plazas.`, evidence_ids: [] },
+          { text: `${t.members.filter((m) => m.disponibilidad === "En banca").length} of ${t.members.length} people are on bench.`, evidence_ids: [] },
+          { text: `If a key person drops out, ${t.continuity.covered} of ${t.continuity.total} positions remain.`, evidence_ids: [] },
         ],
         source: "fallback",
       })),
       candidates: [...cands.values()].map((c) => ({
         employee_id: c.employee_id,
-        summary: `${c.puesto_actual} (${c.nivel_seniority}) con ${c.skills.filter((s) => s.demostrada).length} skills demostradas en proyectos.`,
-        strengths: c.evidence.slice(0, 2).map((e) => ({ text: `${e.skills.join(" y ")} en ${e.proyecto} (${e.anio}).`, evidence_ids: [e.proyecto] })),
+        summary: `${c.puesto_actual} (${c.nivel_seniority}) with ${c.skills.filter((s) => s.demostrada).length} skills proven in projects.`,
+        strengths: c.evidence.slice(0, 2).map((e) => ({ text: `${e.skills.join(" and ")} in ${e.proyecto} (${e.anio}).`, evidence_ids: [e.proyecto] })),
         source: "fallback",
       })),
     };

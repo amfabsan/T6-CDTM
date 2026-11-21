@@ -5,19 +5,19 @@ import { useElapsed } from "@/hooks/use-elapsed";
 import { MOCK_SOURCE_TEXT } from "@/lib/mock-data";
 
 const PROMPTS = [
-  { label: "Pagos instantáneos para un banco", text: MOCK_SOURCE_TEXT },
-  { label: "App móvil para una aseguradora", text: "Necesito un equipo para una app móvil de una aseguradora en Barcelona, modalidad remota: dos desarrolladores React Native con 4 años de experiencia y un QA con automatización. Se valora experiencia en seguros. Inglés B2." },
-  { label: "Migración SAP en sector público", text: "Proyecto de migración a SAP S/4HANA para un organismo público en Madrid, presencial: un arquitecto SAP senior (10 años) y dos consultores FI/CO. Se exige residencia en España." },
+  { label: "Instant payments for a bank", text: MOCK_SOURCE_TEXT },
+  { label: "Mobile app for an insurer", text: "I need a team for an insurance company's mobile app in Barcelona, remote work: two React Native developers with 4 years of experience and a QA engineer with test automation. Insurance experience is a plus. English B2." },
+  { label: "SAP migration in the public sector", text: "SAP S/4HANA migration project for a public agency in Madrid, on-site: a senior SAP architect (10 years) and two FI/CO consultants. Residence in Spain is required." },
 ];
 
 /** Helper chips: each inserts a hint at the cursor so the manager remembers what ORBIT needs. */
 const HINTS = [
-  { label: "+ Roles y plazas", text: "Roles y plazas: " },
-  { label: "+ Obligatorio / deseable", text: "Obligatorio: … Deseable: " },
-  { label: "+ Años mínimos", text: "Años mínimos de experiencia: " },
-  { label: "+ Idiomas", text: "Idiomas: " },
-  { label: "+ Ubicación", text: "Ubicación o modalidad: " },
-  { label: "+ Fecha de inicio", text: "Fecha de inicio: " },
+  { label: "+ Roles and positions", text: "Roles and positions: " },
+  { label: "+ Mandatory / desirable", text: "Mandatory: … Desirable: " },
+  { label: "+ Minimum years", text: "Minimum years of experience: " },
+  { label: "+ Languages", text: "Languages: " },
+  { label: "+ Location", text: "Location or work mode: " },
+  { label: "+ Start date", text: "Start date: " },
 ];
 
 const MIN_ROWS = 4;
@@ -57,18 +57,18 @@ export function PlanIntake({ onText, initialText = "" }: { onText: (t: string) =
     <div className="pb-4">
       <section className="mission-hero">
         <MissionWorld />
-        <p className="mission-kicker relative z-10 mb-6">01 / Requisitos</p>
-        <h1>El talento que necesitas<br /><em>ya está en la organización.</em></h1>
+        <p className="mission-kicker relative z-10 mb-6">01 / Requirements</p>
+        <h1>The talent you need<br /><em>is already in the organization.</em></h1>
       </section>
-      <h2 className="mx-auto mb-3 max-w-[820px] text-center text-2xl font-semibold">¿Qué equipo necesitas?</h2>
+      <h2 className="mx-auto mb-3 max-w-[820px] text-center text-2xl font-semibold">What team do you need?</h2>
       <div className="card mission-input mx-auto mt-2 transition-all duration-200 focus-within:glow-ai">
-        <label htmlFor="plan-text" className="sr-only">¿Qué equipo necesitas?</label>
+        <label htmlFor="plan-text" className="sr-only">What team do you need?</label>
         <textarea ref={textRef} id="plan-text" value={text} onChange={(e) => setText(e.target.value)} rows={MIN_ROWS}
           onKeyDown={(e) => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) { e.preventDefault(); send(); } }}
-          placeholder="Describe el proyecto o la vacante: qué roles y cuántas personas, skills obligatorias y deseables, años de experiencia, idiomas, ubicación o modalidad y cuándo empieza"
+          placeholder="Describe the project or the opening: which roles and how many people, mandatory and desirable skills, years of experience, languages, location or work mode, and when it starts"
           className="w-full resize-none bg-transparent p-3 text-lg outline-none placeholder:text-muted-foreground" />
         <div className="flex items-center justify-between gap-3">
-          <div className="flex flex-wrap gap-1.5" aria-label="Añadir pistas">
+          <div className="flex flex-wrap gap-1.5" aria-label="Add hints">
             {HINTS.map((h) => (
               <button key={h.label} type="button" onClick={() => insertHint(h.text)}
                 className="rounded-full border border-line px-2.5 py-1 text-xs text-muted-foreground transition-colors hover:border-blue hover:text-blue">
@@ -76,9 +76,9 @@ export function PlanIntake({ onText, initialText = "" }: { onText: (t: string) =
               </button>
             ))}
           </div>
-          <OrbitButton type="button" onClick={send} disabled={!text.trim()} aria-label="Interpretar requisitos" title="Enviar (Ctrl/Cmd + Enter)"
+          <OrbitButton type="button" onClick={send} disabled={!text.trim()} aria-label="Interpret requirements" title="Send (Ctrl/Cmd + Enter)"
             className="shrink-0 px-4 py-2 text-xs">
-            <span>Interpretar requisitos</span>
+            <span>Interpret requirements</span>
           </OrbitButton>
         </div>
       </div>
@@ -106,9 +106,9 @@ export function ReadingRequest({ onCancel }: { onCancel: () => void }) {
           <div className="absolute inset-x-0 top-1/2 h-px bg-ai" />
         </div>
       </div>
-      <p className="mt-6 text-xl font-semibold text-blue">ORBIT está leyendo la petición… <span className="tnum">{seconds}</span> s</p>
-      <p className="mt-1 text-sm text-muted-foreground">Identificando roles, posiciones y requisitos. Puede tardar hasta ~90 s.</p>
-      <OrbitButton variant="ghost" type="button" onClick={onCancel} className="mt-5">Cancelar</OrbitButton>
+      <p className="mt-6 text-xl font-semibold text-blue">ORBIT is reading the request… <span className="tnum">{seconds}</span> s</p>
+      <p className="mt-1 text-sm text-muted-foreground">Identifying roles, positions and requirements. It can take up to ~90 s.</p>
+      <OrbitButton variant="ghost" type="button" onClick={onCancel} className="mt-5">Cancel</OrbitButton>
     </div>
   );
 }

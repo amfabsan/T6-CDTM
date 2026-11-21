@@ -10,14 +10,15 @@ import { Crystal, SkillDots } from "@/components/orbit/MissionVisuals";
 import { cn } from "@/lib/utils";
 import { TeamAlternatives } from "@/components/orbit/TeamAlternatives";
 import { useProject } from "@/lib/project-store";
+import { modalityLabel } from "@/lib/labels";
 
 export const Route = createFileRoute("/persona/$id")({
   head: () => ({
     meta: [
-      { title: "Ficha profesional · ORBIT AI" },
-      { name: "description", content: "Perfil completo: skills, proyectos, certificaciones e idiomas." },
-      { property: "og:title", content: "Ficha profesional · ORBIT AI" },
-      { property: "og:description", content: "Perfil completo: skills, proyectos, certificaciones e idiomas." },
+      { title: "Professional profile · ORBIT AI" },
+      { name: "description", content: "Full profile: skills, projects, certifications and languages." },
+      { property: "og:title", content: "Professional profile · ORBIT AI" },
+      { property: "og:description", content: "Full profile: skills, projects, certifications and languages." },
       { property: "og:type", content: "profile" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -40,49 +41,49 @@ function PersonPage() {
   });
   return (
     <AppShell>
-      <div className="flex flex-wrap gap-4"><Link to="/equipos" className="text-sm text-blue hover:underline">← Volver a equipos</Link><Link to="/talento" className="text-sm text-blue hover:underline">Ver candidatos</Link></div>
-      {isLoading ? <p className="mt-10 text-muted-foreground">Cargando ficha…</p> : !p ? (
-        <p className="mt-10">No hemos encontrado la ficha de <b>{id}</b>.</p>
+      <div className="flex flex-wrap gap-4"><Link to="/equipos" className="text-sm text-blue hover:underline">← Back to teams</Link><Link to="/talento" className="text-sm text-blue hover:underline">View candidates</Link></div>
+      {isLoading ? <p className="mt-10 text-muted-foreground">Loading profile…</p> : !p ? (
+        <p className="mt-10">We couldn't find the profile for <b>{id}</b>.</p>
       ) : (
         <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_2fr]">
-          <Panel className="h-fit"><p className="mission-kicker mb-4">Ficha profesional</p><Crystal className="mx-auto mb-6 w-24" tone={p.disponibilidad === "En banca" ? "green" : "amber"} />
+          <Panel className="h-fit"><p className="mission-kicker mb-4">Professional profile</p><Crystal className="mx-auto mb-6 w-24" tone={p.disponibilidad === "En banca" ? "green" : "amber"} />
             <div className="flex flex-wrap items-center gap-2"><h1 className="text-3xl">{p.nombre_completo}</h1>{!isLive && <SimPill />}</div>
             <p className="mt-1 text-muted-foreground">{p.puesto_actual} · {p.nivel_seniority}</p>
             <div className="mt-3"><AvailabilityBadge value={p.disponibilidad} /></div>
             <dl className="mt-5 grid grid-cols-2 gap-3 text-sm">
-              {[["País", p.pais], ["Ciudad", p.ciudad], ["Sector principal", p.sector_principal], ["Modalidad", p.modalidad_trabajo], ["Años de experiencia", p.anios_experiencia], ["Años en NTT DATA", p.anios_en_ntt]].map(([k, v]) => (
+              {[["Country", p.pais], ["City", p.ciudad], ["Main sector", p.sector_principal], ["Work mode", p.modalidad_trabajo ? modalityLabel(p.modalidad_trabajo) : ""], ["Years of experience", p.anios_experiencia], ["Years at NTT DATA", p.anios_en_ntt]].map(([k, v]) => (
                 <div key={String(k)}><dt className="text-xs text-muted-foreground">{k}</dt><dd className="text-navy">{v === "" || v == null ? "—" : String(v)}</dd></div>
               ))}
             </dl>
-            {p.resumen && <details className="mt-5 text-sm"><summary className="cursor-pointer text-blue-200">Ver detalle</summary><p className="mt-3">{p.resumen}</p></details>}
+            {p.resumen && <details className="mt-5 text-sm"><summary className="cursor-pointer text-blue-200">View details</summary><p className="mt-3">{p.resumen}</p></details>}
           </Panel>
           <div className="space-y-6">
             <Panel>
               <SectionLabel>Skills</SectionLabel>
               <table className="mt-3 w-full text-sm">
-                <thead className="text-left text-xs text-muted-foreground"><tr><th className="py-1 font-medium">Skill</th><th className="font-medium">Nivel</th><th className="font-medium">Años</th><th className="font-medium">Evidencia</th></tr></thead>
+                <thead className="text-left text-xs text-muted-foreground"><tr><th className="py-1 font-medium">Skill</th><th className="font-medium">Level</th><th className="font-medium">Years</th><th className="font-medium">Evidence</th></tr></thead>
                 <tbody>{p.skills.map((s) => (
                   <tr key={s.skill} className="border-t border-line"><td className="py-1.5 text-navy"><Wrench className="mr-1.5 inline size-3.5 text-muted-foreground" aria-hidden />{s.skill}</td><td className="tnum"><SkillDots level={s.nivel} /></td><td className="tnum">{s.anios}</td>
-                    <td className={cn(s.demostrada ? "text-success-ink" : "text-warn-ink")}>{s.demostrada ? "✓ Demostrada" : "Solo declarada"}</td></tr>
+                    <td className={cn(s.demostrada ? "text-success-ink" : "text-warn-ink")}>{s.demostrada ? "✓ Proven" : "Declared only"}</td></tr>
                 ))}</tbody>
               </table>
             </Panel>
             <Panel>
-              <SectionLabel>Proyectos</SectionLabel>
+              <SectionLabel>Projects</SectionLabel>
               <ul className="project-timeline text-sm">{p.proyectos.map((x) => (
                 <li key={x.orden} className="project-tile"><Briefcase className="mb-3 size-4 text-blue-200" aria-hidden /><span className="text-green tnum">{x.anio}</span><b className="mt-2 block">{x.nombre}</b><span className="mt-2 block text-xs text-blue-200">{x.rol} · {x.cliente_sector}</span></li>
-              ))}{p.proyectos.length === 0 && <li className="text-muted-foreground">Sin proyectos registrados</li>}</ul>
+              ))}{p.proyectos.length === 0 && <li className="text-muted-foreground">No projects on record</li>}</ul>
             </Panel>
             <div className="grid gap-6 md:grid-cols-2">
               <Panel>
-                <SectionLabel>Certificaciones</SectionLabel>
+                <SectionLabel>Certifications</SectionLabel>
                 <ul className="mt-3 space-y-1 text-sm">{p.certificaciones.map((c) => <li key={c.nombre}><Award className="mr-1.5 inline size-3.5 text-muted-foreground" aria-hidden />{c.nombre}{c.anio ? ` · ${c.anio}` : ""}</li>)}
-                  {p.certificaciones.length === 0 && <li className="text-muted-foreground">Sin certificaciones</li>}</ul>
+                  {p.certificaciones.length === 0 && <li className="text-muted-foreground">No certifications</li>}</ul>
               </Panel>
               <Panel>
-                <SectionLabel>Idiomas</SectionLabel>
+                <SectionLabel>Languages</SectionLabel>
                 <ul className="mt-3 space-y-1 text-sm">{p.idiomas.map((l) => <li key={l.idioma}><Languages className="mr-1.5 inline size-3.5 text-muted-foreground" aria-hidden />{l.idioma} · {l.nivel}</li>)}
-                  {p.idiomas.length === 0 && <li className="text-muted-foreground">Sin datos de idiomas</li>}</ul>
+                  {p.idiomas.length === 0 && <li className="text-muted-foreground">No language data</li>}</ul>
               </Panel>
             </div>
           </div>

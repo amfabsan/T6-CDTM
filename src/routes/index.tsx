@@ -12,10 +12,10 @@ import { RocketJourney } from "@/components/orbit/RocketJourney";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Necesidad · ORBIT AI" },
-      { name: "description", content: "Describe el equipo que necesitas y ORBIT AI lo convierte en requisitos por rol." },
-      { property: "og:title", content: "Necesidad · ORBIT AI" },
-      { property: "og:description", content: "Describe el equipo que necesitas y ORBIT AI lo convierte en requisitos por rol." },
+      { title: "Need · ORBIT AI" },
+      { name: "description", content: "Describe the team you need and ORBIT AI turns it into requirements by role." },
+      { property: "og:title", content: "Need · ORBIT AI" },
+      { property: "og:description", content: "Describe the team you need and ORBIT AI turns it into requirements by role." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -26,12 +26,12 @@ export const Route = createFileRoute("/")({
 /** What the request did not say and ORBIT needs: roles, mandatory skills, country. */
 function missingInfo(req: Requirements): string[] {
   const out: string[] = [];
-  if (req.roles.length === 0) out.push("roles y plazas");
-  if (!req.roles.some((r) => r.mandatory_skills.length > 0)) out.push("skills obligatorias");
-  if (!req.project.country) out.push("país");
+  if (req.roles.length === 0) out.push("roles and positions");
+  if (!req.roles.some((r) => r.mandatory_skills.length > 0)) out.push("mandatory skills");
+  if (!req.project.country) out.push("country");
   return out;
 }
-const joinEs = (xs: string[]) => (xs.length <= 1 ? xs.join("") : `${xs.slice(0, -1).join(", ")} y ${xs[xs.length - 1]}`);
+const joinList = (xs: string[]) => (xs.length <= 1 ? xs.join("") : `${xs.slice(0, -1).join(", ")} and ${xs[xs.length - 1]}`);
 const errText = (e: unknown) => (e instanceof Error ? e.message : typeof e === "object" && e && "message" in e ? String((e as { message: unknown }).message) : String(e));
 
 function StepNeed() {
@@ -100,8 +100,8 @@ function StepNeed() {
               <p className="card line-clamp-3 max-w-xl whitespace-pre-wrap px-4 py-3 text-sm">{said}</p>
               {interpretation && phase === "intake" && missing.length > 0 && (
                 <p role="status" className="max-w-xl border border-gold bg-warn-soft px-4 py-3 text-sm text-warn-ink">
-                  Me falta: <b>{joinEs(missing)}</b>. Añádelo al texto y vuelve a enviar, o rellénalo en el formulario.{" "}
-                  <button type="button" className="text-blue underline" onClick={() => newRequest(true)}>Editar la petición</button>
+                  Missing: <b>{joinList(missing)}</b>. Add it to the text and send again, or fill it in on the form.{" "}
+                  <button type="button" className="text-blue underline" onClick={() => newRequest(true)}>Edit the request</button>
                 </p>
               )}
             </div>
@@ -109,12 +109,12 @@ function StepNeed() {
           {phase === "reading" ? <><RocketJourney /><ReadingRequest onCancel={cancel} /></>
             : interpretation && phase === "intake" ? (
               <>
-                <OrbitButton variant="ghost" className="mb-4 text-sm text-blue" onClick={() => newRequest(false)}>← Nueva petición</OrbitButton>
+                <OrbitButton variant="ghost" className="mb-4 text-sm text-blue" onClick={() => newRequest(false)}>← New request</OrbitButton>
                 <InterpretationView key={interpretation.source_text} result={interpretation} onConfirm={confirm} busy={busy} error={confirmError} />
               </>
             ) : (
               <>
-                {phase === "error" && <p role="alert" className="mb-4 text-center text-sm text-gap">No hemos podido leer la petición. Inténtalo de nuevo.</p>}
+                {phase === "error" && <p role="alert" className="mb-4 text-center text-sm text-gap">We couldn't read the request. Please try again.</p>}
                 <PlanIntake key={draft} initialText={draft} onText={run} />
               </>
             )}

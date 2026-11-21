@@ -1,30 +1,30 @@
 import type { InterpretResult, MatchCandidate, Perfil, RoleReq } from "./types";
 
-export const MOCK_SOURCE_TEXT = `Proyecto: Modernización de la plataforma de pagos instantáneos para una entidad bancaria española.
+export const MOCK_SOURCE_TEXT = `Project: Modernization of the instant payments platform for a Spanish bank.
 
-El cliente necesita migrar su motor de transferencias a una arquitectura de microservicios desplegada en la nube pública de AWS, con orquestación de contenedores y despliegue continuo. Se busca un arquitecto con más de 10 años de experiencia que haya liderado programas regulados.
+The client needs to migrate its transfer engine to a microservices architecture deployed on the AWS public cloud, with container orchestration and continuous deployment. We are looking for an architect with more than 10 years of experience who has led regulated programs.
 
-Se incorporarán dos desarrolladores backend con sólida experiencia en Java y Spring Boot, acostumbrados a mensajería asíncrona de alto volumen y a bases de datos relacionales. Se valorará experiencia previa en el sector financiero.
+Two backend developers will join, with solid experience in Java and Spring Boot, used to high-volume asynchronous messaging and relational databases. Previous experience in the financial sector is a plus.
 
-Un especialista de seguridad velará por el cumplimiento de la normativa de tarjetas y por la gestión de identidades y accesos. Disponibilidad 24/7 desde el primer día.
+A security specialist will ensure compliance with card payment regulations and manage identity and access. 24/7 availability from day one.
 
-Modalidad híbrida en Madrid (España); el cliente exige residencia en España. Se valora inglés B2. Inicio previsto en enero.`;
+Hybrid work in Madrid (Spain); the client requires residence in Spain. English B2 is a plus. Expected start in January.`;
 
 const roles: RoleReq[] = [
   {
-    title: "Arquitecto cloud senior", count: 1, matching_roles: ["Arquitecto Cloud", "Arquitecto de Soluciones"], seniority_min: "Senior", min_years_experience: 10,
+    title: "Senior cloud architect", count: 1, matching_roles: ["Arquitecto Cloud", "Arquitecto de Soluciones"], seniority_min: "Senior", min_years_experience: 10,
     mandatory_skills: [{ name: "AWS", min_level: 4 }, { name: "Kubernetes", min_level: 4 }, { name: "Arquitectura de microservicios", min_level: 4 }],
     desirable_skills: [{ name: "CI/CD" }, { name: "Entornos regulados" }],
     languages: [], certifications: [], certification_options: ["AWS Solutions Architect Pro", "CKA Kubernetes"],
   },
   {
-    title: "Desarrollador backend Java", count: 2, matching_roles: ["Desarrollador Backend", "Desarrollador Java"], seniority_min: "Mid", min_years_experience: 4,
+    title: "Java backend developer", count: 2, matching_roles: ["Desarrollador Backend", "Desarrollador Java"], seniority_min: "Mid", min_years_experience: 4,
     mandatory_skills: [{ name: "Java", min_level: 4 }, { name: "Spring Boot", min_level: 3 }, { name: "Kafka", min_level: 3 }],
     desirable_skills: [{ name: "PostgreSQL" }, { name: "Sector banca" }],
     languages: [], certifications: [], certification_options: [],
   },
   {
-    title: "Especialista de seguridad", count: 1, matching_roles: ["Especialista Ciberseguridad", "Consultor de Seguridad"], seniority_min: "Senior", min_years_experience: 7,
+    title: "Security specialist", count: 1, matching_roles: ["Especialista Ciberseguridad", "Consultor de Seguridad"], seniority_min: "Senior", min_years_experience: 7,
     mandatory_skills: [{ name: "PCI-DSS", min_level: 4 }, { name: "IAM", min_level: 3 }],
     desirable_skills: [],
     languages: [{ name: "Inglés", level: "B2" }], certifications: [], certification_options: ["CISSP", "PCI Professional"],
@@ -32,30 +32,31 @@ const roles: RoleReq[] = [
 ];
 
 const tr = (i: number, list: "mandatory_skills" | "desirable_skills", j: number, value: string, phrase: string) =>
-  ({ path: `roles[${i}].${list}[${j}].name`, value, reason: `«${phrase}» se traduce a ${value} del catálogo de skills.`, action: "corregido" as const });
+  ({ path: `roles[${i}].${list}[${j}].name`, value, reason: `“${phrase}” maps to ${value} in the skills catalog.`, action: "corregido" as const });
 
 export const MOCK_INTERPRET: InterpretResult = {
   source: "texto",
   source_text: MOCK_SOURCE_TEXT,
   interpretation_raw: null,
   requirements: {
-    project: { project_name: "Pagos Instantáneos · Banca ES", client_sector: "Banca", country: "España", city: "Madrid", modality: "hibrido", country_required: true, start_date: null },
+    project: { project_name: "Instant Payments · Spanish Bank", client_sector: "Banca", country: "España", city: "Madrid", modality: "hibrido", country_required: true, start_date: null },
     roles,
   },
   review: [
-    { path: "roles[2].requirements", value: "Disponibilidad 24/7 desde el primer día", reason: "Es una condición contractual, no una competencia. No debe filtrar personas.", action: "eliminado" },
-    tr(0, "mandatory_skills", 1, "Kubernetes", "orquestación de contenedores"),
-    tr(0, "desirable_skills", 0, "CI/CD", "despliegue continuo"),
-    tr(0, "desirable_skills", 1, "Entornos regulados", "programas regulados"),
-    tr(1, "mandatory_skills", 2, "Kafka", "mensajería asíncrona"),
-    tr(1, "desirable_skills", 0, "PostgreSQL", "bases de datos relacionales"),
-    tr(1, "desirable_skills", 1, "Sector banca", "sector financiero"),
-    tr(2, "mandatory_skills", 0, "PCI-DSS", "normativa de tarjetas"),
-    tr(2, "mandatory_skills", 1, "IAM", "gestión de identidades y accesos"),
-    { path: "roles[2].languages[0]", value: { name: "Inglés", level: "B2" }, reason: "El plan dice «se valora»: confirma si debe ser obligatorio.", action: "revisar" },
-    { path: "project.start_date", value: null, reason: "«Inicio previsto en enero» no indica año ni día. Queda como «Por confirmar».", action: "revisar" },
+    { path: "roles[2].requirements", value: "24/7 availability from day one", reason: "It is a contractual condition, not a skill. It must not filter people.", action: "eliminado" },
+    tr(0, "mandatory_skills", 1, "Kubernetes", "container orchestration"),
+    tr(0, "mandatory_skills", 2, "Arquitectura de microservicios", "microservices architecture"),
+    tr(0, "desirable_skills", 0, "CI/CD", "continuous deployment"),
+    tr(0, "desirable_skills", 1, "Entornos regulados", "regulated programs"),
+    tr(1, "mandatory_skills", 2, "Kafka", "asynchronous messaging"),
+    tr(1, "desirable_skills", 0, "PostgreSQL", "relational databases"),
+    tr(1, "desirable_skills", 1, "Sector banca", "financial sector"),
+    tr(2, "mandatory_skills", 0, "PCI-DSS", "card payment regulations"),
+    tr(2, "mandatory_skills", 1, "IAM", "identity and access"),
+    { path: "roles[2].languages[0]", value: { name: "Inglés", level: "B2" }, reason: "The plan says “is a plus”: confirm whether it should be mandatory.", action: "revisar" },
+    { path: "project.start_date", value: null, reason: "“Expected start in January” gives no year or day. It stays as “To be confirmed”.", action: "revisar" },
   ],
-  row_template: { project_name: "Pagos Instantáneos · Banca ES", client_sector: "Banca", country: "España", city: "Madrid", modality: "hibrido", country_required: true, project_start_date: null, roles },
+  row_template: { project_name: "Instant Payments · Spanish Bank", client_sector: "Banca", country: "España", city: "Madrid", modality: "hibrido", country_required: true, project_start_date: null, roles },
 };
 
 /** Simulated perfil built from a matching candidate (only when the backend is not configured). */

@@ -19,13 +19,13 @@ export class RequisitosNoConfirmadosError extends Error {
 export const TOTAL_AVAILABLE = 34003;
 
 export const BREAKDOWN_LABELS: Record<BreakdownKey, string> = {
-  mandatory: "Obligatorias",
-  evidence: "Evidencia en proyectos",
-  sectorRole: "Sector y rol",
-  seniority: "Seniority y años",
-  desirable: "Deseables",
-  langCert: "Idiomas y certificaciones",
-  recency: "Uso reciente",
+  mandatory: "Mandatory",
+  evidence: "Project evidence",
+  sectorRole: "Sector and role",
+  seniority: "Seniority and years",
+  desirable: "Desirable",
+  langCert: "Languages and certifications",
+  recency: "Recent use",
 };
 export const BREAKDOWN_ORDER = Object.keys(BREAKDOWN_LABELS) as BreakdownKey[];
 
@@ -68,7 +68,7 @@ export async function fetchMatching(projectId: string, options: MatchOptions = {
       }
     } catch (e) {
       if (e instanceof RequisitosNoConfirmadosError) throw e;
-      console.warn("Matching no disponible, usando datos simulados", e);
+      console.warn("Matching unavailable, using simulated data", e);
     }
   }
   await new Promise((r) => setTimeout(r, 400));

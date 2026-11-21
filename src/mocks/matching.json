@@ -13,12 +13,12 @@
   "is_illustrative": true
  },
  "n_filtrados": {
-  "Arquitecto cloud senior": 1284,
-  "Desarrollador backend Java": 3412,
-  "Especialista de seguridad": 612
+  "Senior cloud architect": 1284,
+  "Java backend developer": 3412,
+  "Security specialist": 612
  },
  "ranking": {
-  "Arquitecto cloud senior": {
+  "Senior cloud architect": {
    "cumplen": 12,
    "total": 200,
    "items": [
@@ -26,7 +26,7 @@
      "employee_id": "EMP-1007",
      "nombre_completo": "Ana Navarro Gil",
      "puesto_actual": "Consultor Tecnológico",
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "nivel_seniority": "Lead",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -71,7 +71,7 @@
      },
      "gaps": [],
      "risks": [
-      "Alguna obligatoria solo declarada"
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -132,7 +132,7 @@
      "employee_id": "EMP-1021",
      "nombre_completo": "Raúl Serrano Torres",
      "puesto_actual": "Consultor Tecnológico",
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "nivel_seniority": "Senior",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -177,7 +177,7 @@
      },
      "gaps": [],
      "risks": [
-      "Alguna obligatoria solo declarada"
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -230,7 +230,7 @@
      "employee_id": "EMP-1014",
      "nombre_completo": "Ana Ortega López",
      "puesto_actual": "Arquitecto Cloud",
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "nivel_seniority": "Senior",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -275,7 +275,7 @@
      },
      "gaps": [],
      "risks": [
-      "Alguna obligatoria solo declarada"
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -336,7 +336,7 @@
      "employee_id": "EMP-1028",
      "nombre_completo": "Ana Sánchez Martín",
      "puesto_actual": "Arquitecto Cloud",
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "nivel_seniority": "Lead",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -440,7 +440,7 @@
      "employee_id": "EMP-1042",
      "nombre_completo": "Nuria Castro Romero",
      "puesto_actual": "Arquitecto Cloud",
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "nivel_seniority": "Senior",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -484,10 +484,10 @@
       }
      },
      "gaps": [
-      "Menos años de experiencia de los pedidos"
+      "Fewer years of experience than required"
      ],
      "risks": [
-      "Alguna obligatoria solo declarada"
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -540,7 +540,7 @@
      "employee_id": "EMP-1035",
      "nombre_completo": "Diego Ruiz Torres",
      "puesto_actual": "Arquitecto Cloud",
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "nivel_seniority": "Senior",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -584,7 +584,7 @@
       }
      },
      "gaps": [
-      "Menos años de experiencia de los pedidos"
+      "Fewer years of experience than required"
      ],
      "risks": [],
      "evidence": [
@@ -646,7 +646,7 @@
      "employee_id": "EMP-1049",
      "nombre_completo": "Hugo Sánchez Fernández",
      "puesto_actual": "Arquitecto Cloud",
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "nivel_seniority": "Senior",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -690,10 +690,10 @@
       }
      },
      "gaps": [
-      "Menos años de experiencia de los pedidos"
+      "Fewer years of experience than required"
      ],
      "risks": [
-      "Alguna obligatoria solo declarada"
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -754,7 +754,7 @@
      "employee_id": "EMP-1056",
      "nombre_completo": "Paula Ortega García",
      "puesto_actual": "Arquitecto Cloud",
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "nivel_seniority": "Senior",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -798,10 +798,10 @@
       }
      },
      "gaps": [
-      "Sin Kubernetes (obligatoria)"
+      "Missing Kubernetes (mandatory)"
      ],
      "risks": [
-      "Alguna obligatoria solo declarada"
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -846,7 +846,7 @@
      "employee_id": "EMP-1063",
      "nombre_completo": "Raúl Sánchez Domínguez",
      "puesto_actual": "Arquitecto Cloud",
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "nivel_seniority": "Senior",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -890,8 +890,8 @@
       }
      },
      "gaps": [
-      "Sin Kubernetes (obligatoria)",
-      "Sin Arquitectura de microservicios (obligatoria)"
+      "Missing Kubernetes (mandatory)",
+      "Missing Arquitectura de microservicios (mandatory)"
      ],
      "risks": [],
      "evidence": [
@@ -937,7 +937,7 @@
      "employee_id": "EMP-1070",
      "nombre_completo": "Marta Domínguez Fernández",
      "puesto_actual": "Arquitecto Cloud",
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "nivel_seniority": "Senior",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -982,7 +982,7 @@
      },
      "gaps": [],
      "risks": [
-      "Alguna obligatoria solo declarada"
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -1051,7 +1051,7 @@
      "employee_id": "EMP-1077",
      "nombre_completo": "Javier García García",
      "puesto_actual": "Arquitecto Cloud",
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "nivel_seniority": "Senior",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -1147,7 +1147,7 @@
      "employee_id": "EMP-1084",
      "nombre_completo": "Pablo Romero Domínguez",
      "puesto_actual": "Arquitecto Cloud",
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "nivel_seniority": "Lead",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -1191,10 +1191,10 @@
       }
      },
      "gaps": [
-      "Sin Arquitectura de microservicios (obligatoria)"
+      "Missing Arquitectura de microservicios (mandatory)"
      ],
      "risks": [
-      "Alguna obligatoria solo declarada"
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -1245,7 +1245,7 @@
     }
    ]
   },
-  "Desarrollador backend Java": {
+  "Java backend developer": {
    "cumplen": 12,
    "total": 200,
    "items": [
@@ -1253,7 +1253,7 @@
      "employee_id": "EMP-1112",
      "nombre_completo": "Paula Sánchez García",
      "puesto_actual": "Desarrollador Backend",
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "nivel_seniority": "Mid",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -1298,7 +1298,7 @@
      },
      "gaps": [],
      "risks": [
-      "Alguna obligatoria solo declarada"
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -1359,7 +1359,7 @@
      "employee_id": "EMP-1119",
      "nombre_completo": "Miguel Navarro López",
      "puesto_actual": "Desarrollador Backend",
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "nivel_seniority": "Mid",
      "disponibilidad": "Roll-off próximo (<3 meses)",
      "pais": "España",
@@ -1404,8 +1404,8 @@
      },
      "gaps": [],
      "risks": [
-      "Roll-off próximo: inicio sujeto a liberación",
-      "Alguna obligatoria solo declarada"
+      "Roll-off soon: start subject to release",
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -1474,7 +1474,7 @@
      "employee_id": "EMP-1126",
      "nombre_completo": "Raúl Torres Castro",
      "puesto_actual": "Desarrollador Backend",
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "nivel_seniority": "Mid",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -1519,7 +1519,7 @@
      },
      "gaps": [],
      "risks": [
-      "Alguna obligatoria solo declarada"
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -1588,7 +1588,7 @@
      "employee_id": "EMP-1133",
      "nombre_completo": "Álvaro Sánchez Torres",
      "puesto_actual": "Desarrollador Backend",
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "nivel_seniority": "Mid",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -1633,7 +1633,7 @@
      },
      "gaps": [],
      "risks": [
-      "Alguna obligatoria solo declarada"
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -1686,7 +1686,7 @@
      "employee_id": "EMP-1140",
      "nombre_completo": "Paula Castro Torres",
      "puesto_actual": "Desarrollador Backend",
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "nivel_seniority": "Senior",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -1731,7 +1731,7 @@
      },
      "gaps": [],
      "risks": [
-      "Alguna obligatoria solo declarada"
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -1792,7 +1792,7 @@
      "employee_id": "EMP-1147",
      "nombre_completo": "Carmen Molina Vázquez",
      "puesto_actual": "Desarrollador Backend",
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "nivel_seniority": "Mid",
      "disponibilidad": "Roll-off próximo (<3 meses)",
      "pais": "España",
@@ -1836,12 +1836,12 @@
       }
      },
      "gaps": [
-      "Sin Spring Boot (obligatoria)",
-      "Sin Kafka (obligatoria)"
+      "Missing Spring Boot (mandatory)",
+      "Missing Kafka (mandatory)"
      ],
      "risks": [
-      "Roll-off próximo: inicio sujeto a liberación",
-      "Alguna obligatoria solo declarada"
+      "Roll-off soon: start subject to release",
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -1886,7 +1886,7 @@
      "employee_id": "EMP-1154",
      "nombre_completo": "Carlos Martín López",
      "puesto_actual": "Desarrollador Backend",
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "nivel_seniority": "Mid",
      "disponibilidad": "Roll-off próximo (<3 meses)",
      "pais": "España",
@@ -1930,10 +1930,10 @@
       }
      },
      "gaps": [
-      "Sin Kafka (obligatoria)"
+      "Missing Kafka (mandatory)"
      ],
      "risks": [
-      "Roll-off próximo: inicio sujeto a liberación"
+      "Roll-off soon: start subject to release"
      ],
      "evidence": [
       {
@@ -1986,7 +1986,7 @@
      "employee_id": "EMP-1161",
      "nombre_completo": "Paula López Navarro",
      "puesto_actual": "Desarrollador Backend",
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "nivel_seniority": "Mid",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -2030,10 +2030,10 @@
       }
      },
      "gaps": [
-      "Sin Kafka (obligatoria)"
+      "Missing Kafka (mandatory)"
      ],
      "risks": [
-      "Alguna obligatoria solo declarada"
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -2086,7 +2086,7 @@
      "employee_id": "EMP-1168",
      "nombre_completo": "Laura Gil Ruiz",
      "puesto_actual": "Desarrollador Backend",
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "nivel_seniority": "Senior",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -2130,7 +2130,7 @@
       }
      },
      "gaps": [
-      "Sin Spring Boot (obligatoria)"
+      "Missing Spring Boot (mandatory)"
      ],
      "risks": [],
      "evidence": [
@@ -2184,7 +2184,7 @@
      "employee_id": "EMP-1182",
      "nombre_completo": "Carmen Romero Torres",
      "puesto_actual": "Consultor Tecnológico",
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "nivel_seniority": "Mid",
      "disponibilidad": "Roll-off próximo (<3 meses)",
      "pais": "España",
@@ -2229,8 +2229,8 @@
      },
      "gaps": [],
      "risks": [
-      "Roll-off próximo: inicio sujeto a liberación",
-      "Alguna obligatoria solo declarada"
+      "Roll-off soon: start subject to release",
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -2291,7 +2291,7 @@
      "employee_id": "EMP-1175",
      "nombre_completo": "Miguel López García",
      "puesto_actual": "Desarrollador Backend",
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "nivel_seniority": "Mid",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -2336,7 +2336,7 @@
      },
      "gaps": [],
      "risks": [
-      "Alguna obligatoria solo declarada"
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -2405,7 +2405,7 @@
      "employee_id": "EMP-1189",
      "nombre_completo": "Javier Navarro Navarro",
      "puesto_actual": "Desarrollador Backend",
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "nivel_seniority": "Senior",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -2449,11 +2449,11 @@
       }
      },
      "gaps": [
-      "Sin Spring Boot (obligatoria)",
-      "Menos años de experiencia de los pedidos"
+      "Missing Spring Boot (mandatory)",
+      "Fewer years of experience than required"
      ],
      "risks": [
-      "Alguna obligatoria solo declarada"
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -2512,7 +2512,7 @@
     }
    ]
   },
-  "Especialista de seguridad": {
+  "Security specialist": {
    "cumplen": 12,
    "total": 200,
    "items": [
@@ -2520,7 +2520,7 @@
      "employee_id": "EMP-1217",
      "nombre_completo": "Elena López Romero",
      "puesto_actual": "Especialista Ciberseguridad",
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "nivel_seniority": "Senior",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -2565,7 +2565,7 @@
      },
      "gaps": [],
      "risks": [
-      "Alguna obligatoria solo declarada"
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -2610,7 +2610,7 @@
      "employee_id": "EMP-1224",
      "nombre_completo": "Miguel Gil Romero",
      "puesto_actual": "Consultor Tecnológico",
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "nivel_seniority": "Lead",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -2654,7 +2654,7 @@
       }
      },
      "gaps": [
-      "Menos años de experiencia de los pedidos"
+      "Fewer years of experience than required"
      ],
      "risks": [],
      "evidence": [
@@ -2708,7 +2708,7 @@
      "employee_id": "EMP-1238",
      "nombre_completo": "Miguel Ortega Romero",
      "puesto_actual": "Especialista Ciberseguridad",
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "nivel_seniority": "Lead",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -2753,7 +2753,7 @@
      },
      "gaps": [],
      "risks": [
-      "Alguna obligatoria solo declarada"
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -2798,7 +2798,7 @@
      "employee_id": "EMP-1231",
      "nombre_completo": "Javier Serrano Romero",
      "puesto_actual": "Especialista Ciberseguridad",
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "nivel_seniority": "Senior",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -2843,7 +2843,7 @@
      },
      "gaps": [],
      "risks": [
-      "Alguna obligatoria solo declarada"
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -2888,7 +2888,7 @@
      "employee_id": "EMP-1252",
      "nombre_completo": "Laura Gil Domínguez",
      "puesto_actual": "Especialista Ciberseguridad",
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "nivel_seniority": "Senior",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -2976,7 +2976,7 @@
      "employee_id": "EMP-1245",
      "nombre_completo": "Raúl Domínguez Romero",
      "puesto_actual": "Especialista Ciberseguridad",
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "nivel_seniority": "Lead",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -3021,7 +3021,7 @@
      },
      "gaps": [],
      "risks": [
-      "Alguna obligatoria solo declarada"
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -3074,7 +3074,7 @@
      "employee_id": "EMP-1259",
      "nombre_completo": "Javier García Fernández",
      "puesto_actual": "Consultor Tecnológico",
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "nivel_seniority": "Senior",
      "disponibilidad": "Roll-off próximo (<3 meses)",
      "pais": "España",
@@ -3118,10 +3118,10 @@
       }
      },
      "gaps": [
-      "Sin IAM (obligatoria)"
+      "Missing IAM (mandatory)"
      ],
      "risks": [
-      "Roll-off próximo: inicio sujeto a liberación"
+      "Roll-off soon: start subject to release"
      ],
      "evidence": [
       {
@@ -3166,7 +3166,7 @@
      "employee_id": "EMP-1266",
      "nombre_completo": "Sergio García Serrano",
      "puesto_actual": "Consultor Tecnológico",
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "nivel_seniority": "Lead",
      "disponibilidad": "Roll-off próximo (<3 meses)",
      "pais": "España",
@@ -3210,11 +3210,11 @@
       }
      },
      "gaps": [
-      "Menos años de experiencia de los pedidos"
+      "Fewer years of experience than required"
      ],
      "risks": [
-      "Roll-off próximo: inicio sujeto a liberación",
-      "Alguna obligatoria solo declarada"
+      "Roll-off soon: start subject to release",
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -3267,7 +3267,7 @@
      "employee_id": "EMP-1280",
      "nombre_completo": "Diego Vázquez Navarro",
      "puesto_actual": "Especialista Ciberseguridad",
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "nivel_seniority": "Senior",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -3312,7 +3312,7 @@
      },
      "gaps": [],
      "risks": [
-      "Alguna obligatoria solo declarada"
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -3365,7 +3365,7 @@
      "employee_id": "EMP-1273",
      "nombre_completo": "Javier Martín Ruiz",
      "puesto_actual": "Especialista Ciberseguridad",
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "nivel_seniority": "Lead",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -3410,7 +3410,7 @@
      },
      "gaps": [],
      "risks": [
-      "Alguna obligatoria solo declarada"
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -3463,7 +3463,7 @@
      "employee_id": "EMP-1294",
      "nombre_completo": "Javier García Gil",
      "puesto_actual": "Especialista Ciberseguridad",
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "nivel_seniority": "Senior",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -3559,7 +3559,7 @@
      "employee_id": "EMP-1287",
      "nombre_completo": "Marta Vázquez Castro",
      "puesto_actual": "Consultor Tecnológico",
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "nivel_seniority": "Lead",
      "disponibilidad": "En banca",
      "pais": "España",
@@ -3604,7 +3604,7 @@
      },
      "gaps": [],
      "risks": [
-      "Alguna obligatoria solo declarada"
+      "Some mandatory skills are declared only"
      ],
      "evidence": [
       {
@@ -3657,76 +3657,76 @@
   }
  },
  "excluded": {
-  "Arquitecto cloud senior": [
+  "Senior cloud architect": [
    {
     "employee_id": "EMP-1091",
     "score": 76.6,
     "reasons": [
-     "Fuera de España (país exigido)"
+     "Outside Spain (country required)"
     ]
    },
    {
     "employee_id": "EMP-1098",
     "score": 87.5,
     "reasons": [
-     "Asignado a otro proyecto",
-     "Fuera de España (país exigido)"
+     "Assigned to another project",
+     "Outside Spain (country required)"
     ]
    },
    {
     "employee_id": "EMP-1105",
     "score": 75.8,
     "reasons": [
-     "Asignado a otro proyecto"
+     "Assigned to another project"
     ]
    }
   ],
-  "Desarrollador backend Java": [
+  "Java backend developer": [
    {
     "employee_id": "EMP-1196",
     "score": 79.2,
     "reasons": [
-     "Asignado a otro proyecto"
+     "Assigned to another project"
     ]
    },
    {
     "employee_id": "EMP-1203",
     "score": 78.1,
     "reasons": [
-     "Fuera de España (país exigido)"
+     "Outside Spain (country required)"
     ]
    },
    {
     "employee_id": "EMP-1210",
     "score": 83.9,
     "reasons": [
-     "Asignado a otro proyecto",
-     "Fuera de España (país exigido)"
+     "Assigned to another project",
+     "Outside Spain (country required)"
     ]
    }
   ],
-  "Especialista de seguridad": [
+  "Security specialist": [
    {
     "employee_id": "EMP-1301",
     "score": 82.5,
     "reasons": [
-     "Asignado a otro proyecto"
+     "Assigned to another project"
     ]
    },
    {
     "employee_id": "EMP-1308",
     "score": 87.4,
     "reasons": [
-     "Asignado a otro proyecto",
-     "Fuera de España (país exigido)"
+     "Assigned to another project",
+     "Outside Spain (country required)"
     ]
    },
    {
     "employee_id": "EMP-1315",
     "score": 76.2,
     "reasons": [
-     "Asignado a otro proyecto",
-     "Fuera de España (país exigido)"
+     "Assigned to another project",
+     "Outside Spain (country required)"
     ]
    }
   ]
@@ -3739,7 +3739,7 @@
     "fit": 89.25,
     "members": [
      {
-      "role": "Arquitecto cloud senior",
+      "role": "Senior cloud architect",
       "employee_id": "EMP-1007",
       "nombre_completo": "Ana Navarro Gil",
       "score": 89.3,
@@ -3748,7 +3748,7 @@
       "cost": 12000
      },
      {
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "employee_id": "EMP-1112",
       "nombre_completo": "Paula Sánchez García",
       "score": 92.6,
@@ -3757,7 +3757,7 @@
       "cost": 7200
      },
      {
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "employee_id": "EMP-1133",
       "nombre_completo": "Álvaro Sánchez Torres",
       "score": 82.4,
@@ -3766,7 +3766,7 @@
       "cost": 7200
      },
      {
-      "role": "Especialista de seguridad",
+      "role": "Security specialist",
       "employee_id": "EMP-1217",
       "nombre_completo": "Elena López Romero",
       "score": 92.7,
@@ -3790,7 +3790,7 @@
      "pct": 100,
      "worst": {
       "employee_id": "EMP-1217",
-      "role": "Especialista de seguridad",
+      "role": "Security specialist",
       "substitute": "EMP-1224",
       "late_substitute": null
      }
@@ -3802,7 +3802,7 @@
     "fit": 89.25,
     "members": [
      {
-      "role": "Arquitecto cloud senior",
+      "role": "Senior cloud architect",
       "employee_id": "EMP-1007",
       "nombre_completo": "Ana Navarro Gil",
       "score": 89.3,
@@ -3811,7 +3811,7 @@
       "cost": 12000
      },
      {
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "employee_id": "EMP-1112",
       "nombre_completo": "Paula Sánchez García",
       "score": 92.6,
@@ -3820,7 +3820,7 @@
       "cost": 7200
      },
      {
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "employee_id": "EMP-1133",
       "nombre_completo": "Álvaro Sánchez Torres",
       "score": 82.4,
@@ -3829,7 +3829,7 @@
       "cost": 7200
      },
      {
-      "role": "Especialista de seguridad",
+      "role": "Security specialist",
       "employee_id": "EMP-1217",
       "nombre_completo": "Elena López Romero",
       "score": 92.7,
@@ -3853,7 +3853,7 @@
      "pct": 100,
      "worst": {
       "employee_id": "EMP-1217",
-      "role": "Especialista de seguridad",
+      "role": "Security specialist",
       "substitute": "EMP-1224",
       "late_substitute": null
      }
@@ -3865,7 +3865,7 @@
     "fit": 86.75,
     "members": [
      {
-      "role": "Arquitecto cloud senior",
+      "role": "Senior cloud architect",
       "employee_id": "EMP-1021",
       "nombre_completo": "Raúl Serrano Torres",
       "score": 86.9,
@@ -3874,7 +3874,7 @@
       "cost": 9600
      },
      {
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "employee_id": "EMP-1119",
       "nombre_completo": "Miguel Navarro López",
       "score": 92.0,
@@ -3883,7 +3883,7 @@
       "cost": 7200
      },
      {
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "employee_id": "EMP-1140",
       "nombre_completo": "Paula Castro Torres",
       "score": 79.8,
@@ -3892,7 +3892,7 @@
       "cost": 9600
      },
      {
-      "role": "Especialista de seguridad",
+      "role": "Security specialist",
       "employee_id": "EMP-1224",
       "nombre_completo": "Miguel Gil Romero",
       "score": 88.3,
@@ -3916,7 +3916,7 @@
      "pct": 100,
      "worst": {
       "employee_id": "EMP-1119",
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "substitute": "EMP-1112",
       "late_substitute": null
      }
@@ -3928,7 +3928,7 @@
     "fit": 79.35,
     "members": [
      {
-      "role": "Arquitecto cloud senior",
+      "role": "Senior cloud architect",
       "employee_id": "EMP-1035",
       "nombre_completo": "Diego Ruiz Torres",
       "score": 76.4,
@@ -3937,7 +3937,7 @@
       "cost": 9600
      },
      {
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "employee_id": "EMP-1147",
       "nombre_completo": "Carmen Molina Vázquez",
       "score": 74.7,
@@ -3946,7 +3946,7 @@
       "cost": 7200
      },
      {
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "employee_id": "EMP-1112",
       "nombre_completo": "Paula Sánchez García",
       "score": 92.6,
@@ -3955,7 +3955,7 @@
       "cost": 7200
      },
      {
-      "role": "Especialista de seguridad",
+      "role": "Security specialist",
       "employee_id": "EMP-1245",
       "nombre_completo": "Raúl Domínguez Romero",
       "score": 73.7,
@@ -3979,7 +3979,7 @@
      "pct": 100,
      "worst": {
       "employee_id": "EMP-1112",
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "substitute": "EMP-1119",
       "late_substitute": null
      }
@@ -3991,7 +3991,7 @@
     "fit": 78.775,
     "members": [
      {
-      "role": "Arquitecto cloud senior",
+      "role": "Senior cloud architect",
       "employee_id": "EMP-1028",
       "nombre_completo": "Ana Sánchez Martín",
       "score": 79.0,
@@ -4000,7 +4000,7 @@
       "cost": 12000
      },
      {
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "employee_id": "EMP-1133",
       "nombre_completo": "Álvaro Sánchez Torres",
       "score": 82.4,
@@ -4009,7 +4009,7 @@
       "cost": 7200
      },
      {
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "employee_id": "EMP-1154",
       "nombre_completo": "Carlos Martín López",
       "score": 71.4,
@@ -4018,7 +4018,7 @@
       "cost": 7200
      },
      {
-      "role": "Especialista de seguridad",
+      "role": "Security specialist",
       "employee_id": "EMP-1231",
       "nombre_completo": "Javier Serrano Romero",
       "score": 82.3,
@@ -4042,7 +4042,7 @@
      "pct": 100,
      "worst": {
       "employee_id": "EMP-1133",
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "substitute": "EMP-1112",
       "late_substitute": null
      }
@@ -4056,7 +4056,7 @@
     "fit": 81.525,
     "members": [
      {
-      "role": "Arquitecto cloud senior",
+      "role": "Senior cloud architect",
       "employee_id": "EMP-1014",
       "nombre_completo": "Ana Ortega López",
       "score": 84.4,
@@ -4065,7 +4065,7 @@
       "cost": 9600
      },
      {
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "employee_id": "EMP-1126",
       "nombre_completo": "Raúl Torres Castro",
       "score": 82.9,
@@ -4074,7 +4074,7 @@
       "cost": 7200
      },
      {
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "employee_id": "EMP-1147",
       "nombre_completo": "Carmen Molina Vázquez",
       "score": 74.7,
@@ -4083,7 +4083,7 @@
       "cost": null
      },
      {
-      "role": "Especialista de seguridad",
+      "role": "Security specialist",
       "employee_id": "EMP-1238",
       "nombre_completo": "Miguel Ortega Romero",
       "score": 84.1,
@@ -4107,7 +4107,7 @@
      "pct": 75,
      "worst": {
       "employee_id": "EMP-1014",
-      "role": "Arquitecto cloud senior",
+      "role": "Senior cloud architect",
       "substitute": null,
       "late_substitute": {
        "employee_id": "EMP-1021",
@@ -4122,7 +4122,7 @@
     "fit": 81.525,
     "members": [
      {
-      "role": "Arquitecto cloud senior",
+      "role": "Senior cloud architect",
       "employee_id": "EMP-1014",
       "nombre_completo": "Ana Ortega López",
       "score": 84.4,
@@ -4131,7 +4131,7 @@
       "cost": 9600
      },
      {
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "employee_id": "EMP-1126",
       "nombre_completo": "Raúl Torres Castro",
       "score": 82.9,
@@ -4140,7 +4140,7 @@
       "cost": 7200
      },
      {
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "employee_id": "EMP-1147",
       "nombre_completo": "Carmen Molina Vázquez",
       "score": 74.7,
@@ -4149,7 +4149,7 @@
       "cost": null
      },
      {
-      "role": "Especialista de seguridad",
+      "role": "Security specialist",
       "employee_id": "EMP-1238",
       "nombre_completo": "Miguel Ortega Romero",
       "score": 84.1,
@@ -4173,7 +4173,7 @@
      "pct": 75,
      "worst": {
       "employee_id": "EMP-1014",
-      "role": "Arquitecto cloud senior",
+      "role": "Senior cloud architect",
       "substitute": null,
       "late_substitute": {
        "employee_id": "EMP-1021",
@@ -4188,7 +4188,7 @@
     "fit": 77.45,
     "members": [
      {
-      "role": "Arquitecto cloud senior",
+      "role": "Senior cloud architect",
       "employee_id": "EMP-1049",
       "nombre_completo": "Hugo Sánchez Fernández",
       "score": 74.4,
@@ -4197,7 +4197,7 @@
       "cost": 9600
      },
      {
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "employee_id": "EMP-1154",
       "nombre_completo": "Carlos Martín López",
       "score": 71.4,
@@ -4206,7 +4206,7 @@
       "cost": 7200
      },
      {
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "employee_id": "EMP-1119",
       "nombre_completo": "Miguel Navarro López",
       "score": 92.0,
@@ -4215,7 +4215,7 @@
       "cost": 7200
      },
      {
-      "role": "Especialista de seguridad",
+      "role": "Security specialist",
       "employee_id": "EMP-1259",
       "nombre_completo": "Javier García Fernández",
       "score": 72.0,
@@ -4239,7 +4239,7 @@
      "pct": 75,
      "worst": {
       "employee_id": "EMP-1119",
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "substitute": null,
       "late_substitute": {
        "employee_id": "EMP-1126",
@@ -4254,7 +4254,7 @@
     "fit": 72.2,
     "members": [
      {
-      "role": "Arquitecto cloud senior",
+      "role": "Senior cloud architect",
       "employee_id": "EMP-1056",
       "nombre_completo": "Paula Ortega García",
       "score": 73.4,
@@ -4263,7 +4263,7 @@
       "cost": 9600
      },
      {
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "employee_id": "EMP-1161",
       "nombre_completo": "Paula López Navarro",
       "score": 66.3,
@@ -4272,7 +4272,7 @@
       "cost": 7200
      },
      {
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "employee_id": "EMP-1126",
       "nombre_completo": "Raúl Torres Castro",
       "score": 82.9,
@@ -4281,7 +4281,7 @@
       "cost": 7200
      },
      {
-      "role": "Especialista de seguridad",
+      "role": "Security specialist",
       "employee_id": "EMP-1266",
       "nombre_completo": "Sergio García Serrano",
       "score": 66.2,
@@ -4305,7 +4305,7 @@
      "pct": 100,
      "worst": {
       "employee_id": "EMP-1126",
-      "role": "Desarrollador backend Java",
+      "role": "Java backend developer",
       "substitute": "EMP-1112",
       "late_substitute": null
      }
@@ -4320,7 +4320,7 @@
    "fit": 89.25,
    "members": [
     {
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "employee_id": "EMP-1007",
      "nombre_completo": "Ana Navarro Gil",
      "score": 89.3,
@@ -4329,7 +4329,7 @@
      "cost": 12000
     },
     {
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "employee_id": "EMP-1112",
      "nombre_completo": "Paula Sánchez García",
      "score": 92.6,
@@ -4338,7 +4338,7 @@
      "cost": 7200
     },
     {
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "employee_id": "EMP-1133",
      "nombre_completo": "Álvaro Sánchez Torres",
      "score": 82.4,
@@ -4347,7 +4347,7 @@
      "cost": 7200
     },
     {
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "employee_id": "EMP-1217",
      "nombre_completo": "Elena López Romero",
      "score": 92.7,
@@ -4371,7 +4371,7 @@
     "pct": 100,
     "worst": {
      "employee_id": "EMP-1217",
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "substitute": "EMP-1224",
      "late_substitute": null
     }
@@ -4383,7 +4383,7 @@
    "fit": 89.25,
    "members": [
     {
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "employee_id": "EMP-1007",
      "nombre_completo": "Ana Navarro Gil",
      "score": 89.3,
@@ -4392,7 +4392,7 @@
      "cost": 12000
     },
     {
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "employee_id": "EMP-1112",
      "nombre_completo": "Paula Sánchez García",
      "score": 92.6,
@@ -4401,7 +4401,7 @@
      "cost": 7200
     },
     {
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "employee_id": "EMP-1133",
      "nombre_completo": "Álvaro Sánchez Torres",
      "score": 82.4,
@@ -4410,7 +4410,7 @@
      "cost": 7200
     },
     {
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "employee_id": "EMP-1217",
      "nombre_completo": "Elena López Romero",
      "score": 92.7,
@@ -4434,7 +4434,7 @@
     "pct": 100,
     "worst": {
      "employee_id": "EMP-1217",
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "substitute": "EMP-1224",
      "late_substitute": null
     }
@@ -4446,7 +4446,7 @@
    "fit": 86.75,
    "members": [
     {
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "employee_id": "EMP-1021",
      "nombre_completo": "Raúl Serrano Torres",
      "score": 86.9,
@@ -4455,7 +4455,7 @@
      "cost": 9600
     },
     {
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "employee_id": "EMP-1119",
      "nombre_completo": "Miguel Navarro López",
      "score": 92.0,
@@ -4464,7 +4464,7 @@
      "cost": 7200
     },
     {
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "employee_id": "EMP-1140",
      "nombre_completo": "Paula Castro Torres",
      "score": 79.8,
@@ -4473,7 +4473,7 @@
      "cost": 9600
     },
     {
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "employee_id": "EMP-1224",
      "nombre_completo": "Miguel Gil Romero",
      "score": 88.3,
@@ -4497,7 +4497,7 @@
     "pct": 100,
     "worst": {
      "employee_id": "EMP-1119",
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "substitute": "EMP-1112",
      "late_substitute": null
     }
@@ -4509,7 +4509,7 @@
    "fit": 81.525,
    "members": [
     {
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "employee_id": "EMP-1014",
      "nombre_completo": "Ana Ortega López",
      "score": 84.4,
@@ -4518,7 +4518,7 @@
      "cost": 9600
     },
     {
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "employee_id": "EMP-1126",
      "nombre_completo": "Raúl Torres Castro",
      "score": 82.9,
@@ -4527,7 +4527,7 @@
      "cost": 7200
     },
     {
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "employee_id": "EMP-1147",
      "nombre_completo": "Carmen Molina Vázquez",
      "score": 74.7,
@@ -4536,7 +4536,7 @@
      "cost": null
     },
     {
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "employee_id": "EMP-1238",
      "nombre_completo": "Miguel Ortega Romero",
      "score": 84.1,
@@ -4560,7 +4560,7 @@
     "pct": 75,
     "worst": {
      "employee_id": "EMP-1014",
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "substitute": null,
      "late_substitute": {
       "employee_id": "EMP-1021",
@@ -4575,7 +4575,7 @@
    "fit": 81.525,
    "members": [
     {
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "employee_id": "EMP-1014",
      "nombre_completo": "Ana Ortega López",
      "score": 84.4,
@@ -4584,7 +4584,7 @@
      "cost": 9600
     },
     {
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "employee_id": "EMP-1126",
      "nombre_completo": "Raúl Torres Castro",
      "score": 82.9,
@@ -4593,7 +4593,7 @@
      "cost": 7200
     },
     {
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "employee_id": "EMP-1147",
      "nombre_completo": "Carmen Molina Vázquez",
      "score": 74.7,
@@ -4602,7 +4602,7 @@
      "cost": null
     },
     {
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "employee_id": "EMP-1238",
      "nombre_completo": "Miguel Ortega Romero",
      "score": 84.1,
@@ -4626,7 +4626,7 @@
     "pct": 75,
     "worst": {
      "employee_id": "EMP-1014",
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "substitute": null,
      "late_substitute": {
       "employee_id": "EMP-1021",
@@ -4641,7 +4641,7 @@
    "fit": 79.35,
    "members": [
     {
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "employee_id": "EMP-1035",
      "nombre_completo": "Diego Ruiz Torres",
      "score": 76.4,
@@ -4650,7 +4650,7 @@
      "cost": 9600
     },
     {
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "employee_id": "EMP-1147",
      "nombre_completo": "Carmen Molina Vázquez",
      "score": 74.7,
@@ -4659,7 +4659,7 @@
      "cost": 7200
     },
     {
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "employee_id": "EMP-1112",
      "nombre_completo": "Paula Sánchez García",
      "score": 92.6,
@@ -4668,7 +4668,7 @@
      "cost": 7200
     },
     {
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "employee_id": "EMP-1245",
      "nombre_completo": "Raúl Domínguez Romero",
      "score": 73.7,
@@ -4692,7 +4692,7 @@
     "pct": 100,
     "worst": {
      "employee_id": "EMP-1112",
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "substitute": "EMP-1119",
      "late_substitute": null
     }
@@ -4704,7 +4704,7 @@
    "fit": 78.775,
    "members": [
     {
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "employee_id": "EMP-1028",
      "nombre_completo": "Ana Sánchez Martín",
      "score": 79.0,
@@ -4713,7 +4713,7 @@
      "cost": 12000
     },
     {
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "employee_id": "EMP-1133",
      "nombre_completo": "Álvaro Sánchez Torres",
      "score": 82.4,
@@ -4722,7 +4722,7 @@
      "cost": 7200
     },
     {
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "employee_id": "EMP-1154",
      "nombre_completo": "Carlos Martín López",
      "score": 71.4,
@@ -4731,7 +4731,7 @@
      "cost": 7200
     },
     {
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "employee_id": "EMP-1231",
      "nombre_completo": "Javier Serrano Romero",
      "score": 82.3,
@@ -4755,7 +4755,7 @@
     "pct": 100,
     "worst": {
      "employee_id": "EMP-1133",
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "substitute": "EMP-1112",
      "late_substitute": null
     }
@@ -4767,7 +4767,7 @@
    "fit": 77.45,
    "members": [
     {
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "employee_id": "EMP-1049",
      "nombre_completo": "Hugo Sánchez Fernández",
      "score": 74.4,
@@ -4776,7 +4776,7 @@
      "cost": 9600
     },
     {
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "employee_id": "EMP-1154",
      "nombre_completo": "Carlos Martín López",
      "score": 71.4,
@@ -4785,7 +4785,7 @@
      "cost": 7200
     },
     {
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "employee_id": "EMP-1119",
      "nombre_completo": "Miguel Navarro López",
      "score": 92.0,
@@ -4794,7 +4794,7 @@
      "cost": 7200
     },
     {
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "employee_id": "EMP-1259",
      "nombre_completo": "Javier García Fernández",
      "score": 72.0,
@@ -4818,7 +4818,7 @@
     "pct": 75,
     "worst": {
      "employee_id": "EMP-1119",
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "substitute": null,
      "late_substitute": {
       "employee_id": "EMP-1126",
@@ -4833,7 +4833,7 @@
    "fit": 72.2,
    "members": [
     {
-     "role": "Arquitecto cloud senior",
+     "role": "Senior cloud architect",
      "employee_id": "EMP-1056",
      "nombre_completo": "Paula Ortega García",
      "score": 73.4,
@@ -4842,7 +4842,7 @@
      "cost": 9600
     },
     {
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "employee_id": "EMP-1161",
      "nombre_completo": "Paula López Navarro",
      "score": 66.3,
@@ -4851,7 +4851,7 @@
      "cost": 7200
     },
     {
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "employee_id": "EMP-1126",
      "nombre_completo": "Raúl Torres Castro",
      "score": 82.9,
@@ -4860,7 +4860,7 @@
      "cost": 7200
     },
     {
-     "role": "Especialista de seguridad",
+     "role": "Security specialist",
      "employee_id": "EMP-1266",
      "nombre_completo": "Sergio García Serrano",
      "score": 66.2,
@@ -4884,7 +4884,7 @@
     "pct": 100,
     "worst": {
      "employee_id": "EMP-1126",
-     "role": "Desarrollador backend Java",
+     "role": "Java backend developer",
      "substitute": "EMP-1112",
      "late_substitute": null
     }
@@ -4897,7 +4897,7 @@
    "employee_id": "EMP-1007",
    "nombre_completo": "Ana Navarro Gil",
    "puesto_actual": "Consultor Tecnológico",
-   "role": "Arquitecto cloud senior",
+   "role": "Senior cloud architect",
    "nivel_seniority": "Lead",
    "disponibilidad": "En banca",
    "pais": "España",
@@ -4942,7 +4942,7 @@
    },
    "gaps": [],
    "risks": [
-    "Alguna obligatoria solo declarada"
+    "Some mandatory skills are declared only"
    ],
    "evidence": [
     {
@@ -5003,7 +5003,7 @@
    "employee_id": "EMP-1021",
    "nombre_completo": "Raúl Serrano Torres",
    "puesto_actual": "Consultor Tecnológico",
-   "role": "Arquitecto cloud senior",
+   "role": "Senior cloud architect",
    "nivel_seniority": "Senior",
    "disponibilidad": "En banca",
    "pais": "España",
@@ -5048,7 +5048,7 @@
    },
    "gaps": [],
    "risks": [
-    "Alguna obligatoria solo declarada"
+    "Some mandatory skills are declared only"
    ],
    "evidence": [
     {
@@ -5101,7 +5101,7 @@
    "employee_id": "EMP-1014",
    "nombre_completo": "Ana Ortega López",
    "puesto_actual": "Arquitecto Cloud",
-   "role": "Arquitecto cloud senior",
+   "role": "Senior cloud architect",
    "nivel_seniority": "Senior",
    "disponibilidad": "En banca",
    "pais": "España",
@@ -5146,7 +5146,7 @@
    },
    "gaps": [],
    "risks": [
-    "Alguna obligatoria solo declarada"
+    "Some mandatory skills are declared only"
    ],
    "evidence": [
     {
@@ -5207,7 +5207,7 @@
    "employee_id": "EMP-1028",
    "nombre_completo": "Ana Sánchez Martín",
    "puesto_actual": "Arquitecto Cloud",
-   "role": "Arquitecto cloud senior",
+   "role": "Senior cloud architect",
    "nivel_seniority": "Lead",
    "disponibilidad": "En banca",
    "pais": "España",
@@ -5311,7 +5311,7 @@
    "employee_id": "EMP-1042",
    "nombre_completo": "Nuria Castro Romero",
    "puesto_actual": "Arquitecto Cloud",
-   "role": "Arquitecto cloud senior",
+   "role": "Senior cloud architect",
    "nivel_seniority": "Senior",
    "disponibilidad": "En banca",
    "pais": "España",
@@ -5355,10 +5355,10 @@
     }
    },
    "gaps": [
-    "Menos años de experiencia de los pedidos"
+    "Fewer years of experience than required"
    ],
    "risks": [
-    "Alguna obligatoria solo declarada"
+    "Some mandatory skills are declared only"
    ],
    "evidence": [
     {
@@ -5411,7 +5411,7 @@
    "employee_id": "EMP-1035",
    "nombre_completo": "Diego Ruiz Torres",
    "puesto_actual": "Arquitecto Cloud",
-   "role": "Arquitecto cloud senior",
+   "role": "Senior cloud architect",
    "nivel_seniority": "Senior",
    "disponibilidad": "En banca",
    "pais": "España",
@@ -5455,7 +5455,7 @@
     }
    },
    "gaps": [
-    "Menos años de experiencia de los pedidos"
+    "Fewer years of experience than required"
    ],
    "risks": [],
    "evidence": [
@@ -5517,7 +5517,7 @@
    "employee_id": "EMP-1112",
    "nombre_completo": "Paula Sánchez García",
    "puesto_actual": "Desarrollador Backend",
-   "role": "Desarrollador backend Java",
+   "role": "Java backend developer",
    "nivel_seniority": "Mid",
    "disponibilidad": "En banca",
    "pais": "España",
@@ -5562,7 +5562,7 @@
    },
    "gaps": [],
    "risks": [
-    "Alguna obligatoria solo declarada"
+    "Some mandatory skills are declared only"
    ],
    "evidence": [
     {
@@ -5623,7 +5623,7 @@
    "employee_id": "EMP-1119",
    "nombre_completo": "Miguel Navarro López",
    "puesto_actual": "Desarrollador Backend",
-   "role": "Desarrollador backend Java",
+   "role": "Java backend developer",
    "nivel_seniority": "Mid",
    "disponibilidad": "Roll-off próximo (<3 meses)",
    "pais": "España",
@@ -5668,8 +5668,8 @@
    },
    "gaps": [],
    "risks": [
-    "Roll-off próximo: inicio sujeto a liberación",
-    "Alguna obligatoria solo declarada"
+    "Roll-off soon: start subject to release",
+    "Some mandatory skills are declared only"
    ],
    "evidence": [
     {
@@ -5738,7 +5738,7 @@
    "employee_id": "EMP-1126",
    "nombre_completo": "Raúl Torres Castro",
    "puesto_actual": "Desarrollador Backend",
-   "role": "Desarrollador backend Java",
+   "role": "Java backend developer",
    "nivel_seniority": "Mid",
    "disponibilidad": "En banca",
    "pais": "España",
@@ -5783,7 +5783,7 @@
    },
    "gaps": [],
    "risks": [
-    "Alguna obligatoria solo declarada"
+    "Some mandatory skills are declared only"
    ],
    "evidence": [
     {
@@ -5852,7 +5852,7 @@
    "employee_id": "EMP-1133",
    "nombre_completo": "Álvaro Sánchez Torres",
    "puesto_actual": "Desarrollador Backend",
-   "role": "Desarrollador backend Java",
+   "role": "Java backend developer",
    "nivel_seniority": "Mid",
    "disponibilidad": "En banca",
    "pais": "España",
@@ -5897,7 +5897,7 @@
    },
    "gaps": [],
    "risks": [
-    "Alguna obligatoria solo declarada"
+    "Some mandatory skills are declared only"
    ],
    "evidence": [
     {
@@ -5950,7 +5950,7 @@
    "employee_id": "EMP-1140",
    "nombre_completo": "Paula Castro Torres",
    "puesto_actual": "Desarrollador Backend",
-   "role": "Desarrollador backend Java",
+   "role": "Java backend developer",
    "nivel_seniority": "Senior",
    "disponibilidad": "En banca",
    "pais": "España",
@@ -5995,7 +5995,7 @@
    },
    "gaps": [],
    "risks": [
-    "Alguna obligatoria solo declarada"
+    "Some mandatory skills are declared only"
    ],
    "evidence": [
     {
@@ -6056,7 +6056,7 @@
    "employee_id": "EMP-1147",
    "nombre_completo": "Carmen Molina Vázquez",
    "puesto_actual": "Desarrollador Backend",
-   "role": "Desarrollador backend Java",
+   "role": "Java backend developer",
    "nivel_seniority": "Mid",
    "disponibilidad": "Roll-off próximo (<3 meses)",
    "pais": "España",
@@ -6100,12 +6100,12 @@
     }
    },
    "gaps": [
-    "Sin Spring Boot (obligatoria)",
-    "Sin Kafka (obligatoria)"
+    "Missing Spring Boot (mandatory)",
+    "Missing Kafka (mandatory)"
    ],
    "risks": [
-    "Roll-off próximo: inicio sujeto a liberación",
-    "Alguna obligatoria solo declarada"
+    "Roll-off soon: start subject to release",
+    "Some mandatory skills are declared only"
    ],
    "evidence": [
     {
@@ -6150,7 +6150,7 @@
    "employee_id": "EMP-1217",
    "nombre_completo": "Elena López Romero",
    "puesto_actual": "Especialista Ciberseguridad",
-   "role": "Especialista de seguridad",
+   "role": "Security specialist",
    "nivel_seniority": "Senior",
    "disponibilidad": "En banca",
    "pais": "España",
@@ -6195,7 +6195,7 @@
    },
    "gaps": [],
    "risks": [
-    "Alguna obligatoria solo declarada"
+    "Some mandatory skills are declared only"
    ],
    "evidence": [
     {
@@ -6240,7 +6240,7 @@
    "employee_id": "EMP-1224",
    "nombre_completo": "Miguel Gil Romero",
    "puesto_actual": "Consultor Tecnológico",
-   "role": "Especialista de seguridad",
+   "role": "Security specialist",
    "nivel_seniority": "Lead",
    "disponibilidad": "En banca",
    "pais": "España",
@@ -6284,7 +6284,7 @@
     }
    },
    "gaps": [
-    "Menos años de experiencia de los pedidos"
+    "Fewer years of experience than required"
    ],
    "risks": [],
    "evidence": [
@@ -6338,7 +6338,7 @@
    "employee_id": "EMP-1238",
    "nombre_completo": "Miguel Ortega Romero",
    "puesto_actual": "Especialista Ciberseguridad",
-   "role": "Especialista de seguridad",
+   "role": "Security specialist",
    "nivel_seniority": "Lead",
    "disponibilidad": "En banca",
    "pais": "España",
@@ -6383,7 +6383,7 @@
    },
    "gaps": [],
    "risks": [
-    "Alguna obligatoria solo declarada"
+    "Some mandatory skills are declared only"
    ],
    "evidence": [
     {
@@ -6428,7 +6428,7 @@
    "employee_id": "EMP-1231",
    "nombre_completo": "Javier Serrano Romero",
    "puesto_actual": "Especialista Ciberseguridad",
-   "role": "Especialista de seguridad",
+   "role": "Security specialist",
    "nivel_seniority": "Senior",
    "disponibilidad": "En banca",
    "pais": "España",
@@ -6473,7 +6473,7 @@
    },
    "gaps": [],
    "risks": [
-    "Alguna obligatoria solo declarada"
+    "Some mandatory skills are declared only"
    ],
    "evidence": [
     {
@@ -6518,7 +6518,7 @@
    "employee_id": "EMP-1252",
    "nombre_completo": "Laura Gil Domínguez",
    "puesto_actual": "Especialista Ciberseguridad",
-   "role": "Especialista de seguridad",
+   "role": "Security specialist",
    "nivel_seniority": "Senior",
    "disponibilidad": "En banca",
    "pais": "España",
@@ -6606,7 +6606,7 @@
    "employee_id": "EMP-1245",
    "nombre_completo": "Raúl Domínguez Romero",
    "puesto_actual": "Especialista Ciberseguridad",
-   "role": "Especialista de seguridad",
+   "role": "Security specialist",
    "nivel_seniority": "Lead",
    "disponibilidad": "En banca",
    "pais": "España",
@@ -6651,7 +6651,7 @@
    },
    "gaps": [],
    "risks": [
-    "Alguna obligatoria solo declarada"
+    "Some mandatory skills are declared only"
    ],
    "evidence": [
     {

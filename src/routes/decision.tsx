@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Clock, Coins, Crosshair, Gauge, ShieldAlert, SlidersHorizontal, Trophy, Users, X } from "lucide-react";
 import { AppShell } from "@/components/orbit/AppShell";
-import { DataTag, eur, formatEs, OrbitButton, Panel, SectionLabel, SimPill } from "@/components/orbit/primitives";
+import { DataTag, eur, formatNum, OrbitButton, Panel, SectionLabel, SimPill } from "@/components/orbit/primitives";
 import { saveScenarioAssumptions } from "@/lib/api";
 import { useMatching, useRematch } from "@/lib/matching";
 import { useProject } from "@/lib/project-store";
@@ -12,10 +12,10 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/decision")({
   head: () => ({
     meta: [
-      { title: "Decisión · ORBIT AI" },
-      { name: "description", content: "Interno, externo o híbrido: compara coste, tiempo, cobertura y riesgo con tus supuestos." },
-      { property: "og:title", content: "Decisión · ORBIT AI" },
-      { property: "og:description", content: "Interno, externo o híbrido: compara coste, tiempo, cobertura y riesgo con tus supuestos." },
+      { title: "Decision · ORBIT AI" },
+      { name: "description", content: "Internal, external or hybrid: compare cost, time, coverage and risk with your assumptions." },
+      { property: "og:title", content: "Decision · ORBIT AI" },
+      { property: "og:description", content: "Internal, external or hybrid: compare cost, time, coverage and risk with your assumptions." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -25,7 +25,7 @@ export const Route = createFileRoute("/decision")({
 
 const LEVELS = ["Trainee", "Junior", "Mid", "Senior", "Lead", "Principal"];
 const DEFAULT_RATES: Record<string, number> = { Trainee: 20, Junior: 30, Mid: 45, Senior: 60, Lead: 75, Principal: 90 };
-const Tag = () => <span className="border border-line bg-surface-2 px-1 py-px text-[10px] font-medium text-muted-foreground">Supuesto ilustrativo</span>;
+const Tag = () => <span className="border border-line bg-surface-2 px-1 py-px text-[10px] font-medium text-muted-foreground">Illustrative assumption</span>;
 
 function StepDecision() {
   const { data: match } = useMatching();
@@ -40,7 +40,7 @@ function StepDecision() {
   const [intDays, setIntDays] = useState(10);
   const [hireDays, setHireDays] = useState(60);
   const [onbDays, setOnbDays] = useState(15);
-  const [w, setW] = useState<Weights>({ coste: 30, tiempo: 20, cobertura: 25, disponibilidad: 15, riesgo: 10 });
+  const [w, setW] = useState<Weights>({ cost: 30, time: 20, coverage: 25, availability: 15, risk: 10 });
   const [showAssumptions, setShowAssumptions] = useState(false);
   const [status, setStatus] = useState<"idle" | "saving" | "error">("idle");
 
@@ -66,7 +66,7 @@ function StepDecision() {
           hiring_days: hireDays,
           onboarding_days: onbDays,
           project_days: Math.round(hours / 8),
-          weights: { cost: w.coste / 100, time: w.tiempo / 100, coverage: w.cobertura / 100, availability: w.disponibilidad / 100, risk: w.riesgo / 100 },
+          weights: { cost: w.cost / 100, time: w.time / 100, coverage: w.coverage / 100, availability: w.availability / 100, risk: w.risk / 100 },
           is_illustrative: true,
         }).catch(() => {});
         await rematch({ rate_per_hour: rates, hours_per_person: hours, rolloff_days: rolloff });
@@ -80,32 +80,32 @@ function StepDecision() {
   const sc = useMemo(() => (team ? scenarios(team, { external_rate_per_hour: extRate, hours_per_person: hours, recruitment_cost: recruit, internal_onboarding_days: intDays, external_hiring_days: hireDays, onboarding_days: onbDays, rolloff_days: rolloff }, w) : []), [team, extRate, hours, recruit, intDays, hireDays, onbDays, rolloff, w]);
   const winner = sc.reduce<(typeof sc)[number] | null>((b, s) => (!b || s.score > b.score ? s : b), null);
   const why = winner && {
-    Interno: "el talento ya está en la organización, con evidencia demostrada y sin coste de selección.",
-    Externo: "cubre todas las plazas en menos tiempo con tus pesos actuales.",
-    Híbrido: "combina a quien ya está en banca con refuerzo externo donde hay roll-off.",
+    Internal: "the talent is already in the organization, with proven evidence and no recruitment cost.",
+    External: "it fills every position faster with your current weights.",
+    Hybrid: "it combines people already on bench with external reinforcement where there is roll-off.",
   }[winner.key];
 
   const num = (label: string, v: number, set: (n: number) => void, unit = "") => (
     <label className="block text-sm">
       <span className="flex items-center justify-between gap-2"><span>{label}</span><Tag /></span>
-      <span className="mt-2 flex items-center gap-3"><input aria-label={label} type="range" min={0} max={Math.max(v * 2, unit === "€" ? 20000 : unit === "h" ? 1000 : 180)} value={v} onChange={(e) => set(+e.target.value)} className="min-w-0 flex-1" /><input aria-label={`${label} valor`} type="number" min={0} value={v} onChange={(e) => set(+e.target.value)} className="w-24 border border-line bg-surface px-3 py-1.5 outline-none focus:border-blue tnum" />{unit && <span className="text-xs text-muted-foreground">{unit}</span>}</span>
+      <span className="mt-2 flex items-center gap-3"><input aria-label={label} type="range" min={0} max={Math.max(v * 2, unit === "€" ? 20000 : unit === "h" ? 1000 : 180)} value={v} onChange={(e) => set(+e.target.value)} className="min-w-0 flex-1" /><input aria-label={`${label} value`} type="number" min={0} value={v} onChange={(e) => set(+e.target.value)} className="w-24 border border-line bg-surface px-3 py-1.5 outline-none focus:border-blue tnum" />{unit && <span className="text-xs text-muted-foreground">{unit}</span>}</span>
     </label>
   );
 
   return (
     <AppShell>
-      <p className="mission-kicker">04 / Escenarios</p>
-      <div className="mt-1 flex flex-wrap items-center gap-3"><h1 className="mission-title">Comparativa de escenarios</h1>{match?.simulated && <SimPill />}
-        {status === "saving" && <span className="text-sm text-muted-foreground" role="status">Recalculando…</span>}
-        {status === "error" && <span className="text-sm text-danger" role="alert">No se pudo recalcular. Se mantienen los datos anteriores.</span>}
+      <p className="mission-kicker">04 / Scenarios</p>
+      <div className="mt-1 flex flex-wrap items-center gap-3"><h1 className="mission-title">Scenario comparison</h1>{match?.simulated && <SimPill />}
+        {status === "saving" && <span className="text-sm text-muted-foreground" role="status">Recalculating…</span>}
+        {status === "error" && <span className="text-sm text-danger" role="alert">Could not recalculate. Keeping the previous data.</span>}
       </div>
-      <div className="mt-5 flex flex-wrap items-center justify-between gap-3"><Link to="/equipos" className="text-xs text-blue-200">← Cambiar equipo {team?.id}</Link><OrbitButton variant="ghost" onClick={() => setShowAssumptions(true)}><SlidersHorizontal className="size-4" />Supuestos</OrbitButton></div>
+      <div className="mt-5 flex flex-wrap items-center justify-between gap-3"><Link to="/equipos" className="text-xs text-blue-200">← Change team {team?.id}</Link><OrbitButton variant="ghost" onClick={() => setShowAssumptions(true)}><SlidersHorizontal className="size-4" />Assumptions</OrbitButton></div>
 
       <div className="mt-10">
-        {showAssumptions && <div onKeyDown={e => e.key === "Escape" && setShowAssumptions(false)}><OrbitButton variant="ghost" className="mission-backdrop rounded-none" onClick={() => setShowAssumptions(false)} aria-label="Cerrar supuestos" /><aside className="mission-drawer space-y-5" role="dialog" aria-modal aria-label="Supuestos">
-          <div className="flex items-center justify-between"><h2 className="text-2xl">Supuestos</h2><OrbitButton variant="ghost" className="size-9 p-0" autoFocus onClick={() => setShowAssumptions(false)} aria-label="Cerrar supuestos"><X className="size-4" /></OrbitButton></div>
+        {showAssumptions && <div onKeyDown={e => e.key === "Escape" && setShowAssumptions(false)}><OrbitButton variant="ghost" className="mission-backdrop rounded-none" onClick={() => setShowAssumptions(false)} aria-label="Close assumptions" /><aside className="mission-drawer space-y-5" role="dialog" aria-modal aria-label="Assumptions">
+          <div className="flex items-center justify-between"><h2 className="text-2xl">Assumptions</h2><OrbitButton variant="ghost" className="size-9 p-0" autoFocus onClick={() => setShowAssumptions(false)} aria-label="Close assumptions"><X className="size-4" /></OrbitButton></div>
           <div>
-            <SectionLabel>Tarifa interna por seniority (€/h)</SectionLabel>
+            <SectionLabel>Internal rate by seniority (€/h)</SectionLabel>
             <div className="mt-2 grid grid-cols-2 gap-3">
               {LEVELS.map((l) => (
                 <label key={l} className="text-xs">{l}
@@ -115,15 +115,15 @@ function StepDecision() {
             </div>
             <div className="mt-1"><Tag /></div>
           </div>
-          {num("Horas planificadas por persona", hours, setHours, "h")}
-          {num("Días hasta que llega un Roll-off", rolloff, setRolloff, "días")}
-          {num("Tarifa externa (€/h)", extRate, setExtRate, "€/h")}
-          {num("Coste de selección (€)", recruit, setRecruit, "€")}
-          {num("Días hasta incorporar a alguien interno", intDays, setIntDays, "días")}
-          {num("Días de contratación externa", hireDays, setHireDays, "días")}
-          {num("Días de onboarding", onbDays, setOnbDays, "días")}
+          {num("Planned hours per person", hours, setHours, "h")}
+          {num("Days until a roll-off arrives", rolloff, setRolloff, "days")}
+          {num("External rate (€/h)", extRate, setExtRate, "€/h")}
+          {num("Recruitment cost (€)", recruit, setRecruit, "€")}
+          {num("Days to onboard an internal person", intDays, setIntDays, "days")}
+          {num("External hiring days", hireDays, setHireDays, "days")}
+          {num("Onboarding days", onbDays, setOnbDays, "days")}
           <div>
-            <span className="flex items-center justify-between"><SectionLabel>Pesos (suman 100 %)</SectionLabel><Tag /></span>
+            <span className="flex items-center justify-between"><SectionLabel>Weights (add up to 100%)</SectionLabel><Tag /></span>
             {WEIGHT_KEYS.map((k) => (
               <label key={k} className="mt-3 block text-sm capitalize">
                 <span className="flex justify-between"><span>{k}</span><b className="tnum text-navy">{w[k]} %</b></span>
@@ -144,22 +144,22 @@ function StepDecision() {
             return (
               <Panel key={s.key} className={cn("launch-pad flex flex-col", win && "launch-pad-winner")}>
                 <svg viewBox="0 0 240 140" className="launch-art" aria-hidden="true"><circle cx="120" cy="70" r="50" strokeDasharray="3 6" /><path d="M64 97H176 M80 97V68H104V97 M108 97V49H132V97 M136 97V29H160V97" /></svg>
-                <div className="flex items-center justify-between"><h3 className="text-3xl">{s.key}</h3>{win && <Trophy className="size-5 text-gold" aria-label="Escenario recomendado" />}</div>
+                <div className="flex items-center justify-between"><h3 className="text-3xl">{s.key}</h3>{win && <Trophy className="size-5 text-gold" aria-label="Recommended scenario" />}</div>
                 <dl className="mt-5 space-y-4">
                   {s.cost == null
-                    ? <div><dt className="flex items-center gap-1.5 text-xs text-muted-foreground">Coste total <DataTag kind="supuesto" /></dt><dd className="text-xl font-bold text-warn-ink">Por estimar</dd></div>
-                    : row("Coste total", eur(s.cost), s.key === "Interno" ? "dato" : "calculado", "supuesto")}
-                  {row("Tiempo hasta incorporación", `${formatEs(s.days)} días`, "supuesto")}
-                  {row("Cobertura de requisitos", `${Math.round(s.coverage)} %`, s.key === "Interno" ? "dato" : "supuesto")}
-                  {row("Disponibilidad", `${Math.round(s.availability)} %`, s.key === "Interno" ? "dato" : "supuesto")}
-                  {row("Riesgo", `${Math.round(s.risk)} / 100`, "calculado")}
+                    ? <div><dt className="flex items-center gap-1.5 text-xs text-muted-foreground">Total cost <DataTag kind="supuesto" /></dt><dd className="text-xl font-bold text-warn-ink">To be estimated</dd></div>
+                    : row("Total cost", eur(s.cost), s.key === "Internal" ? "dato" : "calculado", "supuesto")}
+                  {row("Time to onboard", `${formatNum(s.days)} days`, "supuesto")}
+                  {row("Requirement coverage", `${Math.round(s.coverage)} %`, s.key === "Internal" ? "dato" : "supuesto")}
+                  {row("Availability", `${Math.round(s.availability)} %`, s.key === "Internal" ? "dato" : "supuesto")}
+                  {row("Risk", `${Math.round(s.risk)} / 100`, "calculado")}
                   {row("Score", `${s.score}`, "calculado")}
                 </dl>
-                {win && <p className="mt-6 text-xs text-blue-200" title={why ?? ""}><b className="text-blue-200">Motivo de la recomendación</b><br />{winner?.key === "Interno" ? "Talento interno con evidencia demostrada." : winner?.key === "Externo" ? "Cobertura completa según las prioridades definidas." : "Talento interno y refuerzo externo."}</p>}
+                {win && <p className="mt-6 text-xs text-blue-200" title={why ?? ""}><b className="text-blue-200">Why it is recommended</b><br />{winner?.key === "Internal" ? "Internal talent with proven evidence." : winner?.key === "External" ? "Full coverage according to the defined priorities." : "Internal talent plus external reinforcement."}</p>}
               </Panel>
             );
           })}
-          {!team && <p className="text-muted-foreground">Elige un equipo en el paso 3.</p>}
+          {!team && <p className="text-muted-foreground">Choose a team in step 3.</p>}
         </div>
       </div>
     </AppShell>
