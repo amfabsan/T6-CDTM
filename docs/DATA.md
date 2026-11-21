@@ -131,6 +131,55 @@ Las dos últimas filas son aproximaciones con filtros de ejemplo. Las cifras rea
 | Riesgos por candidato | `skills[].nivel` frente a `anios`, `disponibilidad`, `idiomas`, `modalidad_trabajo`, `movilidad_internacional`, `proyectos[].anio`, `certificaciones` | Código |
 | Explicación | `proyectos[].nombre`, `tecnologias` | El LLM redacta y el código valida que lo citado exista |
 
+## En Postgres / Supabase
+
+`scripts/load_profiles.py` aplana el Parquet en las tablas de [`supabase/migrations/001_schema.sql`](../supabase/migrations/001_schema.sql). Tarda ~1 min con los 190k perfiles (probado en Postgres 17).
+
+| Tabla | Filas | Notas |
+|---|---|---|
+**Fidelidad total:** se cargan todas las columnas y bloques del Parquet tal cual, sin descartar ni corregir nada. Solo se **añaden** campos derivados.
+
+| Tabla | Filas | Notas |
+|---|---|---|
+| `empleados` | 190.000 | Todas las columnas del Parquet. Añade `sectores_proyectos` (sectores de todos sus proyectos) |
+| `empleado_skills` | 1.434.551 | Añade `demostrada` (aparece en algún proyecto o puesto), `n_proyectos` y `ultimo_anio` |
+| `proyectos` | 390.651 | |
+| `experiencia` | 450.363 | |
+| `estudios` | 261.250 | |
+| `certificaciones` | 173.783 | Incluye las 189 repetidas del origen |
+| `idiomas` | 423.468 | Incluye los 265 perfiles que repiten idioma con niveles distintos (p. ej. Catalán Nativo y A2) |
+| `catalogo_skills` | 614 | Vocabulario para el LLM y para autocompletar |
+
+Funciones RPC: `perfil(id)` devuelve el perfil completo en JSON y `buscar_personas(...)` es el buscador paginado con filtros duros y skills; tarda menos de 200 ms sobre los 190k perfiles.
+
+### Tamaño y muestra estratificada
+Cada perfil completo ocupa ~3 KB en Postgres (tablas e índices).
+
+| Carga | Perfiles | Tamaño medido |
+|---|---|---|
+| Completa | 190.000 | 584 MB: no cabe en el plan gratuito de Supabase (500 MB) |
+| `--muestra 100000` | 100.167 | 306 MB |
+| **`--muestra 50000` (la que usamos)** | **50.169** | **167 MB**: cabe con margen de sobra, también para embeddings más adelante |
+
+`--muestra N` es **estratificada y reproducible**. En cada estrato área × disponibilidad × sector principal (360 estratos) toma la misma proporción, ordenando por hash del id. Siempre salen los mismos perfiles y con la misma distribución que el dataset completo. Al cargar, el script comprueba la cobertura frente al Parquet completo.
+
+### Por qué 50k es significativa (medido)
+
+| | Completo | Muestra 50k |
+|---|---|---|
+| Roles | 87 | **87** (el más raro tiene 148 personas) |
+| Skills | 614 | **614** (la más rara aparece en 105 perfiles) |
+| Certificaciones, países, ciudades, sectores, seniorities | 100 / 15 / 63 / 10 / 6 | **todos** |
+| Disponibilidad Asignado / En banca / Roll-off | 82,1 / 8,0 / 9,9 % | 81,9 / 8,1 / 9,9 % |
+| Mínimo de personas En banca por rol | 46 | 12 |
+| Brief ciberseguridad (En banca, ≥3 años) | 766 | **202** |
+| Talento oculto en banca (disponible, sector principal ≠ banca) | 3.620 | **989** |
+| Perfiles de IA/ML disponibles (brief retail) | 1.715 | **425** |
+
+Con 30k ya salían todos los roles y skills, pero algunas combinaciones rol × disponibilidad se quedaban en 5 personas. 50k es el punto en que cada brief de prueba tiene cientos de candidatos y nada queda vacío. El ejemplo de talento oculto (*Krystyna Kurcz*) está en la muestra.
+
+Las cifras del dataset completo, si hacen falta para el pitch, se calculan offline con DuckDB sobre el Parquet. El caso lo permite: *"Working on the sample is enough. Explaining how your solution would scale … is a plus."* Para escalar a los 190k basta con `python scripts/load_profiles.py` sin `--muestra` en un Postgres mayor: el esquema y el SQL son los mismos.
+
 ## Leer el Parquet
 
 ```python
