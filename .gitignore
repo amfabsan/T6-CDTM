@@ -10,3 +10,4 @@ scripts/*
 !scripts/load_profiles.py
 !scripts/make_sample.py
 .venv/
+__pycache__/
