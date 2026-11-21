@@ -43,6 +43,8 @@ El manager puede manejar por voz los rankings y los equipos con un asistente de 
 | `data/sample/profiles_sample.json` / `.csv` | ✅ | 42 perfiles elegidos a propósito, para leer y para pruebas |
 | `data/sample/vocabulario.json` | ✅ | 614 skills, roles por área, sectores, certificaciones: **vocabulario para el LLM** |
 | `docs/DATA.md` | ✅ | Estructura del dataset, hallazgos y cifras |
+| `docs/ORBIT_AI_Rankings_y_Filtros.md` | ✅ | Especificación de ranking de perfiles y Top 5 de equipos (texto del PDF) |
+| `docs/ORBIT_AI_Caso_Demo_Pitch.md` | ✅ | Caso de demo (core bancario a Azure): briefing, resultados esperados y fixture de pruebas |
 | `docs/WORKFLOW_MATCHING.md` | ✅ adoptado (código pendiente de PR) | Workflow de matching: filtros duros, búsqueda híbrida (pgvector + RRF), score y equipos |
 | `docs/ORBIT_AI_Rankings_y_Filtros.pdf` | ✅ | Especificación de los controles de ranking, el Top 5 de equipos y la continuidad |
 | `docs/ITERATIONS.md`, `docs/PATTERNS.md` | ✅ | Cuaderno de Improven e investigación de ediciones anteriores |
