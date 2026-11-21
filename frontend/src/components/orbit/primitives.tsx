@@ -1,22 +1,23 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { AlertTriangle, CheckCircle2, Clock, Eye, FlaskConical, Sparkles, X } from "lucide-react";
+import { AlertTriangle, CheckCircle2, Clock, Eye, FlaskConical, Sparkles, Star, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { Availability } from "@/lib/types";
 
 export const chipVariants = cva(
   "inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium whitespace-nowrap transition-colors",
   {
     variants: {
       tone: {
-        must: "bg-ai text-on-accent",
-        nice: "border border-dashed border-ai/70 text-ai",
-        ai: "bg-ai/12 text-ai border border-ai/40",
-        bench: "bg-bench/12 text-bench border border-bench/40",
-        rolloff: "bg-rolloff/12 text-rolloff border border-rolloff/40",
-        gap: "bg-gap/12 text-gap border border-gap/45",
-        hidden: "bg-hidden/14 text-hidden border border-hidden/45",
-        neutral: "bg-surface-2 text-foreground border border-line",
+        must: "border border-danger text-danger bg-surface",
+        nice: "border border-blue text-blue bg-surface",
+        role: "bg-navy/6 text-navy border border-navy/20",
+        ai: "bg-blue/8 text-blue border border-blue/30",
+        bench: "bg-success-soft text-success-ink border border-success-ink/20",
+        rolloff: "bg-warn-soft text-warn-ink border border-warn-ink/20",
+        gap: "bg-danger/8 text-danger border border-danger/30",
+        hidden: "bg-surface text-blue border border-blue",
+        gold: "bg-gold text-navy font-semibold",
+        neutral: "bg-surface text-text border border-line",
       },
     },
     defaultVariants: { tone: "neutral" },
@@ -41,19 +42,19 @@ export function Chip({
 
 export function SimPill({ className }: { className?: string }) {
   return (
-    <span className={cn("inline-flex items-center gap-1 rounded-full border border-rolloff/40 bg-rolloff/10 px-2 py-0.5 text-[11px] font-medium text-rolloff", className)}>
+    <span className={cn("inline-flex items-center gap-1 rounded-full bg-warn-soft px-2.5 py-0.5 text-[11px] font-semibold text-warn-ink", className)}>
       <FlaskConical className="size-3" aria-hidden /> Datos simulados
     </span>
   );
 }
 
-const tagTone = { dato: "text-bench border-bench/40", supuesto: "text-rolloff border-rolloff/40", calculado: "text-ai border-ai/40" } as const;
+const tagTone = { dato: "text-success-ink border-success-ink/30", supuesto: "text-warn-ink border-warn-ink/30", calculado: "text-blue border-blue/30" } as const;
 export function DataTag({ kind }: { kind: keyof typeof tagTone }) {
-  return <span className={cn("rounded border px-1 py-px text-[10px] font-medium uppercase tracking-wide", tagTone[kind])}>{kind}</span>;
+  return <span className={cn("border px-1 py-px text-[10px] font-semibold uppercase tracking-wide", tagTone[kind])}>{kind}</span>;
 }
 
 /** Shows availability text exactly as stored. */
-export function AvailabilityBadge({ value }: { value: Availability | string }) {
+export function AvailabilityBadge({ value }: { value: string }) {
   const bench = value === "En banca";
   const roll = /^roll-off/i.test(value);
   return (
@@ -66,10 +67,13 @@ export const HiddenTalentBadge = () => <Chip tone="hidden" icon={<Eye className=
 export const MeaningBadge = () => <Chip tone="ai" icon={<Sparkles className="size-3.5" aria-hidden />}>Encontrado por significado</Chip>;
 export const GapChip = ({ skill }: { skill: string }) => <Chip tone="gap" icon={<AlertTriangle className="size-3.5" aria-hidden />}>Hueco: {skill}</Chip>;
 export const PendingChip = ({ children }: { children: ReactNode }) => <Chip tone="rolloff" icon={<Clock className="size-3.5" aria-hidden />}>{children}</Chip>;
+export const IdealBadge = () => <Chip tone="gold" icon={<Star className="size-3.5" aria-hidden />}>Equipo ideal</Chip>;
 
 export function formatEs(n: number) {
   return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
+/** Euros in Spanish format: 11.800 € / 70 €/h. */
+export const eur = (n: number, unit = "") => `${formatEs(n)} €${unit ? `/${unit}` : ""}`;
 
 export function AnimatedNumber({ value, duration = 900, suffix = "" }: { value: number; duration?: number; suffix?: string }) {
   const [v, setV] = useState(value);
@@ -89,22 +93,25 @@ export function AnimatedNumber({ value, duration = 900, suffix = "" }: { value: 
 }
 
 export function Panel({ className, children, ...rest }: React.HTMLAttributes<HTMLDivElement>) {
-  return <div className={cn("rounded-xl border border-line bg-surface p-5", className)} {...rest}>{children}</div>;
+  return <div className={cn("card p-6", className)} {...rest}>{children}</div>;
 }
 
 export function SectionLabel({ children }: { children: ReactNode }) {
-  return <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">{children}</p>;
+  return <p className="text-xs font-semibold uppercase tracking-[0.1em] text-muted-foreground">{children}</p>;
 }
 
 export function OrbitButton({ variant = "primary", className, ...rest }: React.ButtonHTMLAttributes<HTMLButtonElement> & { variant?: "primary" | "ghost" }) {
   return (
     <button
       className={cn(
-        "inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-200 disabled:opacity-50",
-        variant === "primary" ? "bg-ai text-on-accent hover:glow-ai" : "border border-line bg-surface-2 text-foreground hover:border-ai/60",
+        "inline-flex items-center justify-center gap-2 rounded-[40px] px-6 py-2.5 text-sm font-semibold transition-all duration-200 disabled:opacity-50",
+        variant === "primary" ? "bg-blue text-on-accent hover:brightness-110" : "border border-navy bg-surface text-navy hover:bg-surface-2",
         className,
       )}
       {...rest}
     />
   );
 }
+
+/** Same look as the primary button, for router links. */
+export const primaryLinkCls = "inline-flex items-center gap-2 rounded-[40px] bg-blue px-7 py-3 text-base font-semibold text-on-accent transition-all hover:brightness-110";

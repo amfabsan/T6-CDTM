@@ -1,63 +1,83 @@
-import { Award, Briefcase, Wrench } from "lucide-react";
-import { foundByMeaning } from "@/lib/mock-data";
-import type { EnrichedCandidate, Evidence } from "@/lib/types";
+import { Link } from "@tanstack/react-router";
+import { AlertTriangle, Briefcase, Check } from "lucide-react";
+import type { MatchCandidate } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { AvailabilityBadge, Chip, chipVariants, GapChip, HiddenTalentBadge, MeaningBadge } from "./primitives";
+import { AvailabilityBadge, Chip, SectionLabel } from "./primitives";
 import { ScoreBar } from "./ScoreBar";
-
-const evIcon = { skill: Wrench, project: Briefcase, cert: Award };
-
-export function EvidenceChip({ e, onOpen }: { e: Evidence; onOpen?: ((ref: string) => void) | undefined }) {
-  const I = evIcon[e.kind];
-  const tone = e.demonstrated === true ? "bench" : e.demonstrated === false ? "rolloff" : "neutral";
-  return (
-    <button type="button" onClick={() => onOpen?.(e.ref)} title="Ver en el perfil"
-      className={cn(chipVariants({ tone }), "cursor-pointer hover:brightness-125")}>
-      <I className="size-3" aria-hidden />{e.label}{e.demonstrated === false && " · solo declarada"}
-    </button>
-  );
-}
+import { ExplainBlock } from "./Explain";
+import type { ExplainResponse } from "@/lib/types";
 
 export function CandidateCard({
-  c, rank, active, compared, onCompare, compareDisabled, onHover, onOpenProfile,
-}: {
-  c: EnrichedCandidate; rank?: number; active?: boolean; compared?: boolean; onCompare?: () => void; compareDisabled?: boolean;
-  onHover?: (h: boolean) => void; onOpenProfile?: (ref: string | null) => void;
-}) {
-  const shown = c.evidence.slice(0, 3);
-  const more = c.evidence.length - shown.length;
+  c, rank, active, compared, onCompare, compareDisabled, onHover, why,
+}: { why?: ExplainResponse["candidates"][number] | undefined; c: MatchCandidate; rank?: number; active?: boolean; compared?: boolean; onCompare?: () => void; compareDisabled?: boolean; onHover?: (h: boolean) => void }) {
   return (
-    <article onMouseEnter={() => onHover?.(true)} onMouseLeave={() => onHover?.(false)}
-      className={cn("lift rounded-xl border bg-surface p-4", active ? "border-ai/70" : "border-line")}>
+    <article onMouseEnter={() => onHover?.(true)} onMouseLeave={() => onHover?.(false)} className={cn("card lift p-5", active && "glow-ai")}>
       <header className="flex items-start gap-3">
-        {rank != null && <span className="mt-1 font-display text-sm font-semibold text-muted-foreground tnum">#{rank}</span>}
+        {rank != null && <span className="mt-1 text-sm font-semibold text-muted-foreground tnum">#{rank}</span>}
         <div className="min-w-0 flex-1">
-          <button className="truncate text-left text-base font-semibold hover:text-ai" onClick={() => onOpenProfile?.(null)}>{c.name}</button>
-          <p className="text-xs text-muted-foreground">{c.area}</p>
-          <div className="mt-2 flex flex-wrap gap-1.5">
-            <AvailabilityBadge value={c.availability} />
-            {c.hidden_talent && <HiddenTalentBadge />}
-            {foundByMeaning(c) && <MeaningBadge />}
-          </div>
+          <h3 className="truncate text-lg">{c.nombre_completo}</h3>
+          <p className="text-sm text-muted-foreground">{c.puesto_actual} · {c.nivel_seniority} · {c.pais}</p>
+          <div className="mt-2"><AvailabilityBadge value={c.disponibilidad} /></div>
         </div>
         <div className="text-right">
-          <span className="font-display text-4xl font-bold leading-none tnum">{c.fit}<span className="text-xl text-muted-foreground">%</span></span>
+          <span className="text-4xl font-bold leading-none text-navy tnum">{Math.round(c.score)}<span className="text-xl text-muted-foreground">%</span></span>
           <p className="text-[11px] text-muted-foreground">encaje</p>
         </div>
       </header>
-      <div className="mt-3" title={c.breakdown.map((p) => `${p.label} ${p.value}`).join(" · ")}><ScoreBar parts={c.breakdown} showLegend={false} /></div>
-      <div className="mt-3 flex flex-wrap gap-1.5">
-        {shown.map((e) => <EvidenceChip key={e.ref} e={e} onOpen={onOpenProfile} />)}
-        {more > 0 && <button className={chipVariants({ tone: "neutral" })} onClick={() => onOpenProfile?.(null)}>+{more} evidencias</button>}
-        {c.certifications.length === 0 && <Chip>Sin certificaciones</Chip>}
-        {c.gaps.map((g) => <GapChip key={g} skill={g} />)}
-      </div>
-      {onCompare && (
-        <label className="mt-3 flex w-fit cursor-pointer items-center gap-2 text-xs text-muted-foreground">
-          <input type="checkbox" checked={compared} disabled={!compared && compareDisabled} onChange={onCompare} className="accent-[var(--ai)]" />
-          Comparar
-        </label>
+
+      <div className="mt-4"><ScoreBar breakdown={c.breakdown} /></div>
+
+      {c.gaps.length > 0 && (
+        <div className="mt-4">
+          <SectionLabel>Gaps</SectionLabel>
+          <div className="mt-1.5 flex flex-wrap gap-1.5">{c.gaps.map((g) => <Chip key={g} tone="gap" icon={<AlertTriangle className="size-3.5" aria-hidden />}>{g}</Chip>)}</div>
+        </div>
       )}
+      {c.risks.length > 0 && (
+        <div className="mt-3">
+          <SectionLabel>Riesgos</SectionLabel>
+          <div className="mt-1.5 flex flex-wrap gap-1.5">{c.risks.map((r) => <Chip key={r} tone="rolloff">{r}</Chip>)}</div>
+        </div>
+      )}
+
+      {why && <ExplainBlock title="Por qué encaja" summary={why.summary} points={why.strengths} source={why.source} />}
+
+      <details className="mt-4 group">
+        <summary className="cursor-pointer text-sm font-medium text-blue">Skills y evidencia</summary>
+        <table className="mt-3 w-full text-sm">
+          <thead className="text-left text-xs text-muted-foreground"><tr><th className="py-1 font-medium">Skill</th><th className="font-medium">Tipo</th><th className="font-medium">Nivel</th><th className="font-medium">Años</th><th className="font-medium">Evidencia</th></tr></thead>
+          <tbody>
+            {c.skills.map((s) => (
+              <tr key={s.name} className="border-t border-line">
+                <td className="py-1.5 text-navy">{s.name}</td>
+                <td className="text-xs">{s.tipo}</td>
+                <td className="tnum">{s.nivel}</td>
+                <td className="tnum">{s.anios}</td>
+                <td>{s.demostrada ? <span className="inline-flex items-center gap-1 text-success-ink"><Check className="size-3.5" aria-hidden />demostrada</span> : <span className="text-warn-ink">solo declarada</span>}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <SectionLabel><span className="mt-4 block">Evidencia</span></SectionLabel>
+        <ul className="mt-2 space-y-2">
+          {c.evidence.map((e) => (
+            <li key={e.proyecto + e.anio} className="text-sm">
+              <span className="flex items-center gap-1.5"><Briefcase className="size-3.5 text-muted-foreground" aria-hidden /><b className="text-navy">{e.proyecto}</b> · {e.anio} · {e.sector}</span>
+              <span className="mt-1 flex flex-wrap gap-1">{e.skills.map((s) => <Chip key={s} tone="ai">{s}</Chip>)}</span>
+            </li>
+          ))}
+          {c.evidence.length === 0 && <li className="text-sm text-muted-foreground">Sin proyectos registrados</li>}
+        </ul>
+      </details>
+
+      <div className="mt-4 flex items-center justify-between gap-3 border-t border-line pt-3">
+        {onCompare ? (
+          <label className="flex cursor-pointer items-center gap-2 text-sm">
+            <input type="checkbox" checked={compared} disabled={!compared && compareDisabled} onChange={onCompare} className="accent-[var(--blue)]" />Comparar
+          </label>
+        ) : <span />}
+        <Link to="/persona/$id" params={{ id: c.employee_id }} className="text-sm font-semibold text-blue hover:underline">Ver ficha →</Link>
+      </div>
     </article>
   );
 }

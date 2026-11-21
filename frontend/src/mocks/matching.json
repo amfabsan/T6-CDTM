@@ -1,0 +1,6704 @@
+{
+ "assumptions": {
+  "rate_per_hour": {
+   "Trainee": 20,
+   "Junior": 30,
+   "Mid": 45,
+   "Senior": 60,
+   "Lead": 75,
+   "Principal": 90
+  },
+  "hours_per_person": 160,
+  "rolloff_days": 45,
+  "is_illustrative": true
+ },
+ "n_filtrados": {
+  "Arquitecto cloud senior": 1284,
+  "Desarrollador backend Java": 3412,
+  "Especialista de seguridad": 612
+ },
+ "ranking": {
+  "Arquitecto cloud senior": {
+   "cumplen": 12,
+   "total": 200,
+   "items": [
+    {
+     "employee_id": "EMP-1007",
+     "nombre_completo": "Ana Navarro Gil",
+     "puesto_actual": "Consultor Tecnológico",
+     "role": "Arquitecto cloud senior",
+     "nivel_seniority": "Lead",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Remoto",
+     "score": 89.3,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.89,
+       "weight": 0.3,
+       "points": 26.7
+      },
+      "evidence": {
+       "value": 0.86,
+       "weight": 0.2,
+       "points": 17.2
+      },
+      "sectorRole": {
+       "value": 0.96,
+       "weight": 0.15,
+       "points": 14.4
+      },
+      "seniority": {
+       "value": 0.84,
+       "weight": 0.1,
+       "points": 8.4
+      },
+      "desirable": {
+       "value": 0.94,
+       "weight": 0.1,
+       "points": 9.4
+      },
+      "langCert": {
+       "value": 0.9,
+       "weight": 0.1,
+       "points": 9.0
+      },
+      "recency": {
+       "value": 0.84,
+       "weight": 0.05,
+       "points": 4.2
+      }
+     },
+     "gaps": [],
+     "risks": [
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Portal Ciudadano",
+       "anio": 2023,
+       "sector": "Sector Público",
+       "skills": [
+        "AWS",
+        "Kubernetes"
+       ]
+      },
+      {
+       "proyecto": "Pasarela SEPA Instant",
+       "anio": 2023,
+       "sector": "Banca",
+       "skills": [
+        "Arquitectura de microservicios",
+        "AWS"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "AWS",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 5,
+       "demostrada": false,
+       "confianza": 0.76
+      },
+      {
+       "name": "Kubernetes",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 5,
+       "demostrada": false,
+       "confianza": 0.76
+      },
+      {
+       "name": "Arquitectura de microservicios",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 3,
+       "demostrada": true,
+       "confianza": 0.84
+      },
+      {
+       "name": "CI/CD",
+       "tipo": "deseable",
+       "nivel": 2,
+       "anios": 5,
+       "demostrada": false,
+       "confianza": 0.42
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1021",
+     "nombre_completo": "Raúl Serrano Torres",
+     "puesto_actual": "Consultor Tecnológico",
+     "role": "Arquitecto cloud senior",
+     "nivel_seniority": "Senior",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Híbrido",
+     "score": 86.9,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.85,
+       "weight": 0.3,
+       "points": 25.5
+      },
+      "evidence": {
+       "value": 0.89,
+       "weight": 0.2,
+       "points": 17.8
+      },
+      "sectorRole": {
+       "value": 0.77,
+       "weight": 0.15,
+       "points": 11.5
+      },
+      "seniority": {
+       "value": 0.9,
+       "weight": 0.1,
+       "points": 9.0
+      },
+      "desirable": {
+       "value": 0.89,
+       "weight": 0.1,
+       "points": 8.9
+      },
+      "langCert": {
+       "value": 0.96,
+       "weight": 0.1,
+       "points": 9.6
+      },
+      "recency": {
+       "value": 0.92,
+       "weight": 0.05,
+       "points": 4.6
+      }
+     },
+     "gaps": [],
+     "risks": [
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Open Banking API",
+       "anio": 2025,
+       "sector": "Banca",
+       "skills": [
+        "Kubernetes",
+        "Arquitectura de microservicios"
+       ]
+      },
+      {
+       "proyecto": "Portal Ciudadano",
+       "anio": 2023,
+       "sector": "Sector Público",
+       "skills": [
+        "Kubernetes",
+        "AWS"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "AWS",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 8,
+       "demostrada": true,
+       "confianza": 0.73
+      },
+      {
+       "name": "Kubernetes",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 7,
+       "demostrada": false,
+       "confianza": 0.64
+      },
+      {
+       "name": "Arquitectura de microservicios",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 5,
+       "demostrada": true,
+       "confianza": 0.65
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1014",
+     "nombre_completo": "Ana Ortega López",
+     "puesto_actual": "Arquitecto Cloud",
+     "role": "Arquitecto cloud senior",
+     "nivel_seniority": "Senior",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Presencial",
+     "score": 84.4,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.81,
+       "weight": 0.3,
+       "points": 24.3
+      },
+      "evidence": {
+       "value": 0.81,
+       "weight": 0.2,
+       "points": 16.2
+      },
+      "sectorRole": {
+       "value": 0.84,
+       "weight": 0.15,
+       "points": 12.6
+      },
+      "seniority": {
+       "value": 0.93,
+       "weight": 0.1,
+       "points": 9.3
+      },
+      "desirable": {
+       "value": 0.88,
+       "weight": 0.1,
+       "points": 8.8
+      },
+      "langCert": {
+       "value": 0.86,
+       "weight": 0.1,
+       "points": 8.6
+      },
+      "recency": {
+       "value": 0.91,
+       "weight": 0.05,
+       "points": 4.6
+      }
+     },
+     "gaps": [],
+     "risks": [
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Open Banking API",
+       "anio": 2025,
+       "sector": "Banca",
+       "skills": [
+        "Arquitectura de microservicios",
+        "Kubernetes"
+       ]
+      },
+      {
+       "proyecto": "Core bancario Iberia",
+       "anio": 2021,
+       "sector": "Banca",
+       "skills": [
+        "Arquitectura de microservicios",
+        "Kubernetes"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "AWS",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 7,
+       "demostrada": false,
+       "confianza": 0.9
+      },
+      {
+       "name": "Kubernetes",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 5,
+       "demostrada": false,
+       "confianza": 0.71
+      },
+      {
+       "name": "Arquitectura de microservicios",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 7,
+       "demostrada": true,
+       "confianza": 0.71
+      },
+      {
+       "name": "CI/CD",
+       "tipo": "deseable",
+       "nivel": 2,
+       "anios": 5,
+       "demostrada": false,
+       "confianza": 0.78
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1028",
+     "nombre_completo": "Ana Sánchez Martín",
+     "puesto_actual": "Arquitecto Cloud",
+     "role": "Arquitecto cloud senior",
+     "nivel_seniority": "Lead",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Remoto",
+     "score": 79.0,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.76,
+       "weight": 0.3,
+       "points": 22.8
+      },
+      "evidence": {
+       "value": 0.86,
+       "weight": 0.2,
+       "points": 17.2
+      },
+      "sectorRole": {
+       "value": 0.73,
+       "weight": 0.15,
+       "points": 10.9
+      },
+      "seniority": {
+       "value": 0.89,
+       "weight": 0.1,
+       "points": 8.9
+      },
+      "desirable": {
+       "value": 0.76,
+       "weight": 0.1,
+       "points": 7.6
+      },
+      "langCert": {
+       "value": 0.78,
+       "weight": 0.1,
+       "points": 7.8
+      },
+      "recency": {
+       "value": 0.75,
+       "weight": 0.05,
+       "points": 3.8
+      }
+     },
+     "gaps": [],
+     "risks": [],
+     "evidence": [
+      {
+       "proyecto": "Core bancario Iberia",
+       "anio": 2022,
+       "sector": "Banca",
+       "skills": [
+        "AWS",
+        "Arquitectura de microservicios"
+       ]
+      },
+      {
+       "proyecto": "Pasarela SEPA Instant",
+       "anio": 2021,
+       "sector": "Banca",
+       "skills": [
+        "Arquitectura de microservicios",
+        "AWS"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "AWS",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 7,
+       "demostrada": true,
+       "confianza": 0.72
+      },
+      {
+       "name": "Kubernetes",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 10,
+       "demostrada": true,
+       "confianza": 0.85
+      },
+      {
+       "name": "Arquitectura de microservicios",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 2,
+       "demostrada": true,
+       "confianza": 0.93
+      },
+      {
+       "name": "CI/CD",
+       "tipo": "deseable",
+       "nivel": 4,
+       "anios": 5,
+       "demostrada": false,
+       "confianza": 0.6
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1042",
+     "nombre_completo": "Nuria Castro Romero",
+     "puesto_actual": "Arquitecto Cloud",
+     "role": "Arquitecto cloud senior",
+     "nivel_seniority": "Senior",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Remoto",
+     "score": 78.2,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.82,
+       "weight": 0.3,
+       "points": 24.6
+      },
+      "evidence": {
+       "value": 0.82,
+       "weight": 0.2,
+       "points": 16.4
+      },
+      "sectorRole": {
+       "value": 0.8,
+       "weight": 0.15,
+       "points": 12.0
+      },
+      "seniority": {
+       "value": 0.7,
+       "weight": 0.1,
+       "points": 7.0
+      },
+      "desirable": {
+       "value": 0.76,
+       "weight": 0.1,
+       "points": 7.6
+      },
+      "langCert": {
+       "value": 0.73,
+       "weight": 0.1,
+       "points": 7.3
+      },
+      "recency": {
+       "value": 0.66,
+       "weight": 0.05,
+       "points": 3.3
+      }
+     },
+     "gaps": [
+      "Menos años de experiencia de los pedidos"
+     ],
+     "risks": [
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Portal Ciudadano",
+       "anio": 2025,
+       "sector": "Sector Público",
+       "skills": [
+        "Arquitectura de microservicios",
+        "AWS"
+       ]
+      },
+      {
+       "proyecto": "Core bancario Iberia",
+       "anio": 2024,
+       "sector": "Banca",
+       "skills": [
+        "Kubernetes",
+        "AWS"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "AWS",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 6,
+       "demostrada": true,
+       "confianza": 0.67
+      },
+      {
+       "name": "Kubernetes",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 9,
+       "demostrada": true,
+       "confianza": 0.87
+      },
+      {
+       "name": "Arquitectura de microservicios",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 3,
+       "demostrada": false,
+       "confianza": 0.69
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1035",
+     "nombre_completo": "Diego Ruiz Torres",
+     "puesto_actual": "Arquitecto Cloud",
+     "role": "Arquitecto cloud senior",
+     "nivel_seniority": "Senior",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Híbrido",
+     "score": 76.4,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.7,
+       "weight": 0.3,
+       "points": 21.0
+      },
+      "evidence": {
+       "value": 0.86,
+       "weight": 0.2,
+       "points": 17.2
+      },
+      "sectorRole": {
+       "value": 0.81,
+       "weight": 0.15,
+       "points": 12.2
+      },
+      "seniority": {
+       "value": 0.72,
+       "weight": 0.1,
+       "points": 7.2
+      },
+      "desirable": {
+       "value": 0.74,
+       "weight": 0.1,
+       "points": 7.4
+      },
+      "langCert": {
+       "value": 0.76,
+       "weight": 0.1,
+       "points": 7.6
+      },
+      "recency": {
+       "value": 0.76,
+       "weight": 0.05,
+       "points": 3.8
+      }
+     },
+     "gaps": [
+      "Menos años de experiencia de los pedidos"
+     ],
+     "risks": [],
+     "evidence": [
+      {
+       "proyecto": "Billing Telco 5G",
+       "anio": 2024,
+       "sector": "Telco",
+       "skills": [
+        "AWS",
+        "Kubernetes"
+       ]
+      },
+      {
+       "proyecto": "Migración AWS Aseguradora",
+       "anio": 2023,
+       "sector": "Seguros",
+       "skills": [
+        "Kubernetes",
+        "AWS"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "AWS",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 3,
+       "demostrada": true,
+       "confianza": 0.98
+      },
+      {
+       "name": "Kubernetes",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 9,
+       "demostrada": true,
+       "confianza": 0.63
+      },
+      {
+       "name": "Arquitectura de microservicios",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 7,
+       "demostrada": true,
+       "confianza": 0.78
+      },
+      {
+       "name": "CI/CD",
+       "tipo": "deseable",
+       "nivel": 4,
+       "anios": 1,
+       "demostrada": false,
+       "confianza": 0.88
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1049",
+     "nombre_completo": "Hugo Sánchez Fernández",
+     "puesto_actual": "Arquitecto Cloud",
+     "role": "Arquitecto cloud senior",
+     "nivel_seniority": "Senior",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Presencial",
+     "score": 74.4,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.69,
+       "weight": 0.3,
+       "points": 20.7
+      },
+      "evidence": {
+       "value": 0.78,
+       "weight": 0.2,
+       "points": 15.6
+      },
+      "sectorRole": {
+       "value": 0.81,
+       "weight": 0.15,
+       "points": 12.2
+      },
+      "seniority": {
+       "value": 0.7,
+       "weight": 0.1,
+       "points": 7.0
+      },
+      "desirable": {
+       "value": 0.7,
+       "weight": 0.1,
+       "points": 7.0
+      },
+      "langCert": {
+       "value": 0.81,
+       "weight": 0.1,
+       "points": 8.1
+      },
+      "recency": {
+       "value": 0.76,
+       "weight": 0.05,
+       "points": 3.8
+      }
+     },
+     "gaps": [
+      "Menos años de experiencia de los pedidos"
+     ],
+     "risks": [
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Core bancario Iberia",
+       "anio": 2023,
+       "sector": "Banca",
+       "skills": [
+        "AWS",
+        "Kubernetes"
+       ]
+      },
+      {
+       "proyecto": "Pasarela SEPA Instant",
+       "anio": 2021,
+       "sector": "Banca",
+       "skills": [
+        "AWS",
+        "Kubernetes"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "AWS",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 4,
+       "demostrada": false,
+       "confianza": 0.82
+      },
+      {
+       "name": "Kubernetes",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 4,
+       "demostrada": true,
+       "confianza": 0.83
+      },
+      {
+       "name": "Arquitectura de microservicios",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 4,
+       "demostrada": true,
+       "confianza": 0.65
+      },
+      {
+       "name": "Entornos regulados",
+       "tipo": "deseable",
+       "nivel": 4,
+       "anios": 1,
+       "demostrada": false,
+       "confianza": 0.87
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1056",
+     "nombre_completo": "Paula Ortega García",
+     "puesto_actual": "Arquitecto Cloud",
+     "role": "Arquitecto cloud senior",
+     "nivel_seniority": "Senior",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Híbrido",
+     "score": 73.4,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.76,
+       "weight": 0.3,
+       "points": 22.8
+      },
+      "evidence": {
+       "value": 0.72,
+       "weight": 0.2,
+       "points": 14.4
+      },
+      "sectorRole": {
+       "value": 0.75,
+       "weight": 0.15,
+       "points": 11.2
+      },
+      "seniority": {
+       "value": 0.69,
+       "weight": 0.1,
+       "points": 6.9
+      },
+      "desirable": {
+       "value": 0.75,
+       "weight": 0.1,
+       "points": 7.5
+      },
+      "langCert": {
+       "value": 0.76,
+       "weight": 0.1,
+       "points": 7.6
+      },
+      "recency": {
+       "value": 0.61,
+       "weight": 0.05,
+       "points": 3.0
+      }
+     },
+     "gaps": [
+      "Sin Kubernetes (obligatoria)"
+     ],
+     "risks": [
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Portal Ciudadano",
+       "anio": 2023,
+       "sector": "Sector Público",
+       "skills": [
+        "AWS",
+        "Arquitectura de microservicios"
+       ]
+      },
+      {
+       "proyecto": "Core bancario Iberia",
+       "anio": 2020,
+       "sector": "Banca",
+       "skills": [
+        "Kubernetes",
+        "AWS"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "AWS",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 10,
+       "demostrada": true,
+       "confianza": 0.93
+      },
+      {
+       "name": "Arquitectura de microservicios",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 4,
+       "demostrada": false,
+       "confianza": 0.84
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1063",
+     "nombre_completo": "Raúl Sánchez Domínguez",
+     "puesto_actual": "Arquitecto Cloud",
+     "role": "Arquitecto cloud senior",
+     "nivel_seniority": "Senior",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Presencial",
+     "score": 65.5,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.64,
+       "weight": 0.3,
+       "points": 19.2
+      },
+      "evidence": {
+       "value": 0.67,
+       "weight": 0.2,
+       "points": 13.4
+      },
+      "sectorRole": {
+       "value": 0.65,
+       "weight": 0.15,
+       "points": 9.8
+      },
+      "seniority": {
+       "value": 0.65,
+       "weight": 0.1,
+       "points": 6.5
+      },
+      "desirable": {
+       "value": 0.69,
+       "weight": 0.1,
+       "points": 6.9
+      },
+      "langCert": {
+       "value": 0.64,
+       "weight": 0.1,
+       "points": 6.4
+      },
+      "recency": {
+       "value": 0.66,
+       "weight": 0.05,
+       "points": 3.3
+      }
+     },
+     "gaps": [
+      "Sin Kubernetes (obligatoria)",
+      "Sin Arquitectura de microservicios (obligatoria)"
+     ],
+     "risks": [],
+     "evidence": [
+      {
+       "proyecto": "Portal Ciudadano",
+       "anio": 2025,
+       "sector": "Sector Público",
+       "skills": [
+        "AWS",
+        "Arquitectura de microservicios"
+       ]
+      },
+      {
+       "proyecto": "Pasarela SEPA Instant",
+       "anio": 2019,
+       "sector": "Banca",
+       "skills": [
+        "AWS",
+        "Kubernetes"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "AWS",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 10,
+       "demostrada": true,
+       "confianza": 0.87
+      },
+      {
+       "name": "Entornos regulados",
+       "tipo": "deseable",
+       "nivel": 2,
+       "anios": 4,
+       "demostrada": false,
+       "confianza": 0.46
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1070",
+     "nombre_completo": "Marta Domínguez Fernández",
+     "puesto_actual": "Arquitecto Cloud",
+     "role": "Arquitecto cloud senior",
+     "nivel_seniority": "Senior",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Híbrido",
+     "score": 62.6,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.56,
+       "weight": 0.3,
+       "points": 16.8
+      },
+      "evidence": {
+       "value": 0.71,
+       "weight": 0.2,
+       "points": 14.2
+      },
+      "sectorRole": {
+       "value": 0.59,
+       "weight": 0.15,
+       "points": 8.8
+      },
+      "seniority": {
+       "value": 0.61,
+       "weight": 0.1,
+       "points": 6.1
+      },
+      "desirable": {
+       "value": 0.71,
+       "weight": 0.1,
+       "points": 7.1
+      },
+      "langCert": {
+       "value": 0.68,
+       "weight": 0.1,
+       "points": 6.8
+      },
+      "recency": {
+       "value": 0.55,
+       "weight": 0.05,
+       "points": 2.8
+      }
+     },
+     "gaps": [],
+     "risks": [
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Pasarela SEPA Instant",
+       "anio": 2025,
+       "sector": "Banca",
+       "skills": [
+        "Arquitectura de microservicios",
+        "Kubernetes"
+       ]
+      },
+      {
+       "proyecto": "Portal Ciudadano",
+       "anio": 2022,
+       "sector": "Sector Público",
+       "skills": [
+        "AWS",
+        "Kubernetes"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "AWS",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 10,
+       "demostrada": true,
+       "confianza": 0.76
+      },
+      {
+       "name": "Kubernetes",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 7,
+       "demostrada": false,
+       "confianza": 0.81
+      },
+      {
+       "name": "Arquitectura de microservicios",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 8,
+       "demostrada": true,
+       "confianza": 0.84
+      },
+      {
+       "name": "CI/CD",
+       "tipo": "deseable",
+       "nivel": 2,
+       "anios": 1,
+       "demostrada": true,
+       "confianza": 0.79
+      },
+      {
+       "name": "Entornos regulados",
+       "tipo": "deseable",
+       "nivel": 2,
+       "anios": 1,
+       "demostrada": false,
+       "confianza": 0.42
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1077",
+     "nombre_completo": "Javier García García",
+     "puesto_actual": "Arquitecto Cloud",
+     "role": "Arquitecto cloud senior",
+     "nivel_seniority": "Senior",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Remoto",
+     "score": 57.7,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.57,
+       "weight": 0.3,
+       "points": 17.1
+      },
+      "evidence": {
+       "value": 0.49,
+       "weight": 0.2,
+       "points": 9.8
+      },
+      "sectorRole": {
+       "value": 0.67,
+       "weight": 0.15,
+       "points": 10.1
+      },
+      "seniority": {
+       "value": 0.61,
+       "weight": 0.1,
+       "points": 6.1
+      },
+      "desirable": {
+       "value": 0.64,
+       "weight": 0.1,
+       "points": 6.4
+      },
+      "langCert": {
+       "value": 0.5,
+       "weight": 0.1,
+       "points": 5.0
+      },
+      "recency": {
+       "value": 0.65,
+       "weight": 0.05,
+       "points": 3.2
+      }
+     },
+     "gaps": [],
+     "risks": [],
+     "evidence": [
+      {
+       "proyecto": "Billing Telco 5G",
+       "anio": 2021,
+       "sector": "Telco",
+       "skills": [
+        "Kubernetes",
+        "AWS"
+       ]
+      },
+      {
+       "proyecto": "Pasarela SEPA Instant",
+       "anio": 2021,
+       "sector": "Banca",
+       "skills": [
+        "Kubernetes",
+        "AWS"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "AWS",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 6,
+       "demostrada": true,
+       "confianza": 0.77
+      },
+      {
+       "name": "Kubernetes",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 8,
+       "demostrada": true,
+       "confianza": 0.7
+      },
+      {
+       "name": "Arquitectura de microservicios",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 5,
+       "demostrada": true,
+       "confianza": 0.97
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1084",
+     "nombre_completo": "Pablo Romero Domínguez",
+     "puesto_actual": "Arquitecto Cloud",
+     "role": "Arquitecto cloud senior",
+     "nivel_seniority": "Lead",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Presencial",
+     "score": 57.3,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.64,
+       "weight": 0.3,
+       "points": 19.2
+      },
+      "evidence": {
+       "value": 0.55,
+       "weight": 0.2,
+       "points": 11.0
+      },
+      "sectorRole": {
+       "value": 0.49,
+       "weight": 0.15,
+       "points": 7.3
+      },
+      "seniority": {
+       "value": 0.53,
+       "weight": 0.1,
+       "points": 5.3
+      },
+      "desirable": {
+       "value": 0.58,
+       "weight": 0.1,
+       "points": 5.8
+      },
+      "langCert": {
+       "value": 0.58,
+       "weight": 0.1,
+       "points": 5.8
+      },
+      "recency": {
+       "value": 0.58,
+       "weight": 0.05,
+       "points": 2.9
+      }
+     },
+     "gaps": [
+      "Sin Arquitectura de microservicios (obligatoria)"
+     ],
+     "risks": [
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Core bancario Iberia",
+       "anio": 2024,
+       "sector": "Banca",
+       "skills": [
+        "Kubernetes",
+        "Arquitectura de microservicios"
+       ]
+      },
+      {
+       "proyecto": "Open Banking API",
+       "anio": 2023,
+       "sector": "Banca",
+       "skills": [
+        "AWS",
+        "Kubernetes"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "AWS",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 8,
+       "demostrada": true,
+       "confianza": 0.72
+      },
+      {
+       "name": "Kubernetes",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 7,
+       "demostrada": false,
+       "confianza": 0.94
+      },
+      {
+       "name": "Entornos regulados",
+       "tipo": "deseable",
+       "nivel": 2,
+       "anios": 2,
+       "demostrada": false,
+       "confianza": 0.71
+      }
+     ]
+    }
+   ]
+  },
+  "Desarrollador backend Java": {
+   "cumplen": 12,
+   "total": 200,
+   "items": [
+    {
+     "employee_id": "EMP-1112",
+     "nombre_completo": "Paula Sánchez García",
+     "puesto_actual": "Desarrollador Backend",
+     "role": "Desarrollador backend Java",
+     "nivel_seniority": "Mid",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Remoto",
+     "score": 92.6,
+     "breakdown": {
+      "mandatory": {
+       "value": 1,
+       "weight": 0.3,
+       "points": 30.0
+      },
+      "evidence": {
+       "value": 0.89,
+       "weight": 0.2,
+       "points": 17.8
+      },
+      "sectorRole": {
+       "value": 0.9,
+       "weight": 0.15,
+       "points": 13.5
+      },
+      "seniority": {
+       "value": 0.83,
+       "weight": 0.1,
+       "points": 8.3
+      },
+      "desirable": {
+       "value": 0.91,
+       "weight": 0.1,
+       "points": 9.1
+      },
+      "langCert": {
+       "value": 0.92,
+       "weight": 0.1,
+       "points": 9.2
+      },
+      "recency": {
+       "value": 0.93,
+       "weight": 0.05,
+       "points": 4.7
+      }
+     },
+     "gaps": [],
+     "risks": [
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Open Banking API",
+       "anio": 2020,
+       "sector": "Banca",
+       "skills": [
+        "Spring Boot",
+        "Java"
+       ]
+      },
+      {
+       "proyecto": "Portal Ciudadano",
+       "anio": 2019,
+       "sector": "Sector Público",
+       "skills": [
+        "Kafka",
+        "Spring Boot"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "Java",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 5,
+       "demostrada": true,
+       "confianza": 0.6
+      },
+      {
+       "name": "Spring Boot",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 3,
+       "demostrada": false,
+       "confianza": 0.82
+      },
+      {
+       "name": "Kafka",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 2,
+       "demostrada": false,
+       "confianza": 0.84
+      },
+      {
+       "name": "Sector banca",
+       "tipo": "deseable",
+       "nivel": 2,
+       "anios": 6,
+       "demostrada": true,
+       "confianza": 0.79
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1119",
+     "nombre_completo": "Miguel Navarro López",
+     "puesto_actual": "Desarrollador Backend",
+     "role": "Desarrollador backend Java",
+     "nivel_seniority": "Mid",
+     "disponibilidad": "Roll-off próximo (<3 meses)",
+     "pais": "España",
+     "modalidad_trabajo": "Presencial",
+     "score": 92.0,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.95,
+       "weight": 0.3,
+       "points": 28.5
+      },
+      "evidence": {
+       "value": 0.94,
+       "weight": 0.2,
+       "points": 18.8
+      },
+      "sectorRole": {
+       "value": 0.99,
+       "weight": 0.15,
+       "points": 14.8
+      },
+      "seniority": {
+       "value": 0.92,
+       "weight": 0.1,
+       "points": 9.2
+      },
+      "desirable": {
+       "value": 0.81,
+       "weight": 0.1,
+       "points": 8.1
+      },
+      "langCert": {
+       "value": 0.8,
+       "weight": 0.1,
+       "points": 8.0
+      },
+      "recency": {
+       "value": 0.92,
+       "weight": 0.05,
+       "points": 4.6
+      }
+     },
+     "gaps": [],
+     "risks": [
+      "Roll-off próximo: inicio sujeto a liberación",
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Pasarela SEPA Instant",
+       "anio": 2022,
+       "sector": "Banca",
+       "skills": [
+        "Spring Boot",
+        "Java"
+       ]
+      },
+      {
+       "proyecto": "Portal Ciudadano",
+       "anio": 2022,
+       "sector": "Sector Público",
+       "skills": [
+        "Kafka",
+        "Spring Boot"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "Java",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 8,
+       "demostrada": true,
+       "confianza": 0.81
+      },
+      {
+       "name": "Spring Boot",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 2,
+       "demostrada": true,
+       "confianza": 0.86
+      },
+      {
+       "name": "Kafka",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 6,
+       "demostrada": false,
+       "confianza": 0.9
+      },
+      {
+       "name": "PostgreSQL",
+       "tipo": "deseable",
+       "nivel": 4,
+       "anios": 5,
+       "demostrada": false,
+       "confianza": 0.66
+      },
+      {
+       "name": "Sector banca",
+       "tipo": "deseable",
+       "nivel": 3,
+       "anios": 3,
+       "demostrada": true,
+       "confianza": 0.82
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1126",
+     "nombre_completo": "Raúl Torres Castro",
+     "puesto_actual": "Desarrollador Backend",
+     "role": "Desarrollador backend Java",
+     "nivel_seniority": "Mid",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Presencial",
+     "score": 82.9,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.81,
+       "weight": 0.3,
+       "points": 24.3
+      },
+      "evidence": {
+       "value": 0.91,
+       "weight": 0.2,
+       "points": 18.2
+      },
+      "sectorRole": {
+       "value": 0.82,
+       "weight": 0.15,
+       "points": 12.3
+      },
+      "seniority": {
+       "value": 0.87,
+       "weight": 0.1,
+       "points": 8.7
+      },
+      "desirable": {
+       "value": 0.76,
+       "weight": 0.1,
+       "points": 7.6
+      },
+      "langCert": {
+       "value": 0.77,
+       "weight": 0.1,
+       "points": 7.7
+      },
+      "recency": {
+       "value": 0.81,
+       "weight": 0.05,
+       "points": 4.1
+      }
+     },
+     "gaps": [],
+     "risks": [
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Core bancario Iberia",
+       "anio": 2024,
+       "sector": "Banca",
+       "skills": [
+        "Kafka",
+        "Spring Boot"
+       ]
+      },
+      {
+       "proyecto": "Pasarela SEPA Instant",
+       "anio": 2021,
+       "sector": "Banca",
+       "skills": [
+        "Java",
+        "Spring Boot"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "Java",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 3,
+       "demostrada": true,
+       "confianza": 0.86
+      },
+      {
+       "name": "Spring Boot",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 10,
+       "demostrada": false,
+       "confianza": 0.78
+      },
+      {
+       "name": "Kafka",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 10,
+       "demostrada": false,
+       "confianza": 0.97
+      },
+      {
+       "name": "PostgreSQL",
+       "tipo": "deseable",
+       "nivel": 2,
+       "anios": 3,
+       "demostrada": false,
+       "confianza": 0.81
+      },
+      {
+       "name": "Sector banca",
+       "tipo": "deseable",
+       "nivel": 3,
+       "anios": 3,
+       "demostrada": false,
+       "confianza": 0.86
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1133",
+     "nombre_completo": "Álvaro Sánchez Torres",
+     "puesto_actual": "Desarrollador Backend",
+     "role": "Desarrollador backend Java",
+     "nivel_seniority": "Mid",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Presencial",
+     "score": 82.4,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.8,
+       "weight": 0.3,
+       "points": 24.0
+      },
+      "evidence": {
+       "value": 0.76,
+       "weight": 0.2,
+       "points": 15.2
+      },
+      "sectorRole": {
+       "value": 0.91,
+       "weight": 0.15,
+       "points": 13.7
+      },
+      "seniority": {
+       "value": 0.86,
+       "weight": 0.1,
+       "points": 8.6
+      },
+      "desirable": {
+       "value": 0.81,
+       "weight": 0.1,
+       "points": 8.1
+      },
+      "langCert": {
+       "value": 0.87,
+       "weight": 0.1,
+       "points": 8.7
+      },
+      "recency": {
+       "value": 0.81,
+       "weight": 0.05,
+       "points": 4.1
+      }
+     },
+     "gaps": [],
+     "risks": [
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Migración AWS Aseguradora",
+       "anio": 2025,
+       "sector": "Seguros",
+       "skills": [
+        "Spring Boot",
+        "Java"
+       ]
+      },
+      {
+       "proyecto": "Portal Ciudadano",
+       "anio": 2021,
+       "sector": "Sector Público",
+       "skills": [
+        "Java",
+        "Kafka"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "Java",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 7,
+       "demostrada": false,
+       "confianza": 0.73
+      },
+      {
+       "name": "Spring Boot",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 7,
+       "demostrada": true,
+       "confianza": 0.65
+      },
+      {
+       "name": "Kafka",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 2,
+       "demostrada": true,
+       "confianza": 0.71
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1140",
+     "nombre_completo": "Paula Castro Torres",
+     "puesto_actual": "Desarrollador Backend",
+     "role": "Desarrollador backend Java",
+     "nivel_seniority": "Senior",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Presencial",
+     "score": 79.8,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.79,
+       "weight": 0.3,
+       "points": 23.7
+      },
+      "evidence": {
+       "value": 0.73,
+       "weight": 0.2,
+       "points": 14.6
+      },
+      "sectorRole": {
+       "value": 0.76,
+       "weight": 0.15,
+       "points": 11.4
+      },
+      "seniority": {
+       "value": 0.88,
+       "weight": 0.1,
+       "points": 8.8
+      },
+      "desirable": {
+       "value": 0.87,
+       "weight": 0.1,
+       "points": 8.7
+      },
+      "langCert": {
+       "value": 0.85,
+       "weight": 0.1,
+       "points": 8.5
+      },
+      "recency": {
+       "value": 0.82,
+       "weight": 0.05,
+       "points": 4.1
+      }
+     },
+     "gaps": [],
+     "risks": [
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Portal Ciudadano",
+       "anio": 2021,
+       "sector": "Sector Público",
+       "skills": [
+        "Spring Boot",
+        "Kafka"
+       ]
+      },
+      {
+       "proyecto": "Pasarela SEPA Instant",
+       "anio": 2019,
+       "sector": "Banca",
+       "skills": [
+        "Java",
+        "Kafka"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "Java",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 10,
+       "demostrada": false,
+       "confianza": 0.63
+      },
+      {
+       "name": "Spring Boot",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 8,
+       "demostrada": true,
+       "confianza": 0.89
+      },
+      {
+       "name": "Kafka",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 6,
+       "demostrada": true,
+       "confianza": 0.95
+      },
+      {
+       "name": "PostgreSQL",
+       "tipo": "deseable",
+       "nivel": 2,
+       "anios": 4,
+       "demostrada": false,
+       "confianza": 0.54
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1147",
+     "nombre_completo": "Carmen Molina Vázquez",
+     "puesto_actual": "Desarrollador Backend",
+     "role": "Desarrollador backend Java",
+     "nivel_seniority": "Mid",
+     "disponibilidad": "Roll-off próximo (<3 meses)",
+     "pais": "España",
+     "modalidad_trabajo": "Híbrido",
+     "score": 74.7,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.85,
+       "weight": 0.3,
+       "points": 25.5
+      },
+      "evidence": {
+       "value": 0.74,
+       "weight": 0.2,
+       "points": 14.8
+      },
+      "sectorRole": {
+       "value": 0.68,
+       "weight": 0.15,
+       "points": 10.2
+      },
+      "seniority": {
+       "value": 0.69,
+       "weight": 0.1,
+       "points": 6.9
+      },
+      "desirable": {
+       "value": 0.67,
+       "weight": 0.1,
+       "points": 6.7
+      },
+      "langCert": {
+       "value": 0.72,
+       "weight": 0.1,
+       "points": 7.2
+      },
+      "recency": {
+       "value": 0.67,
+       "weight": 0.05,
+       "points": 3.4
+      }
+     },
+     "gaps": [
+      "Sin Spring Boot (obligatoria)",
+      "Sin Kafka (obligatoria)"
+     ],
+     "risks": [
+      "Roll-off próximo: inicio sujeto a liberación",
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Migración AWS Aseguradora",
+       "anio": 2024,
+       "sector": "Seguros",
+       "skills": [
+        "Kafka",
+        "Java"
+       ]
+      },
+      {
+       "proyecto": "Pasarela SEPA Instant",
+       "anio": 2019,
+       "sector": "Banca",
+       "skills": [
+        "Spring Boot",
+        "Java"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "Java",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 7,
+       "demostrada": false,
+       "confianza": 0.82
+      },
+      {
+       "name": "PostgreSQL",
+       "tipo": "deseable",
+       "nivel": 3,
+       "anios": 6,
+       "demostrada": false,
+       "confianza": 0.59
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1154",
+     "nombre_completo": "Carlos Martín López",
+     "puesto_actual": "Desarrollador Backend",
+     "role": "Desarrollador backend Java",
+     "nivel_seniority": "Mid",
+     "disponibilidad": "Roll-off próximo (<3 meses)",
+     "pais": "España",
+     "modalidad_trabajo": "Remoto",
+     "score": 71.4,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.65,
+       "weight": 0.3,
+       "points": 19.5
+      },
+      "evidence": {
+       "value": 0.71,
+       "weight": 0.2,
+       "points": 14.2
+      },
+      "sectorRole": {
+       "value": 0.77,
+       "weight": 0.15,
+       "points": 11.5
+      },
+      "seniority": {
+       "value": 0.78,
+       "weight": 0.1,
+       "points": 7.8
+      },
+      "desirable": {
+       "value": 0.81,
+       "weight": 0.1,
+       "points": 8.1
+      },
+      "langCert": {
+       "value": 0.72,
+       "weight": 0.1,
+       "points": 7.2
+      },
+      "recency": {
+       "value": 0.63,
+       "weight": 0.05,
+       "points": 3.1
+      }
+     },
+     "gaps": [
+      "Sin Kafka (obligatoria)"
+     ],
+     "risks": [
+      "Roll-off próximo: inicio sujeto a liberación"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Migración AWS Aseguradora",
+       "anio": 2023,
+       "sector": "Seguros",
+       "skills": [
+        "Kafka",
+        "Spring Boot"
+       ]
+      },
+      {
+       "proyecto": "Core bancario Iberia",
+       "anio": 2020,
+       "sector": "Banca",
+       "skills": [
+        "Kafka",
+        "Spring Boot"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "Java",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 9,
+       "demostrada": true,
+       "confianza": 0.69
+      },
+      {
+       "name": "Spring Boot",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 4,
+       "demostrada": true,
+       "confianza": 0.86
+      },
+      {
+       "name": "PostgreSQL",
+       "tipo": "deseable",
+       "nivel": 4,
+       "anios": 4,
+       "demostrada": false,
+       "confianza": 0.79
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1161",
+     "nombre_completo": "Paula López Navarro",
+     "puesto_actual": "Desarrollador Backend",
+     "role": "Desarrollador backend Java",
+     "nivel_seniority": "Mid",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Híbrido",
+     "score": 66.3,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.62,
+       "weight": 0.3,
+       "points": 18.6
+      },
+      "evidence": {
+       "value": 0.64,
+       "weight": 0.2,
+       "points": 12.8
+      },
+      "sectorRole": {
+       "value": 0.74,
+       "weight": 0.15,
+       "points": 11.1
+      },
+      "seniority": {
+       "value": 0.59,
+       "weight": 0.1,
+       "points": 5.9
+      },
+      "desirable": {
+       "value": 0.69,
+       "weight": 0.1,
+       "points": 6.9
+      },
+      "langCert": {
+       "value": 0.78,
+       "weight": 0.1,
+       "points": 7.8
+      },
+      "recency": {
+       "value": 0.64,
+       "weight": 0.05,
+       "points": 3.2
+      }
+     },
+     "gaps": [
+      "Sin Kafka (obligatoria)"
+     ],
+     "risks": [
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Open Banking API",
+       "anio": 2021,
+       "sector": "Banca",
+       "skills": [
+        "Kafka",
+        "Spring Boot"
+       ]
+      },
+      {
+       "proyecto": "Portal Ciudadano",
+       "anio": 2020,
+       "sector": "Sector Público",
+       "skills": [
+        "Java",
+        "Spring Boot"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "Java",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 5,
+       "demostrada": true,
+       "confianza": 0.69
+      },
+      {
+       "name": "Spring Boot",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 6,
+       "demostrada": false,
+       "confianza": 0.67
+      },
+      {
+       "name": "PostgreSQL",
+       "tipo": "deseable",
+       "nivel": 2,
+       "anios": 3,
+       "demostrada": false,
+       "confianza": 0.61
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1168",
+     "nombre_completo": "Laura Gil Ruiz",
+     "puesto_actual": "Desarrollador Backend",
+     "role": "Desarrollador backend Java",
+     "nivel_seniority": "Senior",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Híbrido",
+     "score": 64.2,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.61,
+       "weight": 0.3,
+       "points": 18.3
+      },
+      "evidence": {
+       "value": 0.71,
+       "weight": 0.2,
+       "points": 14.2
+      },
+      "sectorRole": {
+       "value": 0.6,
+       "weight": 0.15,
+       "points": 9.0
+      },
+      "seniority": {
+       "value": 0.59,
+       "weight": 0.1,
+       "points": 5.9
+      },
+      "desirable": {
+       "value": 0.7,
+       "weight": 0.1,
+       "points": 7.0
+      },
+      "langCert": {
+       "value": 0.61,
+       "weight": 0.1,
+       "points": 6.1
+      },
+      "recency": {
+       "value": 0.74,
+       "weight": 0.05,
+       "points": 3.7
+      }
+     },
+     "gaps": [
+      "Sin Spring Boot (obligatoria)"
+     ],
+     "risks": [],
+     "evidence": [
+      {
+       "proyecto": "Core bancario Iberia",
+       "anio": 2020,
+       "sector": "Banca",
+       "skills": [
+        "Java",
+        "Spring Boot"
+       ]
+      },
+      {
+       "proyecto": "Migración AWS Aseguradora",
+       "anio": 2019,
+       "sector": "Seguros",
+       "skills": [
+        "Java",
+        "Spring Boot"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "Java",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 4,
+       "demostrada": true,
+       "confianza": 0.78
+      },
+      {
+       "name": "Kafka",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 4,
+       "demostrada": true,
+       "confianza": 0.62
+      },
+      {
+       "name": "Sector banca",
+       "tipo": "deseable",
+       "nivel": 3,
+       "anios": 1,
+       "demostrada": true,
+       "confianza": 0.49
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1182",
+     "nombre_completo": "Carmen Romero Torres",
+     "puesto_actual": "Consultor Tecnológico",
+     "role": "Desarrollador backend Java",
+     "nivel_seniority": "Mid",
+     "disponibilidad": "Roll-off próximo (<3 meses)",
+     "pais": "España",
+     "modalidad_trabajo": "Presencial",
+     "score": 60.4,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.58,
+       "weight": 0.3,
+       "points": 17.4
+      },
+      "evidence": {
+       "value": 0.67,
+       "weight": 0.2,
+       "points": 13.4
+      },
+      "sectorRole": {
+       "value": 0.67,
+       "weight": 0.15,
+       "points": 10.1
+      },
+      "seniority": {
+       "value": 0.56,
+       "weight": 0.1,
+       "points": 5.6
+      },
+      "desirable": {
+       "value": 0.53,
+       "weight": 0.1,
+       "points": 5.3
+      },
+      "langCert": {
+       "value": 0.57,
+       "weight": 0.1,
+       "points": 5.7
+      },
+      "recency": {
+       "value": 0.58,
+       "weight": 0.05,
+       "points": 2.9
+      }
+     },
+     "gaps": [],
+     "risks": [
+      "Roll-off próximo: inicio sujeto a liberación",
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Core bancario Iberia",
+       "anio": 2021,
+       "sector": "Banca",
+       "skills": [
+        "Kafka",
+        "Java"
+       ]
+      },
+      {
+       "proyecto": "Open Banking API",
+       "anio": 2020,
+       "sector": "Banca",
+       "skills": [
+        "Java",
+        "Spring Boot"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "Java",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 4,
+       "demostrada": false,
+       "confianza": 0.95
+      },
+      {
+       "name": "Spring Boot",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 4,
+       "demostrada": true,
+       "confianza": 0.72
+      },
+      {
+       "name": "Kafka",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 3,
+       "demostrada": true,
+       "confianza": 0.75
+      },
+      {
+       "name": "Sector banca",
+       "tipo": "deseable",
+       "nivel": 4,
+       "anios": 1,
+       "demostrada": false,
+       "confianza": 0.67
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1175",
+     "nombre_completo": "Miguel López García",
+     "puesto_actual": "Desarrollador Backend",
+     "role": "Desarrollador backend Java",
+     "nivel_seniority": "Mid",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Híbrido",
+     "score": 58.2,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.52,
+       "weight": 0.3,
+       "points": 15.6
+      },
+      "evidence": {
+       "value": 0.57,
+       "weight": 0.2,
+       "points": 11.4
+      },
+      "sectorRole": {
+       "value": 0.59,
+       "weight": 0.15,
+       "points": 8.8
+      },
+      "seniority": {
+       "value": 0.71,
+       "weight": 0.1,
+       "points": 7.1
+      },
+      "desirable": {
+       "value": 0.54,
+       "weight": 0.1,
+       "points": 5.4
+      },
+      "langCert": {
+       "value": 0.71,
+       "weight": 0.1,
+       "points": 7.1
+      },
+      "recency": {
+       "value": 0.56,
+       "weight": 0.05,
+       "points": 2.8
+      }
+     },
+     "gaps": [],
+     "risks": [
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Billing Telco 5G",
+       "anio": 2021,
+       "sector": "Telco",
+       "skills": [
+        "Spring Boot",
+        "Java"
+       ]
+      },
+      {
+       "proyecto": "Migración AWS Aseguradora",
+       "anio": 2019,
+       "sector": "Seguros",
+       "skills": [
+        "Spring Boot",
+        "Kafka"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "Java",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 6,
+       "demostrada": true,
+       "confianza": 0.76
+      },
+      {
+       "name": "Spring Boot",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 5,
+       "demostrada": true,
+       "confianza": 0.95
+      },
+      {
+       "name": "Kafka",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 9,
+       "demostrada": false,
+       "confianza": 0.76
+      },
+      {
+       "name": "PostgreSQL",
+       "tipo": "deseable",
+       "nivel": 3,
+       "anios": 1,
+       "demostrada": false,
+       "confianza": 0.63
+      },
+      {
+       "name": "Sector banca",
+       "tipo": "deseable",
+       "nivel": 2,
+       "anios": 3,
+       "demostrada": false,
+       "confianza": 0.43
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1189",
+     "nombre_completo": "Javier Navarro Navarro",
+     "puesto_actual": "Desarrollador Backend",
+     "role": "Desarrollador backend Java",
+     "nivel_seniority": "Senior",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Presencial",
+     "score": 57.1,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.57,
+       "weight": 0.3,
+       "points": 17.1
+      },
+      "evidence": {
+       "value": 0.58,
+       "weight": 0.2,
+       "points": 11.6
+      },
+      "sectorRole": {
+       "value": 0.59,
+       "weight": 0.15,
+       "points": 8.8
+      },
+      "seniority": {
+       "value": 0.61,
+       "weight": 0.1,
+       "points": 6.1
+      },
+      "desirable": {
+       "value": 0.58,
+       "weight": 0.1,
+       "points": 5.8
+      },
+      "langCert": {
+       "value": 0.47,
+       "weight": 0.1,
+       "points": 4.7
+      },
+      "recency": {
+       "value": 0.61,
+       "weight": 0.05,
+       "points": 3.0
+      }
+     },
+     "gaps": [
+      "Sin Spring Boot (obligatoria)",
+      "Menos años de experiencia de los pedidos"
+     ],
+     "risks": [
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Core bancario Iberia",
+       "anio": 2022,
+       "sector": "Banca",
+       "skills": [
+        "Java",
+        "Spring Boot"
+       ]
+      },
+      {
+       "proyecto": "Open Banking API",
+       "anio": 2021,
+       "sector": "Banca",
+       "skills": [
+        "Java",
+        "Spring Boot"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "Java",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 6,
+       "demostrada": true,
+       "confianza": 0.74
+      },
+      {
+       "name": "Kafka",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 4,
+       "demostrada": false,
+       "confianza": 0.66
+      },
+      {
+       "name": "PostgreSQL",
+       "tipo": "deseable",
+       "nivel": 4,
+       "anios": 2,
+       "demostrada": false,
+       "confianza": 0.6
+      },
+      {
+       "name": "Sector banca",
+       "tipo": "deseable",
+       "nivel": 4,
+       "anios": 5,
+       "demostrada": false,
+       "confianza": 0.8
+      }
+     ]
+    }
+   ]
+  },
+  "Especialista de seguridad": {
+   "cumplen": 12,
+   "total": 200,
+   "items": [
+    {
+     "employee_id": "EMP-1217",
+     "nombre_completo": "Elena López Romero",
+     "puesto_actual": "Especialista Ciberseguridad",
+     "role": "Especialista de seguridad",
+     "nivel_seniority": "Senior",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Presencial",
+     "score": 92.7,
+     "breakdown": {
+      "mandatory": {
+       "value": 1,
+       "weight": 0.3,
+       "points": 30.0
+      },
+      "evidence": {
+       "value": 0.85,
+       "weight": 0.2,
+       "points": 17.0
+      },
+      "sectorRole": {
+       "value": 0.95,
+       "weight": 0.15,
+       "points": 14.2
+      },
+      "seniority": {
+       "value": 0.95,
+       "weight": 0.1,
+       "points": 9.5
+      },
+      "desirable": {
+       "value": 0.87,
+       "weight": 0.1,
+       "points": 8.7
+      },
+      "langCert": {
+       "value": 0.9,
+       "weight": 0.1,
+       "points": 9.0
+      },
+      "recency": {
+       "value": 0.86,
+       "weight": 0.05,
+       "points": 4.3
+      }
+     },
+     "gaps": [],
+     "risks": [
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Core bancario Iberia",
+       "anio": 2023,
+       "sector": "Banca",
+       "skills": [
+        "IAM",
+        "PCI-DSS"
+       ]
+      },
+      {
+       "proyecto": "Portal Ciudadano",
+       "anio": 2022,
+       "sector": "Sector Público",
+       "skills": [
+        "PCI-DSS",
+        "IAM"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "PCI-DSS",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 6,
+       "demostrada": false,
+       "confianza": 0.88
+      },
+      {
+       "name": "IAM",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 2,
+       "demostrada": true,
+       "confianza": 0.76
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1224",
+     "nombre_completo": "Miguel Gil Romero",
+     "puesto_actual": "Consultor Tecnológico",
+     "role": "Especialista de seguridad",
+     "nivel_seniority": "Lead",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Presencial",
+     "score": 88.3,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.88,
+       "weight": 0.3,
+       "points": 26.4
+      },
+      "evidence": {
+       "value": 0.85,
+       "weight": 0.2,
+       "points": 17.0
+      },
+      "sectorRole": {
+       "value": 0.86,
+       "weight": 0.15,
+       "points": 12.9
+      },
+      "seniority": {
+       "value": 0.99,
+       "weight": 0.1,
+       "points": 9.9
+      },
+      "desirable": {
+       "value": 0.86,
+       "weight": 0.1,
+       "points": 8.6
+      },
+      "langCert": {
+       "value": 0.91,
+       "weight": 0.1,
+       "points": 9.1
+      },
+      "recency": {
+       "value": 0.87,
+       "weight": 0.05,
+       "points": 4.4
+      }
+     },
+     "gaps": [
+      "Menos años de experiencia de los pedidos"
+     ],
+     "risks": [],
+     "evidence": [
+      {
+       "proyecto": "Pasarela SEPA Instant",
+       "anio": 2023,
+       "sector": "Banca",
+       "skills": [
+        "PCI-DSS",
+        "IAM"
+       ]
+      },
+      {
+       "proyecto": "Portal Ciudadano",
+       "anio": 2020,
+       "sector": "Sector Público",
+       "skills": [
+        "PCI-DSS",
+        "IAM"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "PCI-DSS",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 2,
+       "demostrada": true,
+       "confianza": 0.98
+      },
+      {
+       "name": "IAM",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 5,
+       "demostrada": true,
+       "confianza": 0.75
+      },
+      {
+       "name": "Inglés B2",
+       "tipo": "deseable",
+       "nivel": 3,
+       "anios": 2,
+       "demostrada": false,
+       "confianza": 0.81
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1238",
+     "nombre_completo": "Miguel Ortega Romero",
+     "puesto_actual": "Especialista Ciberseguridad",
+     "role": "Especialista de seguridad",
+     "nivel_seniority": "Lead",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Presencial",
+     "score": 84.1,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.75,
+       "weight": 0.3,
+       "points": 22.5
+      },
+      "evidence": {
+       "value": 0.92,
+       "weight": 0.2,
+       "points": 18.4
+      },
+      "sectorRole": {
+       "value": 0.89,
+       "weight": 0.15,
+       "points": 13.4
+      },
+      "seniority": {
+       "value": 0.76,
+       "weight": 0.1,
+       "points": 7.6
+      },
+      "desirable": {
+       "value": 0.9,
+       "weight": 0.1,
+       "points": 9.0
+      },
+      "langCert": {
+       "value": 0.89,
+       "weight": 0.1,
+       "points": 8.9
+      },
+      "recency": {
+       "value": 0.86,
+       "weight": 0.05,
+       "points": 4.3
+      }
+     },
+     "gaps": [],
+     "risks": [
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Portal Ciudadano",
+       "anio": 2023,
+       "sector": "Sector Público",
+       "skills": [
+        "IAM",
+        "PCI-DSS"
+       ]
+      },
+      {
+       "proyecto": "Billing Telco 5G",
+       "anio": 2020,
+       "sector": "Telco",
+       "skills": [
+        "PCI-DSS",
+        "IAM"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "PCI-DSS",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 7,
+       "demostrada": false,
+       "confianza": 0.83
+      },
+      {
+       "name": "IAM",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 6,
+       "demostrada": true,
+       "confianza": 0.72
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1231",
+     "nombre_completo": "Javier Serrano Romero",
+     "puesto_actual": "Especialista Ciberseguridad",
+     "role": "Especialista de seguridad",
+     "nivel_seniority": "Senior",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Híbrido",
+     "score": 82.3,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.79,
+       "weight": 0.3,
+       "points": 23.7
+      },
+      "evidence": {
+       "value": 0.79,
+       "weight": 0.2,
+       "points": 15.8
+      },
+      "sectorRole": {
+       "value": 0.77,
+       "weight": 0.15,
+       "points": 11.5
+      },
+      "seniority": {
+       "value": 0.84,
+       "weight": 0.1,
+       "points": 8.4
+      },
+      "desirable": {
+       "value": 0.91,
+       "weight": 0.1,
+       "points": 9.1
+      },
+      "langCert": {
+       "value": 0.92,
+       "weight": 0.1,
+       "points": 9.2
+      },
+      "recency": {
+       "value": 0.92,
+       "weight": 0.05,
+       "points": 4.6
+      }
+     },
+     "gaps": [],
+     "risks": [
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Open Banking API",
+       "anio": 2025,
+       "sector": "Banca",
+       "skills": [
+        "IAM",
+        "PCI-DSS"
+       ]
+      },
+      {
+       "proyecto": "Pasarela SEPA Instant",
+       "anio": 2023,
+       "sector": "Banca",
+       "skills": [
+        "IAM",
+        "PCI-DSS"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "PCI-DSS",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 4,
+       "demostrada": true,
+       "confianza": 0.62
+      },
+      {
+       "name": "IAM",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 7,
+       "demostrada": false,
+       "confianza": 0.95
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1252",
+     "nombre_completo": "Laura Gil Domínguez",
+     "puesto_actual": "Especialista Ciberseguridad",
+     "role": "Especialista de seguridad",
+     "nivel_seniority": "Senior",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Presencial",
+     "score": 74.4,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.71,
+       "weight": 0.3,
+       "points": 21.3
+      },
+      "evidence": {
+       "value": 0.82,
+       "weight": 0.2,
+       "points": 16.4
+      },
+      "sectorRole": {
+       "value": 0.68,
+       "weight": 0.15,
+       "points": 10.2
+      },
+      "seniority": {
+       "value": 0.76,
+       "weight": 0.1,
+       "points": 7.6
+      },
+      "desirable": {
+       "value": 0.84,
+       "weight": 0.1,
+       "points": 8.4
+      },
+      "langCert": {
+       "value": 0.7,
+       "weight": 0.1,
+       "points": 7.0
+      },
+      "recency": {
+       "value": 0.71,
+       "weight": 0.05,
+       "points": 3.5
+      }
+     },
+     "gaps": [],
+     "risks": [],
+     "evidence": [
+      {
+       "proyecto": "Billing Telco 5G",
+       "anio": 2024,
+       "sector": "Telco",
+       "skills": [
+        "IAM",
+        "PCI-DSS"
+       ]
+      },
+      {
+       "proyecto": "Core bancario Iberia",
+       "anio": 2023,
+       "sector": "Banca",
+       "skills": [
+        "PCI-DSS",
+        "IAM"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "PCI-DSS",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 5,
+       "demostrada": true,
+       "confianza": 0.61
+      },
+      {
+       "name": "IAM",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 6,
+       "demostrada": true,
+       "confianza": 0.94
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1245",
+     "nombre_completo": "Raúl Domínguez Romero",
+     "puesto_actual": "Especialista Ciberseguridad",
+     "role": "Especialista de seguridad",
+     "nivel_seniority": "Lead",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Remoto",
+     "score": 73.7,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.71,
+       "weight": 0.3,
+       "points": 21.3
+      },
+      "evidence": {
+       "value": 0.72,
+       "weight": 0.2,
+       "points": 14.4
+      },
+      "sectorRole": {
+       "value": 0.78,
+       "weight": 0.15,
+       "points": 11.7
+      },
+      "seniority": {
+       "value": 0.71,
+       "weight": 0.1,
+       "points": 7.1
+      },
+      "desirable": {
+       "value": 0.78,
+       "weight": 0.1,
+       "points": 7.8
+      },
+      "langCert": {
+       "value": 0.79,
+       "weight": 0.1,
+       "points": 7.9
+      },
+      "recency": {
+       "value": 0.7,
+       "weight": 0.05,
+       "points": 3.5
+      }
+     },
+     "gaps": [],
+     "risks": [
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Pasarela SEPA Instant",
+       "anio": 2025,
+       "sector": "Banca",
+       "skills": [
+        "PCI-DSS",
+        "IAM"
+       ]
+      },
+      {
+       "proyecto": "Core bancario Iberia",
+       "anio": 2020,
+       "sector": "Banca",
+       "skills": [
+        "IAM",
+        "PCI-DSS"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "PCI-DSS",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 4,
+       "demostrada": false,
+       "confianza": 0.88
+      },
+      {
+       "name": "IAM",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 10,
+       "demostrada": false,
+       "confianza": 0.89
+      },
+      {
+       "name": "Inglés B2",
+       "tipo": "deseable",
+       "nivel": 4,
+       "anios": 2,
+       "demostrada": false,
+       "confianza": 0.43
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1259",
+     "nombre_completo": "Javier García Fernández",
+     "puesto_actual": "Consultor Tecnológico",
+     "role": "Especialista de seguridad",
+     "nivel_seniority": "Senior",
+     "disponibilidad": "Roll-off próximo (<3 meses)",
+     "pais": "España",
+     "modalidad_trabajo": "Presencial",
+     "score": 72.0,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.74,
+       "weight": 0.3,
+       "points": 22.2
+      },
+      "evidence": {
+       "value": 0.69,
+       "weight": 0.2,
+       "points": 13.8
+      },
+      "sectorRole": {
+       "value": 0.77,
+       "weight": 0.15,
+       "points": 11.5
+      },
+      "seniority": {
+       "value": 0.71,
+       "weight": 0.1,
+       "points": 7.1
+      },
+      "desirable": {
+       "value": 0.66,
+       "weight": 0.1,
+       "points": 6.6
+      },
+      "langCert": {
+       "value": 0.77,
+       "weight": 0.1,
+       "points": 7.7
+      },
+      "recency": {
+       "value": 0.63,
+       "weight": 0.05,
+       "points": 3.1
+      }
+     },
+     "gaps": [
+      "Sin IAM (obligatoria)"
+     ],
+     "risks": [
+      "Roll-off próximo: inicio sujeto a liberación"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Portal Ciudadano",
+       "anio": 2023,
+       "sector": "Sector Público",
+       "skills": [
+        "IAM",
+        "PCI-DSS"
+       ]
+      },
+      {
+       "proyecto": "Open Banking API",
+       "anio": 2020,
+       "sector": "Banca",
+       "skills": [
+        "IAM",
+        "PCI-DSS"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "PCI-DSS",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 6,
+       "demostrada": true,
+       "confianza": 0.97
+      },
+      {
+       "name": "Inglés B2",
+       "tipo": "deseable",
+       "nivel": 3,
+       "anios": 6,
+       "demostrada": false,
+       "confianza": 0.42
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1266",
+     "nombre_completo": "Sergio García Serrano",
+     "puesto_actual": "Consultor Tecnológico",
+     "role": "Especialista de seguridad",
+     "nivel_seniority": "Lead",
+     "disponibilidad": "Roll-off próximo (<3 meses)",
+     "pais": "España",
+     "modalidad_trabajo": "Híbrido",
+     "score": 66.2,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.65,
+       "weight": 0.3,
+       "points": 19.5
+      },
+      "evidence": {
+       "value": 0.69,
+       "weight": 0.2,
+       "points": 13.8
+      },
+      "sectorRole": {
+       "value": 0.69,
+       "weight": 0.15,
+       "points": 10.3
+      },
+      "seniority": {
+       "value": 0.67,
+       "weight": 0.1,
+       "points": 6.7
+      },
+      "desirable": {
+       "value": 0.65,
+       "weight": 0.1,
+       "points": 6.5
+      },
+      "langCert": {
+       "value": 0.61,
+       "weight": 0.1,
+       "points": 6.1
+      },
+      "recency": {
+       "value": 0.66,
+       "weight": 0.05,
+       "points": 3.3
+      }
+     },
+     "gaps": [
+      "Menos años de experiencia de los pedidos"
+     ],
+     "risks": [
+      "Roll-off próximo: inicio sujeto a liberación",
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Migración AWS Aseguradora",
+       "anio": 2024,
+       "sector": "Seguros",
+       "skills": [
+        "IAM",
+        "PCI-DSS"
+       ]
+      },
+      {
+       "proyecto": "Billing Telco 5G",
+       "anio": 2020,
+       "sector": "Telco",
+       "skills": [
+        "PCI-DSS",
+        "IAM"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "PCI-DSS",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 4,
+       "demostrada": false,
+       "confianza": 0.96
+      },
+      {
+       "name": "IAM",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 9,
+       "demostrada": false,
+       "confianza": 0.84
+      },
+      {
+       "name": "Inglés B2",
+       "tipo": "deseable",
+       "nivel": 3,
+       "anios": 4,
+       "demostrada": true,
+       "confianza": 0.88
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1280",
+     "nombre_completo": "Diego Vázquez Navarro",
+     "puesto_actual": "Especialista Ciberseguridad",
+     "role": "Especialista de seguridad",
+     "nivel_seniority": "Senior",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Remoto",
+     "score": 63.3,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.7,
+       "weight": 0.3,
+       "points": 21.0
+      },
+      "evidence": {
+       "value": 0.57,
+       "weight": 0.2,
+       "points": 11.4
+      },
+      "sectorRole": {
+       "value": 0.53,
+       "weight": 0.15,
+       "points": 8.0
+      },
+      "seniority": {
+       "value": 0.64,
+       "weight": 0.1,
+       "points": 6.4
+      },
+      "desirable": {
+       "value": 0.65,
+       "weight": 0.1,
+       "points": 6.5
+      },
+      "langCert": {
+       "value": 0.65,
+       "weight": 0.1,
+       "points": 6.5
+      },
+      "recency": {
+       "value": 0.7,
+       "weight": 0.05,
+       "points": 3.5
+      }
+     },
+     "gaps": [],
+     "risks": [
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Pasarela SEPA Instant",
+       "anio": 2025,
+       "sector": "Banca",
+       "skills": [
+        "IAM",
+        "PCI-DSS"
+       ]
+      },
+      {
+       "proyecto": "Portal Ciudadano",
+       "anio": 2025,
+       "sector": "Sector Público",
+       "skills": [
+        "PCI-DSS",
+        "IAM"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "PCI-DSS",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 6,
+       "demostrada": true,
+       "confianza": 0.97
+      },
+      {
+       "name": "IAM",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 2,
+       "demostrada": false,
+       "confianza": 0.94
+      },
+      {
+       "name": "Inglés B2",
+       "tipo": "deseable",
+       "nivel": 2,
+       "anios": 2,
+       "demostrada": true,
+       "confianza": 0.56
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1273",
+     "nombre_completo": "Javier Martín Ruiz",
+     "puesto_actual": "Especialista Ciberseguridad",
+     "role": "Especialista de seguridad",
+     "nivel_seniority": "Lead",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Remoto",
+     "score": 61.9,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.56,
+       "weight": 0.3,
+       "points": 16.8
+      },
+      "evidence": {
+       "value": 0.71,
+       "weight": 0.2,
+       "points": 14.2
+      },
+      "sectorRole": {
+       "value": 0.55,
+       "weight": 0.15,
+       "points": 8.2
+      },
+      "seniority": {
+       "value": 0.66,
+       "weight": 0.1,
+       "points": 6.6
+      },
+      "desirable": {
+       "value": 0.74,
+       "weight": 0.1,
+       "points": 7.4
+      },
+      "langCert": {
+       "value": 0.58,
+       "weight": 0.1,
+       "points": 5.8
+      },
+      "recency": {
+       "value": 0.59,
+       "weight": 0.05,
+       "points": 2.9
+      }
+     },
+     "gaps": [],
+     "risks": [
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Portal Ciudadano",
+       "anio": 2024,
+       "sector": "Sector Público",
+       "skills": [
+        "IAM",
+        "PCI-DSS"
+       ]
+      },
+      {
+       "proyecto": "Core bancario Iberia",
+       "anio": 2020,
+       "sector": "Banca",
+       "skills": [
+        "PCI-DSS",
+        "IAM"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "PCI-DSS",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 10,
+       "demostrada": true,
+       "confianza": 0.76
+      },
+      {
+       "name": "IAM",
+       "tipo": "obligatoria",
+       "nivel": 5,
+       "anios": 6,
+       "demostrada": false,
+       "confianza": 0.84
+      },
+      {
+       "name": "Inglés B2",
+       "tipo": "deseable",
+       "nivel": 4,
+       "anios": 4,
+       "demostrada": true,
+       "confianza": 0.4
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1294",
+     "nombre_completo": "Javier García Gil",
+     "puesto_actual": "Especialista Ciberseguridad",
+     "role": "Especialista de seguridad",
+     "nivel_seniority": "Senior",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Presencial",
+     "score": 55.3,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.6,
+       "weight": 0.3,
+       "points": 18.0
+      },
+      "evidence": {
+       "value": 0.57,
+       "weight": 0.2,
+       "points": 11.4
+      },
+      "sectorRole": {
+       "value": 0.5,
+       "weight": 0.15,
+       "points": 7.5
+      },
+      "seniority": {
+       "value": 0.51,
+       "weight": 0.1,
+       "points": 5.1
+      },
+      "desirable": {
+       "value": 0.5,
+       "weight": 0.1,
+       "points": 5.0
+      },
+      "langCert": {
+       "value": 0.52,
+       "weight": 0.1,
+       "points": 5.2
+      },
+      "recency": {
+       "value": 0.63,
+       "weight": 0.05,
+       "points": 3.1
+      }
+     },
+     "gaps": [],
+     "risks": [],
+     "evidence": [
+      {
+       "proyecto": "Pasarela SEPA Instant",
+       "anio": 2023,
+       "sector": "Banca",
+       "skills": [
+        "IAM",
+        "PCI-DSS"
+       ]
+      },
+      {
+       "proyecto": "Core bancario Iberia",
+       "anio": 2022,
+       "sector": "Banca",
+       "skills": [
+        "PCI-DSS",
+        "IAM"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "PCI-DSS",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 7,
+       "demostrada": true,
+       "confianza": 0.89
+      },
+      {
+       "name": "IAM",
+       "tipo": "obligatoria",
+       "nivel": 4,
+       "anios": 6,
+       "demostrada": true,
+       "confianza": 0.61
+      },
+      {
+       "name": "Inglés B2",
+       "tipo": "deseable",
+       "nivel": 3,
+       "anios": 5,
+       "demostrada": true,
+       "confianza": 0.57
+      }
+     ]
+    },
+    {
+     "employee_id": "EMP-1287",
+     "nombre_completo": "Marta Vázquez Castro",
+     "puesto_actual": "Consultor Tecnológico",
+     "role": "Especialista de seguridad",
+     "nivel_seniority": "Lead",
+     "disponibilidad": "En banca",
+     "pais": "España",
+     "modalidad_trabajo": "Híbrido",
+     "score": 55.2,
+     "breakdown": {
+      "mandatory": {
+       "value": 0.5,
+       "weight": 0.3,
+       "points": 15.0
+      },
+      "evidence": {
+       "value": 0.66,
+       "weight": 0.2,
+       "points": 13.2
+      },
+      "sectorRole": {
+       "value": 0.51,
+       "weight": 0.15,
+       "points": 7.6
+      },
+      "seniority": {
+       "value": 0.49,
+       "weight": 0.1,
+       "points": 4.9
+      },
+      "desirable": {
+       "value": 0.5,
+       "weight": 0.1,
+       "points": 5.0
+      },
+      "langCert": {
+       "value": 0.67,
+       "weight": 0.1,
+       "points": 6.7
+      },
+      "recency": {
+       "value": 0.55,
+       "weight": 0.05,
+       "points": 2.8
+      }
+     },
+     "gaps": [],
+     "risks": [
+      "Alguna obligatoria solo declarada"
+     ],
+     "evidence": [
+      {
+       "proyecto": "Portal Ciudadano",
+       "anio": 2020,
+       "sector": "Sector Público",
+       "skills": [
+        "PCI-DSS",
+        "IAM"
+       ]
+      },
+      {
+       "proyecto": "Open Banking API",
+       "anio": 2019,
+       "sector": "Banca",
+       "skills": [
+        "PCI-DSS",
+        "IAM"
+       ]
+      }
+     ],
+     "skills": [
+      {
+       "name": "PCI-DSS",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 2,
+       "demostrada": false,
+       "confianza": 0.65
+      },
+      {
+       "name": "IAM",
+       "tipo": "obligatoria",
+       "nivel": 3,
+       "anios": 3,
+       "demostrada": true,
+       "confianza": 0.62
+      },
+      {
+       "name": "Inglés B2",
+       "tipo": "deseable",
+       "nivel": 3,
+       "anios": 2,
+       "demostrada": true,
+       "confianza": 0.81
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "excluded": {
+  "Arquitecto cloud senior": [
+   {
+    "employee_id": "EMP-1091",
+    "score": 76.6,
+    "reasons": [
+     "Fuera de España (país exigido)"
+    ]
+   },
+   {
+    "employee_id": "EMP-1098",
+    "score": 87.5,
+    "reasons": [
+     "Asignado a otro proyecto",
+     "Fuera de España (país exigido)"
+    ]
+   },
+   {
+    "employee_id": "EMP-1105",
+    "score": 75.8,
+    "reasons": [
+     "Asignado a otro proyecto"
+    ]
+   }
+  ],
+  "Desarrollador backend Java": [
+   {
+    "employee_id": "EMP-1196",
+    "score": 79.2,
+    "reasons": [
+     "Asignado a otro proyecto"
+    ]
+   },
+   {
+    "employee_id": "EMP-1203",
+    "score": 78.1,
+    "reasons": [
+     "Fuera de España (país exigido)"
+    ]
+   },
+   {
+    "employee_id": "EMP-1210",
+    "score": 83.9,
+    "reasons": [
+     "Asignado a otro proyecto",
+     "Fuera de España (país exigido)"
+    ]
+   }
+  ],
+  "Especialista de seguridad": [
+   {
+    "employee_id": "EMP-1301",
+    "score": 82.5,
+    "reasons": [
+     "Asignado a otro proyecto"
+    ]
+   },
+   {
+    "employee_id": "EMP-1308",
+    "score": 87.4,
+    "reasons": [
+     "Asignado a otro proyecto",
+     "Fuera de España (país exigido)"
+    ]
+   },
+   {
+    "employee_id": "EMP-1315",
+    "score": 76.2,
+    "reasons": [
+     "Asignado a otro proyecto",
+     "Fuera de España (país exigido)"
+    ]
+   }
+  ]
+ },
+ "top_teams": {
+  "cumplen": 5,
+  "items": [
+   {
+    "id": "T1",
+    "fit": 89.25,
+    "members": [
+     {
+      "role": "Arquitecto cloud senior",
+      "employee_id": "EMP-1007",
+      "nombre_completo": "Ana Navarro Gil",
+      "score": 89.3,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 12000
+     },
+     {
+      "role": "Desarrollador backend Java",
+      "employee_id": "EMP-1112",
+      "nombre_completo": "Paula Sánchez García",
+      "score": 92.6,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 7200
+     },
+     {
+      "role": "Desarrollador backend Java",
+      "employee_id": "EMP-1133",
+      "nombre_completo": "Álvaro Sánchez Torres",
+      "score": 82.4,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 7200
+     },
+     {
+      "role": "Especialista de seguridad",
+      "employee_id": "EMP-1217",
+      "nombre_completo": "Elena López Romero",
+      "score": 92.7,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 9600
+     }
+    ],
+    "cost": {
+     "value": 36000,
+     "status": "estimado",
+     "is_illustrative": true
+    },
+    "start": {
+     "date": "2026-11-23",
+     "status": "estimado"
+    },
+    "continuity": {
+     "covered": 4,
+     "total": 4,
+     "pct": 100,
+     "worst": {
+      "employee_id": "EMP-1217",
+      "role": "Especialista de seguridad",
+      "substitute": "EMP-1224",
+      "late_substitute": null
+     }
+    },
+    "gaps": 0
+   },
+   {
+    "id": "T8",
+    "fit": 89.25,
+    "members": [
+     {
+      "role": "Arquitecto cloud senior",
+      "employee_id": "EMP-1007",
+      "nombre_completo": "Ana Navarro Gil",
+      "score": 89.3,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 12000
+     },
+     {
+      "role": "Desarrollador backend Java",
+      "employee_id": "EMP-1112",
+      "nombre_completo": "Paula Sánchez García",
+      "score": 92.6,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 7200
+     },
+     {
+      "role": "Desarrollador backend Java",
+      "employee_id": "EMP-1133",
+      "nombre_completo": "Álvaro Sánchez Torres",
+      "score": 82.4,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 7200
+     },
+     {
+      "role": "Especialista de seguridad",
+      "employee_id": "EMP-1217",
+      "nombre_completo": "Elena López Romero",
+      "score": 92.7,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 9600
+     }
+    ],
+    "cost": {
+     "value": 36000,
+     "status": "estimado",
+     "is_illustrative": true
+    },
+    "start": {
+     "date": "2026-11-23",
+     "status": "estimado"
+    },
+    "continuity": {
+     "covered": 4,
+     "total": 4,
+     "pct": 100,
+     "worst": {
+      "employee_id": "EMP-1217",
+      "role": "Especialista de seguridad",
+      "substitute": "EMP-1224",
+      "late_substitute": null
+     }
+    },
+    "gaps": 0
+   },
+   {
+    "id": "T2",
+    "fit": 86.75,
+    "members": [
+     {
+      "role": "Arquitecto cloud senior",
+      "employee_id": "EMP-1021",
+      "nombre_completo": "Raúl Serrano Torres",
+      "score": 86.9,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 9600
+     },
+     {
+      "role": "Desarrollador backend Java",
+      "employee_id": "EMP-1119",
+      "nombre_completo": "Miguel Navarro López",
+      "score": 92.0,
+      "disponibilidad": "Roll-off próximo (<3 meses)",
+      "available_on": "2027-01-07",
+      "cost": 7200
+     },
+     {
+      "role": "Desarrollador backend Java",
+      "employee_id": "EMP-1140",
+      "nombre_completo": "Paula Castro Torres",
+      "score": 79.8,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 9600
+     },
+     {
+      "role": "Especialista de seguridad",
+      "employee_id": "EMP-1224",
+      "nombre_completo": "Miguel Gil Romero",
+      "score": 88.3,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 12000
+     }
+    ],
+    "cost": {
+     "value": 38400,
+     "status": "supuesto",
+     "is_illustrative": true
+    },
+    "start": {
+     "date": "2027-01-07",
+     "status": "supuesto"
+    },
+    "continuity": {
+     "covered": 4,
+     "total": 4,
+     "pct": 100,
+     "worst": {
+      "employee_id": "EMP-1119",
+      "role": "Desarrollador backend Java",
+      "substitute": "EMP-1112",
+      "late_substitute": null
+     }
+    },
+    "gaps": 1
+   },
+   {
+    "id": "T5",
+    "fit": 79.35,
+    "members": [
+     {
+      "role": "Arquitecto cloud senior",
+      "employee_id": "EMP-1035",
+      "nombre_completo": "Diego Ruiz Torres",
+      "score": 76.4,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 9600
+     },
+     {
+      "role": "Desarrollador backend Java",
+      "employee_id": "EMP-1147",
+      "nombre_completo": "Carmen Molina Vázquez",
+      "score": 74.7,
+      "disponibilidad": "Roll-off próximo (<3 meses)",
+      "available_on": "2027-01-07",
+      "cost": 7200
+     },
+     {
+      "role": "Desarrollador backend Java",
+      "employee_id": "EMP-1112",
+      "nombre_completo": "Paula Sánchez García",
+      "score": 92.6,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 7200
+     },
+     {
+      "role": "Especialista de seguridad",
+      "employee_id": "EMP-1245",
+      "nombre_completo": "Raúl Domínguez Romero",
+      "score": 73.7,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 12000
+     }
+    ],
+    "cost": {
+     "value": 36000,
+     "status": "supuesto",
+     "is_illustrative": true
+    },
+    "start": {
+     "date": "2027-01-07",
+     "status": "supuesto"
+    },
+    "continuity": {
+     "covered": 4,
+     "total": 4,
+     "pct": 100,
+     "worst": {
+      "employee_id": "EMP-1112",
+      "role": "Desarrollador backend Java",
+      "substitute": "EMP-1119",
+      "late_substitute": null
+     }
+    },
+    "gaps": 3
+   },
+   {
+    "id": "T4",
+    "fit": 78.775,
+    "members": [
+     {
+      "role": "Arquitecto cloud senior",
+      "employee_id": "EMP-1028",
+      "nombre_completo": "Ana Sánchez Martín",
+      "score": 79.0,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 12000
+     },
+     {
+      "role": "Desarrollador backend Java",
+      "employee_id": "EMP-1133",
+      "nombre_completo": "Álvaro Sánchez Torres",
+      "score": 82.4,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 7200
+     },
+     {
+      "role": "Desarrollador backend Java",
+      "employee_id": "EMP-1154",
+      "nombre_completo": "Carlos Martín López",
+      "score": 71.4,
+      "disponibilidad": "Roll-off próximo (<3 meses)",
+      "available_on": "2027-01-07",
+      "cost": 7200
+     },
+     {
+      "role": "Especialista de seguridad",
+      "employee_id": "EMP-1231",
+      "nombre_completo": "Javier Serrano Romero",
+      "score": 82.3,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 9600
+     }
+    ],
+    "cost": {
+     "value": 36000,
+     "status": "supuesto",
+     "is_illustrative": true
+    },
+    "start": {
+     "date": "2027-01-07",
+     "status": "supuesto"
+    },
+    "continuity": {
+     "covered": 4,
+     "total": 4,
+     "pct": 100,
+     "worst": {
+      "employee_id": "EMP-1133",
+      "role": "Desarrollador backend Java",
+      "substitute": "EMP-1112",
+      "late_substitute": null
+     }
+    },
+    "gaps": 1
+   }
+  ],
+  "pending": [
+   {
+    "id": "T3",
+    "fit": 81.525,
+    "members": [
+     {
+      "role": "Arquitecto cloud senior",
+      "employee_id": "EMP-1014",
+      "nombre_completo": "Ana Ortega López",
+      "score": 84.4,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 9600
+     },
+     {
+      "role": "Desarrollador backend Java",
+      "employee_id": "EMP-1126",
+      "nombre_completo": "Raúl Torres Castro",
+      "score": 82.9,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 7200
+     },
+     {
+      "role": "Desarrollador backend Java",
+      "employee_id": "EMP-1147",
+      "nombre_completo": "Carmen Molina Vázquez",
+      "score": 74.7,
+      "disponibilidad": "Roll-off próximo (<3 meses)",
+      "available_on": null,
+      "cost": null
+     },
+     {
+      "role": "Especialista de seguridad",
+      "employee_id": "EMP-1238",
+      "nombre_completo": "Miguel Ortega Romero",
+      "score": 84.1,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 12000
+     }
+    ],
+    "cost": {
+     "value": null,
+     "status": "por estimar",
+     "is_illustrative": true
+    },
+    "start": {
+     "date": null,
+     "status": "por confirmar"
+    },
+    "continuity": {
+     "covered": 3,
+     "total": 4,
+     "pct": 75,
+     "worst": {
+      "employee_id": "EMP-1014",
+      "role": "Arquitecto cloud senior",
+      "substitute": null,
+      "late_substitute": {
+       "employee_id": "EMP-1021",
+       "available_on": "2027-01-07"
+      }
+     }
+    },
+    "gaps": 2
+   },
+   {
+    "id": "T9",
+    "fit": 81.525,
+    "members": [
+     {
+      "role": "Arquitecto cloud senior",
+      "employee_id": "EMP-1014",
+      "nombre_completo": "Ana Ortega López",
+      "score": 84.4,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 9600
+     },
+     {
+      "role": "Desarrollador backend Java",
+      "employee_id": "EMP-1126",
+      "nombre_completo": "Raúl Torres Castro",
+      "score": 82.9,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 7200
+     },
+     {
+      "role": "Desarrollador backend Java",
+      "employee_id": "EMP-1147",
+      "nombre_completo": "Carmen Molina Vázquez",
+      "score": 74.7,
+      "disponibilidad": "Roll-off próximo (<3 meses)",
+      "available_on": null,
+      "cost": null
+     },
+     {
+      "role": "Especialista de seguridad",
+      "employee_id": "EMP-1238",
+      "nombre_completo": "Miguel Ortega Romero",
+      "score": 84.1,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 12000
+     }
+    ],
+    "cost": {
+     "value": null,
+     "status": "por estimar",
+     "is_illustrative": true
+    },
+    "start": {
+     "date": null,
+     "status": "por confirmar"
+    },
+    "continuity": {
+     "covered": 3,
+     "total": 4,
+     "pct": 75,
+     "worst": {
+      "employee_id": "EMP-1014",
+      "role": "Arquitecto cloud senior",
+      "substitute": null,
+      "late_substitute": {
+       "employee_id": "EMP-1021",
+       "available_on": "2027-01-07"
+      }
+     }
+    },
+    "gaps": 2
+   },
+   {
+    "id": "T6",
+    "fit": 77.45,
+    "members": [
+     {
+      "role": "Arquitecto cloud senior",
+      "employee_id": "EMP-1049",
+      "nombre_completo": "Hugo Sánchez Fernández",
+      "score": 74.4,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 9600
+     },
+     {
+      "role": "Desarrollador backend Java",
+      "employee_id": "EMP-1154",
+      "nombre_completo": "Carlos Martín López",
+      "score": 71.4,
+      "disponibilidad": "Roll-off próximo (<3 meses)",
+      "available_on": "2027-01-07",
+      "cost": 7200
+     },
+     {
+      "role": "Desarrollador backend Java",
+      "employee_id": "EMP-1119",
+      "nombre_completo": "Miguel Navarro López",
+      "score": 92.0,
+      "disponibilidad": "Roll-off próximo (<3 meses)",
+      "available_on": null,
+      "cost": 7200
+     },
+     {
+      "role": "Especialista de seguridad",
+      "employee_id": "EMP-1259",
+      "nombre_completo": "Javier García Fernández",
+      "score": 72.0,
+      "disponibilidad": "Roll-off próximo (<3 meses)",
+      "available_on": "2027-01-07",
+      "cost": 9600
+     }
+    ],
+    "cost": {
+     "value": 33600,
+     "status": "supuesto",
+     "is_illustrative": true
+    },
+    "start": {
+     "date": null,
+     "status": "por confirmar"
+    },
+    "continuity": {
+     "covered": 3,
+     "total": 4,
+     "pct": 75,
+     "worst": {
+      "employee_id": "EMP-1119",
+      "role": "Desarrollador backend Java",
+      "substitute": null,
+      "late_substitute": {
+       "employee_id": "EMP-1126",
+       "available_on": "2027-01-07"
+      }
+     }
+    },
+    "gaps": 3
+   },
+   {
+    "id": "T7",
+    "fit": 72.2,
+    "members": [
+     {
+      "role": "Arquitecto cloud senior",
+      "employee_id": "EMP-1056",
+      "nombre_completo": "Paula Ortega García",
+      "score": 73.4,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 9600
+     },
+     {
+      "role": "Desarrollador backend Java",
+      "employee_id": "EMP-1161",
+      "nombre_completo": "Paula López Navarro",
+      "score": 66.3,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 7200
+     },
+     {
+      "role": "Desarrollador backend Java",
+      "employee_id": "EMP-1126",
+      "nombre_completo": "Raúl Torres Castro",
+      "score": 82.9,
+      "disponibilidad": "En banca",
+      "available_on": "2026-11-23",
+      "cost": 7200
+     },
+     {
+      "role": "Especialista de seguridad",
+      "employee_id": "EMP-1266",
+      "nombre_completo": "Sergio García Serrano",
+      "score": 66.2,
+      "disponibilidad": "Roll-off próximo (<3 meses)",
+      "available_on": null,
+      "cost": null
+     }
+    ],
+    "cost": {
+     "value": null,
+     "status": "por estimar",
+     "is_illustrative": true
+    },
+    "start": {
+     "date": null,
+     "status": "por confirmar"
+    },
+    "continuity": {
+     "covered": 4,
+     "total": 4,
+     "pct": 100,
+     "worst": {
+      "employee_id": "EMP-1126",
+      "role": "Desarrollador backend Java",
+      "substitute": "EMP-1112",
+      "late_substitute": null
+     }
+    },
+    "gaps": 3
+   }
+  ]
+ },
+ "teams": [
+  {
+   "id": "T1",
+   "fit": 89.25,
+   "members": [
+    {
+     "role": "Arquitecto cloud senior",
+     "employee_id": "EMP-1007",
+     "nombre_completo": "Ana Navarro Gil",
+     "score": 89.3,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 12000
+    },
+    {
+     "role": "Desarrollador backend Java",
+     "employee_id": "EMP-1112",
+     "nombre_completo": "Paula Sánchez García",
+     "score": 92.6,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 7200
+    },
+    {
+     "role": "Desarrollador backend Java",
+     "employee_id": "EMP-1133",
+     "nombre_completo": "Álvaro Sánchez Torres",
+     "score": 82.4,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 7200
+    },
+    {
+     "role": "Especialista de seguridad",
+     "employee_id": "EMP-1217",
+     "nombre_completo": "Elena López Romero",
+     "score": 92.7,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 9600
+    }
+   ],
+   "cost": {
+    "value": 36000,
+    "status": "estimado",
+    "is_illustrative": true
+   },
+   "start": {
+    "date": "2026-11-23",
+    "status": "estimado"
+   },
+   "continuity": {
+    "covered": 4,
+    "total": 4,
+    "pct": 100,
+    "worst": {
+     "employee_id": "EMP-1217",
+     "role": "Especialista de seguridad",
+     "substitute": "EMP-1224",
+     "late_substitute": null
+    }
+   },
+   "gaps": 0
+  },
+  {
+   "id": "T8",
+   "fit": 89.25,
+   "members": [
+    {
+     "role": "Arquitecto cloud senior",
+     "employee_id": "EMP-1007",
+     "nombre_completo": "Ana Navarro Gil",
+     "score": 89.3,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 12000
+    },
+    {
+     "role": "Desarrollador backend Java",
+     "employee_id": "EMP-1112",
+     "nombre_completo": "Paula Sánchez García",
+     "score": 92.6,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 7200
+    },
+    {
+     "role": "Desarrollador backend Java",
+     "employee_id": "EMP-1133",
+     "nombre_completo": "Álvaro Sánchez Torres",
+     "score": 82.4,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 7200
+    },
+    {
+     "role": "Especialista de seguridad",
+     "employee_id": "EMP-1217",
+     "nombre_completo": "Elena López Romero",
+     "score": 92.7,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 9600
+    }
+   ],
+   "cost": {
+    "value": 36000,
+    "status": "estimado",
+    "is_illustrative": true
+   },
+   "start": {
+    "date": "2026-11-23",
+    "status": "estimado"
+   },
+   "continuity": {
+    "covered": 4,
+    "total": 4,
+    "pct": 100,
+    "worst": {
+     "employee_id": "EMP-1217",
+     "role": "Especialista de seguridad",
+     "substitute": "EMP-1224",
+     "late_substitute": null
+    }
+   },
+   "gaps": 0
+  },
+  {
+   "id": "T2",
+   "fit": 86.75,
+   "members": [
+    {
+     "role": "Arquitecto cloud senior",
+     "employee_id": "EMP-1021",
+     "nombre_completo": "Raúl Serrano Torres",
+     "score": 86.9,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 9600
+    },
+    {
+     "role": "Desarrollador backend Java",
+     "employee_id": "EMP-1119",
+     "nombre_completo": "Miguel Navarro López",
+     "score": 92.0,
+     "disponibilidad": "Roll-off próximo (<3 meses)",
+     "available_on": "2027-01-07",
+     "cost": 7200
+    },
+    {
+     "role": "Desarrollador backend Java",
+     "employee_id": "EMP-1140",
+     "nombre_completo": "Paula Castro Torres",
+     "score": 79.8,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 9600
+    },
+    {
+     "role": "Especialista de seguridad",
+     "employee_id": "EMP-1224",
+     "nombre_completo": "Miguel Gil Romero",
+     "score": 88.3,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 12000
+    }
+   ],
+   "cost": {
+    "value": 38400,
+    "status": "supuesto",
+    "is_illustrative": true
+   },
+   "start": {
+    "date": "2027-01-07",
+    "status": "supuesto"
+   },
+   "continuity": {
+    "covered": 4,
+    "total": 4,
+    "pct": 100,
+    "worst": {
+     "employee_id": "EMP-1119",
+     "role": "Desarrollador backend Java",
+     "substitute": "EMP-1112",
+     "late_substitute": null
+    }
+   },
+   "gaps": 1
+  },
+  {
+   "id": "T3",
+   "fit": 81.525,
+   "members": [
+    {
+     "role": "Arquitecto cloud senior",
+     "employee_id": "EMP-1014",
+     "nombre_completo": "Ana Ortega López",
+     "score": 84.4,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 9600
+    },
+    {
+     "role": "Desarrollador backend Java",
+     "employee_id": "EMP-1126",
+     "nombre_completo": "Raúl Torres Castro",
+     "score": 82.9,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 7200
+    },
+    {
+     "role": "Desarrollador backend Java",
+     "employee_id": "EMP-1147",
+     "nombre_completo": "Carmen Molina Vázquez",
+     "score": 74.7,
+     "disponibilidad": "Roll-off próximo (<3 meses)",
+     "available_on": null,
+     "cost": null
+    },
+    {
+     "role": "Especialista de seguridad",
+     "employee_id": "EMP-1238",
+     "nombre_completo": "Miguel Ortega Romero",
+     "score": 84.1,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 12000
+    }
+   ],
+   "cost": {
+    "value": null,
+    "status": "por estimar",
+    "is_illustrative": true
+   },
+   "start": {
+    "date": null,
+    "status": "por confirmar"
+   },
+   "continuity": {
+    "covered": 3,
+    "total": 4,
+    "pct": 75,
+    "worst": {
+     "employee_id": "EMP-1014",
+     "role": "Arquitecto cloud senior",
+     "substitute": null,
+     "late_substitute": {
+      "employee_id": "EMP-1021",
+      "available_on": "2027-01-07"
+     }
+    }
+   },
+   "gaps": 2
+  },
+  {
+   "id": "T9",
+   "fit": 81.525,
+   "members": [
+    {
+     "role": "Arquitecto cloud senior",
+     "employee_id": "EMP-1014",
+     "nombre_completo": "Ana Ortega López",
+     "score": 84.4,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 9600
+    },
+    {
+     "role": "Desarrollador backend Java",
+     "employee_id": "EMP-1126",
+     "nombre_completo": "Raúl Torres Castro",
+     "score": 82.9,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 7200
+    },
+    {
+     "role": "Desarrollador backend Java",
+     "employee_id": "EMP-1147",
+     "nombre_completo": "Carmen Molina Vázquez",
+     "score": 74.7,
+     "disponibilidad": "Roll-off próximo (<3 meses)",
+     "available_on": null,
+     "cost": null
+    },
+    {
+     "role": "Especialista de seguridad",
+     "employee_id": "EMP-1238",
+     "nombre_completo": "Miguel Ortega Romero",
+     "score": 84.1,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 12000
+    }
+   ],
+   "cost": {
+    "value": null,
+    "status": "por estimar",
+    "is_illustrative": true
+   },
+   "start": {
+    "date": null,
+    "status": "por confirmar"
+   },
+   "continuity": {
+    "covered": 3,
+    "total": 4,
+    "pct": 75,
+    "worst": {
+     "employee_id": "EMP-1014",
+     "role": "Arquitecto cloud senior",
+     "substitute": null,
+     "late_substitute": {
+      "employee_id": "EMP-1021",
+      "available_on": "2027-01-07"
+     }
+    }
+   },
+   "gaps": 2
+  },
+  {
+   "id": "T5",
+   "fit": 79.35,
+   "members": [
+    {
+     "role": "Arquitecto cloud senior",
+     "employee_id": "EMP-1035",
+     "nombre_completo": "Diego Ruiz Torres",
+     "score": 76.4,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 9600
+    },
+    {
+     "role": "Desarrollador backend Java",
+     "employee_id": "EMP-1147",
+     "nombre_completo": "Carmen Molina Vázquez",
+     "score": 74.7,
+     "disponibilidad": "Roll-off próximo (<3 meses)",
+     "available_on": "2027-01-07",
+     "cost": 7200
+    },
+    {
+     "role": "Desarrollador backend Java",
+     "employee_id": "EMP-1112",
+     "nombre_completo": "Paula Sánchez García",
+     "score": 92.6,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 7200
+    },
+    {
+     "role": "Especialista de seguridad",
+     "employee_id": "EMP-1245",
+     "nombre_completo": "Raúl Domínguez Romero",
+     "score": 73.7,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 12000
+    }
+   ],
+   "cost": {
+    "value": 36000,
+    "status": "supuesto",
+    "is_illustrative": true
+   },
+   "start": {
+    "date": "2027-01-07",
+    "status": "supuesto"
+   },
+   "continuity": {
+    "covered": 4,
+    "total": 4,
+    "pct": 100,
+    "worst": {
+     "employee_id": "EMP-1112",
+     "role": "Desarrollador backend Java",
+     "substitute": "EMP-1119",
+     "late_substitute": null
+    }
+   },
+   "gaps": 3
+  },
+  {
+   "id": "T4",
+   "fit": 78.775,
+   "members": [
+    {
+     "role": "Arquitecto cloud senior",
+     "employee_id": "EMP-1028",
+     "nombre_completo": "Ana Sánchez Martín",
+     "score": 79.0,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 12000
+    },
+    {
+     "role": "Desarrollador backend Java",
+     "employee_id": "EMP-1133",
+     "nombre_completo": "Álvaro Sánchez Torres",
+     "score": 82.4,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 7200
+    },
+    {
+     "role": "Desarrollador backend Java",
+     "employee_id": "EMP-1154",
+     "nombre_completo": "Carlos Martín López",
+     "score": 71.4,
+     "disponibilidad": "Roll-off próximo (<3 meses)",
+     "available_on": "2027-01-07",
+     "cost": 7200
+    },
+    {
+     "role": "Especialista de seguridad",
+     "employee_id": "EMP-1231",
+     "nombre_completo": "Javier Serrano Romero",
+     "score": 82.3,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 9600
+    }
+   ],
+   "cost": {
+    "value": 36000,
+    "status": "supuesto",
+    "is_illustrative": true
+   },
+   "start": {
+    "date": "2027-01-07",
+    "status": "supuesto"
+   },
+   "continuity": {
+    "covered": 4,
+    "total": 4,
+    "pct": 100,
+    "worst": {
+     "employee_id": "EMP-1133",
+     "role": "Desarrollador backend Java",
+     "substitute": "EMP-1112",
+     "late_substitute": null
+    }
+   },
+   "gaps": 1
+  },
+  {
+   "id": "T6",
+   "fit": 77.45,
+   "members": [
+    {
+     "role": "Arquitecto cloud senior",
+     "employee_id": "EMP-1049",
+     "nombre_completo": "Hugo Sánchez Fernández",
+     "score": 74.4,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 9600
+    },
+    {
+     "role": "Desarrollador backend Java",
+     "employee_id": "EMP-1154",
+     "nombre_completo": "Carlos Martín López",
+     "score": 71.4,
+     "disponibilidad": "Roll-off próximo (<3 meses)",
+     "available_on": "2027-01-07",
+     "cost": 7200
+    },
+    {
+     "role": "Desarrollador backend Java",
+     "employee_id": "EMP-1119",
+     "nombre_completo": "Miguel Navarro López",
+     "score": 92.0,
+     "disponibilidad": "Roll-off próximo (<3 meses)",
+     "available_on": null,
+     "cost": 7200
+    },
+    {
+     "role": "Especialista de seguridad",
+     "employee_id": "EMP-1259",
+     "nombre_completo": "Javier García Fernández",
+     "score": 72.0,
+     "disponibilidad": "Roll-off próximo (<3 meses)",
+     "available_on": "2027-01-07",
+     "cost": 9600
+    }
+   ],
+   "cost": {
+    "value": 33600,
+    "status": "supuesto",
+    "is_illustrative": true
+   },
+   "start": {
+    "date": null,
+    "status": "por confirmar"
+   },
+   "continuity": {
+    "covered": 3,
+    "total": 4,
+    "pct": 75,
+    "worst": {
+     "employee_id": "EMP-1119",
+     "role": "Desarrollador backend Java",
+     "substitute": null,
+     "late_substitute": {
+      "employee_id": "EMP-1126",
+      "available_on": "2027-01-07"
+     }
+    }
+   },
+   "gaps": 3
+  },
+  {
+   "id": "T7",
+   "fit": 72.2,
+   "members": [
+    {
+     "role": "Arquitecto cloud senior",
+     "employee_id": "EMP-1056",
+     "nombre_completo": "Paula Ortega García",
+     "score": 73.4,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 9600
+    },
+    {
+     "role": "Desarrollador backend Java",
+     "employee_id": "EMP-1161",
+     "nombre_completo": "Paula López Navarro",
+     "score": 66.3,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 7200
+    },
+    {
+     "role": "Desarrollador backend Java",
+     "employee_id": "EMP-1126",
+     "nombre_completo": "Raúl Torres Castro",
+     "score": 82.9,
+     "disponibilidad": "En banca",
+     "available_on": "2026-11-23",
+     "cost": 7200
+    },
+    {
+     "role": "Especialista de seguridad",
+     "employee_id": "EMP-1266",
+     "nombre_completo": "Sergio García Serrano",
+     "score": 66.2,
+     "disponibilidad": "Roll-off próximo (<3 meses)",
+     "available_on": null,
+     "cost": null
+    }
+   ],
+   "cost": {
+    "value": null,
+    "status": "por estimar",
+    "is_illustrative": true
+   },
+   "start": {
+    "date": null,
+    "status": "por confirmar"
+   },
+   "continuity": {
+    "covered": 4,
+    "total": 4,
+    "pct": 100,
+    "worst": {
+     "employee_id": "EMP-1126",
+     "role": "Desarrollador backend Java",
+     "substitute": "EMP-1112",
+     "late_substitute": null
+    }
+   },
+   "gaps": 3
+  }
+ ],
+ "members_detail": [
+  {
+   "employee_id": "EMP-1007",
+   "nombre_completo": "Ana Navarro Gil",
+   "puesto_actual": "Consultor Tecnológico",
+   "role": "Arquitecto cloud senior",
+   "nivel_seniority": "Lead",
+   "disponibilidad": "En banca",
+   "pais": "España",
+   "modalidad_trabajo": "Remoto",
+   "score": 89.3,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.89,
+     "weight": 0.3,
+     "points": 26.7
+    },
+    "evidence": {
+     "value": 0.86,
+     "weight": 0.2,
+     "points": 17.2
+    },
+    "sectorRole": {
+     "value": 0.96,
+     "weight": 0.15,
+     "points": 14.4
+    },
+    "seniority": {
+     "value": 0.84,
+     "weight": 0.1,
+     "points": 8.4
+    },
+    "desirable": {
+     "value": 0.94,
+     "weight": 0.1,
+     "points": 9.4
+    },
+    "langCert": {
+     "value": 0.9,
+     "weight": 0.1,
+     "points": 9.0
+    },
+    "recency": {
+     "value": 0.84,
+     "weight": 0.05,
+     "points": 4.2
+    }
+   },
+   "gaps": [],
+   "risks": [
+    "Alguna obligatoria solo declarada"
+   ],
+   "evidence": [
+    {
+     "proyecto": "Portal Ciudadano",
+     "anio": 2023,
+     "sector": "Sector Público",
+     "skills": [
+      "AWS",
+      "Kubernetes"
+     ]
+    },
+    {
+     "proyecto": "Pasarela SEPA Instant",
+     "anio": 2023,
+     "sector": "Banca",
+     "skills": [
+      "Arquitectura de microservicios",
+      "AWS"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "AWS",
+     "tipo": "obligatoria",
+     "nivel": 5,
+     "anios": 5,
+     "demostrada": false,
+     "confianza": 0.76
+    },
+    {
+     "name": "Kubernetes",
+     "tipo": "obligatoria",
+     "nivel": 3,
+     "anios": 5,
+     "demostrada": false,
+     "confianza": 0.76
+    },
+    {
+     "name": "Arquitectura de microservicios",
+     "tipo": "obligatoria",
+     "nivel": 5,
+     "anios": 3,
+     "demostrada": true,
+     "confianza": 0.84
+    },
+    {
+     "name": "CI/CD",
+     "tipo": "deseable",
+     "nivel": 2,
+     "anios": 5,
+     "demostrada": false,
+     "confianza": 0.42
+    }
+   ]
+  },
+  {
+   "employee_id": "EMP-1021",
+   "nombre_completo": "Raúl Serrano Torres",
+   "puesto_actual": "Consultor Tecnológico",
+   "role": "Arquitecto cloud senior",
+   "nivel_seniority": "Senior",
+   "disponibilidad": "En banca",
+   "pais": "España",
+   "modalidad_trabajo": "Híbrido",
+   "score": 86.9,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.85,
+     "weight": 0.3,
+     "points": 25.5
+    },
+    "evidence": {
+     "value": 0.89,
+     "weight": 0.2,
+     "points": 17.8
+    },
+    "sectorRole": {
+     "value": 0.77,
+     "weight": 0.15,
+     "points": 11.5
+    },
+    "seniority": {
+     "value": 0.9,
+     "weight": 0.1,
+     "points": 9.0
+    },
+    "desirable": {
+     "value": 0.89,
+     "weight": 0.1,
+     "points": 8.9
+    },
+    "langCert": {
+     "value": 0.96,
+     "weight": 0.1,
+     "points": 9.6
+    },
+    "recency": {
+     "value": 0.92,
+     "weight": 0.05,
+     "points": 4.6
+    }
+   },
+   "gaps": [],
+   "risks": [
+    "Alguna obligatoria solo declarada"
+   ],
+   "evidence": [
+    {
+     "proyecto": "Open Banking API",
+     "anio": 2025,
+     "sector": "Banca",
+     "skills": [
+      "Kubernetes",
+      "Arquitectura de microservicios"
+     ]
+    },
+    {
+     "proyecto": "Portal Ciudadano",
+     "anio": 2023,
+     "sector": "Sector Público",
+     "skills": [
+      "Kubernetes",
+      "AWS"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "AWS",
+     "tipo": "obligatoria",
+     "nivel": 4,
+     "anios": 8,
+     "demostrada": true,
+     "confianza": 0.73
+    },
+    {
+     "name": "Kubernetes",
+     "tipo": "obligatoria",
+     "nivel": 4,
+     "anios": 7,
+     "demostrada": false,
+     "confianza": 0.64
+    },
+    {
+     "name": "Arquitectura de microservicios",
+     "tipo": "obligatoria",
+     "nivel": 3,
+     "anios": 5,
+     "demostrada": true,
+     "confianza": 0.65
+    }
+   ]
+  },
+  {
+   "employee_id": "EMP-1014",
+   "nombre_completo": "Ana Ortega López",
+   "puesto_actual": "Arquitecto Cloud",
+   "role": "Arquitecto cloud senior",
+   "nivel_seniority": "Senior",
+   "disponibilidad": "En banca",
+   "pais": "España",
+   "modalidad_trabajo": "Presencial",
+   "score": 84.4,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.81,
+     "weight": 0.3,
+     "points": 24.3
+    },
+    "evidence": {
+     "value": 0.81,
+     "weight": 0.2,
+     "points": 16.2
+    },
+    "sectorRole": {
+     "value": 0.84,
+     "weight": 0.15,
+     "points": 12.6
+    },
+    "seniority": {
+     "value": 0.93,
+     "weight": 0.1,
+     "points": 9.3
+    },
+    "desirable": {
+     "value": 0.88,
+     "weight": 0.1,
+     "points": 8.8
+    },
+    "langCert": {
+     "value": 0.86,
+     "weight": 0.1,
+     "points": 8.6
+    },
+    "recency": {
+     "value": 0.91,
+     "weight": 0.05,
+     "points": 4.6
+    }
+   },
+   "gaps": [],
+   "risks": [
+    "Alguna obligatoria solo declarada"
+   ],
+   "evidence": [
+    {
+     "proyecto": "Open Banking API",
+     "anio": 2025,
+     "sector": "Banca",
+     "skills": [
+      "Arquitectura de microservicios",
+      "Kubernetes"
+     ]
+    },
+    {
+     "proyecto": "Core bancario Iberia",
+     "anio": 2021,
+     "sector": "Banca",
+     "skills": [
+      "Arquitectura de microservicios",
+      "Kubernetes"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "AWS",
+     "tipo": "obligatoria",
+     "nivel": 4,
+     "anios": 7,
+     "demostrada": false,
+     "confianza": 0.9
+    },
+    {
+     "name": "Kubernetes",
+     "tipo": "obligatoria",
+     "nivel": 5,
+     "anios": 5,
+     "demostrada": false,
+     "confianza": 0.71
+    },
+    {
+     "name": "Arquitectura de microservicios",
+     "tipo": "obligatoria",
+     "nivel": 4,
+     "anios": 7,
+     "demostrada": true,
+     "confianza": 0.71
+    },
+    {
+     "name": "CI/CD",
+     "tipo": "deseable",
+     "nivel": 2,
+     "anios": 5,
+     "demostrada": false,
+     "confianza": 0.78
+    }
+   ]
+  },
+  {
+   "employee_id": "EMP-1028",
+   "nombre_completo": "Ana Sánchez Martín",
+   "puesto_actual": "Arquitecto Cloud",
+   "role": "Arquitecto cloud senior",
+   "nivel_seniority": "Lead",
+   "disponibilidad": "En banca",
+   "pais": "España",
+   "modalidad_trabajo": "Remoto",
+   "score": 79.0,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.76,
+     "weight": 0.3,
+     "points": 22.8
+    },
+    "evidence": {
+     "value": 0.86,
+     "weight": 0.2,
+     "points": 17.2
+    },
+    "sectorRole": {
+     "value": 0.73,
+     "weight": 0.15,
+     "points": 10.9
+    },
+    "seniority": {
+     "value": 0.89,
+     "weight": 0.1,
+     "points": 8.9
+    },
+    "desirable": {
+     "value": 0.76,
+     "weight": 0.1,
+     "points": 7.6
+    },
+    "langCert": {
+     "value": 0.78,
+     "weight": 0.1,
+     "points": 7.8
+    },
+    "recency": {
+     "value": 0.75,
+     "weight": 0.05,
+     "points": 3.8
+    }
+   },
+   "gaps": [],
+   "risks": [],
+   "evidence": [
+    {
+     "proyecto": "Core bancario Iberia",
+     "anio": 2022,
+     "sector": "Banca",
+     "skills": [
+      "AWS",
+      "Arquitectura de microservicios"
+     ]
+    },
+    {
+     "proyecto": "Pasarela SEPA Instant",
+     "anio": 2021,
+     "sector": "Banca",
+     "skills": [
+      "Arquitectura de microservicios",
+      "AWS"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "AWS",
+     "tipo": "obligatoria",
+     "nivel": 5,
+     "anios": 7,
+     "demostrada": true,
+     "confianza": 0.72
+    },
+    {
+     "name": "Kubernetes",
+     "tipo": "obligatoria",
+     "nivel": 3,
+     "anios": 10,
+     "demostrada": true,
+     "confianza": 0.85
+    },
+    {
+     "name": "Arquitectura de microservicios",
+     "tipo": "obligatoria",
+     "nivel": 5,
+     "anios": 2,
+     "demostrada": true,
+     "confianza": 0.93
+    },
+    {
+     "name": "CI/CD",
+     "tipo": "deseable",
+     "nivel": 4,
+     "anios": 5,
+     "demostrada": false,
+     "confianza": 0.6
+    }
+   ]
+  },
+  {
+   "employee_id": "EMP-1042",
+   "nombre_completo": "Nuria Castro Romero",
+   "puesto_actual": "Arquitecto Cloud",
+   "role": "Arquitecto cloud senior",
+   "nivel_seniority": "Senior",
+   "disponibilidad": "En banca",
+   "pais": "España",
+   "modalidad_trabajo": "Remoto",
+   "score": 78.2,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.82,
+     "weight": 0.3,
+     "points": 24.6
+    },
+    "evidence": {
+     "value": 0.82,
+     "weight": 0.2,
+     "points": 16.4
+    },
+    "sectorRole": {
+     "value": 0.8,
+     "weight": 0.15,
+     "points": 12.0
+    },
+    "seniority": {
+     "value": 0.7,
+     "weight": 0.1,
+     "points": 7.0
+    },
+    "desirable": {
+     "value": 0.76,
+     "weight": 0.1,
+     "points": 7.6
+    },
+    "langCert": {
+     "value": 0.73,
+     "weight": 0.1,
+     "points": 7.3
+    },
+    "recency": {
+     "value": 0.66,
+     "weight": 0.05,
+     "points": 3.3
+    }
+   },
+   "gaps": [
+    "Menos años de experiencia de los pedidos"
+   ],
+   "risks": [
+    "Alguna obligatoria solo declarada"
+   ],
+   "evidence": [
+    {
+     "proyecto": "Portal Ciudadano",
+     "anio": 2025,
+     "sector": "Sector Público",
+     "skills": [
+      "Arquitectura de microservicios",
+      "AWS"
+     ]
+    },
+    {
+     "proyecto": "Core bancario Iberia",
+     "anio": 2024,
+     "sector": "Banca",
+     "skills": [
+      "Kubernetes",
+      "AWS"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "AWS",
+     "tipo": "obligatoria",
+     "nivel": 3,
+     "anios": 6,
+     "demostrada": true,
+     "confianza": 0.67
+    },
+    {
+     "name": "Kubernetes",
+     "tipo": "obligatoria",
+     "nivel": 4,
+     "anios": 9,
+     "demostrada": true,
+     "confianza": 0.87
+    },
+    {
+     "name": "Arquitectura de microservicios",
+     "tipo": "obligatoria",
+     "nivel": 4,
+     "anios": 3,
+     "demostrada": false,
+     "confianza": 0.69
+    }
+   ]
+  },
+  {
+   "employee_id": "EMP-1035",
+   "nombre_completo": "Diego Ruiz Torres",
+   "puesto_actual": "Arquitecto Cloud",
+   "role": "Arquitecto cloud senior",
+   "nivel_seniority": "Senior",
+   "disponibilidad": "En banca",
+   "pais": "España",
+   "modalidad_trabajo": "Híbrido",
+   "score": 76.4,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.7,
+     "weight": 0.3,
+     "points": 21.0
+    },
+    "evidence": {
+     "value": 0.86,
+     "weight": 0.2,
+     "points": 17.2
+    },
+    "sectorRole": {
+     "value": 0.81,
+     "weight": 0.15,
+     "points": 12.2
+    },
+    "seniority": {
+     "value": 0.72,
+     "weight": 0.1,
+     "points": 7.2
+    },
+    "desirable": {
+     "value": 0.74,
+     "weight": 0.1,
+     "points": 7.4
+    },
+    "langCert": {
+     "value": 0.76,
+     "weight": 0.1,
+     "points": 7.6
+    },
+    "recency": {
+     "value": 0.76,
+     "weight": 0.05,
+     "points": 3.8
+    }
+   },
+   "gaps": [
+    "Menos años de experiencia de los pedidos"
+   ],
+   "risks": [],
+   "evidence": [
+    {
+     "proyecto": "Billing Telco 5G",
+     "anio": 2024,
+     "sector": "Telco",
+     "skills": [
+      "AWS",
+      "Kubernetes"
+     ]
+    },
+    {
+     "proyecto": "Migración AWS Aseguradora",
+     "anio": 2023,
+     "sector": "Seguros",
+     "skills": [
+      "Kubernetes",
+      "AWS"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "AWS",
+     "tipo": "obligatoria",
+     "nivel": 3,
+     "anios": 3,
+     "demostrada": true,
+     "confianza": 0.98
+    },
+    {
+     "name": "Kubernetes",
+     "tipo": "obligatoria",
+     "nivel": 4,
+     "anios": 9,
+     "demostrada": true,
+     "confianza": 0.63
+    },
+    {
+     "name": "Arquitectura de microservicios",
+     "tipo": "obligatoria",
+     "nivel": 3,
+     "anios": 7,
+     "demostrada": true,
+     "confianza": 0.78
+    },
+    {
+     "name": "CI/CD",
+     "tipo": "deseable",
+     "nivel": 4,
+     "anios": 1,
+     "demostrada": false,
+     "confianza": 0.88
+    }
+   ]
+  },
+  {
+   "employee_id": "EMP-1112",
+   "nombre_completo": "Paula Sánchez García",
+   "puesto_actual": "Desarrollador Backend",
+   "role": "Desarrollador backend Java",
+   "nivel_seniority": "Mid",
+   "disponibilidad": "En banca",
+   "pais": "España",
+   "modalidad_trabajo": "Remoto",
+   "score": 92.6,
+   "breakdown": {
+    "mandatory": {
+     "value": 1,
+     "weight": 0.3,
+     "points": 30.0
+    },
+    "evidence": {
+     "value": 0.89,
+     "weight": 0.2,
+     "points": 17.8
+    },
+    "sectorRole": {
+     "value": 0.9,
+     "weight": 0.15,
+     "points": 13.5
+    },
+    "seniority": {
+     "value": 0.83,
+     "weight": 0.1,
+     "points": 8.3
+    },
+    "desirable": {
+     "value": 0.91,
+     "weight": 0.1,
+     "points": 9.1
+    },
+    "langCert": {
+     "value": 0.92,
+     "weight": 0.1,
+     "points": 9.2
+    },
+    "recency": {
+     "value": 0.93,
+     "weight": 0.05,
+     "points": 4.7
+    }
+   },
+   "gaps": [],
+   "risks": [
+    "Alguna obligatoria solo declarada"
+   ],
+   "evidence": [
+    {
+     "proyecto": "Open Banking API",
+     "anio": 2020,
+     "sector": "Banca",
+     "skills": [
+      "Spring Boot",
+      "Java"
+     ]
+    },
+    {
+     "proyecto": "Portal Ciudadano",
+     "anio": 2019,
+     "sector": "Sector Público",
+     "skills": [
+      "Kafka",
+      "Spring Boot"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "Java",
+     "tipo": "obligatoria",
+     "nivel": 3,
+     "anios": 5,
+     "demostrada": true,
+     "confianza": 0.6
+    },
+    {
+     "name": "Spring Boot",
+     "tipo": "obligatoria",
+     "nivel": 4,
+     "anios": 3,
+     "demostrada": false,
+     "confianza": 0.82
+    },
+    {
+     "name": "Kafka",
+     "tipo": "obligatoria",
+     "nivel": 4,
+     "anios": 2,
+     "demostrada": false,
+     "confianza": 0.84
+    },
+    {
+     "name": "Sector banca",
+     "tipo": "deseable",
+     "nivel": 2,
+     "anios": 6,
+     "demostrada": true,
+     "confianza": 0.79
+    }
+   ]
+  },
+  {
+   "employee_id": "EMP-1119",
+   "nombre_completo": "Miguel Navarro López",
+   "puesto_actual": "Desarrollador Backend",
+   "role": "Desarrollador backend Java",
+   "nivel_seniority": "Mid",
+   "disponibilidad": "Roll-off próximo (<3 meses)",
+   "pais": "España",
+   "modalidad_trabajo": "Presencial",
+   "score": 92.0,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.95,
+     "weight": 0.3,
+     "points": 28.5
+    },
+    "evidence": {
+     "value": 0.94,
+     "weight": 0.2,
+     "points": 18.8
+    },
+    "sectorRole": {
+     "value": 0.99,
+     "weight": 0.15,
+     "points": 14.8
+    },
+    "seniority": {
+     "value": 0.92,
+     "weight": 0.1,
+     "points": 9.2
+    },
+    "desirable": {
+     "value": 0.81,
+     "weight": 0.1,
+     "points": 8.1
+    },
+    "langCert": {
+     "value": 0.8,
+     "weight": 0.1,
+     "points": 8.0
+    },
+    "recency": {
+     "value": 0.92,
+     "weight": 0.05,
+     "points": 4.6
+    }
+   },
+   "gaps": [],
+   "risks": [
+    "Roll-off próximo: inicio sujeto a liberación",
+    "Alguna obligatoria solo declarada"
+   ],
+   "evidence": [
+    {
+     "proyecto": "Pasarela SEPA Instant",
+     "anio": 2022,
+     "sector": "Banca",
+     "skills": [
+      "Spring Boot",
+      "Java"
+     ]
+    },
+    {
+     "proyecto": "Portal Ciudadano",
+     "anio": 2022,
+     "sector": "Sector Público",
+     "skills": [
+      "Kafka",
+      "Spring Boot"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "Java",
+     "tipo": "obligatoria",
+     "nivel": 3,
+     "anios": 8,
+     "demostrada": true,
+     "confianza": 0.81
+    },
+    {
+     "name": "Spring Boot",
+     "tipo": "obligatoria",
+     "nivel": 5,
+     "anios": 2,
+     "demostrada": true,
+     "confianza": 0.86
+    },
+    {
+     "name": "Kafka",
+     "tipo": "obligatoria",
+     "nivel": 4,
+     "anios": 6,
+     "demostrada": false,
+     "confianza": 0.9
+    },
+    {
+     "name": "PostgreSQL",
+     "tipo": "deseable",
+     "nivel": 4,
+     "anios": 5,
+     "demostrada": false,
+     "confianza": 0.66
+    },
+    {
+     "name": "Sector banca",
+     "tipo": "deseable",
+     "nivel": 3,
+     "anios": 3,
+     "demostrada": true,
+     "confianza": 0.82
+    }
+   ]
+  },
+  {
+   "employee_id": "EMP-1126",
+   "nombre_completo": "Raúl Torres Castro",
+   "puesto_actual": "Desarrollador Backend",
+   "role": "Desarrollador backend Java",
+   "nivel_seniority": "Mid",
+   "disponibilidad": "En banca",
+   "pais": "España",
+   "modalidad_trabajo": "Presencial",
+   "score": 82.9,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.81,
+     "weight": 0.3,
+     "points": 24.3
+    },
+    "evidence": {
+     "value": 0.91,
+     "weight": 0.2,
+     "points": 18.2
+    },
+    "sectorRole": {
+     "value": 0.82,
+     "weight": 0.15,
+     "points": 12.3
+    },
+    "seniority": {
+     "value": 0.87,
+     "weight": 0.1,
+     "points": 8.7
+    },
+    "desirable": {
+     "value": 0.76,
+     "weight": 0.1,
+     "points": 7.6
+    },
+    "langCert": {
+     "value": 0.77,
+     "weight": 0.1,
+     "points": 7.7
+    },
+    "recency": {
+     "value": 0.81,
+     "weight": 0.05,
+     "points": 4.1
+    }
+   },
+   "gaps": [],
+   "risks": [
+    "Alguna obligatoria solo declarada"
+   ],
+   "evidence": [
+    {
+     "proyecto": "Core bancario Iberia",
+     "anio": 2024,
+     "sector": "Banca",
+     "skills": [
+      "Kafka",
+      "Spring Boot"
+     ]
+    },
+    {
+     "proyecto": "Pasarela SEPA Instant",
+     "anio": 2021,
+     "sector": "Banca",
+     "skills": [
+      "Java",
+      "Spring Boot"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "Java",
+     "tipo": "obligatoria",
+     "nivel": 5,
+     "anios": 3,
+     "demostrada": true,
+     "confianza": 0.86
+    },
+    {
+     "name": "Spring Boot",
+     "tipo": "obligatoria",
+     "nivel": 4,
+     "anios": 10,
+     "demostrada": false,
+     "confianza": 0.78
+    },
+    {
+     "name": "Kafka",
+     "tipo": "obligatoria",
+     "nivel": 3,
+     "anios": 10,
+     "demostrada": false,
+     "confianza": 0.97
+    },
+    {
+     "name": "PostgreSQL",
+     "tipo": "deseable",
+     "nivel": 2,
+     "anios": 3,
+     "demostrada": false,
+     "confianza": 0.81
+    },
+    {
+     "name": "Sector banca",
+     "tipo": "deseable",
+     "nivel": 3,
+     "anios": 3,
+     "demostrada": false,
+     "confianza": 0.86
+    }
+   ]
+  },
+  {
+   "employee_id": "EMP-1133",
+   "nombre_completo": "Álvaro Sánchez Torres",
+   "puesto_actual": "Desarrollador Backend",
+   "role": "Desarrollador backend Java",
+   "nivel_seniority": "Mid",
+   "disponibilidad": "En banca",
+   "pais": "España",
+   "modalidad_trabajo": "Presencial",
+   "score": 82.4,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.8,
+     "weight": 0.3,
+     "points": 24.0
+    },
+    "evidence": {
+     "value": 0.76,
+     "weight": 0.2,
+     "points": 15.2
+    },
+    "sectorRole": {
+     "value": 0.91,
+     "weight": 0.15,
+     "points": 13.7
+    },
+    "seniority": {
+     "value": 0.86,
+     "weight": 0.1,
+     "points": 8.6
+    },
+    "desirable": {
+     "value": 0.81,
+     "weight": 0.1,
+     "points": 8.1
+    },
+    "langCert": {
+     "value": 0.87,
+     "weight": 0.1,
+     "points": 8.7
+    },
+    "recency": {
+     "value": 0.81,
+     "weight": 0.05,
+     "points": 4.1
+    }
+   },
+   "gaps": [],
+   "risks": [
+    "Alguna obligatoria solo declarada"
+   ],
+   "evidence": [
+    {
+     "proyecto": "Migración AWS Aseguradora",
+     "anio": 2025,
+     "sector": "Seguros",
+     "skills": [
+      "Spring Boot",
+      "Java"
+     ]
+    },
+    {
+     "proyecto": "Portal Ciudadano",
+     "anio": 2021,
+     "sector": "Sector Público",
+     "skills": [
+      "Java",
+      "Kafka"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "Java",
+     "tipo": "obligatoria",
+     "nivel": 4,
+     "anios": 7,
+     "demostrada": false,
+     "confianza": 0.73
+    },
+    {
+     "name": "Spring Boot",
+     "tipo": "obligatoria",
+     "nivel": 4,
+     "anios": 7,
+     "demostrada": true,
+     "confianza": 0.65
+    },
+    {
+     "name": "Kafka",
+     "tipo": "obligatoria",
+     "nivel": 3,
+     "anios": 2,
+     "demostrada": true,
+     "confianza": 0.71
+    }
+   ]
+  },
+  {
+   "employee_id": "EMP-1140",
+   "nombre_completo": "Paula Castro Torres",
+   "puesto_actual": "Desarrollador Backend",
+   "role": "Desarrollador backend Java",
+   "nivel_seniority": "Senior",
+   "disponibilidad": "En banca",
+   "pais": "España",
+   "modalidad_trabajo": "Presencial",
+   "score": 79.8,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.79,
+     "weight": 0.3,
+     "points": 23.7
+    },
+    "evidence": {
+     "value": 0.73,
+     "weight": 0.2,
+     "points": 14.6
+    },
+    "sectorRole": {
+     "value": 0.76,
+     "weight": 0.15,
+     "points": 11.4
+    },
+    "seniority": {
+     "value": 0.88,
+     "weight": 0.1,
+     "points": 8.8
+    },
+    "desirable": {
+     "value": 0.87,
+     "weight": 0.1,
+     "points": 8.7
+    },
+    "langCert": {
+     "value": 0.85,
+     "weight": 0.1,
+     "points": 8.5
+    },
+    "recency": {
+     "value": 0.82,
+     "weight": 0.05,
+     "points": 4.1
+    }
+   },
+   "gaps": [],
+   "risks": [
+    "Alguna obligatoria solo declarada"
+   ],
+   "evidence": [
+    {
+     "proyecto": "Portal Ciudadano",
+     "anio": 2021,
+     "sector": "Sector Público",
+     "skills": [
+      "Spring Boot",
+      "Kafka"
+     ]
+    },
+    {
+     "proyecto": "Pasarela SEPA Instant",
+     "anio": 2019,
+     "sector": "Banca",
+     "skills": [
+      "Java",
+      "Kafka"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "Java",
+     "tipo": "obligatoria",
+     "nivel": 5,
+     "anios": 10,
+     "demostrada": false,
+     "confianza": 0.63
+    },
+    {
+     "name": "Spring Boot",
+     "tipo": "obligatoria",
+     "nivel": 5,
+     "anios": 8,
+     "demostrada": true,
+     "confianza": 0.89
+    },
+    {
+     "name": "Kafka",
+     "tipo": "obligatoria",
+     "nivel": 5,
+     "anios": 6,
+     "demostrada": true,
+     "confianza": 0.95
+    },
+    {
+     "name": "PostgreSQL",
+     "tipo": "deseable",
+     "nivel": 2,
+     "anios": 4,
+     "demostrada": false,
+     "confianza": 0.54
+    }
+   ]
+  },
+  {
+   "employee_id": "EMP-1147",
+   "nombre_completo": "Carmen Molina Vázquez",
+   "puesto_actual": "Desarrollador Backend",
+   "role": "Desarrollador backend Java",
+   "nivel_seniority": "Mid",
+   "disponibilidad": "Roll-off próximo (<3 meses)",
+   "pais": "España",
+   "modalidad_trabajo": "Híbrido",
+   "score": 74.7,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.85,
+     "weight": 0.3,
+     "points": 25.5
+    },
+    "evidence": {
+     "value": 0.74,
+     "weight": 0.2,
+     "points": 14.8
+    },
+    "sectorRole": {
+     "value": 0.68,
+     "weight": 0.15,
+     "points": 10.2
+    },
+    "seniority": {
+     "value": 0.69,
+     "weight": 0.1,
+     "points": 6.9
+    },
+    "desirable": {
+     "value": 0.67,
+     "weight": 0.1,
+     "points": 6.7
+    },
+    "langCert": {
+     "value": 0.72,
+     "weight": 0.1,
+     "points": 7.2
+    },
+    "recency": {
+     "value": 0.67,
+     "weight": 0.05,
+     "points": 3.4
+    }
+   },
+   "gaps": [
+    "Sin Spring Boot (obligatoria)",
+    "Sin Kafka (obligatoria)"
+   ],
+   "risks": [
+    "Roll-off próximo: inicio sujeto a liberación",
+    "Alguna obligatoria solo declarada"
+   ],
+   "evidence": [
+    {
+     "proyecto": "Migración AWS Aseguradora",
+     "anio": 2024,
+     "sector": "Seguros",
+     "skills": [
+      "Kafka",
+      "Java"
+     ]
+    },
+    {
+     "proyecto": "Pasarela SEPA Instant",
+     "anio": 2019,
+     "sector": "Banca",
+     "skills": [
+      "Spring Boot",
+      "Java"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "Java",
+     "tipo": "obligatoria",
+     "nivel": 3,
+     "anios": 7,
+     "demostrada": false,
+     "confianza": 0.82
+    },
+    {
+     "name": "PostgreSQL",
+     "tipo": "deseable",
+     "nivel": 3,
+     "anios": 6,
+     "demostrada": false,
+     "confianza": 0.59
+    }
+   ]
+  },
+  {
+   "employee_id": "EMP-1217",
+   "nombre_completo": "Elena López Romero",
+   "puesto_actual": "Especialista Ciberseguridad",
+   "role": "Especialista de seguridad",
+   "nivel_seniority": "Senior",
+   "disponibilidad": "En banca",
+   "pais": "España",
+   "modalidad_trabajo": "Presencial",
+   "score": 92.7,
+   "breakdown": {
+    "mandatory": {
+     "value": 1,
+     "weight": 0.3,
+     "points": 30.0
+    },
+    "evidence": {
+     "value": 0.85,
+     "weight": 0.2,
+     "points": 17.0
+    },
+    "sectorRole": {
+     "value": 0.95,
+     "weight": 0.15,
+     "points": 14.2
+    },
+    "seniority": {
+     "value": 0.95,
+     "weight": 0.1,
+     "points": 9.5
+    },
+    "desirable": {
+     "value": 0.87,
+     "weight": 0.1,
+     "points": 8.7
+    },
+    "langCert": {
+     "value": 0.9,
+     "weight": 0.1,
+     "points": 9.0
+    },
+    "recency": {
+     "value": 0.86,
+     "weight": 0.05,
+     "points": 4.3
+    }
+   },
+   "gaps": [],
+   "risks": [
+    "Alguna obligatoria solo declarada"
+   ],
+   "evidence": [
+    {
+     "proyecto": "Core bancario Iberia",
+     "anio": 2023,
+     "sector": "Banca",
+     "skills": [
+      "IAM",
+      "PCI-DSS"
+     ]
+    },
+    {
+     "proyecto": "Portal Ciudadano",
+     "anio": 2022,
+     "sector": "Sector Público",
+     "skills": [
+      "PCI-DSS",
+      "IAM"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "PCI-DSS",
+     "tipo": "obligatoria",
+     "nivel": 3,
+     "anios": 6,
+     "demostrada": false,
+     "confianza": 0.88
+    },
+    {
+     "name": "IAM",
+     "tipo": "obligatoria",
+     "nivel": 3,
+     "anios": 2,
+     "demostrada": true,
+     "confianza": 0.76
+    }
+   ]
+  },
+  {
+   "employee_id": "EMP-1224",
+   "nombre_completo": "Miguel Gil Romero",
+   "puesto_actual": "Consultor Tecnológico",
+   "role": "Especialista de seguridad",
+   "nivel_seniority": "Lead",
+   "disponibilidad": "En banca",
+   "pais": "España",
+   "modalidad_trabajo": "Presencial",
+   "score": 88.3,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.88,
+     "weight": 0.3,
+     "points": 26.4
+    },
+    "evidence": {
+     "value": 0.85,
+     "weight": 0.2,
+     "points": 17.0
+    },
+    "sectorRole": {
+     "value": 0.86,
+     "weight": 0.15,
+     "points": 12.9
+    },
+    "seniority": {
+     "value": 0.99,
+     "weight": 0.1,
+     "points": 9.9
+    },
+    "desirable": {
+     "value": 0.86,
+     "weight": 0.1,
+     "points": 8.6
+    },
+    "langCert": {
+     "value": 0.91,
+     "weight": 0.1,
+     "points": 9.1
+    },
+    "recency": {
+     "value": 0.87,
+     "weight": 0.05,
+     "points": 4.4
+    }
+   },
+   "gaps": [
+    "Menos años de experiencia de los pedidos"
+   ],
+   "risks": [],
+   "evidence": [
+    {
+     "proyecto": "Pasarela SEPA Instant",
+     "anio": 2023,
+     "sector": "Banca",
+     "skills": [
+      "PCI-DSS",
+      "IAM"
+     ]
+    },
+    {
+     "proyecto": "Portal Ciudadano",
+     "anio": 2020,
+     "sector": "Sector Público",
+     "skills": [
+      "PCI-DSS",
+      "IAM"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "PCI-DSS",
+     "tipo": "obligatoria",
+     "nivel": 4,
+     "anios": 2,
+     "demostrada": true,
+     "confianza": 0.98
+    },
+    {
+     "name": "IAM",
+     "tipo": "obligatoria",
+     "nivel": 4,
+     "anios": 5,
+     "demostrada": true,
+     "confianza": 0.75
+    },
+    {
+     "name": "Inglés B2",
+     "tipo": "deseable",
+     "nivel": 3,
+     "anios": 2,
+     "demostrada": false,
+     "confianza": 0.81
+    }
+   ]
+  },
+  {
+   "employee_id": "EMP-1238",
+   "nombre_completo": "Miguel Ortega Romero",
+   "puesto_actual": "Especialista Ciberseguridad",
+   "role": "Especialista de seguridad",
+   "nivel_seniority": "Lead",
+   "disponibilidad": "En banca",
+   "pais": "España",
+   "modalidad_trabajo": "Presencial",
+   "score": 84.1,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.75,
+     "weight": 0.3,
+     "points": 22.5
+    },
+    "evidence": {
+     "value": 0.92,
+     "weight": 0.2,
+     "points": 18.4
+    },
+    "sectorRole": {
+     "value": 0.89,
+     "weight": 0.15,
+     "points": 13.4
+    },
+    "seniority": {
+     "value": 0.76,
+     "weight": 0.1,
+     "points": 7.6
+    },
+    "desirable": {
+     "value": 0.9,
+     "weight": 0.1,
+     "points": 9.0
+    },
+    "langCert": {
+     "value": 0.89,
+     "weight": 0.1,
+     "points": 8.9
+    },
+    "recency": {
+     "value": 0.86,
+     "weight": 0.05,
+     "points": 4.3
+    }
+   },
+   "gaps": [],
+   "risks": [
+    "Alguna obligatoria solo declarada"
+   ],
+   "evidence": [
+    {
+     "proyecto": "Portal Ciudadano",
+     "anio": 2023,
+     "sector": "Sector Público",
+     "skills": [
+      "IAM",
+      "PCI-DSS"
+     ]
+    },
+    {
+     "proyecto": "Billing Telco 5G",
+     "anio": 2020,
+     "sector": "Telco",
+     "skills": [
+      "PCI-DSS",
+      "IAM"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "PCI-DSS",
+     "tipo": "obligatoria",
+     "nivel": 5,
+     "anios": 7,
+     "demostrada": false,
+     "confianza": 0.83
+    },
+    {
+     "name": "IAM",
+     "tipo": "obligatoria",
+     "nivel": 5,
+     "anios": 6,
+     "demostrada": true,
+     "confianza": 0.72
+    }
+   ]
+  },
+  {
+   "employee_id": "EMP-1231",
+   "nombre_completo": "Javier Serrano Romero",
+   "puesto_actual": "Especialista Ciberseguridad",
+   "role": "Especialista de seguridad",
+   "nivel_seniority": "Senior",
+   "disponibilidad": "En banca",
+   "pais": "España",
+   "modalidad_trabajo": "Híbrido",
+   "score": 82.3,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.79,
+     "weight": 0.3,
+     "points": 23.7
+    },
+    "evidence": {
+     "value": 0.79,
+     "weight": 0.2,
+     "points": 15.8
+    },
+    "sectorRole": {
+     "value": 0.77,
+     "weight": 0.15,
+     "points": 11.5
+    },
+    "seniority": {
+     "value": 0.84,
+     "weight": 0.1,
+     "points": 8.4
+    },
+    "desirable": {
+     "value": 0.91,
+     "weight": 0.1,
+     "points": 9.1
+    },
+    "langCert": {
+     "value": 0.92,
+     "weight": 0.1,
+     "points": 9.2
+    },
+    "recency": {
+     "value": 0.92,
+     "weight": 0.05,
+     "points": 4.6
+    }
+   },
+   "gaps": [],
+   "risks": [
+    "Alguna obligatoria solo declarada"
+   ],
+   "evidence": [
+    {
+     "proyecto": "Open Banking API",
+     "anio": 2025,
+     "sector": "Banca",
+     "skills": [
+      "IAM",
+      "PCI-DSS"
+     ]
+    },
+    {
+     "proyecto": "Pasarela SEPA Instant",
+     "anio": 2023,
+     "sector": "Banca",
+     "skills": [
+      "IAM",
+      "PCI-DSS"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "PCI-DSS",
+     "tipo": "obligatoria",
+     "nivel": 4,
+     "anios": 4,
+     "demostrada": true,
+     "confianza": 0.62
+    },
+    {
+     "name": "IAM",
+     "tipo": "obligatoria",
+     "nivel": 4,
+     "anios": 7,
+     "demostrada": false,
+     "confianza": 0.95
+    }
+   ]
+  },
+  {
+   "employee_id": "EMP-1252",
+   "nombre_completo": "Laura Gil Domínguez",
+   "puesto_actual": "Especialista Ciberseguridad",
+   "role": "Especialista de seguridad",
+   "nivel_seniority": "Senior",
+   "disponibilidad": "En banca",
+   "pais": "España",
+   "modalidad_trabajo": "Presencial",
+   "score": 74.4,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.71,
+     "weight": 0.3,
+     "points": 21.3
+    },
+    "evidence": {
+     "value": 0.82,
+     "weight": 0.2,
+     "points": 16.4
+    },
+    "sectorRole": {
+     "value": 0.68,
+     "weight": 0.15,
+     "points": 10.2
+    },
+    "seniority": {
+     "value": 0.76,
+     "weight": 0.1,
+     "points": 7.6
+    },
+    "desirable": {
+     "value": 0.84,
+     "weight": 0.1,
+     "points": 8.4
+    },
+    "langCert": {
+     "value": 0.7,
+     "weight": 0.1,
+     "points": 7.0
+    },
+    "recency": {
+     "value": 0.71,
+     "weight": 0.05,
+     "points": 3.5
+    }
+   },
+   "gaps": [],
+   "risks": [],
+   "evidence": [
+    {
+     "proyecto": "Billing Telco 5G",
+     "anio": 2024,
+     "sector": "Telco",
+     "skills": [
+      "IAM",
+      "PCI-DSS"
+     ]
+    },
+    {
+     "proyecto": "Core bancario Iberia",
+     "anio": 2023,
+     "sector": "Banca",
+     "skills": [
+      "PCI-DSS",
+      "IAM"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "PCI-DSS",
+     "tipo": "obligatoria",
+     "nivel": 5,
+     "anios": 5,
+     "demostrada": true,
+     "confianza": 0.61
+    },
+    {
+     "name": "IAM",
+     "tipo": "obligatoria",
+     "nivel": 3,
+     "anios": 6,
+     "demostrada": true,
+     "confianza": 0.94
+    }
+   ]
+  },
+  {
+   "employee_id": "EMP-1245",
+   "nombre_completo": "Raúl Domínguez Romero",
+   "puesto_actual": "Especialista Ciberseguridad",
+   "role": "Especialista de seguridad",
+   "nivel_seniority": "Lead",
+   "disponibilidad": "En banca",
+   "pais": "España",
+   "modalidad_trabajo": "Remoto",
+   "score": 73.7,
+   "breakdown": {
+    "mandatory": {
+     "value": 0.71,
+     "weight": 0.3,
+     "points": 21.3
+    },
+    "evidence": {
+     "value": 0.72,
+     "weight": 0.2,
+     "points": 14.4
+    },
+    "sectorRole": {
+     "value": 0.78,
+     "weight": 0.15,
+     "points": 11.7
+    },
+    "seniority": {
+     "value": 0.71,
+     "weight": 0.1,
+     "points": 7.1
+    },
+    "desirable": {
+     "value": 0.78,
+     "weight": 0.1,
+     "points": 7.8
+    },
+    "langCert": {
+     "value": 0.79,
+     "weight": 0.1,
+     "points": 7.9
+    },
+    "recency": {
+     "value": 0.7,
+     "weight": 0.05,
+     "points": 3.5
+    }
+   },
+   "gaps": [],
+   "risks": [
+    "Alguna obligatoria solo declarada"
+   ],
+   "evidence": [
+    {
+     "proyecto": "Pasarela SEPA Instant",
+     "anio": 2025,
+     "sector": "Banca",
+     "skills": [
+      "PCI-DSS",
+      "IAM"
+     ]
+    },
+    {
+     "proyecto": "Core bancario Iberia",
+     "anio": 2020,
+     "sector": "Banca",
+     "skills": [
+      "IAM",
+      "PCI-DSS"
+     ]
+    }
+   ],
+   "skills": [
+    {
+     "name": "PCI-DSS",
+     "tipo": "obligatoria",
+     "nivel": 5,
+     "anios": 4,
+     "demostrada": false,
+     "confianza": 0.88
+    },
+    {
+     "name": "IAM",
+     "tipo": "obligatoria",
+     "nivel": 5,
+     "anios": 10,
+     "demostrada": false,
+     "confianza": 0.89
+    },
+    {
+     "name": "Inglés B2",
+     "tipo": "deseable",
+     "nivel": 4,
+     "anios": 2,
+     "demostrada": false,
+     "confianza": 0.43
+    }
+   ]
+  }
+ ]
+}
