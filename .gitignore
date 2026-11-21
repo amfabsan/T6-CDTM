@@ -13,3 +13,4 @@ scripts/*
 !scripts/build_embeddings.py
 .venv/
 __pycache__/
+!scripts/e2e/

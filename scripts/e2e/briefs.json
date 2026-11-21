@@ -1,0 +1,20 @@
+[
+  {
+    "id": "core_banking",
+    "nombre": "Migración del core bancario a la nube",
+    "prueba": "Equipos multi-rol con requisitos explícitos e implícitos (experiencia en banca)",
+    "texto": "Cliente: una de las principales entidades bancarias de España. Vamos a migrar su core bancario on-premise a Microsoft Azure en un programa de 9 meses. Necesitamos un equipo de 4 personas: 1 arquitecto cloud senior con experiencia en Azure y Kubernetes que lidere el diseño de la plataforma; 2 desarrolladores backend Java con microservicios y Spring Boot para reescribir los servicios del core; y 1 administrador de bases de datos Oracle para la migración de datos. Todo el equipo trabajará en remoto desde España y necesitará inglés B2 para las reuniones con el proveedor. Terraform es deseable."
+  },
+  {
+    "id": "retail_ia",
+    "nombre": "Asistente de IA para retail",
+    "prueba": "Distinguir obligatorio de deseable: lo «no imprescindible» no puede filtrar",
+    "texto": "Una cadena de retail de moda quiere un asistente conversacional de IA para su atención al cliente online. Buscamos 1 ingeniero de IA que domine Python y que haya construido soluciones con LLM y RAG; es obligatorio que tenga experiencia con Azure OpenAI. La experiencia previa en el sector retail es deseable pero no imprescindible. También valoraríamos LangChain. Inglés B2. Modalidad híbrida en Madrid."
+  },
+  {
+    "id": "ciberseguridad_publico",
+    "nombre": "Refuerzo de ciberseguridad en el sector público",
+    "prueba": "Filtros duros: disponibilidad inmediata y mínimo 3 años de experiencia total no se pueden saltar",
+    "texto": "Un organismo de la Administración Pública necesita reforzar su centro de operaciones de seguridad. Necesitamos 2 especialistas en ciberseguridad con incorporación inmediata (deben estar disponibles ya, sin proyecto asignado) y un mínimo de 3 años de experiencia profesional total; este mínimo no es negociable. Obligatorio: SIEM y gestión de vulnerabilidades. Deseable: certificación CISSP o CEH. Presencial en Madrid, español nativo."
+  }
+]
