@@ -1,7 +1,8 @@
 """Pasos 7-10 en una llamada.
 
-Entrada: el plan (salida del LLM, paso 2) y, por rol, los perfiles candidatos que devuelven los pasos 5-6
-(filtros duros + búsqueda híbrida en SQL). Sin LLM ni base de datos: puro y testeable.
+Entrada: los requisitos (salida de interpret-project o fila de project_requirements) y, por rol (title), los perfiles
+candidatos de los pasos 5-6: `candidates_from_rpc(supabase.rpc('candidatos_proyecto'), perfiles)`.
+Sin LLM ni base de datos: puro y testeable.
 """
 from __future__ import annotations
 

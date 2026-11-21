@@ -1,23 +1,24 @@
-"""Contratos de entrada de los pasos 7-10.
+"""Contratos de entrada de los pasos 7-10, alineados con lo que ya hay en main:
 
-PROVISIONAL: `LlmPlan` (dict) es la forma supuesta de la salida del LLM del paso 2 (interpretar plan.pdf).
-Cuando el formato sea definitivo, solo cambia `from_llm_plan()`; el resto usa `Project` y `RoleRequirements`.
+- Requisitos: la salida de `interpret-project` (`supabase/functions/_shared/interpret.ts`):
+    {"requirements": {"project": {...}, "roles": [...]}}  o directamente  {"project": {...}, "roles": [...]}
+  o una fila de `project_requirements` (columnas planas + `roles` jsonb, migraciones 002/003).
+    project: project_name, client_sector, country, city, modality (remoto|hibrido|presencial), country_required, start_date
+    roles[]: title, count, matching_roles[], seniority_min, min_years_experience, mandatory_skills[{name,min_level}],
+             desirable_skills[{name}], languages[{name,level|null}], certifications[], certification_options[]
+  Extensiones opcionales que interpret-project aún no da: roles[].planned_hours, roles[].sector_experience,
+  roles[].sector_required y project_requirements.start_deadline_day (días desde start_date).
 
-Forma de LlmPlan:
-{
-  "project": {"name", "client_sector", "country", "city", "country_required": bool,
-              "work_mode": "Remoto"|"Híbrido"|"Presencial"|null, "earliest_start": "YYYY-MM-DD", "latest_start": "YYYY-MM-DD"},
-  "roles": [{"title", "count", "dataset_roles": [...], "seniority_min", "min_years",
-             "mandatory_skills": [{"name", "min_level"}], "desirable_skills": [{"name"}],
-             "languages": [{"name", "level"}], "certifications_required": [...],
-             "sector_experience": [...], "sector_required": bool, "planned_hours": int}]
-}
+- Candidatos: la salida de la RPC `candidatos_proyecto` (pasos 5-6) + los perfiles de `perfil()`/`perfiles()`;
+  ver `candidates_from_rpc()`.
 """
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from datetime import date, timedelta
 
 DEFAULT_MIN_LEVEL = 3
+MODALITY = {"remoto": "Remoto", "hibrido": "Híbrido", "híbrido": "Híbrido", "presencial": "Presencial"}
 
 
 @dataclass
@@ -27,46 +28,65 @@ class Project:
     city: str | None = None
     country_required: bool = False
     work_mode: str | None = None          # Remoto | Híbrido | Presencial
-    earliest_start: str | None = None     # ISO YYYY-MM-DD
-    latest_start: str | None = None
+    earliest_start: str | None = None     # ISO YYYY-MM-DD (start_date)
+    latest_start: str | None = None       # start_date + start_deadline_day
 
 
 @dataclass
 class RoleRequirements:
     role: str
     count: int = 1
-    roles: list[str] = field(default_factory=list)              # roles del dataset (de los 87)
+    roles: list[str] = field(default_factory=list)              # matching_roles (de los 87)
     seniority: str | None = None
     min_years: int | None = None
     mandatory: list[tuple[str, int]] = field(default_factory=list)  # (skill, nivel mínimo)
     desirable: list[str] = field(default_factory=list)
-    languages: list[tuple[str, str]] = field(default_factory=list)  # (idioma, nivel mínimo)
-    certifications: list[str] = field(default_factory=list)
+    languages: list[tuple[str, str | None]] = field(default_factory=list)  # (idioma, nivel mínimo o None = cualquiera)
+    certifications: list[str] = field(default_factory=list)     # todas
+    certification_options: list[str] = field(default_factory=list)  # basta una
     sectors: list[str] = field(default_factory=list)
     sector_required: bool = False                               # True = gap si falta; False = riesgo
     planned_hours: float | None = None
 
 
 def from_llm_plan(plan: dict) -> tuple[Project, list[RoleRequirements]]:
-    p = plan.get("project") or {}
+    plan = plan.get("requirements", plan)
+    if "project" in plan:
+        p, deadline = plan["project"] or {}, plan.get("start_deadline_day")
+    else:  # fila de project_requirements
+        p = {"client_sector": plan.get("client_sector"), "country": plan.get("country"), "city": plan.get("city"),
+             "modality": plan.get("modality"), "country_required": plan.get("country_required"),
+             "start_date": plan.get("project_start_date")}
+        deadline = plan.get("start_deadline_day")
+    start = p.get("start_date")
     project = Project(
         sector=p.get("client_sector"), country=p.get("country"), city=p.get("city"),
-        country_required=bool(p.get("country_required")), work_mode=p.get("work_mode"),
-        earliest_start=p.get("earliest_start"), latest_start=p.get("latest_start"),
+        country_required=bool(p.get("country_required")),
+        work_mode=MODALITY.get(str(p.get("modality") or "").lower()),
+        earliest_start=start,
+        latest_start=(date.fromisoformat(start) + timedelta(days=int(deadline))).isoformat() if start and deadline is not None else None,
     )
     roles = []
     for r in plan["roles"]:
         sectors = r.get("sector_experience") or ([project.sector] if project.sector else [])
         roles.append(RoleRequirements(
-            role=r["title"], count=max(1, int(r.get("count") or 1)), roles=r.get("dataset_roles") or [],
-            seniority=r.get("seniority_min"), min_years=r.get("min_years"),
+            role=r["title"], count=max(1, int(r.get("count") or 1)), roles=r.get("matching_roles") or [],
+            seniority=r.get("seniority_min"), min_years=r.get("min_years_experience"),
             mandatory=[(s["name"], s.get("min_level") or DEFAULT_MIN_LEVEL) for s in r.get("mandatory_skills") or []],
             desirable=[s["name"] for s in r.get("desirable_skills") or []],
-            languages=[(x["name"], x["level"]) for x in r.get("languages") or []],
-            certifications=r.get("certifications_required") or [],
+            languages=[(x["name"], x.get("level")) for x in r.get("languages") or []],
+            certifications=r.get("certifications") or [], certification_options=r.get("certification_options") or [],
             sectors=sectors, sector_required=bool(r.get("sector_required")), planned_hours=r.get("planned_hours"),
         ))
     return project, roles
+
+
+def candidates_from_rpc(rpc: list[dict], profiles: list[dict]) -> dict[str, list[dict]]:
+    """Une la salida de `candidatos_proyecto` ([{role_index, title, count, n_filtrados, candidates:[{employee_id, rrf,
+    pos_texto, pos_vector}]}]) con los perfiles completos. Devuelve {title: [perfil + "retrieval"]} para run_matching()."""
+    by_id = {p["employee_id"]: p for p in profiles}
+    return {r["title"]: [{**by_id[c["employee_id"]], "retrieval": {k: c.get(k) for k in ("rrf", "pos_texto", "pos_vector")}}
+                         for c in r["candidates"] if c["employee_id"] in by_id] for r in rpc}
 
 
 def normalize_profile(p: dict) -> dict:

@@ -127,8 +127,8 @@ Código: `supabase/functions/interpret-project/index.ts` (HTTP, PDF y vocabulari
 Pipeline completo en [`docs/WORKFLOW_MATCHING.md`](docs/WORKFLOW_MATCHING.md):
 1. ✅ filtros duros en SQL (`filtrar_candidatos`, ver §3; **las skills nunca filtran**);
 2. ✅ búsqueda híbrida, full-text + pgvector con RRF, top 200 por rol: `supabase.rpc('candidatos_proyecto', { p_project_id })`;
-3. score determinista en TS (`supabase/functions/_shared/scoring.ts`);
-4. equipos con beam search (`_shared/teams.ts`): pool de 8-10 por rol, top 15 equipos, nadie repetido dentro de un equipo;
+3. score determinista en **Python** (`matching/`, solo stdlib): `run_matching(requirements, candidates_from_rpc(candidatos_proyecto, perfiles))`; elegible = no Asignado, score > 0 y al menos una skill pedida; el resto de requisitos son gaps;
+4. equipos (`matching/teams.py`): todas las combinaciones válidas (beam search si hay más de 20.000), encaje, coste, inicio, continuidad y Top 5 por 4 órdenes; nadie repetido dentro de un equipo. Tests: `python -m unittest discover -s matching/tests -t .`;
 5. el LLM redacta fortalezas y huecos **solo** con `evidence`, `gaps` y `risks`.
 
 **Score:**

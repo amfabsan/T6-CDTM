@@ -81,7 +81,7 @@ Petición: *banco español, app de pagos; 1 arquitecto cloud senior, 2 backend, 
 ## Qué cambia en el repo si se aprueba
 1. `supabase/migrations/003_busqueda_hibrida.sql`: pgvector, tablas de búsqueda y RPC `buscar_candidatos` / `perfiles`.
 2. `scripts/build_embeddings.py`: se relanza tras cada carga.
-3. `supabase/functions/_shared/scoring.ts` y `teams.ts`, con tests.
+3. ✅ `matching/` (Python): score, ranking, equipos y su puntuación, con tests.
 4. `AGENTS.md` §5: actualizar pesos y pipeline de `match-candidates`, porque los pesos actuales (40/20/10/15/5/10) pasan a 35/20/15/10/10/5/5.
 
 Hay un borrador de los cuatro puntos probado en local: la migración, la carga de 34.003 perfiles y los tests del score y del beam search. Se sube en otro PR si el plan se aprueba.
