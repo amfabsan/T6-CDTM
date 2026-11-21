@@ -231,7 +231,7 @@ docker run -d --name orbit-pgvector -e POSTGRES_PASSWORD=localtest -p 55433:5432
 Volver a cargar vacía las tablas del dataset. `project_requirements` y `scenario_assumptions` no se tocan.
 
 ## 8. Convenciones
-- UI y textos en **español**. El código y los nombres de las tablas de la app, en inglés. Las tablas del dataset mantienen los nombres en español del Parquet.
+- UI y textos en **inglés**. Los valores del dataset y del backend (disponibilidad, modalidad, skills, sectores, estados) se guardan y comparan en español y la UI los muestra con etiquetas de `frontend/src/lib/labels.ts`. El código y los nombres de las tablas de la app, en inglés. Las tablas del dataset mantienen los nombres en español del Parquet.
 - Las migraciones nuevas van como `supabase/migrations/00N_*.sql`, idempotentes (`if not exists`, `drop policy if exists`). No se editan migraciones ya aplicadas en Supabase: se añade una nueva.
 - La lógica determinista compartida (score, escenarios) va en módulos puros y testeables. No va mezclada con la llamada al LLM.
 - Antes de afirmar una cifra en el pitch, se calcula sobre los datos (SQL o DuckDB sobre el Parquet). No se estima a ojo.
