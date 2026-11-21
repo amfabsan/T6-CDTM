@@ -39,6 +39,8 @@ El manager puede manejar por voz los rankings y los equipos con un asistente de 
 | `supabase/migrations/002_orbit_app.sql` | ✅ hecho, probado en local | Tablas de la **app**: `project_requirements`, `scenario_assumptions` |
 | `supabase/migrations/003_busqueda.sql` | ✅ hecho, probado en local (pgvector) | Pasos 5-6: pgvector, `perfil_busqueda`, embeddings de skills/roles, filtros duros, búsqueda híbrida con RRF y `vocabulario_orbit` |
 | `supabase/migrations/004_filtros_minimos.sql` | ✅ probado en local, **pendiente de aplicar en Supabase** | `filtrar_candidatos` solo excluye `Asignado` y el país si es exigido (el resto lo puntúa `matching/`); RPC `perfiles(ids)` |
+| `supabase/migrations/005_costes_por_hora.sql` | ⏳ sin probar en Postgres | Columnas €/h, horas y roll-off en `scenario_assumptions` (las de €/día quedan obsoletas) |
+| `supabase/functions/explain-recommendations/` + `_shared/explain.ts`, `from_matching.ts` | ✅ hecho, probado con Gemini (sin desplegar) | Paso 11: explica equipos y personas con la salida de `/match`; valida contra la evidencia; secreto `GEMINI_API_KEY_EXPLAIN` |
 | `matching/` (+ `matching/api.py`) | ✅ hecho, 24 tests | Pasos 7-10 en Python y servicio HTTP `match-candidates` (FastAPI): `POST /match {project_id}` |
 | `scripts/build_embeddings.py` | ✅ hecho | Embeddings locales (MiniLM multilingüe, 384 dim) de skills, roles y perfiles. Se ejecuta tras cada carga |
 | `supabase/functions/interpret-project/` + `_shared/interpret.ts` | ✅ hecho, probado con Gemini (sin desplegar) | Pasos 1-3: PDF o texto → Gemini con vocabulario cerrado → validación. Tests: `_shared/interpret.test.ts` |
@@ -53,7 +55,7 @@ El manager puede manejar por voz los rankings y los equipos con un asistente de 
 | `docs/WORKFLOW_MATCHING.md` | ✅ adoptado (código pendiente de PR) | Workflow de matching: filtros duros, búsqueda híbrida (pgvector + RRF), score y equipos |
 | `docs/ORBIT_AI_Rankings_y_Filtros.pdf` | ✅ | Especificación de los controles de ranking, el Top 5 de equipos y la continuidad |
 | `docs/ITERATIONS.md`, `docs/PATTERNS.md` | ✅ | Cuaderno de Improven e investigación de ediciones anteriores |
-| `prompts/lovable.md` | ✅ | Prompts para construir las pantallas en Lovable (incluido el asistente de voz) |
+| `prompts/lovable.md` | ✅ | Prompts para construir las pantallas en Lovable, con el tema visual de NTT DATA (sin asistente de voz) |
 | `prompts/elevenlabs.md` | ✅ | Configuración del asistente de voz: prompt, client tools y guion de demo |
 | `supabase/functions/*` (resto) | ⏳ **por hacer** | `match-candidates` (score y equipos sobre `candidatos_proyecto`), `calculate-staffing-scenarios`, `elevenlabs-signed-url` |
 | `legacy/skillsonar/` | ⛔ **no usar** | Diseño anterior (SkillSonar). Solo como referencia: ver `legacy/README.md` |
@@ -165,7 +167,7 @@ Pipeline completo en [`docs/WORKFLOW_MATCHING.md`](docs/WORKFLOW_MATCHING.md):
 }
 ```
 **Reglas de los equipos** (PDF de rankings):
-- **Coste (en €/hora)** = tarifa €/h × horas planificadas por persona; el del equipo es la suma (`matching/teams.py`). Tarifa: `cost_per_hour` del perfil o, si no, `rates_by_seniority` / `internal_rate_per_hour` de `scenario_assumptions` (004). Horas: `planned_hours` del rol o, si no, `hours_per_person`. Si falta algún dato, `cost.value = null` → "Por estimar". Siempre `is_illustrative: true`.
+- **Coste (en €/hora)** = tarifa €/h × horas planificadas por persona; el del equipo es la suma (`matching/teams.py`). Tarifa: `cost_per_hour` del perfil o, si no, `rates_by_seniority` / `internal_rate_per_hour` de `scenario_assumptions` (005). Horas: `planned_hours` del rol o, si no, `hours_per_person`. Si no se pasan, `matching/pipeline.py` usa `DEFAULT_ASSUMPTIONS` (Trainee 20 · Junior 30 · Mid 45 · Senior 60 · Lead 75 · Principal 90 €/h; 160 h; roll-off 45 días) y el equipo sale con `status: "supuesto"`. Siempre `is_illustrative: true`.
 - **Inicio:** "En banca" = día 0; "Roll-off" = `por_confirmar`, una ventana sin fecha.
 - **Continuidad:** se retira a cada integrante por turno y se busca sustituto en el pool del mismo rol.
 - **En la UI:** filtrar y ordenar los 15 equipos y mostrar hasta 5.
