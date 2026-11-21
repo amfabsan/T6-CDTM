@@ -37,6 +37,9 @@ El manager puede manejar por voz los rankings y los equipos con un asistente de 
 |---|---|---|
 | `supabase/migrations/001_schema.sql` | ✅ hecho, cargado | Tablas del **dataset** (solo lectura) + RPC `perfil` y `buscar_personas` |
 | `supabase/migrations/002_orbit_app.sql` | ✅ hecho, probado en local | Tablas de la **app**: `project_requirements`, `scenario_assumptions` |
+| `supabase/migrations/003_busqueda.sql` | ✅ hecho, probado en local (pgvector) | Pasos 5-6: pgvector, `perfil_busqueda`, embeddings de skills/roles, filtros duros, búsqueda híbrida con RRF y `vocabulario_orbit` |
+| `scripts/build_embeddings.py` | ✅ hecho | Embeddings locales (MiniLM multilingüe, 384 dim) de skills, roles y perfiles. Se ejecuta tras cada carga |
+| `supabase/functions/interpret-project/` + `_shared/interpret.ts` | ✅ hecho, probado con Gemini (sin desplegar) | Pasos 1-3: PDF o texto → Gemini con vocabulario cerrado → validación. Tests: `_shared/interpret.test.ts` |
 | `scripts/load_profiles.py` | ✅ hecho | Carga Parquet → Postgres y aplica todas las migraciones |
 | `scripts/make_sample.py` | ✅ hecho | Regenera `data/sample/` (muestra JSON/CSV y vocabulario) desde el Parquet |
 | `data/profiles.parquet` | ✅ | Dataset original: 190.000 perfiles sintéticos |
@@ -48,7 +51,7 @@ El manager puede manejar por voz los rankings y los equipos con un asistente de 
 | `docs/ITERATIONS.md`, `docs/PATTERNS.md` | ✅ | Cuaderno de Improven e investigación de ediciones anteriores |
 | `prompts/lovable.md` | ✅ | Prompts para construir las pantallas en Lovable (incluido el asistente de voz) |
 | `prompts/elevenlabs.md` | ✅ | Configuración del asistente de voz: prompt, client tools y guion de demo |
-| `supabase/functions/*` | ⏳ **por hacer** | Las 4 edge functions de la §5 |
+| `supabase/functions/*` (resto) | ⏳ **por hacer** | `match-candidates` (score y equipos sobre `candidatos_proyecto`), `calculate-staffing-scenarios`, `elevenlabs-signed-url` |
 | `legacy/skillsonar/` | ⛔ **no usar** | Diseño anterior (SkillSonar). Solo como referencia: ver `legacy/README.md` |
 
 ## 3. Datos: qué hay en Supabase
@@ -71,9 +74,13 @@ El manager puede manejar por voz los rankings y los equipos con un asistente de 
 RPC disponibles:
 - `perfil(p_employee_id)` devuelve el perfil completo en JSON.
 - `buscar_personas(p_disponibilidad[], p_area, p_rol, p_sector, p_min_anios, p_skills[], p_min_nivel, p_limit, p_offset)` es un buscador paginado. Exige **todas** las `p_skills` y cada fila trae `total`.
+- `vocabulario_orbit()` (003) devuelve el vocabulario cerrado: skills, roles, sectores, certificaciones, idiomas, países, ciudades, niveles, seniorities y modalidades.
+- `filtrar_candidatos(...)` (003) es el **paso 5**: filtros duros por rol. Disponibilidad, años, seniority mínimo, idiomas con nivel mínimo, certificaciones obligatorias (todas) y alternativas (`p_certificaciones_alguna`, basta una), y ubicación según la modalidad: presencial → misma ciudad, mismo país o movilidad internacional; híbrido → mismo país; remoto → el país solo si es exigido. **Las skills no filtran.** Verificado contra DuckDB en 13 casos.
+- `buscar_candidatos(...)` (003) es el **paso 6**: entre los filtrados, full-text (`perfil_busqueda.tsv`, `ts_rank_cd`) + coseno con el vector medio de las skills y roles pedidos (obligatorias ×2), fusionados con RRF (k=20). Devuelve hasta 200 con `rrf`, `pos_texto`, `pos_vector` y `n_filtrados`.
+- `candidatos_proyecto(p_project_id, p_limit)` (003) aplica los pasos 5+6 a cada rol de `project_requirements.roles` y devuelve `[{role_index, title, count, n_filtrados, candidates}]`. Es la entrada de `match-candidates`.
 
 ### Tablas de la app (002, se leen y se insertan desde la app)
-- `project_requirements`: salida de `interpret-project` revisada por el manager. Los requisitos **por rol** van en `roles` (jsonb), junto con `country`, `project_start_date` y `start_deadline_day`. Guarda también `interpretation_raw`, la salida del LLM sin editar. Las columnas de un solo rol (`role`, `required_skills`…) son opcionales.
+- `project_requirements`: salida de `interpret-project` revisada por el manager. Los requisitos **por rol** van en `roles` (jsonb), junto con `country`, `city`, `modality`, `country_required`, `client_sector`, `project_start_date` y `start_deadline_day` (003 añade también `source_text` y `validation_review`). Guarda también `interpretation_raw`, la salida del LLM sin editar. Las columnas de un solo rol (`role`, `required_skills`…) son opcionales.
 - `scenario_assumptions`: supuestos económicos y pesos, con `is_illustrative`. Se versionan **insertando** una fila nueva.
 
 ### Cosas del dato que hay que respetar
@@ -91,25 +98,33 @@ RPC disponibles:
 4. **Trazabilidad:** cada fortaleza o gap apunta a su origen (skill con nivel y años, proyecto concreto, puesto, certificación). Si el LLM cita un proyecto, se **valida** que existe en el perfil antes de mostrarlo.
 5. **Los obligatorios incumplidos** se muestran como bloqueo o gap, no se esconden en una media.
 6. **Escenarios:** el dataset **no** trae salarios, tarifas ni plazos. Todo valor económico es un **supuesto editable**, etiquetado como "supuesto ilustrativo". La UI separa *dato observado*, *supuesto* y *resultado calculado*.
-7. **Secretos** (clave del LLM, `ELEVENLABS_API_KEY`, `ELEVENLABS_AGENT_ID`, `DATABASE_URL`) solo en secretos de Supabase o en el entorno local. **Nunca** en el código del navegador ni en el repo. Las tablas del dataset no se escriben desde el navegador (RLS solo lectura).
+7. **Secretos** (`GEMINI_API_KEY`, `ELEVENLABS_API_KEY`, `ELEVENLABS_AGENT_ID`, `DATABASE_URL`) solo en secretos de Supabase o en el entorno local. **Nunca** en el código del navegador ni en el repo. Las tablas del dataset no se escriben desde el navegador (RLS solo lectura).
 8. **Honestidad:** si algo de la demo está simulado o hardcodeado, se dice.
 9. **No tocar `legacy/`** ni construir sobre `teamBuilder.ts` (su búsqueda exhaustiva de combinaciones no escala).
 
 ## 5. Contratos de las edge functions (por hacer)
 Ubicación: `supabase/functions/<nombre>/index.ts` (Deno). CORS como en `legacy/skillsonar/supabase/extract/index.ts`, que sirve de base para llamar al LLM a través del AI Gateway de Lovable (`LOVABLE_API_KEY`) o de `AI_GATEWAY_URL` + `AI_API_KEY`.
 
-### `interpret-project` (módulo A, rol 2)
-- **In:** `{ project_description, project_start_date?, constraints? }`
-- **Out:** requisitos **por rol** (WORKFLOW §1):
-  - `roles[]`, uno por rol del equipo, cada uno con: `role` (de los 87 del dataset), `count` (plazas), `seniority`, `mandatory_skills[{name,min_level}]`, `desirable_skills[{name}]`, `sector_experience[]`, `languages[{name,level}]`, `certifications[]` (obligatorias) y `min_years_experience`;
-  - a nivel de proyecto: `country`, `availability.acceptable[]`, `project_start_date?`, `start_deadline_day?`, `client_facing`.
-- **Nombres:** skills **solo** del `catalogo_skills`; roles **solo** de los 87; sectores **solo** de los 10 del dataset; idiomas con los nombres del dataset (`Inglés`, `B2`…). Se descarta lo que no exista. No inferir fechas, niveles ni certificaciones que no estén en el brief. "Remoto" no es un filtro: `modalidad_trabajo` es la preferencia del empleado.
-- **Guardar** en `project_requirements` tras la edición humana: `roles`, `country`, `project_start_date` y `start_deadline_day`, más `interpretation_raw`.
+### `interpret-project` (módulo A, rol 2) · ✅ hecho
+Código: `supabase/functions/interpret-project/index.ts` (HTTP, PDF y vocabulario) + `_shared/interpret.ts` (prompt, esquema, Gemini y validación, sin APIs de Deno).
+- **In:** `multipart/form-data` con `file` (el PDF del plan) o `project_text`, o JSON `{ "project_text": "..." }`.
+  - Si el PDF no tiene texto (escaneado), responde **422** con `{ error: "pdf_sin_texto" }` y la UI pide pegarlo a mano.
+- **LLM:** Gemini con `responseSchema` y temperatura 0. Recibe el vocabulario de `vocabulario_orbit()`.
+  - Modelo: `GEMINI_MODEL` o, si no está, `gemini-flash-latest`.
+  - Si un modelo da 429/5xx o no responde, reintenta y pasa a los de respaldo (`GEMINI_FALLBACK_MODELS`). Presupuesto total: 120 s.
+- **Validación (código):** quita todo lo que no existe en el vocabulario y lo apunta en `review[]`, con `path`, `value`, `reason` y `action` (eliminado / corregido / revisar).
+  - Corrige solo mayúsculas, tildes y traducciones directas ("English" → "Inglés", "Spain" → "España").
+  - No inventa nada: lo que el plan no dice queda en `null` o `[]`.
+- **Out:** `{ source, source_text, interpretation_raw, requirements, review, row_template }`.
+  - `requirements.project`: `project_name`, `client_sector`, `country`, `city`, `modality` (remoto | hibrido | presencial), `country_required`, `start_date`.
+  - `requirements.roles[]`: `title`, `count`, `matching_roles[]` (de los 87), `seniority_min`, `min_years_experience`, `mandatory_skills[{name,min_level}]`, `desirable_skills[{name}]`, `languages[{name,level}]`, `certifications[]` (todas) y `certification_options[]` (basta una).
+- **Paso 4 (UI):** el manager edita `requirements` e inserta en `project_requirements`. `row_template` ya trae las columnas, con `interpretation_raw` y `validation_review`.
+- **Probado:** con un plan real (banco, 4 personas, remoto España exigido) tarda unos 10 s. Traduce "orquestación de contenedores" → Kubernetes y separa obligatorias de deseables.
 
 ### `match-candidates` (módulos B y C, rol 2)
 Pipeline completo en [`docs/WORKFLOW_MATCHING.md`](docs/WORKFLOW_MATCHING.md):
-1. filtros duros en SQL (disponibilidad, años, país, idioma mínimo, seniority, certificación obligatoria; **las skills nunca filtran**);
-2. búsqueda híbrida, full-text + pgvector con RRF, top 200 por rol (migración `003` y RPC `buscar_candidatos`, en PR aparte);
+1. ✅ filtros duros en SQL (`filtrar_candidatos`, ver §3; **las skills nunca filtran**);
+2. ✅ búsqueda híbrida, full-text + pgvector con RRF, top 200 por rol: `supabase.rpc('candidatos_proyecto', { p_project_id })`;
 3. score determinista en TS (`supabase/functions/_shared/scoring.ts`);
 4. equipos con beam search (`_shared/teams.ts`): pool de 8-10 por rol, top 15 equipos, nadie repetido dentro de un equipo;
 5. el LLM redacta fortalezas y huecos **solo** con `evidence`, `gaps` y `risks`.
@@ -177,8 +192,16 @@ python -m venv .venv; .\.venv\Scripts\pip install duckdb "psycopg[binary]"
 # Cargar Supabase (Session pooler IPv4; la conexión directa es solo IPv6). Aplica 001 + 002 y carga los disponibles:
 $env:DATABASE_URL = "postgresql://postgres.<ref>:<PASSWORD>@aws-1-eu-west-1.pooler.supabase.com:5432/postgres"
 .\.venv\Scripts\python -X utf8 scripts\load_profiles.py --schema --solo-disponibles
-# Postgres local para pruebas:
-docker run -d --name skillsonar-pg -e POSTGRES_PASSWORD=localtest -p 55432:5432 postgres:17
+# Embeddings de la búsqueda híbrida (modelo local, sin API; ~10 min la primera vez). Repetir tras cada carga:
+.\.venv\Scripts\pip install fastembed
+.\.venv\Scripts\python -X utf8 scripts\build_embeddings.py
+# Edge function interpret-project (Supabase CLI): secreto y despliegue
+supabase secrets set GEMINI_API_KEY=<clave>     # opcional: GEMINI_MODEL=gemini-flash-latest
+supabase functions deploy interpret-project
+# Tests de la validación del LLM (Node 22+):
+node --test --experimental-strip-types supabase/functions/_shared/interpret.test.ts
+# Postgres local con pgvector para pruebas:
+docker run -d --name orbit-pgvector -e POSTGRES_PASSWORD=localtest -p 55433:5432 pgvector/pgvector:pg17
 ```
 Volver a cargar vacía las tablas del dataset. `project_requirements` y `scenario_assumptions` no se tocan.
 
