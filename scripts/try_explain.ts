@@ -46,8 +46,8 @@ if (!apiKey) { console.error("Falta GEMINI_API_KEY_EXPLAIN en .env"); process.ex
 const t0 = Date.now();
 const out = await explainWithGemini(realInput, {
   apiKey,
-  model: process.env.GEMINI_MODEL || DEFAULT_MODEL,
-  fallbackModels: (process.env.GEMINI_FALLBACK_MODELS || DEFAULT_FALLBACKS.join(",")).split(",").map((m) => m.trim()).filter(Boolean),
+  model: process.env.GEMINI_MODEL_EXPLAIN || DEFAULT_MODEL,
+  fallbackModels: (process.env.GEMINI_FALLBACK_MODELS_EXPLAIN || DEFAULT_FALLBACKS.join(",")).split(",").map((m) => m.trim()).filter(Boolean),
   timeoutMs: 15_000,
 });
 console.error(`Tiempo: ${((Date.now() - t0) / 1000).toFixed(1)} s`);
