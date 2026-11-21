@@ -1,0 +1,3 @@
+- [x] Replace purple and lime with the executive blue palette and subdued geometric outlines.
+- [x] Update professional Spanish copy across all screens, tooltips and the design showcase.
+- [x] Verify layouts and the demo workflow; preserve all data contracts and logic.

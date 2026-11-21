@@ -1,22 +1,22 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { AlertTriangle, CheckCircle2, Clock, Eye, FlaskConical, Sparkles, Star, X } from "lucide-react";
+import { ArrowRight, AlertTriangle, CheckCircle2, Clock, Eye, FlaskConical, Sparkles, Star, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const chipVariants = cva(
-  "inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium whitespace-nowrap transition-colors",
+  "inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium max-w-full whitespace-normal transition-colors",
   {
     variants: {
       tone: {
-        must: "border border-danger text-danger bg-surface",
+        must: "border border-red/50 text-red bg-red/15",
         nice: "border border-blue text-blue bg-surface",
         role: "bg-navy/6 text-navy border border-navy/20",
         ai: "bg-blue/8 text-blue border border-blue/30",
         bench: "bg-success-soft text-success-ink border border-success-ink/20",
         rolloff: "bg-warn-soft text-warn-ink border border-warn-ink/20",
         gap: "bg-danger/8 text-danger border border-danger/30",
-        hidden: "bg-surface text-blue border border-blue",
-        gold: "bg-gold text-navy font-semibold",
+        hidden: "bg-blue-200/10 text-blue-200 border border-blue-200",
+        gold: "bg-green/10 text-green border border-green/35 font-semibold",
         neutral: "bg-surface text-text border border-line",
       },
     },
@@ -32,9 +32,9 @@ export function Chip({
       {icon}
       {children}
       {onRemove && (
-        <button type="button" onClick={onRemove} aria-label={`Quitar ${String(children)}`} className="-mr-1 rounded-full p-0.5 opacity-70 hover:opacity-100">
+        <OrbitButton variant="ghost" type="button" onClick={onRemove} aria-label={`Quitar ${String(children)}`} className="-mr-1 rounded-full border-0 p-0.5 opacity-70 hover:opacity-100">
           <X className="size-3" />
-        </button>
+        </OrbitButton>
       )}
     </span>
   );
@@ -63,11 +63,11 @@ export function AvailabilityBadge({ value }: { value: string }) {
     </Chip>
   );
 }
-export const HiddenTalentBadge = () => <Chip tone="hidden" icon={<Eye className="size-3.5" aria-hidden />}>Talento oculto</Chip>;
+export const HiddenTalentBadge = () => <Chip tone="hidden" icon={<Eye className="size-3.5" aria-hidden />}>Talento fuera de su área</Chip>;
 export const MeaningBadge = () => <Chip tone="ai" icon={<Sparkles className="size-3.5" aria-hidden />}>Encontrado por significado</Chip>;
 export const GapChip = ({ skill }: { skill: string }) => <Chip tone="gap" icon={<AlertTriangle className="size-3.5" aria-hidden />}>Hueco: {skill}</Chip>;
 export const PendingChip = ({ children }: { children: ReactNode }) => <Chip tone="rolloff" icon={<Clock className="size-3.5" aria-hidden />}>{children}</Chip>;
-export const IdealBadge = () => <Chip tone="gold" icon={<Star className="size-3.5" aria-hidden />}>Equipo ideal</Chip>;
+export const IdealBadge = () => <Chip tone="gold" icon={<Star className="size-3.5" aria-hidden />}>Equipo recomendado</Chip>;
 
 export function formatEs(n: number) {
   return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -100,18 +100,18 @@ export function SectionLabel({ children }: { children: ReactNode }) {
   return <p className="text-xs font-semibold uppercase tracking-[0.1em] text-muted-foreground">{children}</p>;
 }
 
-export function OrbitButton({ variant = "primary", className, ...rest }: React.ButtonHTMLAttributes<HTMLButtonElement> & { variant?: "primary" | "ghost" }) {
+export function OrbitButton({ variant = "primary", className, children, ...rest }: React.ButtonHTMLAttributes<HTMLButtonElement> & { variant?: "primary" | "ghost" }) {
   return (
     <button
       className={cn(
         "inline-flex items-center justify-center gap-2 rounded-[40px] px-6 py-2.5 text-sm font-semibold transition-all duration-200 disabled:opacity-50",
-        variant === "primary" ? "bg-blue text-on-accent hover:brightness-110" : "border border-navy bg-surface text-navy hover:bg-surface-2",
+        variant === "primary" ? "mission-primary" : "mission-secondary hover:bg-ink-700",
         className,
       )}
       {...rest}
-    />
+    >{children}{variant === "primary" && <ArrowRight className="mission-arrow" aria-hidden />}</button>
   );
 }
 
 /** Same look as the primary button, for router links. */
-export const primaryLinkCls = "inline-flex items-center gap-2 rounded-[40px] bg-blue px-7 py-3 text-base font-semibold text-on-accent transition-all hover:brightness-110";
+export const primaryLinkCls = "inline-flex items-center gap-2 rounded-[40px] mission-primary px-7 py-3 text-base font-semibold transition-all";

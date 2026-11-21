@@ -5,6 +5,7 @@ import { InterpretationView } from "@/components/orbit/InterpretationView";
 import { PlanIntake, ScanningDoc } from "@/components/orbit/PlanIntake";
 import { buildRequirementsRow, interpretProject, PdfSinTextoError, saveRequirements, type InterpretInput } from "@/lib/api";
 import { setProject, useProject } from "@/lib/project-store";
+import { OrbitButton } from "@/components/orbit/primitives";
 import type { Requirements } from "@/lib/types";
 
 export const Route = createFileRoute("/")({
@@ -51,7 +52,7 @@ function StepNeed() {
   return (
     <AppShell>
       <div className="mx-auto max-w-6xl">
-        <p className="text-sm text-muted-foreground">Paso 1 · Necesidad</p>
+        
         <div className="mt-4">
           {said && phase !== "intake" || (said && interpretation) ? (
             <div className="mb-6 flex justify-end"><p className="card line-clamp-2 max-w-xl px-4 py-3 text-sm">{said}</p></div>
@@ -59,7 +60,7 @@ function StepNeed() {
           {phase === "scanning" ? <ScanningDoc />
             : interpretation && phase === "intake" ? (
               <>
-                <button className="mb-4 text-sm text-blue hover:underline" onClick={() => { setSaid(null); setProject({ interpretation: null, demo: false }); }}>← Cargar otro plan</button>
+                <OrbitButton variant="ghost" className="mb-4 text-sm text-blue" onClick={() => { setSaid(null); setProject({ interpretation: null, demo: false }); }}>← Cargar otro plan</OrbitButton>
                 <InterpretationView key={interpretation.source_text} result={interpretation} onConfirm={confirm} busy={busy} />
               </>
             ) : (

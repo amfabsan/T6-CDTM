@@ -56,14 +56,14 @@ export function Proposal({ team, match, projectName, req }: { team: MatchTeam; m
 }
 
 function RequestCard({ name, role, project, copied, onCopy }: { name: string; role: string; project: string; copied: boolean; onCopy: (t: string) => void }) {
-  const [text, setText] = useState(`Hola,\n\nEstamos formando el equipo de «${project}» y ${name} encaja muy bien como ${role}. ¿Podríamos hablar de su disponibilidad para incorporarse?\n\nGracias.`);
+  const [text, setText] = useState(`Hola,\n\nEstamos formando el equipo de «${project}» y ${name} presenta un encaje adecuado para el rol de ${role}. ¿Podríamos hablar de su disponibilidad para incorporarse?\n\nGracias.`);
   return (
     <Panel>
       <label className="text-sm font-semibold text-navy" htmlFor={`m-${name}`}>Mensaje para el responsable de {name}</label>
       <textarea id={`m-${name}`} value={text} onChange={(e) => setText(e.target.value)} rows={6} className="mt-2 w-full border border-line bg-surface p-3 text-sm outline-none focus:border-blue" />
-      <div className="mt-2 flex items-center justify-between gap-2">
-        <span className="text-xs text-muted-foreground">{copied ? "Copiado. Envíalo tú cuando quieras." : "No se envía solo."}</span>
-        <OrbitButton variant="ghost" onClick={() => onCopy(text)}><Copy className="size-4" />Solicitar a {name.split(" ")[0]}</OrbitButton>
+      <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
+        <span className="text-xs text-muted-foreground">{copied ? "Copiado. Pendiente de envío manual." : "Envío manual."}</span>
+        <OrbitButton variant="ghost" className="min-w-0 whitespace-normal text-left" onClick={() => onCopy(text)}><Copy className="size-4" />Solicitar disponibilidad a {name}</OrbitButton>
       </div>
     </Panel>
   );

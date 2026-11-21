@@ -14,21 +14,18 @@
   - `GEMINI_API_KEY`: paso 2 (`interpret-project`);
   - `GEMINI_API_KEY_EXPLAIN`: paso 11 (`explain-recommendations`), clave propia para no compartir cuota.
 
-## 1. Base visual (tema NTT DATA), navegación y fichas
-> Build **"ORBIT AI"**, an internal staffing-intelligence web app for NTT DATA managers. Tagline: **"Find the talent. Validate the fit. Make the staffing decision."** Spanish UI. React + shadcn/ui + Tailwind.
+## 1. Base visual (tema azul ejecutivo, muy visual), navegación y fichas
+> ⚠️ **Dirección visual vigente (21-11):** fondo azul marino oscuro, **muy visual y con poco texto**, con un **mapa de encaje orbital** como elemento distintivo y **terminología profesional** (sin metáforas de juego ni de misión espacial). **Sustituye al tema corporativo claro de NTT DATA.** El estilo se inspiró en webs de producto con estética espacial, sin copiar marca, logo, ilustraciones ni textos de ninguna empresa. El frontend vive en el repo de Lovable y se trae a `frontend/` con `git subtree pull` (ver README).
+
+> Build **"ORBIT AI"**, an internal staffing-intelligence web app for NTT DATA managers. Tagline: **"Find the talent. Validate the fit. Make the staffing decision."** Spanish UI. React + shadcn/ui + Tailwind. In the header write "ORBIT AI" and, smaller, "para NTT DATA" (no NTT DATA logo).
 >
-> **Visual identity: follow NTT DATA's corporate web style** (es.nttdata.com). Do NOT copy or recreate the NTT DATA logo; in the header write the text "ORBIT AI" and, smaller, "para NTT DATA".
-> - Font: **Noto Sans** (Google Fonts) for everything; headings 600–700, body 400. Generous line height, short sentences.
-> - Colors (define as CSS variables / Tailwind theme tokens and use only these):
->   - `--navy: #070F26` → header and footer background, page titles, primary text on light backgrounds;
->   - `--blue: #0072BC` → primary buttons, links, active tab, selected state, progress bars;
->   - `--gold: #E6B600` → accent only: the "Equipo ideal" badge, the active step underline in the top navigation, key numbers highlight;
->   - `--bg: #F6F8FD` → app background; cards are white `#FFFFFF`;
->   - `--border: #E6E6E6`; `--text: #3D4852`; `--muted: #8795A1`;
->   - `--danger: #CD1517` → gaps, "Hueco" badges, errors.
->   - Availability badges: green for "En banca", amber for "Roll-off próximo (<3 meses)" (subtle backgrounds, dark text).
-> - Shapes: cards and panels with **square corners (radius 0)**, 1px `--border`, very light shadow; **buttons are pills (radius 40px)**: primary = `--blue` background with white text, secondary = white with `--navy` 1px border.
-> - Layout: dark navy top bar (white text, simple line icons from lucide-react) with the 4 steps **"1 · Necesidad", "2 · Talento", "3 · Equipos", "4 · Decisión"** plus "Personas"; the active step has a gold underline. Content in a centered container (max 1280px), white cards on the light background, plenty of whitespace. Tone: corporate, clear, action verbs.
+> **Visual identity: serious, executive, visual-first.**
+> - Background: deep navy-to-blue gradient (`#050E1F` → `#0A1F44`) with a very subtle grid or star dust; floating shapes only as faint geometric outlines. Respect `prefers-reduced-motion`. **No purple/violet.**
+> - Tokens: `--ink-900 #050E1F`, `--ink-700 #0A1F44`, `--ink-500 #12346E`, `--blue-400 #3D8BFF` (primary accent: buttons, selection, active step, best fit), `--blue-200 #A9C9FF` (secondary text, borders at 20–25 %), `--green #2BD9A0` ("En banca", demonstrated evidence, "Equipo recomendado"), `--amber #F5B841` ("Roll-off próximo (<3 meses)", "Por confirmar", "Por estimar"), `--red #FF5C6C` (gaps, missing requirements, errors), white text. Dark glass cards (16px radius, 1px border `--blue-200` at 20 %).
+> - Font: Inter (or a geometric sans); formal headlines 40–56 px; minimal body text.
+> - **Less text, more visuals:** icons, big numbers, ring gauges, chips and tooltips; any sentence over ~12 words goes into a tooltip or "Ver detalle". Step 2's hero is the **"Mapa de encaje"** (orbit graph: rings = fit bands, candidates placed by score, colored by availability; "Más cerca del centro = mayor encaje").
+> - **Copy (professional Spanish):** steps "1 · Necesidad" (Requisitos), "2 · Talento" (Candidatos), "3 · Equipos" (Equipos), "4 · Decisión" (Escenarios); titles "Candidatos por rol", "Propuestas de equipo", "Comparativa de escenarios", "Personas disponibles", "Ficha profesional"; "Equipo recomendado"; "Motivo de la recomendación"; buttons "Interpretar requisitos", "Buscar candidatos", "Ver propuestas de equipo", "Comparar escenarios". Never use words like misión, tripulación, a bordo, lanzamiento, radar or planeta.
+> - Buttons: pills, primary `--blue-400`; AA contrast and never color alone (icon + label).
 > - Every money value is in **euros**, formatted Spanish style: `11.800 €`, `70 €/h`. Never use $ or USD.
 >
 > The Supabase database is ALREADY created and loaded. **Do NOT create, alter, migrate or seed any table.** Dataset tables are read-only (RLS):
@@ -40,7 +37,7 @@
 > 1. **"Personas"**: paginated table (50 per page) using ONLY `supabase.rpc('buscar_personas', …)`, never fetching all rows. Filters: disponibilidad, área, rol, sector principal, años mínimos, skills (autocomplete from `catalogo_skills`), nivel mínimo. Columns: nombre, puesto, área, años, sector principal, availability badge with the status text EXACTLY as stored. Show "{total} personas".
 > 2. **Ficha `/persona/:id`** via `supabase.rpc('perfil', …)`: header (name, puesto, área, years total and at NTT, sector, availability badge, modalidad, movilidad); skills with level as 5 dots, years, and an evidence badge: "Demostrada en proyecto" (tooltip: last used `ultimo_anio`, in `n_proyectos` projects) or "Solo declarada"; projects timeline (name, client sector, year, role, technology chips); work history; education; certifications ("Sin certificaciones" if empty, never invent); languages.
 
-✅ La barra superior es azul marino con el paso activo subrayado en dorado, la fuente es Noto Sans y «Personas» pagina sin descargar toda la tabla.
+✅ Fondo azul marino, terminología profesional (sin «misión» ni «a bordo»), poco texto (lo largo va en tooltips) y «Personas» pagina sin descargar toda la tabla.
 
 ## 2. Necesidad: la petición se escribe como prompt, sin PDF (`interpret-project`)
 > Decisión del equipo (21-11): la petición del proyecto o de la vacante **se escribe**, no se sube en PDF. El backend ya acepta texto (`{ project_text }`), así que solo cambia la interfaz.

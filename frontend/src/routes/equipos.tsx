@@ -5,6 +5,7 @@ import { AppShell } from "@/components/orbit/AppShell";
 import { ExplainBlock, ExplainSkeleton } from "@/components/orbit/Explain";
 import { AvailabilityBadge, eur, IdealBadge, OrbitButton, Panel, SectionLabel, SimPill } from "@/components/orbit/primitives";
 import { Proposal } from "@/components/orbit/Proposal";
+import { CrewOrbit } from "@/components/orbit/MissionVisuals";
 import { RingGauge } from "@/components/orbit/RingGauge";
 import { allCandidates, selectTeams, useExplanations, useMatching, type TeamFilters, type TeamSort } from "@/lib/matching";
 import { MOCK_INTERPRET } from "@/lib/mock-data";
@@ -49,11 +50,11 @@ function StepTeams() {
 
   return (
     <AppShell>
-      <p className="text-sm text-muted-foreground">Paso 3 · Equipos</p>
-      <div className="mt-1 flex flex-wrap items-center gap-3"><h1 className="text-4xl">Mejores equipos</h1>{match?.simulated && <SimPill />}</div>
-      {shown[0] && <p className="mt-3 text-lg">Estos son los {shown.length} mejores equipos con tus filtros; <b className="text-blue">elige uno y úsalo en la decisión.</b></p>}
+      <p className="mission-kicker">03 / Equipos</p>
+      <div className="mt-1 flex flex-wrap items-center gap-3"><h1 className="mission-title">Propuestas de equipo</h1>{match?.simulated && <SimPill />}</div>
 
-      <Panel className="mt-6 grid gap-4 md:grid-cols-5">
+
+      <section className="mt-6 grid grid-cols-2 gap-3 border-y border-line py-4 md:grid-cols-5">
         <label className="text-xs text-muted-foreground md:col-span-1">Ordenar por
           <select className={inputCls} value={sort} onChange={(e) => setSort(e.target.value as TeamSort)}>{SORTS.map((s) => <option key={s.k} value={s.k}>{s.label}</option>)}</select>
         </label>
@@ -69,7 +70,7 @@ function StepTeams() {
         <label className="text-xs text-muted-foreground">Continuidad mínima (%)
           <input type="number" min={0} max={100} className={inputCls} value={f.minContinuity} onChange={(e) => setF({ ...f, minContinuity: +e.target.value })} />
         </label>
-      </Panel>
+      </section>
 
       {isLoading || !match ? <p className="mt-16 text-center text-muted-foreground">Formando equipos…</p> : (
         <>
@@ -85,7 +86,7 @@ function StepTeams() {
           {pending.length > 0 && (
             <section className="mt-10">
               <h2 className="text-xl">Pendientes de dato</h2>
-              <p className="mt-1 text-sm text-muted-foreground">Equipos sin coste o fecha confirmados: no podemos saber si cumplen tus filtros.</p>
+              <p className="mt-1 text-xs text-blue-200" title="Equipos sin coste o fecha confirmados: no podemos saber si cumplen tus filtros.">Coste o fecha por confirmar.</p>
               <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                 {pending.map((t) => (
                   <TeamCard key={t.id} t={t} match={match.data} ideal={false} selected={teamId === t.id} why={explain?.teams.find((x) => x.team_id === t.id)} explaining={explaining}
@@ -110,7 +111,7 @@ function TeamCard({ t, match, ideal, selected, why, explaining, onUse, onProposa
   const w = t.continuity.worst;
   const sub = w.substitute ? names.get(w.substitute) ?? w.substitute : w.late_substitute ? `${names.get(w.late_substitute.employee_id) ?? w.late_substitute.employee_id} (llega el ${fmtDate(w.late_substitute.available_on)})` : "ninguno";
   return (
-    <Panel className={cn("lift flex flex-col", selected && "glow-ai")}>
+    <Panel className={cn("crew-patch lift flex flex-col", selected && "glow-ai")}>
       <div className="flex items-start justify-between gap-2">
         <div>
           <p className="text-xs font-semibold tracking-[0.15em] text-muted-foreground">EQUIPO {t.id}</p>
@@ -119,12 +120,13 @@ function TeamCard({ t, match, ideal, selected, why, explaining, onUse, onProposa
         </div>
         {ideal && <IdealBadge />}
       </div>
+      <CrewOrbit members={t.members} />
       <div className="mt-4 space-y-3">
         {Object.entries(byRole).map(([role, ms]) => (
           <div key={role}>
             <SectionLabel>{role}</SectionLabel>
             <ul className="mt-1 space-y-1.5">{ms.map((m) => (
-              <li key={m.employee_id} className="flex items-center justify-between gap-2 text-sm">
+              <li key={m.employee_id} className="flex flex-wrap items-center justify-between gap-2 text-xs">
                 <span className="min-w-0 truncate"><b className="text-navy">{m.nombre_completo}</b> · <span className="tnum">{Math.round(m.score)}%</span></span>
                 <AvailabilityBadge value={m.disponibilidad} />
               </li>
@@ -145,14 +147,14 @@ function TeamCard({ t, match, ideal, selected, why, explaining, onUse, onProposa
       <div className="mt-4 flex items-center gap-4 border-t border-line pt-4">
         <RingGauge value={t.continuity.covered} total={t.continuity.total} size={64} />
         <div className="text-sm">
-          <p className="font-semibold text-navy">Continuidad tras una baja: {t.continuity.pct} %</p>
-          <p className="text-xs text-muted-foreground">Si se va {names.get(w.employee_id) ?? w.employee_id}, quedan {t.continuity.covered} de {t.continuity.total} plazas · sustituto: {sub}</p>
+          <p className="font-semibold text-navy">Continuidad · {t.continuity.pct} %</p>
+          <p className="text-xs text-muted-foreground" title={`Si se va ${names.get(w.employee_id) ?? w.employee_id}, quedan ${t.continuity.covered} de ${t.continuity.total} plazas · sustituto: ${sub}`}>↳ {t.continuity.covered}/{t.continuity.total} plazas · {sub === "ninguno" ? "sin sustituto" : sub}</p>
         </div>
       </div>
       {why ? <ExplainBlock title="Por qué este equipo" summary={why.summary} points={why.reasons} source={why.source} /> : explaining ? <ExplainSkeleton /> : null}
       <div className="mt-auto flex flex-wrap justify-end gap-2 pt-5">
         <OrbitButton variant="ghost" onClick={onProposal}><FileText className="size-4" />Generar propuesta de equipo</OrbitButton>
-        <OrbitButton onClick={onUse}>Usar en la decisión <ArrowRight className="size-4" /></OrbitButton>
+        <OrbitButton onClick={onUse}>Comparar escenarios</OrbitButton>
       </div>
     </Panel>
   );

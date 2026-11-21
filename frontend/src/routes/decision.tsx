@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Trophy } from "lucide-react";
+import { Clock, Coins, Crosshair, Gauge, ShieldAlert, SlidersHorizontal, Trophy, Users, X } from "lucide-react";
 import { AppShell } from "@/components/orbit/AppShell";
-import { DataTag, eur, formatEs, Panel, SectionLabel, SimPill } from "@/components/orbit/primitives";
+import { DataTag, eur, formatEs, OrbitButton, Panel, SectionLabel, SimPill } from "@/components/orbit/primitives";
 import { saveScenarioAssumptions } from "@/lib/api";
 import { useMatching, useRematch } from "@/lib/matching";
 import { useProject } from "@/lib/project-store";
@@ -41,6 +41,7 @@ function StepDecision() {
   const [hireDays, setHireDays] = useState(60);
   const [onbDays, setOnbDays] = useState(15);
   const [w, setW] = useState<Weights>({ coste: 30, tiempo: 20, cobertura: 25, disponibilidad: 15, riesgo: 10 });
+  const [showAssumptions, setShowAssumptions] = useState(false);
   const [status, setStatus] = useState<"idle" | "saving" | "error">("idle");
 
   const team = match ? match.data.teams.find((t) => t.id === teamId) ?? match.data.top_teams.items[0] ?? match.data.teams[0] : undefined;
@@ -79,7 +80,7 @@ function StepDecision() {
   const sc = useMemo(() => (team ? scenarios(team, { external_rate_per_hour: extRate, hours_per_person: hours, recruitment_cost: recruit, internal_onboarding_days: intDays, external_hiring_days: hireDays, onboarding_days: onbDays, rolloff_days: rolloff }, w) : []), [team, extRate, hours, recruit, intDays, hireDays, onbDays, rolloff, w]);
   const winner = sc.reduce<(typeof sc)[number] | null>((b, s) => (!b || s.score > b.score ? s : b), null);
   const why = winner && {
-    Interno: "el talento ya está en casa, con evidencia demostrada y sin coste de selección.",
+    Interno: "el talento ya está en la organización, con evidencia demostrada y sin coste de selección.",
     Externo: "cubre todas las plazas en menos tiempo con tus pesos actuales.",
     Híbrido: "combina a quien ya está en banca con refuerzo externo donde hay roll-off.",
   }[winner.key];
@@ -87,22 +88,22 @@ function StepDecision() {
   const num = (label: string, v: number, set: (n: number) => void, unit = "") => (
     <label className="block text-sm">
       <span className="flex items-center justify-between gap-2"><span>{label}</span><Tag /></span>
-      <span className="mt-1 flex items-center gap-2"><input type="number" min={0} value={v} onChange={(e) => set(+e.target.value)} className="w-full border border-line bg-surface px-3 py-1.5 outline-none focus:border-blue tnum" />{unit && <span className="text-xs text-muted-foreground">{unit}</span>}</span>
+      <span className="mt-2 flex items-center gap-3"><input aria-label={label} type="range" min={0} max={Math.max(v * 2, unit === "€" ? 20000 : unit === "h" ? 1000 : 180)} value={v} onChange={(e) => set(+e.target.value)} className="min-w-0 flex-1" /><input aria-label={`${label} valor`} type="number" min={0} value={v} onChange={(e) => set(+e.target.value)} className="w-24 border border-line bg-surface px-3 py-1.5 outline-none focus:border-blue tnum" />{unit && <span className="text-xs text-muted-foreground">{unit}</span>}</span>
     </label>
   );
 
   return (
     <AppShell>
-      <p className="text-sm text-muted-foreground">Paso 4 · Decisión</p>
-      <div className="mt-1 flex flex-wrap items-center gap-3"><h1 className="text-4xl">La decisión</h1>{match?.simulated && <SimPill />}
+      <p className="mission-kicker">04 / Escenarios</p>
+      <div className="mt-1 flex flex-wrap items-center gap-3"><h1 className="mission-title">Comparativa de escenarios</h1>{match?.simulated && <SimPill />}
         {status === "saving" && <span className="text-sm text-muted-foreground" role="status">Recalculando…</span>}
         {status === "error" && <span className="text-sm text-danger" role="alert">No se pudo recalcular. Se mantienen los datos anteriores.</span>}
       </div>
-      {team && winner && <p className="mt-3 text-lg">Con el equipo <b className="text-navy">{team.id}</b> y tus supuestos, <b className="text-blue">{winner.key} gana con {winner.score} puntos.</b> <Link to="/equipos" className="text-sm text-blue hover:underline">Cambiar equipo</Link></p>}
+      <div className="mt-5 flex flex-wrap items-center justify-between gap-3"><Link to="/equipos" className="text-xs text-blue-200">← Cambiar equipo {team?.id}</Link><OrbitButton variant="ghost" onClick={() => setShowAssumptions(true)}><SlidersHorizontal className="size-4" />Supuestos</OrbitButton></div>
 
-      <div className="mt-8 grid gap-6 lg:grid-cols-[340px_minmax(0,1fr)]">
-        <Panel className="h-fit space-y-5">
-          <h2 className="text-xl">Supuestos</h2>
+      <div className="mt-10">
+        {showAssumptions && <div onKeyDown={e => e.key === "Escape" && setShowAssumptions(false)}><OrbitButton variant="ghost" className="mission-backdrop rounded-none" onClick={() => setShowAssumptions(false)} aria-label="Cerrar supuestos" /><aside className="mission-drawer space-y-5" role="dialog" aria-modal aria-label="Supuestos">
+          <div className="flex items-center justify-between"><h2 className="text-2xl">Supuestos</h2><OrbitButton variant="ghost" className="size-9 p-0" autoFocus onClick={() => setShowAssumptions(false)} aria-label="Cerrar supuestos"><X className="size-4" /></OrbitButton></div>
           <div>
             <SectionLabel>Tarifa interna por seniority (€/h)</SectionLabel>
             <div className="mt-2 grid grid-cols-2 gap-3">
@@ -130,17 +131,20 @@ function StepDecision() {
               </label>
             ))}
           </div>
-        </Panel>
+        </aside></div>}
 
-        <div className="grid items-start gap-4 md:grid-cols-3">
+        <div className="grid items-start gap-6 md:grid-cols-3">
           {sc.map((s) => {
             const win = s === winner;
+            const metricIcons = [Coins, Clock, Crosshair, Users, ShieldAlert, Gauge];
+            let metricIndex = 0;
             const row = (label: string, value: string, kind: "dato" | "supuesto" | "calculado", extra?: "supuesto") => (
-              <div><dt className="flex items-center gap-1.5 text-xs text-muted-foreground">{label} <DataTag kind={kind} />{extra && <DataTag kind={extra} />}</dt><dd className="text-xl font-bold text-navy tnum">{value}</dd></div>
+              <div><dt className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">{(() => { const Icon = metricIcons[metricIndex++]; return Icon ? <Icon className="size-3.5" /> : null; })()}{label} <DataTag kind={kind} />{extra && <DataTag kind={extra} />}</dt><dd className="mt-1 text-3xl font-semibold text-navy tnum">{value}</dd></div>
             );
             return (
-              <Panel key={s.key} className={cn("flex flex-col", win && "border-t-4 border-t-gold shadow-lg")}>
-                <div className="flex items-center justify-between"><h3 className="text-2xl">{s.key}</h3>{win && <Trophy className="size-5 text-gold" aria-label="Ganador" />}</div>
+              <Panel key={s.key} className={cn("launch-pad flex flex-col", win && "launch-pad-winner")}>
+                <svg viewBox="0 0 240 140" className="launch-art" aria-hidden="true"><circle cx="120" cy="70" r="50" strokeDasharray="3 6" /><path d="M64 97H176 M80 97V68H104V97 M108 97V49H132V97 M136 97V29H160V97" /></svg>
+                <div className="flex items-center justify-between"><h3 className="text-3xl">{s.key}</h3>{win && <Trophy className="size-5 text-gold" aria-label="Escenario recomendado" />}</div>
                 <dl className="mt-5 space-y-4">
                   {s.cost == null
                     ? <div><dt className="flex items-center gap-1.5 text-xs text-muted-foreground">Coste total <DataTag kind="supuesto" /></dt><dd className="text-xl font-bold text-warn-ink">Por estimar</dd></div>
@@ -151,7 +155,7 @@ function StepDecision() {
                   {row("Riesgo", `${Math.round(s.risk)} / 100`, "calculado")}
                   {row("Score", `${s.score}`, "calculado")}
                 </dl>
-                {win && <p className="mt-6 text-sm"><b className="text-blue">Por qué gana:</b> {why}</p>}
+                {win && <p className="mt-6 text-xs text-blue-200" title={why ?? ""}><b className="text-blue-200">Motivo de la recomendación</b><br />{winner?.key === "Interno" ? "Talento interno con evidencia demostrada." : winner?.key === "Externo" ? "Cobertura completa según las prioridades definidas." : "Talento interno y refuerzo externo."}</p>}
               </Panel>
             );
           })}
