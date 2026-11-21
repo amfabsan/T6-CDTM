@@ -301,3 +301,15 @@ test("euros: rechaza otras monedas y la plantilla escribe el coste en €", asyn
   assert.equal(out.teams[0].reasons.length, 1);
   assert.match(out.teams[0].summary, /Coste estimado: 11\.800 € \(supuesto\)/); // resumen en $ → plantilla
 });
+
+test("una cifra entre comillas («31.200 €») no se toma por un proyecto inventado", async () => {
+  const { fromMatching } = await import("./from_matching.ts");
+  const inp = fromMatching(PASTED);
+  const out = validate({ candidates: [], teams: [{ team_id: "A1+NTT0011735",
+    summary: "Equipo con encaje del 93 % y coste estimado de «11.800 €».",
+    reasons: [{ text: "Krystyna aporta «Migración a la nube de core bancario».", evidence_ids: ["NTT0011735:P1"] },
+              { text: "Trabajó en «Pasarela de Santander».", evidence_ids: ["NTT0011735:P1"] }] }] }, inp);
+  assert.match(out.teams[0].summary, /«11\.800 €»/);
+  assert.equal(out.teams[0].reasons.length, 1); // el proyecto inventado sigue descartándose
+  assert.equal(out.teams[0].dropped, 1);
+});
