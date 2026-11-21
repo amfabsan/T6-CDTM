@@ -86,6 +86,26 @@ test("niveles fuera de rango y fechas mal formadas se eliminan", () => {
   assert.deepEqual(requirements.roles[0].languages, [{ name: "Francés", level: null }]);
 });
 
+test("sector por rol, horas y ventana de inicio (caso demo: banca obligatoria en Arquitectura, deseable en Backend)", () => {
+  const { requirements, review } = validateInterpretation({
+    project: { start_date: "2026-11-23", start_deadline_day: 4 },
+    roles: [
+      { title: "Arquitectura", count: 1, matching_roles: ["Cloud Architect"], mandatory_skills: [{ name: "Azure" }], desirable_skills: [],
+        languages: [], certifications: [], sector_experience: ["Banca y Finanzas"], sector_required: true, planned_hours: 40 },
+      { title: "Backend", count: 1, matching_roles: ["Backend Developer Java"], mandatory_skills: [], desirable_skills: [],
+        languages: [], certifications: [], sector_experience: ["Banca y Finanzas", "Sector Inventado"], sector_required: false, planned_hours: 99999 },
+      { title: "Seguridad", count: 1, matching_roles: ["Security Architect"], mandatory_skills: [], desirable_skills: [],
+        languages: [], certifications: [], sector_required: true },
+    ],
+  }, vocab);
+  const [a, b, s] = requirements.roles;
+  assert.equal(requirements.project.start_deadline_day, 4);
+  assert.deepEqual([a.sector_experience, a.sector_required, a.planned_hours], [["Banca y Finanzas"], true, 40]);
+  assert.deepEqual([b.sector_experience, b.sector_required, b.planned_hours], [["Banca y Finanzas"], false, null]);
+  assert.deepEqual([s.sector_experience, s.sector_required], [[], false], "sin sector no puede ser obligatorio");
+  assert.ok(review.some((x) => x.value === "Sector Inventado") && review.some((x) => x.value === 99999));
+});
+
 test("el prompt incluye el vocabulario y el esquema fuerza los enumerados cortos", () => {
   const p = buildSystemPrompt(vocab);
   assert.ok(p.includes("Kubernetes") && p.includes("Cloud Architect") && p.includes("Banca y Finanzas"));

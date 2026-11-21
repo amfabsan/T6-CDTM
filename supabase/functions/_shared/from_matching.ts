@@ -19,7 +19,9 @@ interface PyTeam {
   members: PyMember[];
 }
 interface PyPlan {
-  project?: { name?: string; client_sector?: string; country?: string; work_mode?: string };
+  // Formato de interpret-project ({ requirements: { project, roles } }) o el antiguo ({ project, roles }).
+  requirements?: PyPlan;
+  project?: { name?: string; project_name?: string; client_sector?: string; country?: string; work_mode?: string; modality?: string };
   roles?: { title: string; count?: number; mandatory_skills?: { name: string }[] }[];
 }
 export interface MatchingResult {
@@ -36,10 +38,12 @@ export function isMatchingResult(body: unknown): body is MatchingResult {
   return !!body && typeof body === "object" && "top_teams" in body;
 }
 
-export function summarizePlan(plan?: PyPlan): string {
-  if (!plan) return "";
+export function summarizePlan(input?: PyPlan): string {
+  if (!input) return "";
+  const plan = input.requirements ?? input;
   const p = plan.project ?? {};
-  const head = [p.name, p.client_sector && `sector ${p.client_sector}`, p.country, p.work_mode].filter(Boolean).join(" · ");
+  const head = [p.project_name ?? p.name, p.client_sector && `sector ${p.client_sector}`, p.country, p.modality ?? p.work_mode]
+    .filter(Boolean).join(" · ");
   const roles = (plan.roles ?? []).map((r) =>
     `${r.count ?? 1} × ${r.title}${r.mandatory_skills?.length ? ` (obligatorias: ${r.mandatory_skills.map((s) => s.name).join(", ")})` : ""}`);
   return `${head}. Roles: ${roles.join("; ")}.`;
