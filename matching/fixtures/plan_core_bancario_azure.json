@@ -1,80 +1,100 @@
 {
- "project": {
-  "name": "Migración de core bancario a Azure",
-  "client_sector": "Banca y Finanzas",
-  "country": null,
-  "city": null,
-  "country_required": false,
-  "work_mode": null,
-  "earliest_start": "2026-11-23",
-  "latest_start": "2026-11-27"
- },
- "roles": [
-  {
-   "title": "ARQ",
-   "count": 1,
-   "dataset_roles": [
-    "Cloud Architect"
-   ],
-   "min_years": 4,
-   "mandatory_skills": [
-    {
-     "name": "Azure"
-    }
-   ],
-   "desirable_skills": [
-    {
-     "name": "Kubernetes"
-    }
-   ],
-   "sector_experience": [
-    "Banca y Finanzas"
-   ],
-   "sector_required": true,
-   "planned_hours": 40
+ "requirements": {
+  "project": {
+   "project_name": "Migración de core bancario a Azure",
+   "client_sector": "Banca y Finanzas",
+   "country": null,
+   "city": null,
+   "modality": null,
+   "country_required": false,
+   "start_date": "2026-11-23",
+   "start_deadline_day": 4
   },
-  {
-   "title": "BACK",
-   "count": 1,
-   "dataset_roles": [
-    "Backend Developer .NET"
-   ],
-   "min_years": 3,
-   "mandatory_skills": [
-    {
-     "name": "C#"
-    },
-    {
-     "name": ".NET"
-    },
-    {
-     "name": "SQL Server"
-    }
-   ],
-   "desirable_skills": [],
-   "sector_experience": [
-    "Banca y Finanzas"
-   ],
-   "sector_required": false,
-   "planned_hours": 40
-  },
-  {
-   "title": "SEG",
-   "count": 1,
-   "dataset_roles": [
-    "Security Architect"
-   ],
-   "min_years": 4,
-   "mandatory_skills": [
-    {
-     "name": "Azure"
-    },
-    {
-     "name": "IAM"
-    }
-   ],
-   "desirable_skills": [],
-   "planned_hours": 40
-  }
- ]
+  "roles": [
+   {
+    "title": "ARQ",
+    "count": 1,
+    "matching_roles": [
+     "Cloud Architect"
+    ],
+    "seniority_min": null,
+    "min_years_experience": 4,
+    "mandatory_skills": [
+     {
+      "name": "Azure",
+      "min_level": null
+     }
+    ],
+    "desirable_skills": [
+     {
+      "name": "Kubernetes"
+     }
+    ],
+    "languages": [],
+    "certifications": [],
+    "certification_options": [],
+    "planned_hours": 40,
+    "sector_experience": [
+     "Banca y Finanzas"
+    ],
+    "sector_required": true
+   },
+   {
+    "title": "BACK",
+    "count": 1,
+    "matching_roles": [
+     "Backend Developer .NET"
+    ],
+    "seniority_min": null,
+    "min_years_experience": 3,
+    "mandatory_skills": [
+     {
+      "name": "C#",
+      "min_level": null
+     },
+     {
+      "name": ".NET",
+      "min_level": null
+     },
+     {
+      "name": "SQL Server",
+      "min_level": null
+     }
+    ],
+    "desirable_skills": [],
+    "languages": [],
+    "certifications": [],
+    "certification_options": [],
+    "planned_hours": 40,
+    "sector_experience": [
+     "Banca y Finanzas"
+    ],
+    "sector_required": false
+   },
+   {
+    "title": "SEG",
+    "count": 1,
+    "matching_roles": [
+     "Security Architect"
+    ],
+    "seniority_min": null,
+    "min_years_experience": 4,
+    "mandatory_skills": [
+     {
+      "name": "Azure",
+      "min_level": null
+     },
+     {
+      "name": "IAM",
+      "min_level": null
+     }
+    ],
+    "desirable_skills": [],
+    "languages": [],
+    "certifications": [],
+    "certification_options": [],
+    "planned_hours": 40
+   }
+  ]
+ }
 }

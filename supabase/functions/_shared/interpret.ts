@@ -29,6 +29,9 @@ export interface RoleReq {
   languages: LangReq[];
   certifications: string[];            // obligatorias: hacen falta TODAS
   certification_options: string[];     // alternativas ("CISSP o CEH"): basta con UNA
+  sector_experience: string[];         // sectores en los que el plan pide experiencia PARA ESTE ROL
+  sector_required: boolean;            // true = obligatoria (gap si falta); false = se valora
+  planned_hours: number | null;        // horas por persona del bloque, si el plan las da
 }
 
 export interface ProjectReq {
@@ -39,6 +42,7 @@ export interface ProjectReq {
   modality: "remoto" | "hibrido" | "presencial" | null;
   country_required: boolean;
   start_date: string | null;           // YYYY-MM-DD
+  start_deadline_day: number | null;   // días desde start_date hasta la fecha límite de inicio ("entre el 23 y el 27" → 4)
 }
 
 export interface Requirements { project: ProjectReq; roles: RoleReq[] }
@@ -68,6 +72,10 @@ REGLAS
 - min_level de una skill: 1-5 solo si el plan da un nivel o una expresión clara ("experto" ≈ 5, "avanzado" ≈ 4, "intermedio" ≈ 3, "básico" ≈ 2); si no, null.
 - certifications = certificaciones que el plan exige todas a la vez. Si da alternativas ("CISSP o CEH"), van en certification_options (basta con una). Solo nombres del vocabulario.
 - Idiomas con los nombres del vocabulario (p. ej. "Inglés") y nivel MCER (A1…C2, Nativo) o null si no lo dice.
+- sector_experience: sectores del vocabulario en los que el plan pide experiencia PARA ESE ROL (p. ej. "experiencia en proyectos de banca").
+  sector_required = true si esa experiencia es imprescindible; false si "se valora", "deseable" o "no esencial". Si el plan no pide sector para el rol, [] y false.
+- planned_hours: horas por persona si el plan las da ("40 horas cada una"); si no, null.
+- start_deadline_day: si el plan da una ventana de inicio ("arrancar entre el 23 y el 27"), start_date = primer día y start_deadline_day = días hasta el último (4). Si no, null.
 
 VOCABULARIOS
 roles (87): ${JSON.stringify(v.roles)}
@@ -97,6 +105,7 @@ export function buildResponseSchema(v: Vocabulario) {
           modality: { type: "STRING", nullable: true, enum: ["remoto", "hibrido", "presencial"] },
           country_required: { type: "BOOLEAN" },
           start_date: { type: "STRING", nullable: true, description: "YYYY-MM-DD solo si el plan da una fecha" },
+          start_deadline_day: { type: "INTEGER", nullable: true, description: "días desde start_date hasta la fecha límite de inicio" },
         },
         required: ["client_sector", "country", "modality", "country_required"],
       },
@@ -125,6 +134,9 @@ export function buildResponseSchema(v: Vocabulario) {
             },
             certifications: { type: "ARRAY", items: str },
             certification_options: { type: "ARRAY", items: str },
+            sector_experience: { type: "ARRAY", items: { type: "STRING", enum: v.sectores } },
+            sector_required: { type: "BOOLEAN" },
+            planned_hours: { type: "INTEGER", nullable: true },
           },
           required: ["title", "count", "matching_roles", "mandatory_skills", "desirable_skills", "languages", "certifications", "certification_options"],
         },
@@ -273,6 +285,7 @@ export function validateInterpretation(raw: unknown, v: Vocabulario): { requirem
     modality,
     country_required: p.country_required === true,
     start_date: start,
+    start_deadline_day: rangeInt(p.start_deadline_day, 0, 365, "project.start_deadline_day", "días de margen fuera de rango", review),
   };
   if (project.country_required && !project.country) {
     review.push({ path: "project.country_required", value: true, reason: "país exigido pero sin país válido: se desactiva", action: "corregido" });
@@ -342,11 +355,25 @@ export function validateInterpretation(raw: unknown, v: Vocabulario): { requirem
       review.push({ path: `${base}.certification_options`, value: ro.certification_options, reason: "ninguna de las certificaciones alternativas existe en el dataset: se quita el requisito", action: "revisar" });
     }
 
+    const sector_experience = uniq((Array.isArray(ro?.sector_experience) ? ro.sector_experience : [])
+      .map((x: unknown) => fix(`${base}.sector_experience`, x, sectorOf(x), "sector")).filter(Boolean) as string[]);
+    const sector_required = ro?.sector_required === true && sector_experience.length > 0;
+    const planned_hours = rangeInt(ro?.planned_hours, 1, 5000, `${base}.planned_hours`, "horas fuera de rango", review);
+
     return { title, count, matching_roles, seniority_min, min_years_experience: min_years,
-             mandatory_skills: mandatory, desirable_skills: desirable, languages, certifications, certification_options };
+             mandatory_skills: mandatory, desirable_skills: desirable, languages, certifications, certification_options,
+             sector_experience, sector_required, planned_hours };
   });
 
   return { requirements: { project, roles }, review };
+}
+
+/** Entero en [min, max] o null; si viene fuera de rango se elimina y se apunta en review. */
+function rangeInt(x: unknown, min: number, max: number, path: string, reason: string, review: ReviewItem[]): number | null {
+  const n = asInt(x);
+  if (n === null) return null;
+  if (n < min || n > max) { review.push({ path, value: n, reason, action: "eliminado" }); return null; }
+  return n;
 }
 
 function uniq<T>(xs: T[]): T[] {
@@ -365,6 +392,7 @@ export function toProjectRequirementsRow(req: Requirements, extra: { description
     modality: req.project.modality,
     country_required: req.project.country_required,
     project_start_date: req.project.start_date,
+    start_deadline_day: req.project.start_deadline_day,
     roles: req.roles,
     sector: req.project.client_sector ? [req.project.client_sector] : [],
     interpretation_raw: extra.interpretation_raw,
