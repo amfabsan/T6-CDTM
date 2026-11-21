@@ -90,7 +90,9 @@ Reglas obligatorias:
 6. Resumen de candidato: 1 frase. Fortalezas: 2 o 3, cada una de menos de 25 palabras.
 7. Para cada equipo explica cómo se complementan sus integrantes (qué aporta cada uno) en 2 o 3 razones, citando la evidencia de los integrantes.
 8. Si un candidato sale de otra área o sector y aun así encaja, dilo: es talento oculto.
-9. Todo el dinero está en euros. Escríbelo así: «11.800 €». Nunca uses $, USD ni dólares. Si cost_eur es null, di «coste por estimar». El coste es siempre una estimación con supuestos, nunca un dato real: no lo presentes como seguro.`;
+10. Si a alguien le falta una skill obligatoria (está en sus gaps), no digas ni insinúes que la domina. Habla de lo que sí aporta.
+11. En el resumen del equipo nombra a las personas por su nombre, nunca por su employee_id.
+9. Todo el dinero está en euros. Escríbelo así, sin comillas: 11.800 €. Nunca uses $, USD ni dólares. Si cost_eur es null, di «coste por estimar». El coste es siempre una estimación con supuestos, nunca un dato real: no lo presentes como seguro.`;
 
 export function buildUserPrompt(input: ExplainInput): string {
   return JSON.stringify(input);
@@ -192,6 +194,7 @@ function textOk(text: string, scope: Scope): boolean {
     if (!scope.numbers.has(normTextNum(n)) && !scope.numbers.has(normNum(n))) return false;
   }
   for (const m of text.matchAll(QUOTE_RE)) {
+    if (!/[a-záéíóúñ]/i.test(m[1].replace(/€|eur(os)?/gi, ""))) continue; // cifra entre comillas: la valida NUM_RE
     const quoted = norm(m[1]);
     if (!scope.refs.some((r) => r.includes(quoted))) return false;
   }
@@ -257,7 +260,7 @@ export function fallbackTeam(t: TeamInput, byId: Map<string, CandidateInput>): T
   });
   return {
     team_id: t.team_id,
-    summary: `Equipo ${t.team_id}: encaje medio del ${t.fit} % con ${t.members.length} personas. ` +
+    summary: `Equipo de ${t.members.map((m) => byId.get(m.employee_id)?.nombre ?? m.employee_id).join(", ")}: encaje medio del ${t.fit} %. ` +
       (t.cost_eur != null ? `Coste estimado: ${formatEur(t.cost_eur)} (supuesto).` : "Coste por estimar."),
     reasons,
     source: "fallback",
