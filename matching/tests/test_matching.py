@@ -47,7 +47,28 @@ class Pasos7a9(unittest.TestCase):
         self.assertTrue(any(r.startswith("Kubernetes: nivel 1") for r in s["risks"]))
         self.assertEqual(s["evidence"][0]["proyecto"], "Pasarela de pagos")
         self.assertTrue(80 < s["score"] < 100, s["score"])
-        self.assertEqual(sum(b["weight"] for b in s["breakdown"].values()), 100)
+        self.assertAlmostEqual(sum(b["weight"] for b in s["breakdown"].values()), 100, delta=0.5)
+        self.assertAlmostEqual(sum(b["points"] for b in s["breakdown"].values()), s["score"], delta=0.5)  # la barra suma el score
+
+    def test_sin_puntos_regalados(self):
+        # La plaza no pide idiomas, certificaciones, seniority ni deseables: esos componentes no aplican y no suman.
+        req = from_llm_plan({"project": {}, "roles": [{"title": "B", "count": 1, "mandatory_skills": [{"name": "Java"}]}]})[1][0]
+        nada = score_candidate({**BASE, "skills": [{"skill": "Excel", "nivel": 3, "anios": 2, "demostrada": True,
+                                                    "n_proyectos": 1, "ultimo_anio": 2025}]}, req, PROJECT)
+        self.assertEqual(nada["score"], 0)  # antes: ~25 puntos «regalados»
+        b = nada["breakdown"]
+        self.assertFalse(b["langCert"]["applies"] or b["desirable"]["applies"] or b["seniority"]["applies"])
+        self.assertEqual((b["langCert"]["points"], b["desirable"]["value"]), (0.0, None))
+
+    def test_desempate_en_la_parte_alta(self):
+        req = from_llm_plan({"project": {}, "roles": [{"title": "B", "count": 1, "min_years_experience": 3,
+                                                       "mandatory_skills": [{"name": "REST APIs", "min_level": 3}]}]})[1][0]
+        sk = {"skill": "REST APIs", "nivel": 5, "anios": 8, "demostrada": True, "n_proyectos": 2, "ultimo_anio": 2026}
+        a = score_candidate({**BASE, "employee_id": "A", "anios_experiencia": 4, "skills": [sk]}, req, PROJECT)
+        b = score_candidate({**BASE, "employee_id": "B", "anios_experiencia": 12, "skills": [{**sk, "n_proyectos": 4}]}, req, PROJECT)
+        self.assertEqual(a["score"], b["score"])                     # mismo encaje…
+        self.assertGreater(b["tiebreak"], a["tiebreak"])             # …pero B tiene más años sobre el mínimo y más proyectos
+        self.assertEqual([x["employee_id"] for x in rank_role([a, b])["items"]], ["B", "A"])
 
     def test_obligatoria_ausente_es_gap_no_descarte(self):
         s = score_candidate({**BASE, "skills": BASE["skills"][2:]}, BACKEND, PROJECT)
@@ -105,6 +126,30 @@ class Pasos7a9(unittest.TestCase):
         self.assertEqual(s["breakdown"]["langCert"]["value"], 1)  # inglés sin nivel exigido + una de las alternativas
         s2 = score_candidate({**p, "certificaciones": [], "idiomas": []}, r, prj)
         self.assertTrue({"Sin Inglés", "Falta una de: CISSP / CEH"} <= set(s2["gaps"]))
+
+    def test_obligatorias_alternativas_y_afinidad(self):
+        # Caso del QC: «gestión de identidades y accesos» = una de [Gestión de identidades, Entra ID, IAM].
+        req = from_llm_plan({"project": {}, "roles": [{"title": "Seg", "count": 1, "mandatory_skills": [{"name": "Azure"}],
+                             "mandatory_any_of": [{"options": ["Gestión de identidades", "Entra ID", "IAM"], "min_level": None}]}]})[1][0]
+        sk = lambda n, nv=4: {"skill": n, "nivel": nv, "anios": 5, "demostrada": True, "n_proyectos": 2, "ultimo_anio": 2025}
+        iam_specialist = {**BASE, "skills": [sk("Azure"), sk("Entra ID")]}
+        s = score_candidate(iam_specialist, req, PROJECT)
+        self.assertEqual(s["breakdown"]["mandatory"]["value"], 1)          # Entra ID cubre el grupo
+        self.assertFalse(any("Falta" in g for g in s["gaps"]))
+        self.assertEqual([x["name"] for x in s["skills"]], ["Azure", "Entra ID"])
+        # Sin ninguna opción pero con una skill afín (co-ocurrencia): crédito parcial, riesgo visible y el gap se mantiene.
+        afin = {**BASE, "skills": [sk("Azure"), sk("SSO")]}
+        aff = {"Gestión de identidades": [("SSO", 0.88), ("MFA", 0.87)]}
+        s2 = score_candidate(afin, req, PROJECT, affinities=aff)
+        self.assertIn("Falta una de: Gestión de identidades / Entra ID / IAM", s2["gaps"])
+        self.assertTrue(any("cubierta por afinidad (SSO, 0.88)" in r for r in s2["risks"]))
+        self.assertAlmostEqual(s2["breakdown"]["mandatory"]["value"], round((1 + 0.88 * 0.5) / 2, 2), places=2)
+        self.assertLess(s2["score"], s["score"])                            # afín nunca supera a exacta
+        s3 = score_candidate(afin, req, PROJECT)                            # sin afinidades: solo Azure
+        self.assertLess(s3["breakdown"]["mandatory"]["value"], s2["breakdown"]["mandatory"]["value"])
+        # Un perfil cuya única relación es una skill afín sigue siendo elegible (aporta algo al puesto).
+        only_afin = score_candidate({**BASE, "skills": [sk("SSO")]}, req, PROJECT, affinities=aff)
+        self.assertEqual(eligibility_reasons(only_afin), [])
 
     def test_candidatos_desde_rpc(self):
         rpc = [{"role_index": 1, "title": "Backend", "count": 2, "n_filtrados": 3,

@@ -53,7 +53,7 @@
 > - If `review[]` is not empty, a yellow panel "Revisado por el sistema" listing each item (`path`, `value`, `reason`, `action`: eliminado / corregido / revisar).
 > - Note under the roles: "Solo se excluye a quien está «Asignado» y, si el país es exigido, a quien está fuera. Todo lo demás (skills, años, seniority, idiomas, certificaciones) no excluye: puntúa y aparece como gap o riesgo."
 >
-> On "Confirmar y buscar talento": insert into `project_requirements` using `row_template` with the EDITED requirements (keep `interpretation_raw` untouched), then go to step 2 with the new `project_id`.
+> On "Confirmar y buscar talento": insert into `project_requirements` using `row_template` with the EDITED requirements (keep `interpretation_raw` untouched); the row is always saved as `borrador`. Then require a "Revisado por" text field (the reviewer's name) and call `supabase.rpc('confirmar_requisitos', { p_project_id, p_reviewed_by })`. Only after that go to step 2 with the `project_id`: `candidatos_proyecto` and `POST /match` refuse requirements that are not confirmed (migration 006). Show "Revisado por {reviewed_by} · {reviewed_at}" in the next steps.
 
 ✅ Con el ejemplo salen 3 tarjetas de rol, «Kubernetes» aparece como deseable y al confirmar se crea una fila en `project_requirements`.
 
